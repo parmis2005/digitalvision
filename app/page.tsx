@@ -18,7 +18,7 @@ const services = [
   {
     icon: MonitorSmartphone,
     title: "Webseiten-Erstellung",
-    text: "Moderne Homepages, Landingpages und Unternehmensseiten mit starkem Design und sauberer Next.js-Umsetzung.",
+    text: "Moderne Homepages, Landingpages und Unternehmensseiten mit starkem Design, klarer Struktur und professioneller Umsetzung.",
   },
   {
     icon: LayoutDashboard,

@@ -27,9 +27,10 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             </div>
             <div className="beauty-card-stage">
               <div className="beauty-card-photo" />
-              <div className="beauty-card-badge">
-                <strong>16+</strong>
-                <span>Jahre Erfahrung</span>
+              <div className="beauty-card-photo-accent">
+                <span className="beauty-flower beauty-flower-one" />
+                <span className="beauty-flower beauty-flower-two" />
+                <span className="beauty-flower-center" />
               </div>
             </div>
             <div className="beauty-card-copy">

@@ -773,34 +773,104 @@ h3 {
     linear-gradient(120deg, rgba(255, 255, 255, 0.14), transparent 28%);
 }
 
-.beauty-card-badge {
+.beauty-card-photo-accent {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  display: grid;
-  gap: 2px;
-  min-width: 92px;
-  padding: 10px 12px;
+  right: 12px;
+  bottom: 12px;
+  display: block;
+  width: 116px;
+  height: 70px;
   border-radius: 14px;
-  background: rgba(255, 252, 246, 0.92);
-  box-shadow: 0 10px 24px rgba(82, 57, 31, 0.12);
-  text-align: center;
+  background:
+    radial-gradient(circle at 56% 36%, rgba(255, 244, 230, 0.86), transparent 18%),
+    linear-gradient(135deg, rgba(255, 248, 240, 0.88), rgba(232, 208, 182, 0.94));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    0 10px 24px rgba(82, 57, 31, 0.12);
+  overflow: hidden;
 }
 
-.beauty-card-badge strong {
-  color: #9d7c52;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 0.9;
+.beauty-flower,
+.beauty-flower-center {
+  position: absolute;
 }
 
-.beauty-card-badge span {
-  color: rgba(125, 100, 70, 0.88);
-  font-size: 0.5rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.beauty-flower {
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 245, 235, 0.96), rgba(235, 205, 182, 0.94));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 4px 10px rgba(138, 104, 76, 0.12);
+}
+
+.beauty-flower-one {
+  left: 18px;
+  top: 13px;
+  width: 54px;
+  height: 28px;
+  transform: rotate(-24deg);
+}
+
+.beauty-flower-one::before,
+.beauty-flower-one::after,
+.beauty-flower-two::before,
+.beauty-flower-two::after {
+  position: absolute;
+  border-radius: 999px;
+  background: inherit;
+  content: "";
+  box-shadow: inherit;
+}
+
+.beauty-flower-one::before {
+  left: 14px;
+  top: -10px;
+  width: 28px;
+  height: 52px;
+}
+
+.beauty-flower-one::after {
+  right: 6px;
+  top: 8px;
+  width: 26px;
+  height: 20px;
+  transform: rotate(28deg);
+}
+
+.beauty-flower-two {
+  right: 20px;
+  bottom: 14px;
+  width: 42px;
+  height: 22px;
+  transform: rotate(20deg);
+  opacity: 0.92;
+}
+
+.beauty-flower-two::before {
+  left: 10px;
+  top: -8px;
+  width: 22px;
+  height: 40px;
+}
+
+.beauty-flower-two::after {
+  left: -6px;
+  top: 4px;
+  width: 24px;
+  height: 18px;
+  transform: rotate(-22deg);
+}
+
+.beauty-flower-center {
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 252, 246, 1) 0%, rgba(236, 192, 154, 0.95) 48%, rgba(214, 166, 127, 0.82) 100%);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 18px rgba(237, 192, 152, 0.34);
 }
 
 .beauty-card-copy {

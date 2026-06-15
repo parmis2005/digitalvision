@@ -34,5 +34,16 @@ export function AmbientScene() {
     };
   }, []);
 
-  return null;
+  return (
+    <div className="ambient-particles" aria-hidden="true">
+      <span className="ambient-particle ambient-particle-one" />
+      <span className="ambient-particle ambient-particle-two" />
+      <span className="ambient-particle ambient-particle-three" />
+      <span className="ambient-particle ambient-particle-four" />
+      <span className="ambient-particle ambient-particle-five" />
+      <span className="ambient-particle ambient-particle-six" />
+      <span className="ambient-particle ambient-particle-seven" />
+      <span className="ambient-particle ambient-particle-eight" />
+    </div>
+  );
 }

@@ -113,7 +113,6 @@ export default function Home() {
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-visual-stage">
             <div className="hero-grid-glow" />
-            <div className="hero-axis" />
             <div className="hero-core" />
             <div className="hero-ring hero-ring-one" />
             <div className="hero-ring hero-ring-two" />
@@ -155,6 +154,9 @@ export default function Home() {
             <div className="vision-ring vision-ring-two" />
             <div className="vision-ring vision-ring-three" />
             <div className="vision-pulse" />
+            <span className="vision-particle vision-particle-one" />
+            <span className="vision-particle vision-particle-two" />
+            <span className="vision-particle vision-particle-three" />
           </div>
         </div>
         <div className="vision-copy">

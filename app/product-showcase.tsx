@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { repeatedProducts } from "./products-data";
+import { ProductPreview } from "./product-preview";
 
 export function ProductShowcase() {
   const railRef = useRef<HTMLDivElement>(null);
@@ -14,6 +15,8 @@ export function ProductShowcase() {
     if (!rail) {
       return;
     }
+
+    rail.scrollLeft = 0;
 
     let frame = 0;
 
@@ -81,23 +84,7 @@ export function ProductShowcase() {
               key={`${product.title}-${index}`}
             >
               <div className="showcase-preview">
-                <div className="preview-bar">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="preview-content">
-                  <div className="preview-copy">
-                    <p>{product.type}</p>
-                    <h3>{product.title}</h3>
-                  </div>
-                  <div className="preview-art" />
-                </div>
-                <div className="preview-footer">
-                  <span />
-                  <span />
-                  <span />
-                </div>
+                <ProductPreview product={product} />
               </div>
               <div className="showcase-meta">
                 <strong>{product.title}</strong>

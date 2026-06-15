@@ -11,17 +11,17 @@ export type ProductItem = {
 
 export const products: ProductItem[] = [
   {
-    slug: "luxus-homepage",
-    type: "Brand Website",
-    title: "Luxus Homepage",
-    detail: "Markenauftritt mit starkem ersten Eindruck",
+    slug: "beauty-haus",
+    type: "Kosmetik Website",
+    title: "Kosmetik Studio",
+    detail: "Elegante Website für Kosmetik, Behandlungen und moderne Beauty Services",
     variant: "earth",
     category: "Webseiten",
-    intro: "Vorlage für hochwertige Unternehmensseiten mit starker Bildsprache, klarer Struktur und exklusiver Wirkung.",
+    intro: "Beispiel für eine moderne Kosmetik-Website mit hochwertiger Wirkung, klarer Nutzerführung und starker visueller Präsenz.",
     highlights: [
-      "Edles Layout für Premium-Marken",
-      "Klare Conversion-Flächen und Kontaktpunkte",
-      "Ideal für Dienstleister, Studios und starke Markenauftritte",
+      "Starke Bildsprache für Kosmetik- und Beauty-Marken",
+      "Eleganter Aufbau für Behandlungen, Vertrauen und Buchungsanfragen",
+      "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
   },
   {

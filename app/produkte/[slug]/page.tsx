@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { products } from "../../products-data";
+import { ProductPreview } from "../../product-preview";
 
 type PageProps = {
   params: Promise<{
@@ -45,50 +46,76 @@ export default async function ProductPage({ params }: PageProps) {
             </a>
           </div>
         </div>
-        <div className={`product-preview-large ${product.variant}`} aria-hidden="true">
-          <div className="product-preview-shell">
-            <div className="preview-bar">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="preview-content">
-              <div className="preview-copy">
-                <p>{product.type}</p>
-                <h3>{product.title}</h3>
+        {product.slug === "beauty-haus" ? (
+          <div className={`product-preview-large ${product.variant}`}>
+            <div className="product-preview-shell product-preview-shell-embed">
+              <div className="product-preview-viewport">
+                <iframe
+                  className="product-preview-iframe"
+                  src="https://kosmetik-test.vercel.app/"
+                  title="Kosmetik Website Vorschau"
+                  loading="lazy"
+                />
               </div>
-              <div className="preview-art" />
-            </div>
-            <div className="preview-footer">
-              <span />
-              <span />
-              <span />
             </div>
           </div>
-        </div>
+        ) : (
+          <div className={`product-preview-large ${product.variant}`} aria-hidden="true">
+            <div className="product-preview-shell">
+              <ProductPreview product={product} size="page" />
+            </div>
+          </div>
+        )}
       </section>
 
-      <section className="product-details">
-        <div className="product-detail-card">
-          <p className="eyebrow">Vorbereitet für dein Produkt</p>
-          <h2>Diese Seite ist dein Vorbau für spätere echte Inhalte.</h2>
-          <p>
-            Hier können später dein finaler Text, deine echten Screenshots,
-            Funktionen, Preisstruktur und dein individueller Verkaufsaufbau rein.
-          </p>
-        </div>
-        <div className="product-detail-card">
-          <p className="eyebrow">Highlights</p>
-          <div className="product-highlights">
-            {product.highlights.map((highlight) => (
-              <div className="product-highlight" key={highlight}>
-                <Check size={18} aria-hidden="true" />
-                <span>{highlight}</span>
-              </div>
-            ))}
+      {product.slug === "beauty-haus" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Beauty-Auftritt mit echter Website-Anmutung statt Platzhalter.
+            </h2>
+            <p>
+              Diese Produktseite zeigt bewusst den Stil des echten Kosmetik-Projekts:
+              elegante Farbwelt, hochwertige Ruhe, klare Behandlungsführung und ein
+              Look, der für Premium-Kosmetik sofort Vertrauen aufbaut.
+            </p>
           </div>
-        </div>
-      </section>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Vorbereitet für dein Produkt</p>
+            <h2>Diese Seite ist dein Vorbau für spätere echte Inhalte.</h2>
+            <p>
+              Hier können später dein finaler Text, deine echten Screenshots,
+              Funktionen, Preisstruktur und dein individueller Verkaufsaufbau rein.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

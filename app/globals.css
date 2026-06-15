@@ -690,6 +690,137 @@ h3 {
   height: 100%;
 }
 
+.beauty-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.beauty-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.beauty-card-menu {
+  color: rgba(247, 235, 210, 0.76);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.beauty-card-shell {
+  display: grid;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  padding: 14px;
+  border-radius: 26px;
+  background: rgba(255, 248, 234, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 234, 0.12);
+}
+
+.beauty-card-branding {
+  display: grid;
+  gap: 3px;
+}
+
+.beauty-card-branding p {
+  margin-bottom: 0;
+  color: #fff8ec;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.beauty-card-branding span {
+  color: rgba(241, 223, 195, 0.84);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.beauty-card-stage {
+  position: relative;
+  min-height: 112px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 245, 223, 0.14), transparent 20%),
+    linear-gradient(135deg, #e6d3c4 0%, #e8c6b0 38%, #d1b198 100%);
+}
+
+.beauty-card-photo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 62% 28%, rgba(255, 241, 226, 0.78), transparent 18%),
+    linear-gradient(135deg, rgba(63, 51, 25, 0.26), transparent 36%),
+    linear-gradient(135deg, #f2e6da 0%, #d9b394 50%, #ab8d6e 100%);
+}
+
+.beauty-card-photo::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 72% 26%, rgba(255, 255, 255, 0.42), transparent 14%),
+    radial-gradient(circle at 84% 52%, rgba(114, 72, 32, 0.24), transparent 24%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.14), transparent 28%);
+}
+
+.beauty-card-badge {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  gap: 2px;
+  min-width: 92px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 252, 246, 0.92);
+  box-shadow: 0 10px 24px rgba(82, 57, 31, 0.12);
+  text-align: center;
+}
+
+.beauty-card-badge strong {
+  color: #9d7c52;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+.beauty-card-badge span {
+  color: rgba(125, 100, 70, 0.88);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.beauty-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.beauty-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8ec;
+  font-size: 1.15rem;
+  line-height: 0.98;
+}
+
+.beauty-card-copy span {
+  color: rgba(241, 223, 195, 0.78);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .beauty-preview-top,
 .beauty-preview-bottom,
 .beauty-preview-actions {

@@ -46,14 +46,14 @@ export default async function ProductPage({ params }: PageProps) {
             </a>
           </div>
         </div>
-        {product.slug === "beauty-haus" ? (
+        {product.previewUrl ? (
           <div className={`product-preview-large ${product.variant}`}>
             <div className="product-preview-shell product-preview-shell-embed">
               <div className="product-preview-viewport">
                 <iframe
                   className="product-preview-iframe"
-                  src="https://kosmetik-test.vercel.app/"
-                  title="Kosmetik Website Vorschau"
+                  src={product.previewUrl}
+                  title={`${product.title} Vorschau`}
                   loading="lazy"
                 />
               </div>
@@ -79,6 +79,31 @@ export default async function ProductPage({ params }: PageProps) {
               Diese Produktseite zeigt bewusst den Stil des echten Kosmetik-Projekts:
               elegante Farbwelt, hochwertige Ruhe, klare Behandlungsführung und ein
               Look, der für Premium-Kosmetik sofort Vertrauen aufbaut.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : product.slug === "autohaus-nordglanz" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Autohaus-Auftritt mit echter Bestands- und Suchlogik.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Autohaus-Projekts:
+              starke Fahrzeugbilder, klare Suchführung, vertrauensbildende Struktur
+              und ein Aufbau, der Fahrzeuge und Anfragen sauber zusammenführt.
             </p>
           </div>
           <div className="product-detail-card">

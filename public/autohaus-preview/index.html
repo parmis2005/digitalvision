@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nordglanz Automobilhaus | Gebrauchtwagen und Service</title>
+    <meta
+      name="description"
+      content="Demo-Webseite für das fiktive Nordglanz Automobilhaus mit Gebrauchtwagen, Finanzierung, Prüfung, Garantie und Inzahlungnahme."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./main.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-1"></div>
+      <div class="ambient ambient-2"></div>
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <p>Nordglanz Automobilhaus Demo GmbH | Musterweg 12, 00000 Beispielstadt</p>
+          <div class="topbar-links">
+            <a href="tel:+495550182049">+49 555 018 2049</a>
+            <a href="mailto:hallo@nordglanz-auto.example">hallo@nordglanz-auto.example</a>
+          </div>
+        </div>
+      </header>
+
+      <header class="header">
+        <div class="container header-inner">
+          <a class="brand" href="#start" aria-label="Zur Startseite">
+            <span class="brand-mark">NG</span>
+            <span class="brand-text">
+              <strong>Nordglanz Automobile</strong>
+              <span>Beispielstadt</span>
+            </span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Navigation öffnen"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav id="site-nav" class="nav">
+            <a href="#start" class="is-active">Startseite</a>
+            <a href="#service">Service</a>
+            <a href="#vorteile">Inzahlungnahme</a>
+            <a href="./unternehmen.html">Unternehmen</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
+
+          <a class="header-cta btn btn-primary" href="#fahrzeuge">Fahrzeugsuche</a>
+        </div>
+      </header>
+
+      <main id="start">
+        <section class="hero hero-photo">
+          <div class="hero-photo-bg" aria-hidden="true"></div>
+          <div class="hero-photo-overlay" aria-hidden="true"></div>
+          <div class="container hero-stage">
+            <div class="hero-copy hero-copy-center reveal">
+              <span class="eyebrow eyebrow-light">Jahreswagen & junge Gebrauchtwagen</span>
+              <h1>Ihr Auto wartet auf Sie!</h1>
+              <p class="lead hero-lead">
+                Geprüfte Fahrzeuge, faire Finanzierung und ein klarer Ablauf.
+              </p>
+            </div>
+
+            <form class="hero-search reveal" action="#fahrzeuge">
+              <label>
+                Hersteller
+                <select>
+                  <option>Alle Hersteller</option>
+                  <option>BMW</option>
+                  <option>Mercedes-Benz</option>
+                  <option>Audi</option>
+                  <option>Porsche</option>
+                </select>
+              </label>
+              <label>
+                Modell
+                <select>
+                  <option>Alle Modelle</option>
+                  <option>Limousine</option>
+                  <option>SUV</option>
+                  <option>Coupé</option>
+                  <option>Kombi</option>
+                </select>
+              </label>
+              <label>
+                Preis bis
+                <select>
+                  <option>Keine Obergrenze</option>
+                  <option>20.000 €</option>
+                  <option>35.000 €</option>
+                  <option>50.000 €</option>
+                </select>
+              </label>
+              <button class="btn btn-primary hero-search-btn" type="submit">83 Treffer</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="fahrzeuge" class="section">
+          <div class="container">
+            <div class="section-heading reveal">
+              <span class="eyebrow">Beliebte Modelle</span>
+              <h2>Ein starker Bestand für den Alltag, die Familie und den Business-Einsatz.</h2>
+              <p>
+                Die Auswahl ist als moderne Bestandspräsentation angelegt und kann später mit
+                echten Fahrzeugdaten aus Ihrem Fahrzeugbestand verbunden werden.
+              </p>
+            </div>
+
+            <div class="inventory-grid">
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-1"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>BMW 3er Limousine</span>
+                    <strong>BMW</strong>
+                  </div>
+                  <p>Sportliche Limousine mit klarer Linienführung und Alltagsnutzen.</p>
+                </div>
+              </article>
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-2"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>Mercedes-Benz C-Klasse</span>
+                    <strong>Mercedes-Benz</strong>
+                  </div>
+                  <p>Elegante Limousine mit Business-Charakter und Komfortfokus.</p>
+                </div>
+              </article>
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-3"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>Audi A6</span>
+                    <strong>Audi</strong>
+                  </div>
+                  <p>Repräsentative Limousine mit ruhigem Auftritt und Technikfokus.</p>
+                </div>
+              </article>
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-4"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>Porsche Panamera</span>
+                    <strong>Porsche</strong>
+                  </div>
+                  <p>Sportliche Gran-Turismo-Limousine mit markanter Präsenz.</p>
+                </div>
+              </article>
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-5"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>BMW 5er Touring</span>
+                    <strong>BMW</strong>
+                  </div>
+                  <p>Geräumiger Kombi mit Business-Komfort und sportlicher Linie.</p>
+                </div>
+              </article>
+              <article class="vehicle-card reveal">
+                <div class="vehicle-image vehicle-6"></div>
+                <div class="vehicle-body">
+                  <div class="vehicle-topline">
+                    <span>Mercedes-Benz E-Klasse</span>
+                    <strong>Mercedes-Benz</strong>
+                  </div>
+                  <p>Elegante Oberklasse-Limousine mit ruhigem und souveränem Auftritt.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="vorteile" class="section section-alt">
+          <div class="container split">
+            <div class="split-copy reveal">
+              <span class="eyebrow">Warum Nordglanz</span>
+              <h2>Verkaufen und beraten mit einem klaren, verlässlichen Prozess.</h2>
+              <p>
+                Die Website setzt genau die Stärken in Szene, die auf der Referenzseite
+                hervorgehoben werden: geprüfte Fahrzeuge, Finanzierung, Prüfung und Garantie,
+                dazu ein fiktiver Standort mit klarer Demo-Identität.
+              </p>
+              <a class="text-link" href="#kontakt">Kontakt aufnehmen</a>
+            </div>
+
+            <div class="benefit-list">
+              <article class="benefit-card reveal">
+                <span class="benefit-index">01</span>
+                <h3>Geprüfte Herkunft</h3>
+                <p>Vor allem Leasingrückläufer mit sauberer Historie und transparenter Dokumentation.</p>
+              </article>
+              <article class="benefit-card reveal">
+                <span class="benefit-index">02</span>
+                <h3>Faire Finanzierung</h3>
+                <p>Persönliche Lösungen über eine Demo-Partnerbank, passend zu Budget und Laufzeit.</p>
+              </article>
+              <article class="benefit-card reveal">
+                <span class="benefit-index">03</span>
+                <h3>Alles an einem Ort</h3>
+                <p>Prüfung, Garantie, Inzahlungnahme, Zulassungsdienst und weitere Services im selben Haus.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="service" class="section">
+          <div class="container service-layout">
+            <div class="section-heading reveal">
+              <span class="eyebrow">Leistungen</span>
+              <h2>Mehr als nur Fahrzeugverkauf.</h2>
+            </div>
+
+            <div class="service-grid">
+              <article class="service-card reveal">
+                <h3>Finanzierung</h3>
+                <p>Individuelle Finanzierungslösungen über eine fiktive Partnerbank mit planbaren Monatsraten.</p>
+              </article>
+              <article class="service-card reveal">
+                <h3>Prüfung & Kontrolle</h3>
+                <p>Interne Qualitätschecks und technische Bewertung für ein sicheres Kaufgefühl.</p>
+              </article>
+              <article class="service-card reveal">
+                <h3>Garantie</h3>
+                <p>Optionale Absicherung bis 24 Monate für mehr Schutz nach dem Kauf.</p>
+              </article>
+              <article class="service-card reveal">
+                <h3>Inzahlungnahme</h3>
+                <p>Das bisherige Fahrzeug unkompliziert anrechnen und sofort aufsteigen.</p>
+              </article>
+              <article class="service-card reveal">
+                <h3>Ölwechsel</h3>
+                <p>Wartung und Zusatzleistungen bequem im gleichen Ablauf erledigen.</p>
+              </article>
+              <article class="service-card reveal">
+                <h3>Zulassungsdienst</h3>
+                <p>Auf Wunsch wird die Zulassung direkt mit organisiert und vorbereitet.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-alt">
+          <div class="container process">
+            <div class="section-heading reveal">
+              <span class="eyebrow">Ablauf</span>
+              <h2>So wird aus der Anfrage ein Fahrzeug, das passt.</h2>
+            </div>
+
+            <div class="steps">
+              <article class="step reveal">
+                <span>Schritt 1</span>
+                <h3>Bedarf klären</h3>
+                <p>Budget, Fahrzeuggröße, Marke und Ausstattung werden gemeinsam eingegrenzt.</p>
+              </article>
+              <article class="step reveal">
+                <span>Schritt 2</span>
+                <h3>Fahrzeug prüfen</h3>
+                <p>Historie, Zustand und Service werden transparent besprochen und geprüft.</p>
+              </article>
+              <article class="step reveal">
+                <span>Schritt 3</span>
+                <h3>Finanzierung & Übergabe</h3>
+                <p>Auf Wunsch Finanzierung, Garantie und Zulassung organisieren und den Wagen übergeben.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container testimonial-grid">
+            <article class="testimonial reveal">
+              <p>
+                "Klare Beratung, keine unnötigen Umwege und ein professioneller Eindruck vom
+                ersten Kontakt an."
+              </p>
+              <span>Typische Kundenerwartung bei einem Gebrauchtwagenkauf</span>
+            </article>
+            <article class="testimonial testimonial-highlight reveal">
+              <p>
+                "Der Fokus auf geprüfte Leasingrückläufer, Prüfung und Garantie ergibt
+                eine saubere und vertrauenswürdige Positionierung."
+              </p>
+              <span>Überzeugende Merkmale der Demo-Seite</span>
+            </article>
+          </div>
+        </section>
+
+        <section id="kontakt" class="section contact-section">
+          <div class="container contact-grid">
+            <div class="contact-copy reveal">
+              <span class="eyebrow">Kontakt</span>
+              <h2>Nordglanz Automobilhaus in Beispielstadt.</h2>
+              <p>
+                Musterweg 12, 00000 Beispielstadt. Fiktive Kontaktdaten für die Demo-Version.
+              </p>
+
+              <div class="contact-box">
+                <div>
+                  <span>Telefon</span>
+                  <a href="tel:+495550182049">+49 555 018 2049</a>
+                </div>
+                <div>
+                  <span>E-Mail</span>
+                  <a href="mailto:hallo@nordglanz-auto.example">hallo@nordglanz-auto.example</a>
+                </div>
+              </div>
+
+              <div class="contact-note">
+                <p>
+                  Diese Seite ist als fertiger, aber fiktiver Autohaus-Entwurf aufgebaut.
+                  Fahrzeugdaten, Öffnungszeiten und rechtliche Angaben lassen sich bei Bedarf direkt
+                  ergänzen.
+                </p>
+              </div>
+            </div>
+
+            <form class="contact-form reveal" action="mailto:hallo@nordglanz-auto.example" method="post" enctype="text/plain">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Ihr Name" required />
+              </label>
+              <label>
+                Telefon oder E-Mail
+                <input type="text" name="contact" placeholder="Für Rückfragen" required />
+              </label>
+              <label>
+                Wunschfahrzeug
+                <input type="text" name="vehicle" placeholder="z. B. Sportcoupé, Limousine ..." />
+              </label>
+              <label>
+                Nachricht
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Womit können wir helfen?"
+                  required
+                ></textarea>
+              </label>
+              <button class="btn btn-primary btn-block" type="submit">Anfrage senden</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div>
+            <strong>Nordglanz Automobilhaus Demo GmbH</strong>
+            <p>Musterweg 12, 00000 Beispielstadt</p>
+          </div>
+          <div class="footer-links">
+            <a href="./unternehmen.html">Unternehmen</a>
+            <a href="./impressum.html">Impressum</a>
+            <a href="./datenschutz.html">Datenschutz</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

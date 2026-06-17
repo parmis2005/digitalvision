@@ -7,6 +7,7 @@ type ProductPreviewProps = {
 
 export function ProductPreview({ product, size = "card" }: ProductPreviewProps) {
   const isBeauty = product.slug === "beauty-haus";
+  const isAuto = product.slug === "autohaus-nordglanz";
 
   if (isBeauty) {
     if (size === "card") {
@@ -76,6 +77,41 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
         </div>
       </div>
     );
+  }
+
+  if (isAuto) {
+    if (size === "card") {
+      return (
+        <div className="auto-preview-card-view">
+          <div className="auto-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="auto-card-cta">Fahrzeugsuche</span>
+          </div>
+          <div className="auto-card-shell">
+            <div className="auto-card-branding">
+              <p>Nordglanz Automobile</p>
+              <span>Jahreswagen · Gebrauchtwagen</span>
+            </div>
+            <div className="auto-card-stage">
+              <div className="auto-card-overlay" />
+              <div className="auto-card-search">
+                <span>BMW</span>
+                <span>SUV</span>
+                <span>35.000 €</span>
+              </div>
+            </div>
+            <div className="auto-card-copy">
+              <h3>Autohaus Nordglanz</h3>
+              <span>Fahrzeugsuche · Bestand · Finanzierung</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 
   return (

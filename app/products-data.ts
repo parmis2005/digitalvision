@@ -3,10 +3,11 @@ export type ProductItem = {
   type: string;
   title: string;
   detail: string;
-  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo";
+  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto";
   category: string;
   intro: string;
   highlights: string[];
+  previewUrl?: string;
 };
 
 export const products: ProductItem[] = [
@@ -23,6 +24,22 @@ export const products: ProductItem[] = [
       "Eleganter Aufbau für Behandlungen, Vertrauen und Buchungsanfragen",
       "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
+    previewUrl: "https://kosmetik-test.vercel.app/",
+  },
+  {
+    slug: "autohaus-nordglanz",
+    type: "Autohaus Website",
+    title: "Autohaus Nordglanz",
+    detail: "Moderne Autohaus-Website für Fahrzeuge, Suche und vertrauensstarken Verkauf",
+    variant: "auto",
+    category: "Webseiten",
+    intro: "Beispiel für eine Autohaus-Website mit Fahrzeugsuche, starker Hero-Fläche und klarer Nutzerführung für Anfragen und Bestand.",
+    highlights: [
+      "Starker Hero-Bereich mit Fahrzeugsuche und direktem Einstieg",
+      "Moderne Präsentation für Jahreswagen, Gebrauchtwagen und Business-Fahrzeuge",
+      "Geeignet für Autohäuser, Fahrzeughändler und Premium-Bestände",
+    ],
+    previewUrl: "/autohaus-preview/index.html",
   },
   {
     slug: "lead-funnel",

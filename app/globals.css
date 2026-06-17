@@ -690,6 +690,120 @@ h3 {
   height: 100%;
 }
 
+.auto-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.auto-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.auto-card-cta {
+  color: rgba(232, 236, 205, 0.82);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.auto-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.auto-card-branding {
+  display: grid;
+  gap: 3px;
+}
+
+.auto-card-branding p {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.auto-card-branding span {
+  color: rgba(226, 232, 208, 0.84);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.auto-card-stage {
+  position: relative;
+  min-height: 120px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 20, 0.14), rgba(7, 11, 20, 0.46)),
+    url("/autohaus-preview/assets/cars/mercedes-c-class.png"),
+    linear-gradient(135deg, #21412d 0%, #1f3a2a 48%, #647758 100%);
+  background-size: cover, 78%, 100%;
+  background-repeat: no-repeat;
+  background-position: center, center right -12px, center;
+}
+
+.auto-card-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 11, 21, 0.02), rgba(5, 11, 21, 0.34)),
+    radial-gradient(circle at 78% 36%, rgba(255, 230, 140, 0.28), transparent 20%);
+}
+
+.auto-card-search {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.auto-card-search span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #253049;
+  font-size: 0.56rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.auto-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.auto-card-copy h3 {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-size: 1.06rem;
+  line-height: 0.98;
+}
+
+.auto-card-copy span {
+  color: rgba(196, 208, 227, 0.8);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .beauty-preview-card-view {
   display: grid;
   gap: 10px;
@@ -1087,6 +1201,13 @@ h3 {
     linear-gradient(135deg, #1f3558, #10192a);
 }
 
+.showcase-card.auto .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 26%, rgba(241, 178, 74, 0.12), transparent 20%),
+    linear-gradient(135deg, #152034, #1d2f2f 58%, #4e5f49 100%);
+  color: #f8fbff;
+}
+
 .product-page {
   min-height: 100vh;
   padding: 28px clamp(18px, 4vw, 56px) 90px;
@@ -1273,6 +1394,13 @@ h3 {
 
 .product-preview-large.seo .product-preview-shell {
   background: linear-gradient(135deg, #121e31, #132946 58%, #0f1b2e);
+  color: #f8fbff;
+}
+
+.product-preview-large.auto .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 26%, rgba(241, 178, 74, 0.12), transparent 20%),
+    linear-gradient(135deg, #152034, #1d2f2f 58%, #4e5f49 100%);
   color: #f8fbff;
 }
 

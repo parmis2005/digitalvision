@@ -3,7 +3,7 @@ export type ProductItem = {
   type: string;
   title: string;
   detail: string;
-  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto";
+  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto" | "coffee";
   category: string;
   intro: string;
   highlights: string[];
@@ -40,6 +40,21 @@ export const products: ProductItem[] = [
       "Geeignet für Autohäuser, Fahrzeughändler und Premium-Bestände",
     ],
     previewUrl: "/autohaus-preview/index.html",
+  },
+  {
+    slug: "bean-bark",
+    type: "Coffee Shop Website",
+    title: "Bean & Bark",
+    detail: "Warme Coffee-Shop-Website für Specialty Coffee, Menü und Standorte",
+    variant: "coffee",
+    category: "Webseiten",
+    intro: "Beispiel für eine moderne Coffee-Shop-Website mit warmer Markenwirkung, klarer Menüführung und einladender Atmosphäre.",
+    highlights: [
+      "Warmer Premium-Look für Café, Coffee Shop und Hospitality-Marken",
+      "Klarer Aufbau für Menü, Story, Nachhaltigkeit und Standorte",
+      "Geeignet für Cafés, Röstereien, Brunch-Spots und urbane Gastro-Konzepte",
+    ],
+    previewUrl: "/coffeeshop-preview/index.html",
   },
   {
     slug: "lead-funnel",

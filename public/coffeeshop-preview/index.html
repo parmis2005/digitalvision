@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bean & Bark | Coffee Shop Experience</title>
+    <meta
+      name="description"
+      content="Bean & Bark ist ein moderner Coffee-Shop mit Specialty Coffee, frischen Bagels, veganen Optionen und gemütlicher Atmosphäre."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Bean & Bark Startseite">
+          <span class="brand-mark">B</span>
+          <span class="brand-copy">
+            <strong>Bean & Bark</strong>
+            <span>coffee, bagels, community</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="sr-only">Navigation öffnen</span>
+        </button>
+
+        <nav class="site-nav" id="primary-navigation">
+          <a href="#menu">Menü</a>
+          <a href="#story">Story</a>
+          <a href="#sustainability">Nachhaltigkeit</a>
+          <a href="#locations">Standorte</a>
+          <a class="nav-cta" href="#contact">Reservieren</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero section">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Specialty Coffee in warmem Premium-Design</p>
+            <h1>
+              Ein Coffee Shop,
+              <span>der sich wie ein zweites Wohnzimmer anfühlt.</span>
+            </h1>
+            <p class="lead">
+              Frisch gerösteter Kaffee, handgefertigte Bagels, saisonale Signatures und ein Ort für fokussierte
+              Arbeit, entspannte Gespräche und kleine Auszeiten im Alltag.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#menu">Menü entdecken</a>
+              <a class="button button-secondary" href="#locations">Nächsten Store finden</a>
+            </div>
+
+            <dl class="hero-metrics" aria-label="Kennzahlen">
+              <div>
+                <dt>24/7</dt>
+                <dd>Online Vorbestellung</dd>
+              </div>
+              <div>
+                <dt>100%</dt>
+                <dd>Arabica Selection</dd>
+              </div>
+              <div>
+                <dt>8</dt>
+                <dd>Signature Drinks</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-card card-large">
+              <div class="hero-badge">Heute empfohlen</div>
+              <h2>Cherry Cloud Latte</h2>
+              <p>Espresso, Kirschsirup, Hafermilch und cremiger Cold Foam.</p>
+              <div class="price-row">
+                <span>4,90 €</span>
+                <span>mit Hafermilch inklusive</span>
+              </div>
+            </div>
+
+            <div class="hero-card card-small top-left">
+              <span class="mini-label">Bagel of the week</span>
+              <strong>Smoked Maple Bagel</strong>
+              <small>Rucola, Frischkäse, Tomate, Ahorn-Senf</small>
+            </div>
+
+            <div class="hero-card card-small bottom-right">
+              <span class="mini-label">Atmosphäre</span>
+              <strong>Free Wi-Fi & ruhige Arbeitsplätze</strong>
+              <small>Perfekt für Meetings, Remote Work und Pausen</small>
+            </div>
+
+            <div class="background-orb orb-one"></div>
+            <div class="background-orb orb-two"></div>
+          </div>
+        </section>
+
+        <section class="social-proof section reveal">
+          <p>Vertraut von Gästen, Teams und Nachbarschaften, die Qualität, Ruhe und guten Geschmack schätzen.</p>
+          <div class="logo-row" aria-label="Markenversprechen">
+            <span>Fresh Roasts</span>
+            <span>Vegan Friendly</span>
+            <span>Urban Comfort</span>
+            <span>Fair Sourcing</span>
+          </div>
+        </section>
+
+        <section class="section" id="menu">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Menü</p>
+            <h2>Unsere Favoriten des Hauses</h2>
+            <p>
+              Eine fokussierte Auswahl, klar kuratiert. Kein überladenes Sortiment, sondern Signature-Produkte mit
+              hoher Qualität und hohem Wiedererkennungswert.
+            </p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-card reveal">
+              <span class="menu-tag">Espresso</span>
+              <h3>House Blend Cappuccino</h3>
+              <p>Kräftig, samtig und mit feinporigem Milchschaum serviert.</p>
+              <strong>3,80 €</strong>
+            </article>
+            <article class="menu-card reveal">
+              <span class="menu-tag">Cold Brew</span>
+              <h3>Vanilla Almond Shaker</h3>
+              <p>Kaltextraktion, Vanille, Mandeldrink und ein cremiger Finish.</p>
+              <strong>5,20 €</strong>
+            </article>
+            <article class="menu-card reveal">
+              <span class="menu-tag">Bagel</span>
+              <h3>Truffle Mushroom Bagel</h3>
+              <p>Champignons, Kräutercreme, Rucola und leichter Trüffel-Akzent.</p>
+              <strong>6,40 €</strong>
+            </article>
+            <article class="menu-card reveal">
+              <span class="menu-tag">Sweet Treat</span>
+              <h3>Salted Caramel Croissant</h3>
+              <p>Buttrig, knusprig, warm serviert und perfekt zum Nachmittagskaffee.</p>
+              <strong>4,20 €</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="section story-grid" id="story">
+          <div class="story-copy reveal">
+            <p class="eyebrow">Unsere Story</p>
+            <h2>Ein Café mit klarer Haltung und einer starken, warmen Identität.</h2>
+            <p>
+              Bean & Bark verbindet präzise Kaffeezubereitung mit einem einladenden, urbanen Raumgefühl. Wir setzen
+              auf ehrliche Zutaten, kurze Wege und ein Erlebnis, das morgens genauso gut funktioniert wie am Abend.
+            </p>
+            <p>
+              Das Ergebnis ist ein Ort, an dem Gäste nicht nur schnell etwas holen, sondern gern bleiben, arbeiten,
+              lesen oder sich mit Freunden treffen.
+            </p>
+          </div>
+
+          <div class="story-panel reveal">
+            <div class="story-stat">
+              <strong>2019</strong>
+              <span>gegründet mit Fokus auf Specialty Coffee</span>
+            </div>
+            <div class="story-stat">
+              <strong>36</strong>
+              <span>Stunden ruhige Nachbarschaftsatmosphäre pro Woche</span>
+            </div>
+            <div class="story-stat">
+              <strong>12</strong>
+              <span>vegane Optionen ohne Aufpreis verfügbar</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section features" id="sustainability">
+          <div class="feature-card reveal">
+            <p class="eyebrow">Nachhaltigkeit</p>
+            <h2>Weniger Abfall, mehr Geschmack.</h2>
+            <p>
+              Mehrwegbecher, pflanzenbasierte Milchalternativen, regionale Partner und sorgfältig geplante
+              Warenströme sind Teil unseres Alltags.
+            </p>
+          </div>
+          <div class="feature-list">
+            <article class="feature-item reveal">
+              <span>01</span>
+              <h3>Regionale Bäckerei-Partnerschaft</h3>
+              <p>Frische Lieferung am Morgen, kurze Wege und konstant hohe Produktqualität.</p>
+            </article>
+            <article class="feature-item reveal">
+              <span>02</span>
+              <h3>Alternative Milks inklusive</h3>
+              <p>Hafer-, Soja- und Mandeldrink ohne Aufpreis für mehr Flexibilität und Komfort.</p>
+            </article>
+            <article class="feature-item reveal">
+              <span>03</span>
+              <h3>Reuse-First Verpackung</h3>
+              <p>Bestellungen zum Mitnehmen werden in langlebige, nachhaltigere Verpackungen gesetzt.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section locations" id="locations">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Standorte</p>
+            <h2>Finde deinen nächsten Bean & Bark Store.</h2>
+            <p>Beispielhafte Locations mit klaren Öffnungszeiten, Außenplätzen und schnellem Take-away-Service.</p>
+          </div>
+
+          <div class="location-grid">
+            <article class="location-card reveal">
+              <h3>Berlin Mitte</h3>
+              <p>Torstraße 92, 10119 Berlin</p>
+              <ul>
+                <li>Mo - Fr: 07:00 - 19:00</li>
+                <li>Sa - So: 08:00 - 18:00</li>
+                <li>Free Wi-Fi, Seating, Pickup</li>
+              </ul>
+            </article>
+            <article class="location-card reveal">
+              <h3>Hamburg Eppendorf</h3>
+              <p>Eppendorfer Weg 181, 20253 Hamburg</p>
+              <ul>
+                <li>Mo - Fr: 07:30 - 18:30</li>
+                <li>Sa: 08:00 - 18:00</li>
+                <li>Outdoor Tables, Bakery Counter</li>
+              </ul>
+            </article>
+            <article class="location-card reveal">
+              <h3>München Glockenbach</h3>
+              <p>Fraunhoferstraße 28, 80469 München</p>
+              <ul>
+                <li>Mo - Fr: 07:00 - 20:00</li>
+                <li>Sa - So: 08:00 - 19:00</li>
+                <li>Order Ahead, Vegan Friendly</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section testimonial-grid reveal">
+          <div class="quote-card">
+            <p class="eyebrow">Stimmen aus dem Alltag</p>
+            <blockquote>
+              “Elegant, ruhig und trotzdem lebendig. Genau so sollte ein moderner Coffee Shop wirken.”
+            </blockquote>
+            <span>Lena M., Design Lead</span>
+          </div>
+          <div class="quote-card accent">
+            <blockquote>
+              “Guter Kaffee, schneller Service und genug Platz für einen ganzen Arbeitstag.”
+            </blockquote>
+            <span>Tom K., Freelancer</span>
+          </div>
+        </section>
+
+        <section class="section contact-grid" id="contact">
+          <div class="contact-copy reveal">
+            <p class="eyebrow">Kontakt</p>
+            <h2>Reservierungen, Catering oder Franchise-Anfragen.</h2>
+            <p>
+              Für Meetings, Events und größere Bestellungen planen wir individuell. Schreib uns oder ruf direkt an.
+            </p>
+          </div>
+
+          <form class="contact-card reveal">
+            <label>
+              Name
+              <input type="text" placeholder="Dein Name" />
+            </label>
+            <label>
+              E-Mail
+              <input type="email" placeholder="name@beispiel.de" />
+            </label>
+            <label>
+              Nachricht
+              <textarea rows="4" placeholder="Worum geht es?"></textarea>
+            </label>
+            <button class="button button-primary" type="button">Anfrage senden</button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Bean & Bark</strong>
+          <p>Coffee Shop Experience mit Charakter, Ruhe und Qualität.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#menu">Menü</a>
+          <a href="#story">Story</a>
+          <a href="#locations">Standorte</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

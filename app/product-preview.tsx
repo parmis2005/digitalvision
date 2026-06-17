@@ -8,6 +8,7 @@ type ProductPreviewProps = {
 export function ProductPreview({ product, size = "card" }: ProductPreviewProps) {
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
+  const isCoffee = product.slug === "bean-bark";
 
   if (isBeauty) {
     if (size === "card") {
@@ -107,6 +108,44 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="auto-card-copy">
               <h3>Autohaus Nordglanz</h3>
               <span>Fahrzeugsuche · Bestand · Finanzierung</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isCoffee) {
+    if (size === "card") {
+      return (
+        <div className="coffee-preview-card-view">
+          <div className="coffee-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="coffee-card-cta">Reservieren</span>
+          </div>
+          <div className="coffee-card-shell">
+            <div className="coffee-card-branding">
+              <p>Bean & Bark</p>
+              <span>coffee, bagels, community</span>
+            </div>
+            <div className="coffee-card-stage">
+              <div className="coffee-card-panel coffee-card-panel-main">
+                <span className="coffee-card-tag">Heute empfohlen</span>
+                <strong>Cherry Cloud Latte</strong>
+                <small>Espresso, Kirschsirup und Cold Foam</small>
+              </div>
+              <div className="coffee-card-panel coffee-card-panel-side">
+                <span className="coffee-card-mini">Bagel of the week</span>
+                <em>Smoked Maple Bagel</em>
+              </div>
+            </div>
+            <div className="coffee-card-copy">
+              <h3>Bean & Bark</h3>
+              <span>Specialty Coffee · Menü · Standorte</span>
             </div>
           </div>
         </div>

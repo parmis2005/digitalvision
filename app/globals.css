@@ -696,6 +696,169 @@ h3 {
   height: 100%;
 }
 
+.coffee-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.coffee-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.coffee-card-cta {
+  color: rgba(255, 237, 223, 0.82);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.coffee-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.coffee-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.coffee-card-branding p {
+  margin-bottom: 0;
+  color: #fff7ef;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.coffee-card-branding span {
+  color: rgba(255, 233, 211, 0.78);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.coffee-card-stage {
+  position: relative;
+  min-height: 122px;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(255, 242, 228, 0.18), transparent 20%),
+    linear-gradient(160deg, #3c2215 0%, #6b3b23 42%, #b46d46 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 243, 228, 0.08);
+}
+
+.coffee-card-stage::before,
+.coffee-card-stage::after {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  content: "";
+}
+
+.coffee-card-stage::before {
+  top: 12px;
+  right: 18px;
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 222, 189, 0.2);
+}
+
+.coffee-card-stage::after {
+  left: -22px;
+  bottom: -34px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coffee-card-panel {
+  position: absolute;
+  padding: 12px;
+  border: 1px solid rgba(255, 247, 239, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 248, 242, 0.88);
+  color: #241810;
+  box-shadow: 0 12px 28px rgba(18, 10, 6, 0.16);
+}
+
+.coffee-card-panel-main {
+  left: 12px;
+  right: 48px;
+  bottom: 14px;
+}
+
+.coffee-card-panel-main strong,
+.coffee-card-panel-side em {
+  display: block;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: normal;
+}
+
+.coffee-card-panel-main strong {
+  margin-top: 6px;
+  font-size: 1.04rem;
+  line-height: 0.96;
+}
+
+.coffee-card-panel-main small,
+.coffee-card-mini {
+  color: #7a6352;
+  font-size: 0.54rem;
+  line-height: 1.3;
+}
+
+.coffee-card-tag {
+  display: inline-flex;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(143, 78, 43, 0.12);
+  color: #8f4e2b;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.coffee-card-panel-side {
+  top: 14px;
+  left: 14px;
+  width: 118px;
+}
+
+.coffee-card-panel-side em {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  line-height: 0.96;
+}
+
+.coffee-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.coffee-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8ef;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.coffee-card-copy span {
+  color: rgba(245, 221, 203, 0.78);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .auto-card-top {
   display: flex;
   align-items: center;
@@ -1208,6 +1371,13 @@ h3 {
   color: #f8fbff;
 }
 
+.showcase-card.coffee .showcase-preview {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 240, 227, 0.14), transparent 20%),
+    linear-gradient(160deg, #3c2215 0%, #6b3b23 42%, #b46d46 100%);
+  color: #fff8ef;
+}
+
 .product-page {
   min-height: 100vh;
   padding: 28px clamp(18px, 4vw, 56px) 90px;
@@ -1402,6 +1572,13 @@ h3 {
     radial-gradient(circle at 82% 26%, rgba(241, 178, 74, 0.12), transparent 20%),
     linear-gradient(135deg, #152034, #1d2f2f 58%, #4e5f49 100%);
   color: #f8fbff;
+}
+
+.product-preview-large.coffee .product-preview-shell {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 240, 227, 0.14), transparent 20%),
+    linear-gradient(160deg, #3c2215 0%, #6b3b23 42%, #b46d46 100%);
+  color: #fff8ef;
 }
 
 .product-details {

@@ -103,10 +103,6 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <span>35.000 €</span>
               </div>
             </div>
-            <div className="auto-card-copy">
-              <h3>Autohaus Nordglanz</h3>
-              <span>Fahrzeugsuche · Bestand · Finanzierung</span>
-            </div>
           </div>
         </div>
       );
@@ -135,7 +131,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <span className="coffee-card-wifi-icon">◔</span>
                 <span>Free Wi-Fi</span>
               </div>
-              <div className="coffee-card-panel coffee-card-panel-main">
+              <div className="coffee-card-copy-overlay">
                 <span className="coffee-card-tag">Heute empfohlen</span>
                 <strong>Cherry Cloud Latte</strong>
                 <small>Espresso, Kirschsirup, Hafermilch und Cold Foam</small>

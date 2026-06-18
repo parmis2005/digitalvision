@@ -1051,7 +1051,7 @@ h3 {
 
 .beauty-card-stage {
   position: relative;
-  min-height: 112px;
+  min-height: 126px;
   border-radius: 20px;
   overflow: hidden;
   background:
@@ -1078,12 +1078,12 @@ h3 {
 
 .beauty-card-photo-accent {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  right: 10px;
+  bottom: 10px;
   display: block;
-  width: 118px;
-  height: 72px;
-  border-radius: 14px;
+  width: 108px;
+  height: 64px;
+  border-radius: 16px;
   background:
     linear-gradient(180deg, rgba(255, 248, 240, 0.08), rgba(255, 248, 240, 0.08)),
     url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85") center/cover no-repeat;
@@ -1091,6 +1091,24 @@ h3 {
     inset 0 0 0 1px rgba(255, 255, 255, 0.32),
     0 10px 24px rgba(82, 57, 31, 0.12);
   overflow: hidden;
+}
+
+.beauty-card-tag {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 248, 240, 0.88);
+  color: #9a6b49;
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(82, 57, 31, 0.1);
 }
 
 .beauty-card-copy {

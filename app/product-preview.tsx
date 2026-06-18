@@ -30,6 +30,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="beauty-card-stage">
               <div className="beauty-card-photo" />
               <div className="beauty-card-photo-accent" />
+              <div className="beauty-card-tag">Anti-Aging</div>
             </div>
             <div className="beauty-card-copy">
               <h3>Kosmetik Studio</h3>

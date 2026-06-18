@@ -1055,17 +1055,16 @@ h3 {
   border-radius: 20px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(255, 245, 223, 0.14), transparent 20%),
-    linear-gradient(135deg, #e6d3c4 0%, #e8c6b0 38%, #d1b198 100%);
+    linear-gradient(180deg, rgba(40, 28, 20, 0.08), rgba(40, 28, 20, 0.28)),
+    url("https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=85") center/cover no-repeat;
 }
 
 .beauty-card-photo {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 62% 28%, rgba(255, 241, 226, 0.78), transparent 18%),
-    linear-gradient(135deg, rgba(63, 51, 25, 0.26), transparent 36%),
-    linear-gradient(135deg, #f2e6da 0%, #d9b394 50%, #ab8d6e 100%);
+    radial-gradient(circle at 64% 26%, rgba(255, 243, 227, 0.32), transparent 18%),
+    linear-gradient(90deg, rgba(31, 21, 15, 0.3), rgba(31, 21, 15, 0.02) 44%, rgba(31, 21, 15, 0));
 }
 
 .beauty-card-photo::before {
@@ -1073,9 +1072,8 @@ h3 {
   inset: 0;
   content: "";
   background:
-    radial-gradient(circle at 72% 26%, rgba(255, 255, 255, 0.42), transparent 14%),
-    radial-gradient(circle at 84% 52%, rgba(114, 72, 32, 0.24), transparent 24%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.14), transparent 28%);
+    linear-gradient(180deg, rgba(255, 249, 241, 0.08), transparent 24%),
+    radial-gradient(circle at 78% 32%, rgba(255, 255, 255, 0.22), transparent 14%);
 }
 
 .beauty-card-photo-accent {
@@ -1083,99 +1081,16 @@ h3 {
   right: 12px;
   bottom: 12px;
   display: block;
-  width: 116px;
-  height: 70px;
+  width: 118px;
+  height: 72px;
   border-radius: 14px;
   background:
-    radial-gradient(circle at 56% 36%, rgba(255, 244, 230, 0.86), transparent 18%),
-    linear-gradient(135deg, rgba(255, 248, 240, 0.88), rgba(232, 208, 182, 0.94));
+    linear-gradient(180deg, rgba(255, 248, 240, 0.08), rgba(255, 248, 240, 0.08)),
+    url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85") center/cover no-repeat;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.32),
     0 10px 24px rgba(82, 57, 31, 0.12);
   overflow: hidden;
-}
-
-.beauty-flower,
-.beauty-flower-center {
-  position: absolute;
-}
-
-.beauty-flower {
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 245, 235, 0.96), rgba(235, 205, 182, 0.94));
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
-    0 4px 10px rgba(138, 104, 76, 0.12);
-}
-
-.beauty-flower-one {
-  left: 18px;
-  top: 13px;
-  width: 54px;
-  height: 28px;
-  transform: rotate(-24deg);
-}
-
-.beauty-flower-one::before,
-.beauty-flower-one::after,
-.beauty-flower-two::before,
-.beauty-flower-two::after {
-  position: absolute;
-  border-radius: 999px;
-  background: inherit;
-  content: "";
-  box-shadow: inherit;
-}
-
-.beauty-flower-one::before {
-  left: 14px;
-  top: -10px;
-  width: 28px;
-  height: 52px;
-}
-
-.beauty-flower-one::after {
-  right: 6px;
-  top: 8px;
-  width: 26px;
-  height: 20px;
-  transform: rotate(28deg);
-}
-
-.beauty-flower-two {
-  right: 20px;
-  bottom: 14px;
-  width: 42px;
-  height: 22px;
-  transform: rotate(20deg);
-  opacity: 0.92;
-}
-
-.beauty-flower-two::before {
-  left: 10px;
-  top: -8px;
-  width: 22px;
-  height: 40px;
-}
-
-.beauty-flower-two::after {
-  left: -6px;
-  top: 4px;
-  width: 24px;
-  height: 18px;
-  transform: rotate(-22deg);
-}
-
-.beauty-flower-center {
-  left: 50%;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(255, 252, 246, 1) 0%, rgba(236, 192, 154, 0.95) 48%, rgba(214, 166, 127, 0.82) 100%);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 18px rgba(237, 192, 152, 0.34);
 }
 
 .beauty-card-copy {

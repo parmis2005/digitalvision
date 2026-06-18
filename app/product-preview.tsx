@@ -133,19 +133,23 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
               <span>coffee, bagels, community</span>
             </div>
             <div className="coffee-card-stage">
+              <div className="coffee-card-wifi">
+                <span className="coffee-card-wifi-icon">◔</span>
+                <span>Free Wi-Fi</span>
+              </div>
               <div className="coffee-card-panel coffee-card-panel-main">
                 <span className="coffee-card-tag">Heute empfohlen</span>
                 <strong>Cherry Cloud Latte</strong>
-                <small>Espresso, Kirschsirup und Cold Foam</small>
-              </div>
-              <div className="coffee-card-panel coffee-card-panel-side">
-                <span className="coffee-card-mini">Bagel of the week</span>
-                <em>Smoked Maple Bagel</em>
+                <small>Espresso, Kirschsirup, Hafermilch und Cold Foam</small>
+                <div className="coffee-card-price-row">
+                  <span>4,90 €</span>
+                  <span>inklusive Hafermilch</span>
+                </div>
               </div>
             </div>
             <div className="coffee-card-copy">
               <h3>Bean & Bark</h3>
-              <span>Specialty Coffee · Menü · Standorte</span>
+              <span>Specialty Coffee · Interior · Menü</span>
             </div>
           </div>
         </div>

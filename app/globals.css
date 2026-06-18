@@ -748,12 +748,12 @@ h3 {
 
 .coffee-card-stage {
   position: relative;
-  min-height: 122px;
+  min-height: 126px;
   border-radius: 22px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 16% 20%, rgba(255, 242, 228, 0.18), transparent 20%),
-    linear-gradient(160deg, #3c2215 0%, #6b3b23 42%, #b46d46 100%);
+    linear-gradient(180deg, rgba(53, 36, 28, 0.16), rgba(53, 36, 28, 0.34)),
+    url("/coffeeshop-preview/assets/hero-interior.png") center/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(255, 243, 228, 0.08);
 }
 
@@ -766,19 +766,20 @@ h3 {
 }
 
 .coffee-card-stage::before {
-  top: 12px;
-  right: 18px;
-  width: 72px;
-  height: 72px;
-  background: rgba(255, 222, 189, 0.2);
+  top: 10px;
+  right: 10px;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 222, 189, 0.14);
 }
 
 .coffee-card-stage::after {
-  left: -22px;
-  bottom: -34px;
-  width: 120px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.08);
+  left: auto;
+  right: 24px;
+  bottom: 18px;
+  width: 92px;
+  height: 92px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .coffee-card-panel {
@@ -793,12 +794,12 @@ h3 {
 
 .coffee-card-panel-main {
   left: 12px;
-  right: 48px;
-  bottom: 14px;
+  right: 12px;
+  bottom: 12px;
 }
 
 .coffee-card-panel-main strong,
-.coffee-card-panel-side em {
+.coffee-card-panel-main em {
   display: block;
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-style: normal;
@@ -829,16 +830,43 @@ h3 {
   text-transform: uppercase;
 }
 
-.coffee-card-panel-side {
-  top: 14px;
-  left: 14px;
-  width: 118px;
+.coffee-card-wifi {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 248, 241, 0.9);
+  color: #2f6b55;
+  font-size: 0.56rem;
+  font-weight: 800;
 }
 
-.coffee-card-panel-side em {
-  margin-top: 6px;
-  font-size: 0.82rem;
-  line-height: 0.96;
+.coffee-card-wifi-icon {
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.coffee-card-price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+  color: #2f6b55;
+  font-size: 0.54rem;
+  font-weight: 700;
+}
+
+.coffee-card-price-row span:first-child {
+  color: #241810;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 0.98rem;
 }
 
 .coffee-card-copy {

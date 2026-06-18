@@ -9,6 +9,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
   const isCoffee = product.slug === "bean-bark";
+  const isWellness = product.slug === "serenity-studio";
 
   if (isBeauty) {
     if (size === "card") {
@@ -147,6 +148,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="coffee-card-copy">
               <h3>Bean & Bark</h3>
               <span>Specialty Coffee · Interior · Menü</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isWellness) {
+    if (size === "card") {
+      return (
+        <div className="wellness-preview-card-view">
+          <div className="wellness-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="wellness-card-cta">Termin buchen</span>
+          </div>
+          <div className="wellness-card-shell">
+            <div className="wellness-card-branding">
+              <p>Serenity Studio</p>
+              <span>Wellness, Spa & Recovery</span>
+            </div>
+            <div className="wellness-card-stage">
+              <div className="wellness-card-overlay">
+                <span className="wellness-card-kicker">Calm body. Healthy mind.</span>
+                <strong>Private Spa, Recovery und ruhige Studioatmosphäre.</strong>
+              </div>
+              <div className="wellness-card-accent" />
+            </div>
+            <div className="wellness-card-copy">
+              <h3>Serenity Studio</h3>
+              <span>Spa · Recovery · Massage · Private Sessions</span>
             </div>
           </div>
         </div>

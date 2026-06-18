@@ -118,6 +118,31 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "serenity-studio" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Wellness-Auftritt mit Buchungskalender und ruhiger Premium-Atmosphäre.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Wellnessstudio-Projekts:
+              großzügige Bildflächen, klare Buchungslogik, Recovery-Fokus und ein
+              hochwertiges Erscheinungsbild für Spa- und Wellness-Angebote.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : product.slug === "autohaus-nordglanz" ? (
         <section className="product-details">
           <div className="product-detail-card">

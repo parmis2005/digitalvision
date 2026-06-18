@@ -3,7 +3,7 @@ export type ProductItem = {
   type: string;
   title: string;
   detail: string;
-  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto" | "coffee";
+  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto" | "coffee" | "wellness";
   category: string;
   intro: string;
   highlights: string[];
@@ -55,6 +55,21 @@ export const products: ProductItem[] = [
       "Geeignet für Cafés, Röstereien, Brunch-Spots und urbane Gastro-Konzepte",
     ],
     previewUrl: "/coffeeshop-preview/index.html",
+  },
+  {
+    slug: "serenity-studio",
+    type: "Wellness Studio Website",
+    title: "Serenity Studio",
+    detail: "Ruhige Wellness-Website für Spa, Recovery, Massage und Private Sessions",
+    variant: "wellness",
+    category: "Webseiten",
+    intro: "Beispiel für eine moderne Wellnessstudio-Website mit starker Bildsprache, Buchungskalender und hochwertiger Recovery-Atmosphäre.",
+    highlights: [
+      "Premium-Look für Wellness, Spa, Recovery und Private Sessions",
+      "Klarer Buchungsaufbau mit Verfügbarkeit, Filtern und Erlebnis-Modulen",
+      "Geeignet für Spa-Studios, Recovery-Lounges und moderne Health-Konzepte",
+    ],
+    previewUrl: "/wellness-preview/index.html",
   },
   {
     slug: "lead-funnel",

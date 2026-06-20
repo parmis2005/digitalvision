@@ -143,4 +143,6 @@ export const products: ProductItem[] = [
   },
 ];
 
-export const repeatedProducts = [...products, ...products];
+const showcaseProducts = products.filter((product) => product.slug !== "serenity-studio");
+
+export const repeatedProducts = [...showcaseProducts, ...showcaseProducts];

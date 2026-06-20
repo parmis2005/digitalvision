@@ -9,6 +9,7 @@ import { ProductPreview } from "./product-preview";
 export function ProductShowcase() {
   const railRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+  const showcaseProducts = repeatedProducts.filter((product) => product.slug !== "serenity-studio");
 
   useEffect(() => {
     const rail = railRef.current;
@@ -77,7 +78,7 @@ export function ProductShowcase() {
         }}
       >
         <div className="showcase-track">
-          {repeatedProducts.map((product, index) => (
+          {showcaseProducts.map((product, index) => (
             <Link
               className={`showcase-card ${product.variant}`}
               href={`/produkte/${product.slug}`}

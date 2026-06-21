@@ -47,6 +47,26 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    const errorMessage =
+      typeof errorData?.message === "string" ? errorData.message : "";
+
+    console.error("Resend error:", {
+      status: response.status,
+      message: errorMessage,
+      details: errorData,
+    });
+
+    if (response.status === 403 && errorMessage.includes("verify a domain")) {
+      return NextResponse.json(
+        {
+          error:
+            "E-Mail-Versand ist noch nicht freigeschaltet. Die Domain digitalvision.site muss zuerst bei Resend verifiziert werden.",
+        },
+        { status: 502 },
+      );
+    }
+
     return NextResponse.json(
       { error: "E-Mail konnte nicht gesendet werden." },
       { status: 502 },

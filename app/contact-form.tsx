@@ -5,13 +5,15 @@ import {
   ArrowLeft,
   ArrowRight,
   CircleHelp,
+  Check,
   LayoutDashboard,
   MonitorSmartphone,
   Search,
+  ShieldCheck,
 } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
-type FormStep = "topic" | "details";
+type FormStep = "topic" | "services" | "details";
 
 const projectTopics = [
   {
@@ -40,15 +42,43 @@ const projectTopics = [
   },
 ] as const;
 
+const projectServices = [
+  {
+    key: "SEO",
+    title: "SEO",
+    text: "Mehr Sichtbarkeit bei Google",
+    icon: Search,
+  },
+  {
+    key: "Webseite",
+    title: "Webseite",
+    text: "Moderne & schnelle Webseiten",
+    icon: MonitorSmartphone,
+  },
+  {
+    key: "Verwaltungssystem",
+    title: "Verwaltungssystem",
+    text: "Individuelle Systeme für dein Business",
+    icon: LayoutDashboard,
+  },
+  {
+    key: "Wartung & Support",
+    title: "Wartung & Support",
+    text: "Betreuung & technische Unterstützung",
+    icon: ShieldCheck,
+  },
+] as const;
+
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
   const [step, setStep] = useState<FormStep>("topic");
   const [selectedTopic, setSelectedTopic] = useState<string>("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedTopic) {
+    if (!selectedTopic || selectedServices.length === 0) {
       return;
     }
 
@@ -60,7 +90,12 @@ export function ContactForm() {
     const projectText = String(formData.get("message") || "").trim();
     formData.set(
       "message",
-      [`Anliegen: ${selectedTopic}`, "", projectText].join("\n"),
+      [
+        `Anliegen: ${selectedTopic}`,
+        `Leistungen: ${selectedServices.join(", ")}`,
+        "",
+        projectText,
+      ].join("\n"),
     );
 
     const response = await fetch("/api/contact", {
@@ -72,6 +107,7 @@ export function ContactForm() {
       form.reset();
       setStep("topic");
       setSelectedTopic("");
+      setSelectedServices([]);
       setState("success");
       setMessage("Danke. Deine Anfrage wurde gesendet.");
       return;
@@ -80,6 +116,14 @@ export function ContactForm() {
     setState("error");
     setMessage(
       "Die Anfrage konnte noch nicht gesendet werden. Bitte versuche es später erneut.",
+    );
+  }
+
+  function toggleService(topicKey: string) {
+    setSelectedServices((current) =>
+      current.includes(topicKey)
+        ? current.filter((item) => item !== topicKey)
+        : [...current, topicKey],
     );
   }
 
@@ -92,8 +136,10 @@ export function ContactForm() {
               item === 0
                 ? `contact-step-node ${step === "topic" ? "active" : "completed"}`
                 : item === 1
-                  ? `contact-step-node ${step === "details" ? "current" : ""}`
-                  : "contact-step-node"
+                  ? `contact-step-node ${step === "services" ? "current" : step === "details" ? "completed" : ""}`
+                  : item === 2
+                    ? `contact-step-node ${step === "details" ? "current" : ""}`
+                    : "contact-step-node"
             }
             key={item}
           />
@@ -137,12 +183,74 @@ export function ContactForm() {
                 if (!selectedTopic) {
                   return;
                 }
-                setStep("details");
+                setStep("services");
                 setState("idle");
                 setMessage("");
               }}
             >
               Weiter
+              <ArrowRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      ) : step === "services" ? (
+        <div className="contact-step-panel">
+          <div className="contact-step-copy">
+            <h3>Was können wir für dich tun?</h3>
+            <p>Wähle eine oder mehrere Leistungen</p>
+          </div>
+
+          <div className="contact-service-grid">
+            {projectServices.map((service) => (
+              <button
+                type="button"
+                className={
+                  selectedServices.includes(service.key)
+                    ? "contact-service-card selected"
+                    : "contact-service-card"
+                }
+                key={service.key}
+                onClick={() => toggleService(service.key)}
+              >
+                <span className="contact-service-card-check" aria-hidden="true">
+                  {selectedServices.includes(service.key) ? <Check size={18} /> : null}
+                </span>
+                <service.icon size={34} aria-hidden="true" />
+                <span className="contact-service-card-copy">
+                  <strong>{service.title}</strong>
+                  <span>{service.text}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className="contact-step-actions details">
+            <button
+              type="button"
+              className="contact-back-button"
+              onClick={() => {
+                setStep("topic");
+                setState("idle");
+                setMessage("");
+              }}
+            >
+              <ArrowLeft size={17} aria-hidden="true" />
+              Zurück
+            </button>
+            <button
+              type="button"
+              className="contact-next-button contact-next-button-full"
+              disabled={selectedServices.length === 0}
+              onClick={() => {
+                if (selectedServices.length === 0) {
+                  return;
+                }
+                setStep("details");
+                setState("idle");
+                setMessage("");
+              }}
+            >
+              Auswahl bestätigen
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </div>
@@ -155,6 +263,7 @@ export function ContactForm() {
           </div>
 
           <input name="projectType" type="hidden" value={selectedTopic} />
+          <input name="services" type="hidden" value={selectedServices.join(", ")} />
 
           <label>
             Name
@@ -179,7 +288,7 @@ export function ContactForm() {
               type="button"
               className="contact-back-button"
               onClick={() => {
-                setStep("topic");
+                setStep("services");
                 setState("idle");
                 setMessage("");
               }}

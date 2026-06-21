@@ -2254,6 +2254,12 @@ h3 {
   gap: 10px;
 }
 
+.contact-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .contact-form .contact-topic-card {
   display: grid;
   grid-template-columns: 74px minmax(0, 1fr);
@@ -2315,6 +2321,83 @@ h3 {
   line-height: 1.35;
 }
 
+.contact-form .contact-service-card {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  justify-items: start;
+  min-height: 212px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(123, 144, 189, 0.2);
+  border-radius: 18px;
+  background: rgba(30, 37, 66, 0.96);
+  color: #ffffff;
+  text-align: left;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    transform 140ms ease,
+    box-shadow 140ms ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+}
+
+.contact-form .contact-service-card:hover {
+  border-color: rgba(121, 219, 255, 0.34);
+  background: rgba(27, 36, 64, 0.98);
+  transform: translateY(-1px);
+}
+
+.contact-form .contact-service-card svg {
+  color: var(--cyan);
+}
+
+.contact-form .contact-service-card.selected {
+  background: rgba(26, 36, 66, 1);
+  border-color: rgba(126, 227, 255, 0.52);
+  box-shadow:
+    0 0 0 1px rgba(126, 227, 255, 0.18),
+    inset 0 0 0 1px rgba(126, 227, 255, 0.06);
+}
+
+.contact-form .contact-service-card-check {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(123, 144, 189, 0.28);
+  border-radius: 50%;
+  background: rgba(19, 25, 46, 0.94);
+  color: #0b1122;
+}
+
+.contact-form .contact-service-card.selected .contact-service-card-check {
+  border-color: rgba(126, 227, 255, 0.34);
+  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+}
+
+.contact-form .contact-service-card-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-form .contact-service-card-copy strong {
+  color: #fbfdff;
+  font-size: 1rem;
+  line-height: 1.08;
+}
+
+.contact-form .contact-service-card-copy span {
+  color: rgba(221, 232, 249, 0.8);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
 .contact-step-actions {
   display: flex;
   justify-content: flex-end;
@@ -2352,6 +2435,10 @@ h3 {
 .contact-form .contact-next-button:disabled {
   cursor: not-allowed;
   opacity: 0.48;
+}
+
+.contact-form .contact-next-button-full {
+  width: 100%;
 }
 
 .contact-form .contact-back-button {
@@ -2692,6 +2779,14 @@ h3 {
     grid-template-columns: 72px minmax(0, 1fr);
     gap: 14px;
     padding: 18px;
+  }
+
+  .contact-service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-service-card {
+    min-height: 176px;
   }
 
   .contact-step-actions,

@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const recipient = process.env.CONTACT_TO_EMAIL || "pa.paschaei@gmail.com";
+  const recipient = process.env.CONTACT_TO_EMAIL || "info@digitalvision.site";
 
   if (!apiKey) {
     return NextResponse.json(

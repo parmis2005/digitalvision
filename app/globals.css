@@ -3109,10 +3109,11 @@ h3 {
   padding-top: 0;
 }
 
-.contact-upload-shell {
+.contact-confirmation-shell {
   display: grid;
-  gap: 14px;
-  padding: 14px 14px 12px;
+  gap: 18px;
+  justify-items: center;
+  padding: 24px 18px 18px;
   border: 1px solid rgba(123, 144, 189, 0.2);
   border-radius: 18px;
   background:
@@ -3121,169 +3122,87 @@ h3 {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.024),
     0 18px 40px rgba(0, 0, 0, 0.12);
+  text-align: center;
 }
 
-.contact-upload-copy {
-  gap: 4px;
-}
-
-.contact-upload-copy h3 {
-  color: #ffffff;
-  font-size: clamp(1.06rem, 1.32vw, 1.34rem);
-}
-
-.contact-upload-copy p {
-  font-size: 0.82rem;
-  color: rgba(219, 230, 248, 0.76);
-}
-
-.contact-upload-field {
-  gap: 5px;
-}
-
-.contact-form .contact-upload-field textarea {
-  min-height: 122px;
-}
-
-.contact-upload-group {
-  display: grid;
-  gap: 10px;
-}
-
-.contact-upload-group > span {
-  color: rgba(248, 251, 255, 0.78);
-  font-size: 0.84rem;
-  font-weight: 800;
-}
-
-.contact-upload-input {
-  display: none;
-}
-
-.contact-form .contact-upload-dropzone {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+.contact-confirmation-icon {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  width: 100%;
-  padding: 16px 18px;
-  border: 1px dashed rgba(176, 213, 255, 0.24);
-  border-radius: 16px;
-  background: rgba(16, 22, 41, 0.38);
+  justify-content: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, rgba(140, 255, 180, 0.22) 0%, rgba(140, 255, 180, 0.08) 54%, transparent 72%),
+    rgba(20, 34, 31, 0.88);
+  color: #d8ffe7;
+  box-shadow:
+    0 0 0 12px rgba(93, 212, 140, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+.contact-confirmation-copy {
+  display: grid;
+  gap: 8px;
+  max-width: 440px;
+}
+
+.contact-confirmation-copy h3 {
   color: #ffffff;
-  box-shadow: none;
+  font-size: clamp(1.34rem, 1.9vw, 1.74rem);
+}
+
+.contact-confirmation-copy p {
+  color: rgba(232, 241, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.contact-confirmation-next {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  padding: 18px;
+  border: 1px solid rgba(123, 144, 189, 0.18);
+  border-radius: 16px;
+  background: rgba(19, 26, 47, 0.68);
   text-align: left;
 }
 
-.contact-form .contact-upload-dropzone:hover {
-  border-color: rgba(126, 227, 255, 0.32);
-  background: rgba(20, 27, 48, 0.62);
-}
-
-.contact-upload-dropzone-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  color: rgba(231, 240, 255, 0.76);
-}
-
-.contact-upload-dropzone-copy {
-  display: grid;
-  gap: 3px;
-}
-
-.contact-upload-dropzone-copy strong {
+.contact-confirmation-next strong {
   color: #ffffff;
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   font-weight: 800;
 }
 
-.contact-upload-dropzone-copy span {
-  color: rgba(219, 230, 248, 0.68);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
-.contact-upload-file-list {
+.contact-confirmation-next ul {
   display: grid;
-  gap: 8px;
-}
-
-.contact-upload-file {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(123, 144, 189, 0.18);
-  border-radius: 14px;
-  background: rgba(18, 24, 44, 0.82);
-}
-
-.contact-upload-file-copy {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.contact-upload-file-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: rgba(255, 124, 92, 0.16);
-  color: #ff926f;
-}
-
-.contact-upload-file-copy span:last-child {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.contact-upload-file-copy strong {
-  color: #ffffff;
-  font-size: 0.86rem;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.contact-upload-file-copy small {
-  color: rgba(219, 230, 248, 0.6);
-  font-size: 0.74rem;
-  font-weight: 600;
-}
-
-.contact-form .contact-upload-file-remove {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  min-height: 34px;
-  min-width: 34px;
+  gap: 10px;
+  margin: 0;
   padding: 0;
-  border: 1px solid rgba(176, 213, 255, 0.12);
-  border-radius: 10px;
-  background: rgba(14, 19, 36, 0.8);
-  color: rgba(233, 240, 255, 0.78);
-  box-shadow: none;
+  list-style: none;
 }
 
-.contact-form .contact-upload-file-remove:hover {
-  border-color: rgba(255, 164, 164, 0.24);
-  color: #ffd3d3;
+.contact-confirmation-next li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(230, 239, 255, 0.82);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.contact-upload-actions {
-  padding-top: 0;
+.contact-confirmation-next li svg {
+  color: #7ae0a1;
+  flex: 0 0 auto;
+}
+
+.contact-confirmation-actions {
+  width: 100%;
+}
+
+.contact-confirmation-home {
+  width: 100%;
 }
 
 .contact-form .contact-next-button,

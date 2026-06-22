@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,16 +9,13 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  FileText,
   LayoutDashboard,
   MonitorSmartphone,
   Search,
-  Upload,
-  X,
 } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
-type FormStep = "topic" | "services" | "calculator" | "booking" | "upload";
+type FormStep = "topic" | "services" | "calculator" | "booking" | "confirmation";
 
 const projectTopics = [
   {
@@ -170,7 +167,7 @@ const appointmentAdvisors = [
   { name: "Sebastian", symbol: "\u2642" },
 ] as const;
 
-const formSteps: FormStep[] = ["topic", "services", "calculator", "booking", "upload"];
+const formSteps: FormStep[] = ["topic", "services", "calculator", "booking", "confirmation"];
 
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>("idle");
@@ -195,9 +192,6 @@ export function ContactForm() {
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [projectDescription, setProjectDescription] = useState("");
-  const [projectFiles, setProjectFiles] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const estimatedMinPrice =
     websitePriceRanges[websiteScope].min +
@@ -305,6 +299,8 @@ export function ContactForm() {
     const formData = new FormData();
     const name = contactName.trim();
     const email = contactEmail.trim();
+    const appointmentDateIso = selectedDate;
+    const appointmentTime = selectedTime;
 
     formData.set("submissionType", "Terminbuchung");
     formData.set("name", name);
@@ -317,9 +313,8 @@ export function ContactForm() {
     formData.set("priceEstimate", formattedEstimate);
     formData.set("appointmentAdvisor", selectedAdvisor);
     formData.set("appointmentDate", selectedDateLabel);
-    formData.set("appointmentDateIso", selectedDate);
-    formData.set("appointmentTime", selectedTime);
-    formData.set("projectDescription", projectDescription.trim());
+    formData.set("appointmentDateIso", appointmentDateIso);
+    formData.set("appointmentTime", appointmentTime);
     formData.set(
       "message",
       [
@@ -337,17 +332,11 @@ export function ContactForm() {
         `Geschätzter Preisrahmen: ${formattedEstimate}`,
         `Ansprechperson: ${selectedAdvisor}`,
         `Termin: ${selectedDateLabel}`,
-        `Uhrzeit: ${selectedTime}`,
+        `Uhrzeit: ${appointmentTime}`,
         `Name: ${name}`,
         `Kontakt-E-Mail: ${email}`,
-        projectDescription.trim() ? "" : "",
-        projectDescription.trim() ? "Projektbeschreibung:" : "",
-        projectDescription.trim() || "",
-        projectFiles.length > 0 ? "" : "",
-        projectFiles.length > 0 ? `Dateien: ${projectFiles.map((file) => file.name).join(", ")}` : "",
       ].join("\n"),
     );
-    projectFiles.forEach((file) => formData.append("projectFiles", file));
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -355,7 +344,17 @@ export function ContactForm() {
     });
 
     if (response.ok) {
-      setStep("topic");
+      setBookedAppointments((current) =>
+        appointmentDateIso && appointmentTime
+          ? {
+              ...current,
+              [appointmentDateIso]: [
+                ...new Set([...(current[appointmentDateIso] || []), appointmentTime]),
+              ],
+            }
+          : current,
+      );
+      setStep("confirmation");
       setSelectedTopic("");
       setSelectedServices([]);
       setProjectName("");
@@ -372,18 +371,8 @@ export function ContactForm() {
       setContactName("");
       setContactEmail("");
       setPrivacyAccepted(false);
-      setProjectDescription("");
-      setProjectFiles([]);
-      setBookedAppointments((current) =>
-        selectedDate && selectedTime
-          ? {
-              ...current,
-              [selectedDate]: [...new Set([...(current[selectedDate] || []), selectedTime])],
-            }
-          : current,
-      );
       setState("success");
-      setMessage("Danke. Dein Terminwunsch wurde gesendet.");
+      setMessage("");
       return;
     }
 
@@ -397,36 +386,6 @@ export function ContactForm() {
     setState("error");
     setMessage(
       "Die Anfrage konnte noch nicht gesendet werden. Bitte versuche es später erneut.",
-    );
-  }
-
-  function handleFiles(nextFiles: FileList | File[]) {
-    const files = Array.from(nextFiles);
-    if (files.length === 0) {
-      return;
-    }
-
-    setProjectFiles((current) => {
-      const existingKeys = new Set(current.map((file) => `${file.name}-${file.size}`));
-      const merged = [...current];
-
-      files.forEach((file) => {
-        const key = `${file.name}-${file.size}`;
-        if (!existingKeys.has(key)) {
-          merged.push(file);
-          existingKeys.add(key);
-        }
-      });
-
-      return merged;
-    });
-  }
-
-  function removeFile(fileToRemove: File) {
-    setProjectFiles((current) =>
-      current.filter(
-        (file) => !(file.name === fileToRemove.name && file.size === fileToRemove.size),
-      ),
     );
   }
 
@@ -946,7 +905,7 @@ export function ContactForm() {
                 Zurück
               </button>
               <button
-                type="button"
+                type="submit"
                 className="contact-next-button contact-next-button-full"
                 disabled={
                   !selectedDate ||
@@ -955,22 +914,8 @@ export function ContactForm() {
                   !contactEmail.trim() ||
                   !privacyAccepted
                 }
-                onClick={() => {
-                  if (
-                    !selectedDate ||
-                    !selectedTime ||
-                    !contactName.trim() ||
-                    !contactEmail.trim() ||
-                    !privacyAccepted
-                  ) {
-                    return;
-                  }
-                  setStep("upload");
-                  setState("idle");
-                  setMessage("");
-                }}
               >
-                Weiter zu Dateien
+                {state === "sending" ? "Termin wird gebucht..." : "Termin buchen"}
                 <ArrowRight size={18} aria-hidden="true" />
               </button>
             </div>
@@ -978,100 +923,51 @@ export function ContactForm() {
         </div>
       ) : (
         <div className="contact-step-panel">
-          <div className="contact-upload-shell">
-            <div className="contact-step-copy contact-upload-copy">
-              <h3>Projektanfrage mit Dateien</h3>
-              <p>Beschreibe dein Projekt und lade relevante Dateien hoch.</p>
+          <div className="contact-confirmation-shell">
+            <div className="contact-confirmation-icon" aria-hidden="true">
+              <Check size={34} />
             </div>
 
-            <label className="contact-upload-field">
-              Projektbeschreibung
-              <textarea
-                name="message"
-                rows={5}
-                placeholder="Erzähl uns mehr über dein Projekt..."
-                value={projectDescription}
-                onChange={(event) => setProjectDescription(event.currentTarget.value)}
-              />
-            </label>
-
-            <div className="contact-upload-group">
-              <span>Dateien hochladen</span>
-              <input
-                ref={fileInputRef}
-                className="contact-upload-input"
-                type="file"
-                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp"
-                multiple
-                onChange={(event) => {
-                  if (event.currentTarget.files) {
-                    handleFiles(event.currentTarget.files);
-                  }
-                  event.currentTarget.value = "";
-                }}
-              />
-              <button
-                type="button"
-                className="contact-upload-dropzone"
-                onClick={() => fileInputRef.current?.click()}
-                onDragOver={(event) => event.preventDefault()}
-                onDrop={(event) => {
-                  event.preventDefault();
-                  handleFiles(event.dataTransfer.files);
-                }}
-              >
-                <span className="contact-upload-dropzone-icon" aria-hidden="true">
-                  <Upload size={30} />
-                </span>
-                <span className="contact-upload-dropzone-copy">
-                  <strong>Dateien hierher ziehen oder klicken</strong>
-                  <span>z. B. Briefing, Skizzen, Dokumente (PDF, DOCX, PNG...)</span>
-                </span>
-              </button>
-
-              {projectFiles.length > 0 ? (
-                <div className="contact-upload-file-list">
-                  {projectFiles.map((file) => (
-                    <div className="contact-upload-file" key={`${file.name}-${file.size}`}>
-                      <div className="contact-upload-file-copy">
-                        <span className="contact-upload-file-icon" aria-hidden="true">
-                          <FileText size={18} />
-                        </span>
-                        <span>
-                          <strong>{file.name}</strong>
-                          <small>{formatFileSize(file.size)}</small>
-                        </span>
-                      </div>
-                      <button
-                        type="button"
-                        className="contact-upload-file-remove"
-                        onClick={() => removeFile(file)}
-                        aria-label={`${file.name} entfernen`}
-                      >
-                        <X size={16} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : null}
+            <div className="contact-confirmation-copy">
+              <h3>Danke!</h3>
+              <p>Deine Anfrage ist bei uns eingegangen.</p>
+              <p>
+                Wir haben alle Informationen erhalten und melden uns innerhalb von 24
+                Stunden bei dir zurück.
+              </p>
             </div>
 
-            <div className="contact-step-actions details contact-upload-actions">
+            <div className="contact-confirmation-next">
+              <strong>Was passiert als Nächstes?</strong>
+              <ul>
+                <li>
+                  <Check size={16} aria-hidden="true" />
+                  <span>Wir analysieren dein Projekt</span>
+                </li>
+                <li>
+                  <Check size={16} aria-hidden="true" />
+                  <span>Erstellen ein individuelles Konzept</span>
+                </li>
+                <li>
+                  <Check size={16} aria-hidden="true" />
+                  <span>Senden dir ein persönliches Angebot</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="contact-confirmation-actions">
               <button
                 type="button"
-                className="contact-back-button"
+                className="contact-back-button contact-confirmation-home"
                 onClick={() => {
-                  setStep("booking");
+                  setStep("topic");
                   setState("idle");
                   setMessage("");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
-                <ArrowLeft size={17} aria-hidden="true" />
-                Zurück
-              </button>
-              <button type="submit" className="contact-next-button contact-next-button-full">
-                {state === "sending" ? "Wird gesendet..." : "Anfrage senden"}
-                <ArrowRight size={18} aria-hidden="true" />
+                <CalendarDays size={18} aria-hidden="true" />
+                Zurück zur Startseite
               </button>
             </div>
           </div>
@@ -1137,12 +1033,4 @@ function formatDateKey(date: Date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
-}
-
-function formatFileSize(size: number) {
-  if (size < 1024 * 1024) {
-    return `${(size / 1024).toFixed(1)} KB`;
-  }
-
-  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
 }

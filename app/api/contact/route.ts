@@ -10,12 +10,15 @@ export async function POST(request: Request) {
   const message = String(formData.get("message") || "").trim();
   const appointmentDate = String(formData.get("appointmentDateIso") || "").trim();
   const appointmentTime = String(formData.get("appointmentTime") || "").trim();
+  const appointmentAdvisor = String(formData.get("appointmentAdvisor") || "").trim();
   const projectType = String(formData.get("projectType") || "").trim();
   const services = String(formData.get("services") || "").trim();
   const websiteScope = String(formData.get("websiteScope") || "").trim();
   const seoCompetition = String(formData.get("seoCompetition") || "").trim();
   const startWindow = String(formData.get("startWindow") || "").trim();
   const priceEstimate = String(formData.get("priceEstimate") || "").trim();
+  const projectDescription = String(formData.get("projectDescription") || "").trim();
+  const rawFiles = formData.getAll("projectFiles").filter((entry): entry is File => entry instanceof File);
 
   if (!email || !message || (submissionType !== "Terminbuchung" && !name)) {
     return NextResponse.json(
@@ -24,9 +27,12 @@ export async function POST(request: Request) {
     );
   }
 
-  if (submissionType === "Terminbuchung" && (!appointmentDate || !appointmentTime)) {
+  if (
+    submissionType === "Terminbuchung" &&
+    (!appointmentDate || !appointmentTime || !appointmentAdvisor)
+  ) {
     return NextResponse.json(
-      { error: "Bitte Datum und Uhrzeit auswählen." },
+      { error: "Bitte Ansprechperson, Datum und Uhrzeit auswählen." },
       { status: 400 },
     );
   }
@@ -47,6 +53,7 @@ export async function POST(request: Request) {
       const inserted = await createAppointment({
         appointmentDate,
         appointmentTime,
+        advisor: appointmentAdvisor,
         email,
         projectType,
         services,
@@ -92,10 +99,22 @@ export async function POST(request: Request) {
         "",
         `Name: ${name || "Terminbuchung"}`,
         `E-Mail: ${email}`,
+        submissionType === "Terminbuchung" ? `Ansprechperson: ${appointmentAdvisor}` : "",
         "",
         submissionType === "Terminbuchung" ? "Terminwunsch:" : "Projekt:",
         message,
+        projectDescription ? "" : "",
+        projectDescription ? "Zusätzliche Projektbeschreibung:" : "",
+        projectDescription || "",
+        rawFiles.length > 0 ? "" : "",
+        rawFiles.length > 0 ? `Dateien: ${rawFiles.map((file) => file.name).join(", ")}` : "",
       ].join("\n"),
+      attachments: await Promise.all(
+        rawFiles.map(async (file) => ({
+          filename: file.name,
+          content: Buffer.from(await file.arrayBuffer()).toString("base64"),
+        })),
+      ),
     }),
   });
 

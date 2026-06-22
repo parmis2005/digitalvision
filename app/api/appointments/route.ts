@@ -4,14 +4,19 @@ import { ensureAppointmentsTable, listAppointmentsForMonth } from "../../../lib/
 
 export async function GET(request: NextRequest) {
   const month = request.nextUrl.searchParams.get("month") || "";
+  const advisor = request.nextUrl.searchParams.get("advisor") || "Parmis";
 
   if (!/^\d{4}-\d{2}$/.test(month)) {
     return NextResponse.json({ error: "Ungültiger Monat." }, { status: 400 });
   }
 
+  if (!["Parmis", "Sebastian"].includes(advisor)) {
+    return NextResponse.json({ error: "Ungültige Ansprechperson." }, { status: 400 });
+  }
+
   try {
     await ensureAppointmentsTable();
-    const appointments = await listAppointmentsForMonth(month);
+    const appointments = await listAppointmentsForMonth(month, advisor);
     return NextResponse.json({ appointments });
   } catch (error) {
     console.error("Appointments GET error:", error);

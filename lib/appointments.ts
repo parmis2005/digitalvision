@@ -11,6 +11,7 @@ export async function ensureAppointmentsTable() {
       id BIGSERIAL PRIMARY KEY,
       appointment_date DATE NOT NULL,
       appointment_time TEXT NOT NULL,
+      advisor TEXT NOT NULL DEFAULT 'Parmis',
       email TEXT NOT NULL,
       project_type TEXT NOT NULL,
       services TEXT NOT NULL,
@@ -18,13 +19,33 @@ export async function ensureAppointmentsTable() {
       seo_competition TEXT NOT NULL,
       start_window TEXT NOT NULL,
       price_estimate TEXT NOT NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      UNIQUE (appointment_date, appointment_time)
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
+  `);
+
+  await pool.query(`
+    ALTER TABLE appointments
+    ADD COLUMN IF NOT EXISTS advisor TEXT NOT NULL DEFAULT 'Parmis';
+  `);
+
+  await pool.query(`
+    UPDATE appointments
+    SET advisor = 'Parmis'
+    WHERE advisor IS NULL OR advisor = '';
+  `);
+
+  await pool.query(`
+    ALTER TABLE appointments
+    DROP CONSTRAINT IF EXISTS appointments_appointment_date_appointment_time_key;
+  `);
+
+  await pool.query(`
+    CREATE UNIQUE INDEX IF NOT EXISTS appointments_slot_consultant_key
+    ON appointments (appointment_date, appointment_time, advisor);
   `);
 }
 
-export async function listAppointmentsForMonth(month: string) {
+export async function listAppointmentsForMonth(month: string, advisor: string) {
   const [yearText, monthText] = month.split("-");
   const year = Number(yearText);
   const monthIndex = Number(monthText);
@@ -46,9 +67,10 @@ export async function listAppointmentsForMonth(month: string) {
       FROM appointments
       WHERE appointment_date >= $1::date
         AND appointment_date < $2::date
+        AND advisor = $3
       ORDER BY appointment_date ASC, appointment_time ASC
     `,
-    [monthStart, nextMonth],
+    [monthStart, nextMonth, advisor],
   );
 
   return result.rows.map((row) => ({
@@ -60,6 +82,7 @@ export async function listAppointmentsForMonth(month: string) {
 export async function createAppointment(input: {
   appointmentDate: string;
   appointmentTime: string;
+  advisor: string;
   email: string;
   projectType: string;
   services: string;
@@ -73,6 +96,7 @@ export async function createAppointment(input: {
       INSERT INTO appointments (
         appointment_date,
         appointment_time,
+        advisor,
         email,
         project_type,
         services,
@@ -81,13 +105,14 @@ export async function createAppointment(input: {
         start_window,
         price_estimate
       )
-      VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9)
-      ON CONFLICT (appointment_date, appointment_time) DO NOTHING
+      VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      ON CONFLICT (appointment_date, appointment_time, advisor) DO NOTHING
       RETURNING id
     `,
     [
       input.appointmentDate,
       input.appointmentTime,
+      input.advisor,
       input.email,
       input.projectType,
       input.services,

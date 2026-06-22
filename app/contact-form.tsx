@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
+import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,14 +9,16 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
+  FileText,
   LayoutDashboard,
   MonitorSmartphone,
   Search,
-  ShieldCheck,
+  Upload,
+  X,
 } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
-type FormStep = "topic" | "services" | "calculator" | "booking";
+type FormStep = "topic" | "services" | "projectInfo" | "calculator" | "booking" | "upload";
 
 const projectTopics = [
   {
@@ -48,28 +50,56 @@ const projectTopics = [
 const projectServices = [
   {
     key: "SEO",
-    title: "SEO",
+    title: "SEO (Suchmaschinenoptimierung)",
     text: "Mehr Sichtbarkeit bei Google",
-    icon: Search,
   },
   {
-    key: "Webseite",
-    title: "Webseite",
-    text: "Moderne & schnelle Webseiten",
-    icon: MonitorSmartphone,
+    key: "Webdesign & Entwicklung",
+    title: "Webdesign & Entwicklung",
+    text: "Moderne Webseiten für dein Business",
   },
+  {
+    key: "Kombinieren",
+    title: "Kombinieren",
+    text: "",
+  },
+] as const;
+
+const projectDetailCards = [
   {
     key: "Verwaltungssystem",
     title: "Verwaltungssystem",
     text: "Individuelle Systeme für dein Business",
-    icon: LayoutDashboard,
   },
   {
     key: "Wartung & Support",
     title: "Wartung & Support",
     text: "Betreuung & technische Unterstützung",
-    icon: ShieldCheck,
   },
+] as const;
+
+const projectGoals = [
+  "Mehr Traffic",
+  "Bessere Rankings",
+  "Mehr Leads",
+  "Markenbekanntheit",
+  "Umsatz steigern",
+  "Sonstiges",
+] as const;
+
+const projectStatusOptions = [
+  "Ich habe bereits eine Webseite",
+  "Ich plane einen Relaunch",
+  "Ich starte komplett neu",
+  "Ich nutze aktuell ein anderes System",
+] as const;
+
+const projectSatisfactionLabels = [
+  "Gar nicht",
+  "Eher unzufrieden",
+  "Neutral",
+  "Zufrieden",
+  "Sehr zufrieden",
 ] as const;
 
 const websiteScopeLabels = [
@@ -102,6 +132,12 @@ const startWindowAdjustments = [
 
 const appointmentTimes = ["11:00 Uhr", "14:00 Uhr", "15:00 Uhr", "16:00 Uhr"] as const;
 const weekdayLabels = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"] as const;
+const appointmentAdvisors = [
+  { name: "Parmis", symbol: "\u2640" },
+  { name: "Sebastian", symbol: "\u2642" },
+] as const;
+
+const formSteps: FormStep[] = ["topic", "services", "projectInfo", "calculator", "booking", "upload"];
 
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>("idle");
@@ -109,13 +145,25 @@ export function ContactForm() {
   const [step, setStep] = useState<FormStep>("topic");
   const [selectedTopic, setSelectedTopic] = useState<string>("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+  const [projectName, setProjectName] = useState("");
+  const [projectStatus, setProjectStatus] =
+    useState<(typeof projectStatusOptions)[number]>("Ich habe bereits eine Webseite");
+  const [projectWebsite, setProjectWebsite] = useState("");
+  const [projectSatisfaction, setProjectSatisfaction] = useState(3);
   const [websiteScope, setWebsiteScope] = useState(1);
   const [seoCompetition, setSeoCompetition] = useState(1);
   const [startWindow, setStartWindow] = useState(1);
   const [displayedMonth, setDisplayedMonth] = useState(startOfMonth(new Date()));
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [selectedAdvisor, setSelectedAdvisor] =
+    useState<(typeof appointmentAdvisors)[number]["name"]>("Parmis");
   const [bookedAppointments, setBookedAppointments] = useState<Record<string, string[]>>({});
+  const [contactEmail, setContactEmail] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+  const [projectFiles, setProjectFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const estimatedMinPrice =
     websitePriceRanges[websiteScope].min +
@@ -143,15 +191,19 @@ export function ContactForm() {
     [bookedAppointments, displayedMonth],
   );
   const bookedTimesForSelectedDate = selectedDate ? bookedAppointments[selectedDate] || [] : [];
+  const currentStepIndex = formSteps.indexOf(step);
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadAppointments() {
       try {
-        const response = await fetch(`/api/appointments?month=${monthKey}`, {
+        const response = await fetch(
+          `/api/appointments?month=${monthKey}&advisor=${encodeURIComponent(selectedAdvisor)}`,
+          {
           cache: "no-store",
-        });
+          },
+        );
 
         if (!response.ok) {
           return;
@@ -187,7 +239,7 @@ export function ContactForm() {
     return () => {
       cancelled = true;
     };
-  }, [monthKey]);
+  }, [monthKey, selectedAdvisor]);
 
   useEffect(() => {
     if (selectedTime && bookedTimesForSelectedDate.includes(selectedTime)) {
@@ -197,24 +249,36 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedTopic || selectedServices.length === 0 || !selectedDate || !selectedTime) {
+    if (
+      !selectedTopic ||
+      selectedServices.length === 0 ||
+      !selectedDate ||
+      !selectedTime ||
+      !contactEmail
+    ) {
       return;
     }
 
     setState("sending");
     setMessage("");
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    const email = String(formData.get("email") || "").trim();
-    if (!email) {
-      setState("error");
-      setMessage("Bitte gib deine E-Mail-Adresse ein.");
-      return;
-    }
+    const formData = new FormData();
+    const email = contactEmail.trim();
 
     formData.set("submissionType", "Terminbuchung");
     formData.set("name", "Terminbuchung");
+    formData.set("email", email);
+    formData.set("projectType", selectedTopic);
+    formData.set("services", selectedServices.join(", "));
+    formData.set("websiteScope", websiteScopeLabels[websiteScope]);
+    formData.set("seoCompetition", seoCompetitionLabels[seoCompetition]);
+    formData.set("startWindow", startWindowLabels[startWindow]);
+    formData.set("priceEstimate", formattedEstimate);
+    formData.set("appointmentAdvisor", selectedAdvisor);
+    formData.set("appointmentDate", selectedDateLabel);
+    formData.set("appointmentDateIso", selectedDate);
+    formData.set("appointmentTime", selectedTime);
+    formData.set("projectDescription", projectDescription.trim());
     formData.set(
       "message",
       [
@@ -222,15 +286,27 @@ export function ContactForm() {
         "",
         `Anliegen: ${selectedTopic}`,
         `Leistungen: ${selectedServices.join(", ")}`,
+        selectedGoals.length > 0 ? `Hauptziele: ${selectedGoals.join(", ")}` : "",
+        projectName.trim() ? `Projektname: ${projectName.trim()}` : "",
+        `Aktueller Status: ${projectStatus}`,
+        projectWebsite.trim() ? `Webseite: ${projectWebsite.trim()}` : "",
+        `Zufriedenheit mit aktueller Lösung: ${projectSatisfactionLabels[projectSatisfaction]}`,
         `Webseiten Umfang: ${websiteScopeLabels[websiteScope]}`,
         `SEO Wettbewerb: ${seoCompetitionLabels[seoCompetition]}`,
         `Gewünschter Start: ${startWindowLabels[startWindow]}`,
         `Geschätzter Preisrahmen: ${formattedEstimate}`,
+        `Ansprechperson: ${selectedAdvisor}`,
         `Termin: ${selectedDateLabel}`,
         `Uhrzeit: ${selectedTime}`,
         `Kontakt-E-Mail: ${email}`,
+        projectDescription.trim() ? "" : "",
+        projectDescription.trim() ? "Projektbeschreibung:" : "",
+        projectDescription.trim() || "",
+        projectFiles.length > 0 ? "" : "",
+        projectFiles.length > 0 ? `Dateien: ${projectFiles.map((file) => file.name).join(", ")}` : "",
       ].join("\n"),
     );
+    projectFiles.forEach((file) => formData.append("projectFiles", file));
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -238,16 +314,24 @@ export function ContactForm() {
     });
 
     if (response.ok) {
-      form.reset();
       setStep("topic");
       setSelectedTopic("");
       setSelectedServices([]);
+      setSelectedGoals([]);
+      setProjectName("");
+      setProjectStatus("Ich habe bereits eine Webseite");
+      setProjectWebsite("");
+      setProjectSatisfaction(3);
       setWebsiteScope(1);
       setSeoCompetition(1);
       setStartWindow(1);
       setDisplayedMonth(startOfMonth(new Date()));
       setSelectedDate("");
       setSelectedTime("");
+      setSelectedAdvisor("Parmis");
+      setContactEmail("");
+      setProjectDescription("");
+      setProjectFiles([]);
       setBookedAppointments((current) =>
         selectedDate && selectedTime
           ? {
@@ -274,11 +358,49 @@ export function ContactForm() {
     );
   }
 
+  function handleFiles(nextFiles: FileList | File[]) {
+    const files = Array.from(nextFiles);
+    if (files.length === 0) {
+      return;
+    }
+
+    setProjectFiles((current) => {
+      const existingKeys = new Set(current.map((file) => `${file.name}-${file.size}`));
+      const merged = [...current];
+
+      files.forEach((file) => {
+        const key = `${file.name}-${file.size}`;
+        if (!existingKeys.has(key)) {
+          merged.push(file);
+          existingKeys.add(key);
+        }
+      });
+
+      return merged;
+    });
+  }
+
+  function removeFile(fileToRemove: File) {
+    setProjectFiles((current) =>
+      current.filter(
+        (file) => !(file.name === fileToRemove.name && file.size === fileToRemove.size),
+      ),
+    );
+  }
+
   function toggleService(topicKey: string) {
     setSelectedServices((current) =>
       current.includes(topicKey)
         ? current.filter((item) => item !== topicKey)
         : [...current, topicKey],
+    );
+  }
+
+  function toggleGoal(goal: string) {
+    setSelectedGoals((current) =>
+      current.includes(goal)
+        ? current.filter((item) => item !== goal)
+        : [...current, goal],
     );
   }
 
@@ -302,20 +424,14 @@ export function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="contact-form-steps" aria-hidden="true">
-        {[0, 1, 2, 3, 4].map((item) => (
+        {formSteps.map((formStep, index) => (
           <span
             className={
-              item === 0
-                ? `contact-step-node ${step === "topic" ? "active" : "completed"}`
-                : item === 1
-                  ? `contact-step-node ${step === "services" ? "current" : step === "calculator" || step === "booking" ? "completed" : ""}`
-                  : item === 2
-                    ? `contact-step-node ${step === "calculator" ? "current" : step === "booking" ? "completed" : ""}`
-                    : item === 3
-                      ? `contact-step-node ${step === "booking" ? "current" : ""}`
-                      : "contact-step-node"
+              index === 0
+                ? `contact-step-node ${currentStepIndex === 0 ? "active" : "completed"}`
+                : `contact-step-node ${currentStepIndex === index ? "current" : currentStepIndex > index ? "completed" : ""}`
             }
-            key={item}
+            key={formStep}
           />
         ))}
       </div>
@@ -323,8 +439,8 @@ export function ContactForm() {
       {step === "topic" ? (
         <div className="contact-step-panel">
           <div className="contact-step-copy">
-            <h3>Worum geht es bei deinem Projekt?</h3>
-            <p>Wähle eine Option aus, die am besten zu deinem Anliegen passt.</p>
+            <h3>Hallo! Womit können wir dich unterstützen?</h3>
+            <p>Wähle eine Option, die am besten zu deinem Anliegen passt.</p>
           </div>
 
           <div className="contact-topic-list">
@@ -369,33 +485,83 @@ export function ContactForm() {
         </div>
       ) : step === "services" ? (
         <div className="contact-step-panel">
-          <div className="contact-step-copy">
-            <h3>Was können wir für dich tun?</h3>
-            <p>Wähle eine oder mehrere Leistungen</p>
-          </div>
+          <div className="contact-service-shell">
+            <div className="contact-step-copy contact-service-copy">
+              <h3>Erzähl uns mehr über dein Projekt</h3>
+              <p>Mehr Details helfen uns, dir ein besseres Angebot zu erstellen.</p>
+            </div>
 
-          <div className="contact-service-grid">
-            {projectServices.map((service) => (
-              <button
-                type="button"
-                className={
-                  selectedServices.includes(service.key)
-                    ? "contact-service-card selected"
-                    : "contact-service-card"
-                }
-                key={service.key}
-                onClick={() => toggleService(service.key)}
-              >
-                <span className="contact-service-card-check" aria-hidden="true">
-                  {selectedServices.includes(service.key) ? <Check size={18} /> : null}
-                </span>
-                <service.icon size={34} aria-hidden="true" />
-                <span className="contact-service-card-copy">
-                  <strong>{service.title}</strong>
-                  <span>{service.text}</span>
-                </span>
-              </button>
-            ))}
+            <div className="contact-service-section">
+              <strong className="contact-service-label">Ich interessiere mich für:</strong>
+              <div className="contact-service-option-list">
+                {projectServices.map((service) => (
+                  <button
+                    type="button"
+                    className={[
+                      "contact-service-option",
+                      selectedServices.includes(service.key) ? "selected" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    key={service.key}
+                    onClick={() => toggleService(service.key)}
+                  >
+                    <span className="contact-service-option-check" aria-hidden="true">
+                      {selectedServices.includes(service.key) ? <Check size={15} /> : null}
+                    </span>
+                    <span className="contact-service-option-copy">
+                      <strong>{service.title}</strong>
+                      {service.text ? <span>{service.text}</span> : null}
+                    </span>
+                  </button>
+                ))}
+                {projectDetailCards.map((service) => (
+                  <button
+                    type="button"
+                    className={[
+                      "contact-service-option",
+                      "contact-service-option-detailed",
+                      selectedServices.includes(service.key) ? "selected" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    key={service.key}
+                    onClick={() => toggleService(service.key)}
+                  >
+                    <span className="contact-service-option-check" aria-hidden="true">
+                      {selectedServices.includes(service.key) ? <Check size={15} /> : null}
+                    </span>
+                    <span className="contact-service-option-copy">
+                      <strong>{service.title}</strong>
+                      <span>{service.text}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="contact-service-section">
+              <strong className="contact-service-label">
+                Deine Hauptziele <span>(Mehrfachauswahl möglich)</span>
+              </strong>
+              <div className="contact-service-goals">
+                {projectGoals.map((goal) => (
+                  <button
+                    type="button"
+                    className={[
+                      "contact-service-goal",
+                      selectedGoals.includes(goal) ? "selected" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    key={goal}
+                    onClick={() => toggleGoal(goal)}
+                  >
+                    {goal}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="contact-step-actions details">
@@ -419,7 +585,7 @@ export function ContactForm() {
                 if (selectedServices.length === 0) {
                   return;
                 }
-                setStep("calculator");
+                setStep("projectInfo");
                 setState("idle");
                 setMessage("");
               }}
@@ -427,6 +593,103 @@ export function ContactForm() {
               Auswahl bestätigen
               <ArrowRight size={18} aria-hidden="true" />
             </button>
+          </div>
+        </div>
+      ) : step === "projectInfo" ? (
+        <div className="contact-step-panel">
+          <div className="contact-project-info-shell">
+            <div className="contact-step-copy contact-project-info-copy">
+              <h3>Erzähle uns von deinem Projekt</h3>
+              <p>Rahmendaten helfen uns, dein Vorhaben besser einzuordnen.</p>
+            </div>
+
+            <div className="contact-project-info-grid">
+              <label className="contact-project-info-field">
+                Projektname <span>(optional)</span>
+                <input
+                  type="text"
+                  placeholder="Mein neues Projekt"
+                  value={projectName}
+                  onChange={(event) => setProjectName(event.currentTarget.value)}
+                />
+              </label>
+
+              <label className="contact-project-info-field">
+                Aktueller Status
+                <select
+                  value={projectStatus}
+                  onChange={(event) =>
+                    setProjectStatus(event.currentTarget.value as (typeof projectStatusOptions)[number])
+                  }
+                >
+                  {projectStatusOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="contact-project-info-field contact-project-info-field-full">
+                Webseite <span>(falls vorhanden)</span>
+                <input
+                  type="url"
+                  inputMode="url"
+                  placeholder="https://deine-webseite.de"
+                  value={projectWebsite}
+                  onChange={(event) => setProjectWebsite(event.currentTarget.value)}
+                />
+              </label>
+
+              <div className="contact-calculator-field contact-project-info-field-full">
+                <div className="contact-calculator-field-head">
+                  <span>Bist du mit deiner aktuellen Lösung zufrieden?</span>
+                  <span>{projectSatisfactionLabels[projectSatisfaction]}</span>
+                </div>
+                <div className="contact-range-shell" style={{ "--range-progress": `${(projectSatisfaction / 4) * 100}%` } as CSSProperties}>
+                  <input
+                    className="contact-range"
+                    type="range"
+                    min="0"
+                    max="4"
+                    step="1"
+                    value={projectSatisfaction}
+                    onChange={(event) => setProjectSatisfaction(Number(event.currentTarget.value))}
+                  />
+                </div>
+                <div className="contact-range-endpoints" aria-hidden="true">
+                  <span>Gar nicht</span>
+                  <span>Sehr zufrieden</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-step-actions details contact-project-info-actions">
+              <button
+                type="button"
+                className="contact-back-button"
+                onClick={() => {
+                  setStep("services");
+                  setState("idle");
+                  setMessage("");
+                }}
+              >
+                <ArrowLeft size={17} aria-hidden="true" />
+                Zurück
+              </button>
+              <button
+                type="button"
+                className="contact-next-button contact-next-button-full"
+                onClick={() => {
+                  setStep("calculator");
+                  setState("idle");
+                  setMessage("");
+                }}
+              >
+                Weiter zum Kalkulator
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
       ) : step === "calculator" ? (
@@ -504,7 +767,7 @@ export function ContactForm() {
                 type="button"
                 className="contact-back-button"
                 onClick={() => {
-                  setStep("services");
+                  setStep("projectInfo");
                   setState("idle");
                   setMessage("");
                 }}
@@ -527,7 +790,7 @@ export function ContactForm() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : step === "booking" ? (
         <div className="contact-step-panel">
           <div className="contact-booking-shell">
             <div className="contact-step-copy contact-booking-copy">
@@ -540,9 +803,14 @@ export function ContactForm() {
             <input name="projectType" type="hidden" value={selectedTopic} />
             <input name="services" type="hidden" value={selectedServices.join(", ")} />
             <input name="websiteScope" type="hidden" value={websiteScopeLabels[websiteScope]} />
-            <input name="seoCompetition" type="hidden" value={seoCompetitionLabels[seoCompetition]} />
+            <input
+              name="seoCompetition"
+              type="hidden"
+              value={seoCompetitionLabels[seoCompetition]}
+            />
             <input name="startWindow" type="hidden" value={startWindowLabels[startWindow]} />
             <input name="priceEstimate" type="hidden" value={formattedEstimate} />
+            <input name="appointmentAdvisor" type="hidden" value={selectedAdvisor} />
             <input name="appointmentDate" type="hidden" value={selectedDateLabel} />
             <input name="appointmentDateIso" type="hidden" value={selectedDate} />
             <input name="appointmentTime" type="hidden" value={selectedTime} />
@@ -603,6 +871,31 @@ export function ContactForm() {
               </div>
 
               <div className="contact-time-card">
+                <div className="contact-advisor-switch" role="tablist" aria-label="Ansprechperson">
+                  {appointmentAdvisors.map((advisor) => (
+                    <button
+                      key={advisor.name}
+                      type="button"
+                      className={[
+                        "contact-advisor-button",
+                        selectedAdvisor === advisor.name ? "selected" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      onClick={() => {
+                        setSelectedAdvisor(advisor.name);
+                        setSelectedTime("");
+                      }}
+                    >
+                      <span className="contact-advisor-button-label">
+                        {advisor.name}
+                        <span className="contact-advisor-symbol" aria-hidden="true">
+                          {advisor.symbol}
+                        </span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
                 <strong>Verfügbare Zeiten</strong>
                 <div className="contact-time-list">
                   {appointmentTimes.map((time) => (
@@ -628,7 +921,14 @@ export function ContactForm() {
 
             <label className="contact-booking-field">
               Deine E-Mail
-              <input name="email" type="email" placeholder="du@firma.de" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="du@firma.de"
+                required
+                value={contactEmail}
+                onChange={(event) => setContactEmail(event.currentTarget.value)}
+              />
             </label>
 
             <div className="contact-step-actions details contact-booking-actions">
@@ -645,11 +945,120 @@ export function ContactForm() {
                 Zurück
               </button>
               <button
-                type="submit"
-                disabled={state === "sending" || !selectedDate || !selectedTime}
+                type="button"
+                className="contact-next-button contact-next-button-full"
+                disabled={!selectedDate || !selectedTime || !contactEmail.trim()}
+                onClick={() => {
+                  if (!selectedDate || !selectedTime || !contactEmail.trim()) {
+                    return;
+                  }
+                  setStep("upload");
+                  setState("idle");
+                  setMessage("");
+                }}
               >
-                {state === "sending" ? "Wird gesendet..." : "Termin buchen"}
-                <CalendarDays size={18} aria-hidden="true" />
+                Weiter zu Dateien
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="contact-step-panel">
+          <div className="contact-upload-shell">
+            <div className="contact-step-copy contact-upload-copy">
+              <h3>Projektanfrage mit Dateien</h3>
+              <p>Beschreibe dein Projekt und lade relevante Dateien hoch.</p>
+            </div>
+
+            <label className="contact-upload-field">
+              Projektbeschreibung
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Erzähl uns mehr über dein Projekt..."
+                value={projectDescription}
+                onChange={(event) => setProjectDescription(event.currentTarget.value)}
+              />
+            </label>
+
+            <div className="contact-upload-group">
+              <span>Dateien hochladen</span>
+              <input
+                ref={fileInputRef}
+                className="contact-upload-input"
+                type="file"
+                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp"
+                multiple
+                onChange={(event) => {
+                  if (event.currentTarget.files) {
+                    handleFiles(event.currentTarget.files);
+                  }
+                  event.currentTarget.value = "";
+                }}
+              />
+              <button
+                type="button"
+                className="contact-upload-dropzone"
+                onClick={() => fileInputRef.current?.click()}
+                onDragOver={(event) => event.preventDefault()}
+                onDrop={(event) => {
+                  event.preventDefault();
+                  handleFiles(event.dataTransfer.files);
+                }}
+              >
+                <span className="contact-upload-dropzone-icon" aria-hidden="true">
+                  <Upload size={30} />
+                </span>
+                <span className="contact-upload-dropzone-copy">
+                  <strong>Dateien hierher ziehen oder klicken</strong>
+                  <span>z. B. Briefing, Skizzen, Dokumente (PDF, DOCX, PNG...)</span>
+                </span>
+              </button>
+
+              {projectFiles.length > 0 ? (
+                <div className="contact-upload-file-list">
+                  {projectFiles.map((file) => (
+                    <div className="contact-upload-file" key={`${file.name}-${file.size}`}>
+                      <div className="contact-upload-file-copy">
+                        <span className="contact-upload-file-icon" aria-hidden="true">
+                          <FileText size={18} />
+                        </span>
+                        <span>
+                          <strong>{file.name}</strong>
+                          <small>{formatFileSize(file.size)}</small>
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        className="contact-upload-file-remove"
+                        onClick={() => removeFile(file)}
+                        aria-label={`${file.name} entfernen`}
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="contact-step-actions details contact-upload-actions">
+              <button
+                type="button"
+                className="contact-back-button"
+                onClick={() => {
+                  setStep("booking");
+                  setState("idle");
+                  setMessage("");
+                }}
+              >
+                <ArrowLeft size={17} aria-hidden="true" />
+                Zurück
+              </button>
+              <button type="submit" className="contact-next-button contact-next-button-full">
+                {state === "sending" ? "Wird gesendet..." : "Anfrage senden"}
+                <ArrowRight size={18} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -715,4 +1124,12 @@ function formatDateKey(date: Date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+function formatFileSize(size: number) {
+  if (size < 1024 * 1024) {
+    return `${(size / 1024).toFixed(1)} KB`;
+  }
+
+  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
 }

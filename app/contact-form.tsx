@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
-type FormStep = "topic" | "services" | "projectInfo" | "calculator" | "booking" | "upload";
+type FormStep = "topic" | "services" | "calculator" | "booking" | "upload";
 
 const projectTopics = [
   {
@@ -39,53 +39,86 @@ const projectTopics = [
     text: "Individuelle Lösung",
     icon: LayoutDashboard,
   },
-  {
-    key: "Sonstiges",
-    title: "Sonstiges",
-    text: "Anderes Anliegen",
-    icon: CircleHelp,
-  },
 ] as const;
 
-const projectServices = [
-  {
-    key: "SEO",
-    title: "SEO (Suchmaschinenoptimierung)",
-    text: "Mehr Sichtbarkeit bei Google",
+const projectStepTwoConfigs = {
+  SEO: {
+    label: "Deine Hauptziele",
+    helper: "(Mehrfachauswahl möglich)",
+    options: [
+      {
+        key: "Mehr Traffic",
+        title: "Mehr Traffic",
+        text: "Mehr qualifizierte Besucher über Google",
+      },
+      {
+        key: "Bessere Rankings",
+        title: "Bessere Rankings",
+        text: "Wichtige Suchbegriffe weiter nach vorne bringen",
+      },
+      {
+        key: "Mehr Leads",
+        title: "Mehr Leads",
+        text: "Mehr Anfragen und Kontaktaufnahmen erzeugen",
+      },
+      {
+        key: "Lokale Sichtbarkeit",
+        title: "Lokale Sichtbarkeit",
+        text: "In deiner Region besser gefunden werden",
+      },
+    ],
   },
-  {
-    key: "Webdesign & Entwicklung",
-    title: "Webdesign & Entwicklung",
-    text: "Moderne Webseiten für dein Business",
+  Webseite: {
+    label: "Ich interessiere mich für:",
+    options: [
+      {
+        key: "Neue Webseite",
+        title: "Neue Webseite",
+        text: "Kompletter Neuaufbau für dein Unternehmen",
+      },
+      {
+        key: "Relaunch",
+        title: "Relaunch",
+        text: "Bestehende Webseite modernisieren",
+      },
+      {
+        key: "Landingpage",
+        title: "Landingpage",
+        text: "Fokussierte Seite für Kampagnen und Anfragen",
+      },
+      {
+        key: "Unternehmenswebseite",
+        title: "Unternehmenswebseite",
+        text: "Klare Struktur für Leistungen und Vertrauen",
+      },
+    ],
   },
-  {
-    key: "Kombinieren",
-    title: "Kombinieren",
-    text: "",
+  Verwaltungssystem: {
+    label: "Ich interessiere mich für:",
+    options: [
+      {
+        key: "Kundenportal",
+        title: "Kundenportal",
+        text: "Zentraler Bereich für Kunden und Anfragen",
+      },
+      {
+        key: "Terminverwaltung",
+        title: "Terminverwaltung",
+        text: "Buchungen, Verfügbarkeiten und Abläufe steuern",
+      },
+      {
+        key: "Dashboard",
+        title: "Dashboard",
+        text: "Wichtige Kennzahlen und Status auf einen Blick",
+      },
+      {
+        key: "Wartung & Support",
+        title: "Wartung & Support",
+        text: "Betreuung und technische Unterstützung",
+      },
+    ],
   },
-] as const;
-
-const projectDetailCards = [
-  {
-    key: "Verwaltungssystem",
-    title: "Verwaltungssystem",
-    text: "Individuelle Systeme für dein Business",
-  },
-  {
-    key: "Wartung & Support",
-    title: "Wartung & Support",
-    text: "Betreuung & technische Unterstützung",
-  },
-] as const;
-
-const projectGoals = [
-  "Mehr Traffic",
-  "Bessere Rankings",
-  "Mehr Leads",
-  "Markenbekanntheit",
-  "Umsatz steigern",
-  "Sonstiges",
-] as const;
+} as const;
 
 const projectStatusOptions = [
   "Ich habe bereits eine Webseite",
@@ -113,20 +146,20 @@ const seoCompetitionLabels = ["Niedrig", "Mittel", "Hoch"] as const;
 const startWindowLabels = ["Sofort", "In 1-3 Monaten", "Flexibel"] as const;
 
 const websitePriceRanges = [
-  { min: 1490, max: 2290 },
-  { min: 2390, max: 4290 },
-  { min: 4490, max: 7490 },
+  { min: 1300, max: 1900 },
+  { min: 2000, max: 3400 },
+  { min: 3600, max: 5000 },
 ] as const;
 
 const seoCompetitionAdjustments = [
   { min: 0, max: 0 },
-  { min: 290, max: 690 },
-  { min: 790, max: 1590 },
+  { min: 150, max: 300 },
+  { min: 250, max: 500 },
 ] as const;
 
 const startWindowAdjustments = [
-  { min: 490, max: 990 },
-  { min: 150, max: 390 },
+  { min: 150, max: 500 },
+  { min: 50, max: 200 },
   { min: 0, max: 0 },
 ] as const;
 
@@ -137,7 +170,7 @@ const appointmentAdvisors = [
   { name: "Sebastian", symbol: "\u2642" },
 ] as const;
 
-const formSteps: FormStep[] = ["topic", "services", "projectInfo", "calculator", "booking", "upload"];
+const formSteps: FormStep[] = ["topic", "services", "calculator", "booking", "upload"];
 
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>("idle");
@@ -145,7 +178,6 @@ export function ContactForm() {
   const [step, setStep] = useState<FormStep>("topic");
   const [selectedTopic, setSelectedTopic] = useState<string>("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
   const [projectName, setProjectName] = useState("");
   const [projectStatus, setProjectStatus] =
     useState<(typeof projectStatusOptions)[number]>("Ich habe bereits eine Webseite");
@@ -192,6 +224,10 @@ export function ContactForm() {
   );
   const bookedTimesForSelectedDate = selectedDate ? bookedAppointments[selectedDate] || [] : [];
   const currentStepIndex = formSteps.indexOf(step);
+  const selectedTopicConfig =
+    selectedTopic && selectedTopic in projectStepTwoConfigs
+      ? projectStepTwoConfigs[selectedTopic as keyof typeof projectStepTwoConfigs]
+      : null;
 
   useEffect(() => {
     let cancelled = false;
@@ -286,7 +322,6 @@ export function ContactForm() {
         "",
         `Anliegen: ${selectedTopic}`,
         `Leistungen: ${selectedServices.join(", ")}`,
-        selectedGoals.length > 0 ? `Hauptziele: ${selectedGoals.join(", ")}` : "",
         projectName.trim() ? `Projektname: ${projectName.trim()}` : "",
         `Aktueller Status: ${projectStatus}`,
         projectWebsite.trim() ? `Webseite: ${projectWebsite.trim()}` : "",
@@ -317,7 +352,6 @@ export function ContactForm() {
       setStep("topic");
       setSelectedTopic("");
       setSelectedServices([]);
-      setSelectedGoals([]);
       setProjectName("");
       setProjectStatus("Ich habe bereits eine Webseite");
       setProjectWebsite("");
@@ -396,14 +430,6 @@ export function ContactForm() {
     );
   }
 
-  function toggleGoal(goal: string) {
-    setSelectedGoals((current) =>
-      current.includes(goal)
-        ? current.filter((item) => item !== goal)
-        : [...current, goal],
-    );
-  }
-
   function formatPrice(value: number) {
     return new Intl.NumberFormat("de-DE", {
       style: "currency",
@@ -453,7 +479,12 @@ export function ContactForm() {
                     : "contact-topic-card"
                 }
                 key={topic.key}
-                onClick={() => setSelectedTopic(topic.key)}
+                onClick={() => {
+                  setSelectedTopic(topic.key);
+                  setSelectedServices([]);
+                  setState("idle");
+                  setMessage("");
+                }}
               >
                 <topic.icon size={26} aria-hidden="true" />
                 <span className="contact-topic-card-copy">
@@ -492,30 +523,14 @@ export function ContactForm() {
             </div>
 
             <div className="contact-service-section">
-              <strong className="contact-service-label">Ich interessiere mich für:</strong>
+              <strong className="contact-service-label">
+                {selectedTopicConfig?.label || "Ich interessiere mich für:"}
+                {selectedTopicConfig && "helper" in selectedTopicConfig ? (
+                  <span>{selectedTopicConfig.helper}</span>
+                ) : null}
+              </strong>
               <div className="contact-service-option-list">
-                {projectServices.map((service) => (
-                  <button
-                    type="button"
-                    className={[
-                      "contact-service-option",
-                      selectedServices.includes(service.key) ? "selected" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    key={service.key}
-                    onClick={() => toggleService(service.key)}
-                  >
-                    <span className="contact-service-option-check" aria-hidden="true">
-                      {selectedServices.includes(service.key) ? <Check size={15} /> : null}
-                    </span>
-                    <span className="contact-service-option-copy">
-                      <strong>{service.title}</strong>
-                      {service.text ? <span>{service.text}</span> : null}
-                    </span>
-                  </button>
-                ))}
-                {projectDetailCards.map((service) => (
+                {(selectedTopicConfig?.options || []).map((service) => (
                   <button
                     type="button"
                     className={[
@@ -533,35 +548,82 @@ export function ContactForm() {
                     </span>
                     <span className="contact-service-option-copy">
                       <strong>{service.title}</strong>
-                      <span>{service.text}</span>
+                      {service.text ? <span>{service.text}</span> : null}
                     </span>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="contact-service-section">
-              <strong className="contact-service-label">
-                Deine Hauptziele <span>(Mehrfachauswahl möglich)</span>
-              </strong>
-              <div className="contact-service-goals">
-                {projectGoals.map((goal) => (
-                  <button
-                    type="button"
-                    className={[
-                      "contact-service-goal",
-                      selectedGoals.includes(goal) ? "selected" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    key={goal}
-                    onClick={() => toggleGoal(goal)}
+            {selectedTopic === "Webseite" ? (
+              <div className="contact-project-info-grid">
+                <label className="contact-project-info-field">
+                  Projektname <span>(optional)</span>
+                  <input
+                    type="text"
+                    placeholder="Mein neues Projekt"
+                    value={projectName}
+                    onChange={(event) => setProjectName(event.currentTarget.value)}
+                  />
+                </label>
+
+                <label className="contact-project-info-field">
+                  Aktueller Status
+                  <select
+                    value={projectStatus}
+                    onChange={(event) =>
+                      setProjectStatus(
+                        event.currentTarget.value as (typeof projectStatusOptions)[number],
+                      )
+                    }
                   >
-                    {goal}
-                  </button>
-                ))}
+                    {projectStatusOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="contact-project-info-field contact-project-info-field-full">
+                  Webseite <span>(falls vorhanden)</span>
+                  <input
+                    type="url"
+                    inputMode="url"
+                    placeholder="https://deine-webseite.de"
+                    value={projectWebsite}
+                    onChange={(event) => setProjectWebsite(event.currentTarget.value)}
+                  />
+                </label>
+
+                <div className="contact-calculator-field contact-project-info-field-full">
+                  <div className="contact-calculator-field-head">
+                    <span>Bist du mit deiner aktuellen Lösung zufrieden?</span>
+                    <span>{projectSatisfactionLabels[projectSatisfaction]}</span>
+                  </div>
+                  <div
+                    className="contact-range-shell"
+                    style={{ "--range-progress": `${(projectSatisfaction / 4) * 100}%` } as CSSProperties}
+                  >
+                    <input
+                      className="contact-range"
+                      type="range"
+                      min="0"
+                      max="4"
+                      step="1"
+                      value={projectSatisfaction}
+                      onChange={(event) =>
+                        setProjectSatisfaction(Number(event.currentTarget.value))
+                      }
+                    />
+                  </div>
+                  <div className="contact-range-endpoints" aria-hidden="true">
+                    <span>Gar nicht</span>
+                    <span>Sehr zufrieden</span>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
 
           <div className="contact-step-actions details">
@@ -585,7 +647,7 @@ export function ContactForm() {
                 if (selectedServices.length === 0) {
                   return;
                 }
-                setStep("projectInfo");
+                setStep("calculator");
                 setState("idle");
                 setMessage("");
               }}
@@ -593,103 +655,6 @@ export function ContactForm() {
               Auswahl bestätigen
               <ArrowRight size={18} aria-hidden="true" />
             </button>
-          </div>
-        </div>
-      ) : step === "projectInfo" ? (
-        <div className="contact-step-panel">
-          <div className="contact-project-info-shell">
-            <div className="contact-step-copy contact-project-info-copy">
-              <h3>Erzähle uns von deinem Projekt</h3>
-              <p>Rahmendaten helfen uns, dein Vorhaben besser einzuordnen.</p>
-            </div>
-
-            <div className="contact-project-info-grid">
-              <label className="contact-project-info-field">
-                Projektname <span>(optional)</span>
-                <input
-                  type="text"
-                  placeholder="Mein neues Projekt"
-                  value={projectName}
-                  onChange={(event) => setProjectName(event.currentTarget.value)}
-                />
-              </label>
-
-              <label className="contact-project-info-field">
-                Aktueller Status
-                <select
-                  value={projectStatus}
-                  onChange={(event) =>
-                    setProjectStatus(event.currentTarget.value as (typeof projectStatusOptions)[number])
-                  }
-                >
-                  {projectStatusOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="contact-project-info-field contact-project-info-field-full">
-                Webseite <span>(falls vorhanden)</span>
-                <input
-                  type="url"
-                  inputMode="url"
-                  placeholder="https://deine-webseite.de"
-                  value={projectWebsite}
-                  onChange={(event) => setProjectWebsite(event.currentTarget.value)}
-                />
-              </label>
-
-              <div className="contact-calculator-field contact-project-info-field-full">
-                <div className="contact-calculator-field-head">
-                  <span>Bist du mit deiner aktuellen Lösung zufrieden?</span>
-                  <span>{projectSatisfactionLabels[projectSatisfaction]}</span>
-                </div>
-                <div className="contact-range-shell" style={{ "--range-progress": `${(projectSatisfaction / 4) * 100}%` } as CSSProperties}>
-                  <input
-                    className="contact-range"
-                    type="range"
-                    min="0"
-                    max="4"
-                    step="1"
-                    value={projectSatisfaction}
-                    onChange={(event) => setProjectSatisfaction(Number(event.currentTarget.value))}
-                  />
-                </div>
-                <div className="contact-range-endpoints" aria-hidden="true">
-                  <span>Gar nicht</span>
-                  <span>Sehr zufrieden</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="contact-step-actions details contact-project-info-actions">
-              <button
-                type="button"
-                className="contact-back-button"
-                onClick={() => {
-                  setStep("services");
-                  setState("idle");
-                  setMessage("");
-                }}
-              >
-                <ArrowLeft size={17} aria-hidden="true" />
-                Zurück
-              </button>
-              <button
-                type="button"
-                className="contact-next-button contact-next-button-full"
-                onClick={() => {
-                  setStep("calculator");
-                  setState("idle");
-                  setMessage("");
-                }}
-              >
-                Weiter zum Kalkulator
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </div>
           </div>
         </div>
       ) : step === "calculator" ? (
@@ -767,7 +732,7 @@ export function ContactForm() {
                 type="button"
                 className="contact-back-button"
                 onClick={() => {
-                  setStep("projectInfo");
+                  setStep("services");
                   setState("idle");
                   setMessage("");
                 }}

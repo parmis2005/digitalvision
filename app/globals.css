@@ -3059,6 +3059,52 @@ h3 {
   gap: 5px;
 }
 
+.contact-form .contact-consent-field {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: flex-start;
+  width: fit-content;
+  align-self: flex-start;
+  color: rgba(236, 243, 255, 0.88);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-form .contact-consent-field input {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+  flex: 0 0 18px;
+  accent-color: #76dbff;
+  cursor: pointer;
+}
+
+.contact-form .contact-consent-field span {
+  display: inline;
+  line-height: 1.35;
+}
+
+.contact-form .contact-consent-field a {
+  margin-left: 0.2rem;
+  color: #76dbff;
+  text-decoration: none;
+}
+
+.contact-form .contact-consent-field a:hover {
+  text-decoration: underline;
+}
+
 .contact-booking-actions {
   padding-top: 0;
 }

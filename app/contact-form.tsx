@@ -192,7 +192,9 @@ export function ContactForm() {
   const [selectedAdvisor, setSelectedAdvisor] =
     useState<(typeof appointmentAdvisors)[number]["name"]>("Parmis");
   const [bookedAppointments, setBookedAppointments] = useState<Record<string, string[]>>({});
+  const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [projectDescription, setProjectDescription] = useState("");
   const [projectFiles, setProjectFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -290,7 +292,9 @@ export function ContactForm() {
       selectedServices.length === 0 ||
       !selectedDate ||
       !selectedTime ||
-      !contactEmail
+      !contactName.trim() ||
+      !contactEmail.trim() ||
+      !privacyAccepted
     ) {
       return;
     }
@@ -299,10 +303,11 @@ export function ContactForm() {
     setMessage("");
 
     const formData = new FormData();
+    const name = contactName.trim();
     const email = contactEmail.trim();
 
     formData.set("submissionType", "Terminbuchung");
-    formData.set("name", "Terminbuchung");
+    formData.set("name", name);
     formData.set("email", email);
     formData.set("projectType", selectedTopic);
     formData.set("services", selectedServices.join(", "));
@@ -333,6 +338,7 @@ export function ContactForm() {
         `Ansprechperson: ${selectedAdvisor}`,
         `Termin: ${selectedDateLabel}`,
         `Uhrzeit: ${selectedTime}`,
+        `Name: ${name}`,
         `Kontakt-E-Mail: ${email}`,
         projectDescription.trim() ? "" : "",
         projectDescription.trim() ? "Projektbeschreibung:" : "",
@@ -363,7 +369,9 @@ export function ContactForm() {
       setSelectedDate("");
       setSelectedTime("");
       setSelectedAdvisor("Parmis");
+      setContactName("");
       setContactEmail("");
+      setPrivacyAccepted(false);
       setProjectDescription("");
       setProjectFiles([]);
       setBookedAppointments((current) =>
@@ -885,6 +893,18 @@ export function ContactForm() {
             </div>
 
             <label className="contact-booking-field">
+              Dein Name
+              <input
+                name="name"
+                type="text"
+                placeholder="Max Mustermann"
+                required
+                value={contactName}
+                onChange={(event) => setContactName(event.currentTarget.value)}
+              />
+            </label>
+
+            <label className="contact-booking-field">
               Deine E-Mail
               <input
                 name="email"
@@ -894,6 +914,22 @@ export function ContactForm() {
                 value={contactEmail}
                 onChange={(event) => setContactEmail(event.currentTarget.value)}
               />
+            </label>
+
+            <label className="contact-consent-field">
+              <input
+                name="privacyAccepted"
+                type="checkbox"
+                required
+                checked={privacyAccepted}
+                onChange={(event) => setPrivacyAccepted(event.currentTarget.checked)}
+              />
+              <span>
+                Ich akzeptiere die{" "}
+                <a href="#rechtliches" onClick={(event) => event.stopPropagation()}>
+                  Datenschutzerklärung
+                </a>
+              </span>
             </label>
 
             <div className="contact-step-actions details contact-booking-actions">
@@ -912,9 +948,21 @@ export function ContactForm() {
               <button
                 type="button"
                 className="contact-next-button contact-next-button-full"
-                disabled={!selectedDate || !selectedTime || !contactEmail.trim()}
+                disabled={
+                  !selectedDate ||
+                  !selectedTime ||
+                  !contactName.trim() ||
+                  !contactEmail.trim() ||
+                  !privacyAccepted
+                }
                 onClick={() => {
-                  if (!selectedDate || !selectedTime || !contactEmail.trim()) {
+                  if (
+                    !selectedDate ||
+                    !selectedTime ||
+                    !contactName.trim() ||
+                    !contactEmail.trim() ||
+                    !privacyAccepted
+                  ) {
                     return;
                   }
                   setStep("upload");

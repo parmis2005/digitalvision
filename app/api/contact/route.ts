@@ -1,14 +1,32 @@
 import { NextResponse } from "next/server";
 
+import { createAppointment, ensureAppointmentsTable } from "../../../lib/appointments";
+
 export async function POST(request: Request) {
   const formData = await request.formData();
+  const submissionType = String(formData.get("submissionType") || "Projektanfrage").trim();
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const message = String(formData.get("message") || "").trim();
+  const appointmentDate = String(formData.get("appointmentDateIso") || "").trim();
+  const appointmentTime = String(formData.get("appointmentTime") || "").trim();
+  const projectType = String(formData.get("projectType") || "").trim();
+  const services = String(formData.get("services") || "").trim();
+  const websiteScope = String(formData.get("websiteScope") || "").trim();
+  const seoCompetition = String(formData.get("seoCompetition") || "").trim();
+  const startWindow = String(formData.get("startWindow") || "").trim();
+  const priceEstimate = String(formData.get("priceEstimate") || "").trim();
 
-  if (!name || !email || !message) {
+  if (!email || !message || (submissionType !== "Terminbuchung" && !name)) {
     return NextResponse.json(
       { error: "Bitte alle Pflichtfelder ausfüllen." },
+      { status: 400 },
+    );
+  }
+
+  if (submissionType === "Terminbuchung" && (!appointmentDate || !appointmentTime)) {
+    return NextResponse.json(
+      { error: "Bitte Datum und Uhrzeit auswählen." },
       { status: 400 },
     );
   }
@@ -23,6 +41,36 @@ export async function POST(request: Request) {
     );
   }
 
+  if (submissionType === "Terminbuchung") {
+    try {
+      await ensureAppointmentsTable();
+      const inserted = await createAppointment({
+        appointmentDate,
+        appointmentTime,
+        email,
+        projectType,
+        services,
+        websiteScope,
+        seoCompetition,
+        startWindow,
+        priceEstimate,
+      });
+
+      if (!inserted) {
+        return NextResponse.json(
+          { error: "Dieser Termin ist inzwischen bereits ausgebucht." },
+          { status: 409 },
+        );
+      }
+    } catch (error) {
+      console.error("Appointment insert error:", error);
+      return NextResponse.json(
+        { error: "Termin konnte nicht gespeichert werden." },
+        { status: 502 },
+      );
+    }
+  }
+
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -33,14 +81,19 @@ export async function POST(request: Request) {
       from: process.env.CONTACT_FROM_EMAIL || "DigitalVision <onboarding@resend.dev>",
       to: recipient,
       reply_to: email,
-      subject: "Neue Projektanfrage über DigitalVision",
+      subject:
+        submissionType === "Terminbuchung"
+          ? "Neue Terminbuchung über DigitalVision"
+          : "Neue Projektanfrage über DigitalVision",
       text: [
-        "Neue Projektanfrage über DigitalVision",
+        submissionType === "Terminbuchung"
+          ? "Neue Terminbuchung über DigitalVision"
+          : "Neue Projektanfrage über DigitalVision",
         "",
-        `Name: ${name}`,
+        `Name: ${name || "Terminbuchung"}`,
         `E-Mail: ${email}`,
         "",
-        "Projekt:",
+        submissionType === "Terminbuchung" ? "Terminwunsch:" : "Projekt:",
         message,
       ].join("\n"),
     }),

@@ -2161,7 +2161,7 @@ h3 {
 
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.62fr);
+  grid-template-columns: minmax(0, 0.88fr) minmax(390px, 0.68fr);
   gap: clamp(28px, 6vw, 86px);
   align-items: start;
 }
@@ -2170,7 +2170,7 @@ h3 {
   display: grid;
   gap: 16px;
   width: 100%;
-  max-width: 660px;
+  max-width: 720px;
   justify-self: end;
   padding: 18px;
   border: 1px solid rgba(171, 210, 255, 0.14);
@@ -2258,6 +2258,182 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.contact-calculator {
+  display: grid;
+  gap: 22px;
+}
+
+.contact-calculator-shell {
+  display: grid;
+  gap: 22px;
+  padding: 20px 18px 18px;
+  border: 1px solid rgba(123, 144, 189, 0.2);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(31, 39, 69, 0.98), rgba(21, 28, 52, 0.96)),
+    rgba(26, 34, 61, 0.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.024),
+    0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.contact-calculator-copy {
+  gap: 8px;
+}
+
+.contact-calculator-copy h3 {
+  font-size: clamp(1.24rem, 1.55vw, 1.62rem);
+}
+
+.contact-calculator-copy p {
+  font-size: 0.92rem;
+  color: rgba(219, 230, 248, 0.76);
+}
+
+.contact-calculator-field {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-calculator-field-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  color: #fbfdff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.contact-calculator-field-head span:last-child {
+  color: rgba(233, 242, 255, 0.84);
+  font-size: 0.96rem;
+  text-align: right;
+}
+
+.contact-range-shell {
+  position: relative;
+  height: 26px;
+}
+
+.contact-range-shell::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 7px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(113, 224, 255, 0.92) 0,
+      rgba(113, 224, 255, 0.92) var(--range-progress),
+      rgba(87, 98, 139, 0.52) var(--range-progress),
+      rgba(87, 98, 139, 0.52) 100%
+    );
+  transform: translateY(-50%);
+  content: "";
+}
+
+.contact-range-shell::after {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  right: 8px;
+  height: 16px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.12) 0 2px,
+      transparent 2px 12.5%
+    );
+  opacity: 0.28;
+  transform: translateY(-50%);
+  content: "";
+  pointer-events: none;
+}
+
+.contact-form .contact-range {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  height: 26px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.contact-form .contact-range::-webkit-slider-runnable-track {
+  height: 26px;
+  background: transparent;
+}
+
+.contact-form .contact-range::-webkit-slider-thumb {
+  width: 30px;
+  height: 30px;
+  margin-top: -2px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  background: #ffffff;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(9, 15, 32, 0.06);
+}
+
+.contact-form .contact-range::-moz-range-track {
+  height: 26px;
+  border: 0;
+  background: transparent;
+}
+
+.contact-form .contact-range::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(9, 15, 32, 0.06);
+}
+
+.contact-estimate-card {
+  display: grid;
+  gap: 8px;
+  padding: 22px 18px 18px;
+  border: 1px solid rgba(126, 227, 255, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(33, 41, 70, 0.98), rgba(24, 31, 56, 0.96)),
+    rgba(31, 39, 67, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.028),
+    0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-estimate-card span {
+  color: rgba(150, 226, 255, 0.9);
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.contact-estimate-card strong {
+  color: #ffffff;
+  font-size: clamp(2.35rem, 3.2vw, 3.15rem);
+  line-height: 0.98;
+}
+
+.contact-estimate-card p {
+  margin: 0;
+  color: rgba(221, 232, 249, 0.72);
+  font-size: 0.92rem;
 }
 
 .contact-form .contact-topic-card {
@@ -2408,6 +2584,220 @@ h3 {
 
 .contact-step-actions.details {
   justify-content: space-between;
+}
+
+.contact-calculator-actions {
+  padding-top: 0;
+}
+
+.contact-booking-shell {
+  display: grid;
+  gap: 22px;
+  padding: 20px 18px 18px;
+  border: 1px solid rgba(123, 144, 189, 0.2);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(31, 39, 69, 0.98), rgba(21, 28, 52, 0.96)),
+    rgba(26, 34, 61, 0.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.024),
+    0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.contact-booking-copy {
+  gap: 8px;
+}
+
+.contact-booking-copy h3 {
+  font-size: clamp(1.24rem, 1.55vw, 1.62rem);
+}
+
+.contact-booking-copy h3 span {
+  color: var(--cyan);
+}
+
+.contact-booking-copy p {
+  font-size: 0.92rem;
+  color: rgba(219, 230, 248, 0.76);
+}
+
+.contact-booking-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(210px, 0.78fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.contact-calendar-card,
+.contact-time-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(123, 144, 189, 0.18);
+  border-radius: 18px;
+  background: rgba(27, 35, 62, 0.92);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.022);
+}
+
+.contact-calendar-head {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-calendar-head strong,
+.contact-time-card strong {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.contact-calendar-head strong {
+  text-align: center;
+}
+
+.contact-form .contact-calendar-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border: 1px solid rgba(123, 144, 189, 0.18);
+  border-radius: 12px;
+  background: rgba(18, 24, 44, 0.82);
+  color: rgba(228, 238, 255, 0.86);
+  box-shadow: none;
+}
+
+.contact-form .contact-calendar-nav:hover:not(:disabled) {
+  border-color: rgba(126, 227, 255, 0.26);
+  background: rgba(23, 31, 56, 0.96);
+}
+
+.contact-form .contact-calendar-nav:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.contact-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.contact-calendar-weekdays span {
+  color: rgba(220, 231, 248, 0.72);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.contact-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.contact-form .contact-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid rgba(123, 144, 189, 0.14);
+  border-radius: 14px;
+  background: rgba(16, 22, 41, 0.64);
+  color: #f6fbff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  box-shadow: none;
+}
+
+.contact-form .contact-calendar-day:hover:not(:disabled):not(.selected) {
+  border-color: rgba(126, 227, 255, 0.2);
+  background: rgba(22, 30, 54, 0.9);
+}
+
+.contact-form .contact-calendar-day.muted {
+  color: rgba(196, 210, 235, 0.3);
+}
+
+.contact-form .contact-calendar-day.disabled {
+  color: rgba(196, 210, 235, 0.22);
+  background: rgba(15, 20, 37, 0.36);
+  cursor: not-allowed;
+}
+
+.contact-form .contact-calendar-day.fully-booked {
+  color: rgba(245, 190, 190, 0.42);
+  border-color: rgba(255, 160, 160, 0.14);
+}
+
+.contact-form .contact-calendar-day.selected {
+  border-color: rgba(126, 227, 255, 0.5);
+  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  color: #081023;
+  box-shadow: 0 10px 26px rgba(109, 215, 255, 0.2);
+}
+
+.contact-time-list {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-form .contact-time-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 64px;
+  min-width: 0;
+  padding: 0 16px;
+  border: 1px solid rgba(123, 144, 189, 0.18);
+  border-radius: 16px;
+  background: rgba(18, 24, 44, 0.82);
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: none;
+}
+
+.contact-form .contact-time-button:hover:not(:disabled):not(.selected) {
+  border-color: rgba(126, 227, 255, 0.24);
+  background: rgba(23, 31, 56, 0.96);
+}
+
+.contact-form .contact-time-button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.contact-form .contact-time-button.booked {
+  color: rgba(248, 212, 212, 0.78);
+  border-color: rgba(255, 160, 160, 0.14);
+}
+
+.contact-form .contact-time-button.selected {
+  border-color: rgba(126, 227, 255, 0.46);
+  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  color: #081023;
+  box-shadow: 0 10px 26px rgba(109, 215, 255, 0.18);
+}
+
+.contact-booking-field {
+  gap: 8px;
+}
+
+.contact-booking-actions {
+  padding-top: 2px;
 }
 
 .contact-form .contact-next-button,
@@ -2787,6 +3177,15 @@ h3 {
 
   .contact-service-card {
     min-height: 176px;
+  }
+
+  .contact-calculator-field-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-booking-grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-step-actions,

@@ -942,7 +942,7 @@ export function ContactForm() {
               <ul>
                 <li>
                   <Check size={16} aria-hidden="true" />
-                  <span>Wir analysieren dein Projekt</span>
+                  <span>Wir analysieren deine Anfrage</span>
                 </li>
                 <li>
                   <Check size={16} aria-hidden="true" />
@@ -950,7 +950,7 @@ export function ContactForm() {
                 </li>
                 <li>
                   <Check size={16} aria-hidden="true" />
-                  <span>Senden dir ein persönliches Angebot</span>
+                  <span>Alle Details erhältst du per E-Mail</span>
                 </li>
               </ul>
             </div>

@@ -50,12 +50,12 @@ const visionPoints = [
 const packages = [
   {
     name: "Website",
-    price: "ab 1.490 EUR",
+    price: "ab 1300€",
     detail: "Für professionelle Webseiten mit modernem Design und klarer Struktur.",
   },
   {
     name: "SEO Growth",
-    price: "ab 2.900 EUR",
+    price: "ab 200€ monatlich",
     detail: "Für Webseiten mit Google-Ranking-Fokus, SEO-Struktur und Conversion-Flächen.",
     featured: true,
   },
@@ -104,7 +104,7 @@ export default function Home() {
               Kostenlose Anfrage
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="secondary-button" href="#vision">
+            <a className="secondary-button" href="#prozess">
               Unsere Vision
             </a>
           </div>

@@ -149,9 +149,9 @@ const websitePriceRanges = [
 ] as const;
 
 const seoMonthlyPriceRanges = [
-  { min: 200, max: 340 },
-  { min: 260, max: 470 },
-  { min: 320, max: 560 },
+  { min: 200, max: 320 },
+  { min: 260, max: 500 },
+  { min: 320, max: 620 },
 ] as const;
 
 const seoCompetitionAdjustments = [
@@ -168,14 +168,14 @@ const startWindowAdjustments = [
 
 const seoMonthlyCompetitionAdjustments = [
   { min: 0, max: 0 },
-  { min: 20, max: 50 },
-  { min: 40, max: 90 },
+  { min: 20, max: 60 },
+  { min: 40, max: 120 },
 ] as const;
 
 const seoMonthlyStartAdjustments = [
-  { min: 20, max: 50 },
-  { min: 10, max: 25 },
   { min: 0, max: 0 },
+  { min: 40, max: 80 },
+  { min: 120, max: 260 },
 ] as const;
 
 const appointmentTimes = ["11:00 Uhr", "14:00 Uhr", "15:00 Uhr", "16:00 Uhr"] as const;

@@ -11,6 +11,7 @@ import {
   ChevronRight,
   LayoutDashboard,
   MonitorSmartphone,
+  Plus,
   Search,
 } from "lucide-react";
 
@@ -91,27 +92,38 @@ const projectStepTwoConfigs = {
     ],
   },
   Verwaltungssystem: {
-    label: "Ich interessiere mich für:",
+    label: "Welche Art von Verwaltungssystem suchst du?",
+    helper: "(Mehrfachauswahl möglich, z. B. CRM, Lagerverwaltung oder Projektmanagement)",
     options: [
       {
-        key: "Kundenportal",
-        title: "Kundenportal",
-        text: "Zentraler Bereich für Kunden und Anfragen",
+        key: "Kundenverwaltung / CRM",
+        title: "Kundenverwaltung / CRM",
+        text: "Kontakte, Unternehmen und Vorgänge zentral verwalten",
+      },
+      {
+        key: "Mitarbeiterverwaltung",
+        title: "Mitarbeiterverwaltung",
+        text: "Teams, Rollen und interne Abläufe strukturiert organisieren",
+      },
+      {
+        key: "Lagerverwaltung",
+        title: "Lagerverwaltung",
+        text: "Bestände, Wareneingänge und Lagerprozesse im Blick behalten",
       },
       {
         key: "Terminverwaltung",
         title: "Terminverwaltung",
-        text: "Buchungen, Verfügbarkeiten und Abläufe steuern",
+        text: "Buchungen, Verfügbarkeiten und Kalender zentral steuern",
       },
       {
-        key: "Dashboard",
-        title: "Dashboard",
-        text: "Wichtige Kennzahlen und Status auf einen Blick",
+        key: "Projektmanagement",
+        title: "Projektmanagement",
+        text: "Aufgaben, Zuständigkeiten und Fortschritt zentral bündeln",
       },
       {
-        key: "Wartung & Support",
-        title: "Wartung & Support",
-        text: "Betreuung und technische Unterstützung",
+        key: "Individuelle Softwarelösung",
+        title: "Individuelle Softwarelösung",
+        text: "Maßgeschneiderte Lösung für deinen konkreten Ablauf",
       },
     ],
   },
@@ -198,6 +210,10 @@ export function ContactForm() {
     useState<(typeof projectStatusOptions)[number]>("Ich habe bereits eine Webseite");
   const [projectWebsite, setProjectWebsite] = useState("");
   const [projectSatisfaction, setProjectSatisfaction] = useState(3);
+  const [systemUserCount, setSystemUserCount] = useState("6-15 Nutzer");
+  const [systemMobileUsage, setSystemMobileUsage] = useState("Responsive Website");
+  const [systemInterfaceEntries, setSystemInterfaceEntries] = useState([""]);
+  const [systemDescription, setSystemDescription] = useState("");
   const [websiteScope, setWebsiteScope] = useState(1);
   const [seoCompetition, setSeoCompetition] = useState(1);
   const [startWindow, setStartWindow] = useState(1);
@@ -252,6 +268,13 @@ export function ContactForm() {
     selectedTopic && selectedTopic in projectStepTwoConfigs
       ? projectStepTwoConfigs[selectedTopic as keyof typeof projectStepTwoConfigs]
       : null;
+  const showProjectDetails = selectedTopic === "Webseite" || selectedTopic === "Verwaltungssystem";
+  const showSystemDetails = selectedTopic === "Verwaltungssystem";
+  const projectLocationLabel = showSystemDetails ? "Bestehende Lösung / Link" : "Webseite";
+  const projectLocationPlaceholder = showSystemDetails
+    ? "https://deine-software.de"
+    : "https://deine-webseite.de";
+  const projectLocationHelper = showSystemDetails ? "(falls vorhanden)" : "(falls vorhanden)";
 
   useEffect(() => {
     let cancelled = false;
@@ -350,10 +373,24 @@ export function ContactForm() {
         "",
         `Anliegen: ${selectedTopic}`,
         `Leistungen: ${selectedServices.join(", ")}`,
-        projectName.trim() ? `Projektname: ${projectName.trim()}` : "",
-        `Aktueller Status: ${projectStatus}`,
-        projectWebsite.trim() ? `Webseite: ${projectWebsite.trim()}` : "",
-        `Zufriedenheit mit aktueller Lösung: ${projectSatisfactionLabels[projectSatisfaction]}`,
+        showProjectDetails && projectName.trim()
+          ? `Projektname: ${projectName.trim()}`
+          : "",
+        showProjectDetails ? `Aktueller Status: ${projectStatus}` : "",
+        showProjectDetails && projectWebsite.trim()
+          ? `${projectLocationLabel}: ${projectWebsite.trim()}`
+          : "",
+        showProjectDetails
+          ? `Zufriedenheit mit aktueller Lösung: ${projectSatisfactionLabels[projectSatisfaction]}`
+          : "",
+        showSystemDetails ? `Nutzerzahl: ${systemUserCount}` : "",
+        showSystemDetails ? `Mobile Nutzung: ${systemMobileUsage}` : "",
+        showSystemDetails && systemInterfaceEntries.some((entry) => entry.trim())
+          ? `Schnittstellen: ${systemInterfaceEntries.map((entry) => entry.trim()).filter(Boolean).join(", ")}`
+          : "",
+        showSystemDetails && systemDescription.trim()
+          ? `Systembeschreibung: ${systemDescription.trim()}`
+          : "",
         `Webseiten Umfang: ${websiteScopeLabels[websiteScope]}`,
         `SEO Wettbewerb: ${seoCompetitionLabels[seoCompetition]}`,
         `${isSeoCalculator ? "Betreuungszeitraum" : "Gewünschter Start"}: ${selectedStartWindowLabel}`,
@@ -389,6 +426,10 @@ export function ContactForm() {
       setProjectStatus("Ich habe bereits eine Webseite");
       setProjectWebsite("");
       setProjectSatisfaction(3);
+      setSystemUserCount("6-15 Nutzer");
+      setSystemMobileUsage("Responsive Website");
+      setSystemInterfaceEntries([""]);
+      setSystemDescription("");
       setWebsiteScope(1);
       setSeoCompetition(1);
       setStartWindow(1);
@@ -431,6 +472,16 @@ export function ContactForm() {
       currency: "EUR",
       maximumFractionDigits: 0,
     }).format(value);
+  }
+
+  function updateSystemInterfaceEntry(index: number, value: string) {
+    setSystemInterfaceEntries((current) =>
+      current.map((entry, entryIndex) => (entryIndex === index ? value : entry)),
+    );
+  }
+
+  function addSystemInterfaceEntry() {
+    setSystemInterfaceEntries((current) => [...current, ""]);
   }
 
   function rangeStyle(value: number) {
@@ -581,11 +632,11 @@ export function ContactForm() {
                 </label>
 
                 <label className="contact-project-info-field contact-project-info-field-full">
-                  Webseite <span>(falls vorhanden)</span>
+                  {projectLocationLabel} <span>{projectLocationHelper}</span>
                   <input
                     type="url"
                     inputMode="url"
-                    placeholder="https://deine-webseite.de"
+                    placeholder={projectLocationPlaceholder}
                     value={projectWebsite}
                     onChange={(event) => setProjectWebsite(event.currentTarget.value)}
                   />
@@ -616,6 +667,91 @@ export function ContactForm() {
                     <span>Gar nicht</span>
                     <span>Sehr zufrieden</span>
                   </div>
+                </div>
+              </div>
+            ) : null}
+
+            {showSystemDetails ? (
+              <div className="contact-system-details">
+                <div className="contact-system-details-copy">
+                  <h4>Zusätzliche Angaben zum Verwaltungssystem</h4>
+                  <p>
+                    Diese Angaben helfen uns, den Umfang, die Nutzung und die technische Richtung
+                    besser einzuordnen.
+                  </p>
+                </div>
+
+                <div className="contact-project-info-grid">
+                  <label className="contact-project-info-field">
+                    Wie viele Nutzer sollen mit dem System arbeiten?
+                    <select
+                      value={systemUserCount}
+                      onChange={(event) => setSystemUserCount(event.currentTarget.value)}
+                    >
+                      <option value="1-5 Nutzer">1-5 Nutzer</option>
+                      <option value="6-15 Nutzer">6-15 Nutzer</option>
+                      <option value="16-50 Nutzer">16-50 Nutzer</option>
+                      <option value="51-100 Nutzer">51-100 Nutzer</option>
+                      <option value="100+ Nutzer">100+ Nutzer</option>
+                    </select>
+                  </label>
+
+                  <label className="contact-project-info-field">
+                    Wie soll das System genutzt werden?
+                    <select
+                      value={systemMobileUsage}
+                      onChange={(event) => setSystemMobileUsage(event.currentTarget.value)}
+                    >
+                      <option value="Nur Desktop">Nur Desktop</option>
+                      <option value="Responsive Website">Responsive Website</option>
+                      <option value="Eigene App für Android / iPhone">
+                        Eigene App für Android / iPhone
+                      </option>
+                    </select>
+                  </label>
+
+                  <div className="contact-project-info-field contact-project-info-field-full">
+                    Welche Schnittstellen werden benötigt?
+                    <span>
+                      Zum Beispiel Google Kalender, Outlook, Lexoffice, DATEV oder interne Tools
+                    </span>
+                    <div className="contact-system-interface-list">
+                      {systemInterfaceEntries.map((entry, index) => (
+                        <input
+                          key={`system-interface-${index}`}
+                          type="text"
+                          placeholder={`Schnittstelle ${index + 1}`}
+                          value={entry}
+                          onChange={(event) =>
+                            updateSystemInterfaceEntry(index, event.currentTarget.value)
+                          }
+                        />
+                      ))}
+                    </div>
+                    <div className="contact-system-interface-actions">
+                      <button
+                        type="button"
+                        className="contact-inline-add-button"
+                        onClick={addSystemInterfaceEntry}
+                      >
+                        <Plus size={15} aria-hidden="true" />
+                        Weitere Schnittstelle hinzufügen
+                      </button>
+                    </div>
+                  </div>
+
+                  <label className="contact-project-info-field contact-project-info-field-full">
+                    Beschreibung: Was soll das System tun?
+                    <span>
+                      Beschreibe kurz die wichtigsten Prozesse, Abläufe und Ziele.
+                    </span>
+                    <textarea
+                      rows={4}
+                      placeholder="Zum Beispiel: Kunden verwalten, Termine koordinieren, Dokumente speichern und automatisch Erinnerungen versenden."
+                      value={systemDescription}
+                      onChange={(event) => setSystemDescription(event.currentTarget.value)}
+                    />
+                  </label>
                 </div>
               </div>
             ) : null}
@@ -883,6 +1019,7 @@ export function ContactForm() {
                   ))}
                 </div>
               </div>
+
             </div>
 
             <label className="contact-booking-field">

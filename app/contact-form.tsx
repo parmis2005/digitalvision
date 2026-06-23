@@ -148,6 +148,12 @@ const websitePriceRanges = [
   { min: 3600, max: 5000 },
 ] as const;
 
+const seoMonthlyPriceRanges = [
+  { min: 200, max: 340 },
+  { min: 260, max: 470 },
+  { min: 320, max: 560 },
+] as const;
+
 const seoCompetitionAdjustments = [
   { min: 0, max: 0 },
   { min: 150, max: 300 },
@@ -157,6 +163,18 @@ const seoCompetitionAdjustments = [
 const startWindowAdjustments = [
   { min: 150, max: 500 },
   { min: 50, max: 200 },
+  { min: 0, max: 0 },
+] as const;
+
+const seoMonthlyCompetitionAdjustments = [
+  { min: 0, max: 0 },
+  { min: 20, max: 50 },
+  { min: 40, max: 90 },
+] as const;
+
+const seoMonthlyStartAdjustments = [
+  { min: 20, max: 50 },
+  { min: 10, max: 25 },
   { min: 0, max: 0 },
 ] as const;
 
@@ -193,16 +211,26 @@ export function ContactForm() {
   const [contactEmail, setContactEmail] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
-  const estimatedMinPrice =
-    websitePriceRanges[websiteScope].min +
-    seoCompetitionAdjustments[seoCompetition].min +
-    startWindowAdjustments[startWindow].min;
-  const estimatedMaxPrice =
-    websitePriceRanges[websiteScope].max +
-    seoCompetitionAdjustments[seoCompetition].max +
-    startWindowAdjustments[startWindow].max;
+  const isSeoCalculator = selectedTopic === "SEO";
+  const estimatedMinPrice = isSeoCalculator
+    ? seoMonthlyPriceRanges[websiteScope].min +
+      seoMonthlyCompetitionAdjustments[seoCompetition].min +
+      seoMonthlyStartAdjustments[startWindow].min
+    : websitePriceRanges[websiteScope].min +
+      seoCompetitionAdjustments[seoCompetition].min +
+      startWindowAdjustments[startWindow].min;
+  const estimatedMaxPrice = isSeoCalculator
+    ? seoMonthlyPriceRanges[websiteScope].max +
+      seoMonthlyCompetitionAdjustments[seoCompetition].max +
+      seoMonthlyStartAdjustments[startWindow].max
+    : websitePriceRanges[websiteScope].max +
+      seoCompetitionAdjustments[seoCompetition].max +
+      startWindowAdjustments[startWindow].max;
 
   const formattedEstimate = `${formatPrice(estimatedMinPrice)} - ${formatPrice(estimatedMaxPrice)}`;
+  const selectedStartWindowLabel = isSeoCalculator
+    ? (["3 Monate", "6 Monate", "12 Monate"] as const)[startWindow]
+    : startWindowLabels[startWindow];
   const currentMonth = startOfMonth(new Date());
   const canGoToPreviousMonth = displayedMonth.getTime() > currentMonth.getTime();
   const monthKey = formatDateKey(displayedMonth).slice(0, 7);
@@ -309,7 +337,7 @@ export function ContactForm() {
     formData.set("services", selectedServices.join(", "));
     formData.set("websiteScope", websiteScopeLabels[websiteScope]);
     formData.set("seoCompetition", seoCompetitionLabels[seoCompetition]);
-    formData.set("startWindow", startWindowLabels[startWindow]);
+    formData.set("startWindow", selectedStartWindowLabel);
     formData.set("priceEstimate", formattedEstimate);
     formData.set("appointmentAdvisor", selectedAdvisor);
     formData.set("appointmentDate", selectedDateLabel);
@@ -328,8 +356,8 @@ export function ContactForm() {
         `Zufriedenheit mit aktueller Lösung: ${projectSatisfactionLabels[projectSatisfaction]}`,
         `Webseiten Umfang: ${websiteScopeLabels[websiteScope]}`,
         `SEO Wettbewerb: ${seoCompetitionLabels[seoCompetition]}`,
-        `Gewünschter Start: ${startWindowLabels[startWindow]}`,
-        `Geschätzter Preisrahmen: ${formattedEstimate}`,
+        `${isSeoCalculator ? "Betreuungszeitraum" : "Gewünschter Start"}: ${selectedStartWindowLabel}`,
+        `${isSeoCalculator ? "Monatlicher Geschätzter Preisrahmen" : "Geschätzter Preisrahmen"}: ${formattedEstimate}`,
         `Ansprechperson: ${selectedAdvisor}`,
         `Termin: ${selectedDateLabel}`,
         `Uhrzeit: ${appointmentTime}`,
@@ -671,8 +699,10 @@ export function ContactForm() {
 
               <div className="contact-calculator-field">
                 <div className="contact-calculator-field-head">
-                  <span>Gewünschter Start</span>
-                  <span>{startWindowLabels[startWindow]}</span>
+                  <span>{isSeoCalculator ? "Betreuungszeitraum" : "Gewünschter Start"}</span>
+                  <span>
+                    {selectedStartWindowLabel}
+                  </span>
                 </div>
                 <div className="contact-range-shell" style={rangeStyle(startWindow)}>
                   <input
@@ -688,7 +718,11 @@ export function ContactForm() {
               </div>
 
               <div className="contact-estimate-card">
-                <span>Geschätzter Preisrahmen</span>
+                <span>
+                  {isSeoCalculator
+                    ? "Monatlicher Geschätzter Preisrahmen"
+                    : "Geschätzter Preisrahmen"}
+                </span>
                 <strong>{formattedEstimate}</strong>
                 <p>Unverbindlich & individuell anpassbar</p>
               </div>
@@ -740,7 +774,7 @@ export function ContactForm() {
               type="hidden"
               value={seoCompetitionLabels[seoCompetition]}
             />
-            <input name="startWindow" type="hidden" value={startWindowLabels[startWindow]} />
+            <input name="startWindow" type="hidden" value={selectedStartWindowLabel} />
             <input name="priceEstimate" type="hidden" value={formattedEstimate} />
             <input name="appointmentAdvisor" type="hidden" value={selectedAdvisor} />
             <input name="appointmentDate" type="hidden" value={selectedDateLabel} />

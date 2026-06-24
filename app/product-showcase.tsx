@@ -9,7 +9,7 @@ import { ProductPreview } from "./product-preview";
 export function ProductShowcase() {
   const railRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
-  const showcaseProducts = repeatedProducts.filter((product) => product.slug !== "serenity-studio");
+  const showcaseProducts = repeatedProducts;
 
   useEffect(() => {
     const rail = railRef.current;

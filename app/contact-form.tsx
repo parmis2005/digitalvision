@@ -742,9 +742,6 @@ export function ContactForm() {
 
                   <label className="contact-project-info-field contact-project-info-field-full">
                     Beschreibung: Was soll das System tun?
-                    <span>
-                      Beschreibe kurz die wichtigsten Prozesse, Abläufe und Ziele.
-                    </span>
                     <textarea
                       rows={4}
                       placeholder="Zum Beispiel: Kunden verwalten, Termine koordinieren, Dokumente speichern und automatisch Erinnerungen versenden."

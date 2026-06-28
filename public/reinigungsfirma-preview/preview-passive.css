@@ -51,6 +51,15 @@ html[data-preview-passive="true"] [tabindex] {
     opacity: 0.98 !important;
   }
 
+  html[data-preview-passive="true"] #home .relative.hidden.lg\:block > .absolute.bottom-4.right-4 {
+    right: auto !important;
+    bottom: auto !important;
+    left: 1rem !important;
+    top: 1rem !important;
+    transform: scale(0.78) !important;
+    transform-origin: top left !important;
+  }
+
   html[data-preview-passive="true"] #home .relative.max-w-7xl > .grid > div:first-child {
     position: relative !important;
     z-index: 1 !important;

@@ -7,3 +7,30 @@ html[data-preview-passive="true"] [role="button"],
 html[data-preview-passive="true"] [tabindex] {
   cursor: default !important;
 }
+
+@media (min-width: 1024px) {
+  html[data-preview-passive="true"] #home {
+    min-height: 720px !important;
+    padding-top: 7rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  html[data-preview-passive="true"] #home > .relative.max-w-7xl > .grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.72fr) !important;
+    gap: 2rem !important;
+  }
+
+  html[data-preview-passive="true"] #home h1 {
+    max-width: 760px !important;
+    font-size: clamp(2.5rem, 4.2vw, 4.1rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  html[data-preview-passive="true"] #home .relative.hidden.lg\:block {
+    display: block !important;
+  }
+
+  html[data-preview-passive="true"] #home .h-\[540px\] {
+    height: 430px !important;
+  }
+}

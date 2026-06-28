@@ -1466,16 +1466,14 @@ h3 {
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.3), transparent 18%),
     radial-gradient(circle at 82% 24%, rgba(225, 159, 183, 0.24), transparent 18%),
-    linear-gradient(160deg, #fff2f6 0%, #f4dfe8 42%, #e5ccd7 100%);
+    linear-gradient(160deg, #fcecf2 0%, #efd5df 44%, #d5bbc8 100%);
   color: #342237;
 }
 
 .fashion-preview-card-view {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  gap: 10px;
   height: 100%;
-  min-height: 0;
 }
 
 .fashion-card-top {
@@ -1486,7 +1484,7 @@ h3 {
 }
 
 .fashion-card-cta {
-  color: rgba(77, 54, 68, 0.72);
+  color: rgba(82, 58, 75, 0.84);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1494,28 +1492,23 @@ h3 {
 }
 
 .fashion-card-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  gap: 10px;
   min-height: 0;
   flex: 1;
-  padding: 12px;
-  border-radius: 26px;
-  background: rgba(255, 250, 252, 0.62);
-  box-shadow: inset 0 0 0 1px rgba(93, 47, 67, 0.08);
 }
 
 .fashion-card-branding {
   display: grid;
-  gap: 3px;
+  gap: 2px;
 }
 
 .fashion-card-branding p {
   margin-bottom: 0;
   color: #3d2433;
   font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.18rem;
+  font-weight: 700;
   line-height: 0.94;
 }
 
@@ -1529,16 +1522,13 @@ h3 {
 
 .fashion-card-stage {
   position: relative;
-  flex: 1;
-  min-height: 96px;
-  border-radius: 20px;
+  min-height: 128px;
+  border-radius: 22px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(64, 35, 48, 0.08), rgba(64, 35, 48, 0.18)),
-    url("/velora-fashion-preview/assets/hero-tailored-set.png") center/cover no-repeat;
-  box-shadow:
-    inset 0 0 0 1px rgba(61, 31, 44, 0.06),
-    0 10px 24px rgba(76, 50, 66, 0.14);
+    linear-gradient(180deg, rgba(64, 35, 48, 0.12), rgba(64, 35, 48, 0.34)),
+    url("/velora-fashion-preview/assets/hero-tailored-set.png") center 38%/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(61, 31, 44, 0.08);
 }
 
 .fashion-card-overlay {
@@ -1547,7 +1537,7 @@ h3 {
   top: 12px;
   display: grid;
   gap: 6px;
-  max-width: 58%;
+  max-width: 62%;
   color: #fff;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
@@ -1559,7 +1549,7 @@ h3 {
   min-height: 22px;
   padding: 0 9px;
   border-radius: 999px;
-  background: rgba(255, 248, 250, 0.9);
+  background: rgba(255, 248, 250, 0.24);
   color: #7f5b72;
   font-size: 0.48rem;
   font-weight: 800;
@@ -1569,7 +1559,7 @@ h3 {
 
 .fashion-card-overlay strong {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   line-height: 0.95;
   font-style: normal;
 }
@@ -1578,8 +1568,8 @@ h3 {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 96px;
-  height: 60px;
+  width: 102px;
+  height: 62px;
   border-radius: 16px;
   background:
     linear-gradient(180deg, rgba(255, 248, 250, 0.06), rgba(255, 248, 250, 0.06)),
@@ -1590,14 +1580,14 @@ h3 {
 }
 
 .fashion-card-copy {
-  display: grid;
+  display: none;
   gap: 4px;
 }
 
 .fashion-card-copy h3 {
   margin-bottom: 0;
   color: #3d2433;
-  font-size: 1.04rem;
+  font-size: 1.08rem;
   line-height: 0.98;
 }
 

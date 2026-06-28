@@ -165,8 +165,8 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
           </div>
           <div className="fashion-card-shell">
             <div className="fashion-card-branding">
-              <p>Damenmode Online-Shop</p>
-              <span>Lookbook & Styling</span>
+              <p>VELORA Fashion</p>
+              <span>Damenmode & Styling</span>
             </div>
             <div className="fashion-card-stage">
               <div className="fashion-card-overlay">

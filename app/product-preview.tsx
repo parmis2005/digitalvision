@@ -151,6 +151,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
     }
   }
 
+  if (product.slug === "velora-fashion") {
+    if (size === "card") {
+      return (
+        <div className="fashion-preview-card-view">
+          <div className="fashion-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="fashion-card-cta">Lookbook</span>
+          </div>
+          <div className="fashion-card-shell">
+            <div className="fashion-card-branding">
+              <p>Damenmode Online-Shop</p>
+              <span>Lookbook & Styling</span>
+            </div>
+            <div className="fashion-card-stage">
+              <div className="fashion-card-overlay">
+                <span className="fashion-card-kicker">Editoriale Auswahl</span>
+                <strong>Leichte Looks für Alltag, Office und besondere Anlässe.</strong>
+              </div>
+              <div className="fashion-card-accent" />
+            </div>
+            <div className="fashion-card-copy">
+              <h3>VELORA Fashion</h3>
+              <span>Kleider · Blusen · Tailoring · Sale</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
   if (isWellness) {
     if (size === "card") {
       return (

@@ -1,0 +1,17 @@
+html[data-velora-preview-passive="true"] a,
+html[data-velora-preview-passive="true"] button,
+html[data-velora-preview-passive="true"] input,
+html[data-velora-preview-passive="true"] select,
+html[data-velora-preview-passive="true"] textarea,
+html[data-velora-preview-passive="true"] [role="button"],
+html[data-velora-preview-passive="true"] [tabindex] {
+  cursor: default !important;
+}
+
+html[data-velora-preview-passive="true"] header .absolute.top-full {
+  display: none !important;
+}
+
+html[data-velora-preview-passive="true"] header .group-hover\:rotate-180 {
+  rotate: 0deg !important;
+}

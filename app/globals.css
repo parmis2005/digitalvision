@@ -708,6 +708,12 @@ h3 {
   height: 100%;
 }
 
+.medical-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .fashion-preview-card-view {
   display: grid;
   gap: 10px;
@@ -1502,6 +1508,110 @@ h3 {
     0 10px 24px rgba(77, 52, 28, 0.14);
 }
 
+.medical-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.medical-card-cta {
+  color: rgba(232, 249, 255, 0.88);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.medical-card-shell {
+  display: grid;
+  gap: 10px;
+}
+
+.medical-card-branding p {
+  margin-bottom: 0;
+  color: #f5fbff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 0.98;
+}
+
+.medical-card-branding span {
+  color: rgba(232, 249, 255, 0.78);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.medical-card-stage {
+  position: relative;
+  min-height: 120px;
+  overflow: hidden;
+  border-radius: 26px;
+  background:
+    linear-gradient(90deg, rgba(18, 54, 78, 0.74), rgba(18, 54, 78, 0.22)),
+    url("https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=900&q=90") center 18%/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(237, 252, 255, 0.18);
+}
+
+.medical-card-overlay {
+  position: absolute;
+  inset: 16px auto 16px 16px;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  max-width: 74%;
+}
+
+.medical-card-kicker {
+  width: max-content;
+  max-width: 100%;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(43, 122, 158, 0.78);
+  color: #ecfbff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.medical-card-overlay strong {
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.14rem, 1.6vw, 1.36rem);
+  line-height: 0.98;
+  text-shadow: 0 2px 18px rgba(2, 20, 31, 0.48);
+}
+
+.medical-card-accent {
+  position: absolute;
+  right: 14px;
+  bottom: 18px;
+  width: 118px;
+  height: 70px;
+  border: 1px solid rgba(237, 252, 255, 0.54);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(43, 122, 158, 0.1)),
+    url("https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=480&q=90") center 34%/cover no-repeat;
+  box-shadow: 0 12px 26px rgba(11, 38, 54, 0.26);
+}
+
+.medical-card-copy h3 {
+  margin-bottom: 3px;
+  color: #f8fbff;
+  font-size: 0.98rem;
+  line-height: 1.05;
+}
+
+.medical-card-copy span {
+  color: rgba(205, 226, 238, 0.82);
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
 .beauty-preview-card {
   display: grid;
   gap: 2px;
@@ -1631,6 +1741,14 @@ h3 {
     radial-gradient(circle at 82% 24%, rgba(231, 155, 101, 0.12), transparent 18%),
     linear-gradient(160deg, #556549 0%, #7f8b6d 42%, #c8b79c 100%);
   color: #f4f5ef;
+}
+
+.showcase-card.medical .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255, 255, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 18% 88%, rgba(119, 202, 220, 0.18), transparent 18%),
+    linear-gradient(160deg, #2b7a9e 0%, #6ca6b8 45%, #e5f4f6 100%);
+  color: #f8fbff;
 }
 
 .product-page {
@@ -1841,6 +1959,18 @@ h3 {
     radial-gradient(circle at 82% 24%, rgba(231, 155, 101, 0.12), transparent 18%),
     linear-gradient(160deg, #556549 0%, #7f8b6d 42%, #c8b79c 100%);
   color: #f4f5ef;
+}
+
+.product-preview-large.medical .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.22), transparent 20%),
+    linear-gradient(135deg, #2b7a9e, #74aebe 52%, #e6f4f6);
+  color: #f8fbff;
+}
+
+.product-preview-large.medical .product-preview-viewport,
+.product-preview-large.medical .product-preview-iframe {
+  background: #eef8f9;
 }
 
 .product-details {

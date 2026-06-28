@@ -11,6 +11,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isCoffee = product.slug === "bean-bark";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
+  const isMedical = product.slug === "arztpraxis-weber";
 
   if (isBeauty) {
     if (size === "card") {
@@ -209,6 +210,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="wellness-card-copy">
               <h3>Serenity Studio</h3>
               <span>Spa · Recovery · Massage · Private Sessions</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isMedical) {
+    if (size === "card") {
+      return (
+        <div className="medical-preview-card-view">
+          <div className="medical-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="medical-card-cta">Termin anfragen</span>
+          </div>
+          <div className="medical-card-shell">
+            <div className="medical-card-branding">
+              <p>Arztpraxis Weber</p>
+              <span>Hausarztmedizin & Vorsorge</span>
+            </div>
+            <div className="medical-card-stage">
+              <div className="medical-card-overlay">
+                <span className="medical-card-kicker">Moderne Medizin. Nah am Menschen.</span>
+                <strong>Hausarztpraxis mit klarer Betreuung und direktem Kontakt.</strong>
+              </div>
+              <div className="medical-card-accent" />
+            </div>
+            <div className="medical-card-copy">
+              <h3>Arztpraxis Weber</h3>
+              <span>Praxis · Leistungen · Team · Kontakt</span>
             </div>
           </div>
         </div>

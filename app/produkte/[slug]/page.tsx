@@ -193,6 +193,31 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "arztpraxis-weber" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Praxis-Auftritt mit klarer Patientenführung und vertrauensvoller Wirkung.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Arztpraxis-Projekts:
+              ruhige medizinische Farbwelt, klare Navigation, Leistungen, Team,
+              Kontakt und ein Aufbau, der Patienten schnell zur richtigen Information führt.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : (
         <section className="product-details">
           <div className="product-detail-card">

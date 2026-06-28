@@ -3,7 +3,18 @@ export type ProductItem = {
   type: string;
   title: string;
   detail: string;
-  variant: "earth" | "forest" | "studio" | "fashion" | "portal" | "schedule" | "seo" | "auto" | "coffee" | "wellness";
+  variant:
+    | "earth"
+    | "forest"
+    | "studio"
+    | "fashion"
+    | "portal"
+    | "schedule"
+    | "seo"
+    | "auto"
+    | "coffee"
+    | "wellness"
+    | "medical";
   category: string;
   intro: string;
   highlights: string[];
@@ -86,6 +97,22 @@ export const products: ProductItem[] = [
       "Geeignet für Spa-Studios, Recovery-Lounges und moderne Health-Konzepte",
     ],
     previewUrl: "/wellness-preview/index.html",
+  },
+  {
+    slug: "arztpraxis-weber",
+    type: "Arztpraxis Website",
+    title: "Arztpraxis Weber",
+    detail: "Moderne Praxis-Website für Hausarztmedizin, Leistungen, Team und Kontakt",
+    variant: "medical",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Arztpraxis-Website mit klarer Patientenführung, vertrauensvoller Bildsprache und direktem Kontaktaufbau.",
+    highlights: [
+      "Vertrauensvoller Praxis-Auftritt mit Hero, Leistungen und Team-Bereich",
+      "Klare Struktur für Terminwunsch, Telefonnummer, Standort und Kontakt",
+      "Geeignet für Hausarztpraxen, Facharztpraxen und moderne Gesundheitsangebote",
+    ],
+    previewUrl: "/arztpraxis-preview/index.html",
   },
   {
     slug: "lead-funnel",

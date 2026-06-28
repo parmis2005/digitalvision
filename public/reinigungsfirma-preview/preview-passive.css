@@ -43,6 +43,7 @@ html[data-preview-passive="true"] [tabindex] {
     width: 340px !important;
     z-index: 0 !important;
     pointer-events: none !important;
+    padding-bottom: 3.2rem !important;
   }
 
   html[data-preview-passive="true"] #home .h-\[540px\] {
@@ -55,17 +56,21 @@ html[data-preview-passive="true"] [tabindex] {
     display: none !important;
   }
 
-  html[data-preview-passive="true"] #home::after {
+  html[data-preview-passive="true"] #home .relative.hidden.lg\:block > .absolute.top-4.left-4 {
+    display: none !important;
+  }
+
+  html[data-preview-passive="true"] #home .relative.hidden.lg\:block::after {
     position: absolute;
-    left: 1.5rem;
-    bottom: 2rem;
+    right: 0;
+    bottom: 0.2rem;
     z-index: 2;
-    padding: 0.7rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.24);
+    padding: 0.64rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(11, 74, 102, 0.54);
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 800;
     line-height: 1.2;
     white-space: pre;

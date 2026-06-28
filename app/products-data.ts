@@ -14,7 +14,8 @@ export type ProductItem = {
     | "auto"
     | "coffee"
     | "wellness"
-    | "medical";
+    | "medical"
+    | "cleaning";
   category: string;
   intro: string;
   highlights: string[];
@@ -113,6 +114,22 @@ export const products: ProductItem[] = [
       "Geeignet für Hausarztpraxen, Facharztpraxen und moderne Gesundheitsangebote",
     ],
     previewUrl: "/arztpraxis-preview/index.html",
+  },
+  {
+    slug: "cleanpro-reinigung",
+    type: "Reinigungsfirma Website",
+    title: "CleanPro Reinigung",
+    detail: "Moderne Website für Gebäudereinigung, Leistungen, Standorte und Angebote",
+    variant: "cleaning",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Reinigungsfirma-Website mit klarer Leistungsstruktur, vertrauensvoller Bildsprache und direktem Angebotsfokus.",
+    highlights: [
+      "Starker Hero-Bereich für Gebäudereinigung, Erfahrung und Vertrauen",
+      "Klare Leistungsbereiche für Büroreinigung, Glasreinigung und Desinfektion",
+      "Geeignet für Reinigungsfirmen, Facility-Services und regionale Dienstleister",
+    ],
+    previewUrl: "/reinigungsfirma-preview/index.html",
   },
   {
     slug: "lead-funnel",

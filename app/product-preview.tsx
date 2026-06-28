@@ -12,6 +12,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
+  const isCleaning = product.slug === "cleanpro-reinigung";
 
   if (isBeauty) {
     if (size === "card") {
@@ -246,6 +247,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="medical-card-copy">
               <h3>Arztpraxis Weber</h3>
               <span>Praxis · Leistungen · Team · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isCleaning) {
+    if (size === "card") {
+      return (
+        <div className="cleaning-preview-card-view">
+          <div className="cleaning-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="cleaning-card-cta">Angebot anfordern</span>
+          </div>
+          <div className="cleaning-card-shell">
+            <div className="cleaning-card-branding">
+              <p>CleanPro</p>
+              <span>Gebäudereinigung GmbH</span>
+            </div>
+            <div className="cleaning-card-stage">
+              <div className="cleaning-card-overlay">
+                <span className="cleaning-card-kicker">Sauberkeit mit System</span>
+                <strong>Professionelle Gebäudereinigung für Büros und Objekte.</strong>
+              </div>
+              <div className="cleaning-card-accent" />
+            </div>
+            <div className="cleaning-card-copy">
+              <h3>CleanPro Reinigung</h3>
+              <span>Leistungen · Standorte · Angebote · Kontakt</span>
             </div>
           </div>
         </div>

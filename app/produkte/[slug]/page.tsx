@@ -143,6 +143,31 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "velora-fashion" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Femininer Fashion-Shop mit editorialer Bildsprache und klarer Produktführung.
+            </h2>
+            <p>
+              Dieses Projekt zeigt einen modernen Damenmode-Shop mit ruhiger
+              Farbwelt, starken Produktbildern und einer Struktur, die Neuheiten,
+              Bestseller und Sale sauber voneinander trennt.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : product.slug === "autohaus-nordglanz" ? (
         <section className="product-details">
           <div className="product-detail-card">

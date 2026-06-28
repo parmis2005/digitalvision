@@ -1462,6 +1462,28 @@ h3 {
     linear-gradient(135deg, #ddd2c8, #f4e8df);
 }
 
+.showcase-card.fashion .showcase-preview {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 225, 236, 0.24), transparent 24%),
+    linear-gradient(135deg, #f8edf3, #efdee7 52%, #e8d5da 100%);
+  color: #35212c;
+}
+
+.showcase-card.fashion .preview-art {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 20%),
+    url("/feminine/hero-tailored-set.png") center right/118% no-repeat,
+    linear-gradient(135deg, #ead6df, #cfaebf 52%, #b990a8);
+}
+
+.showcase-card.fashion .preview-copy p {
+  color: rgba(80, 43, 61, 0.82);
+}
+
+.showcase-card.fashion .preview-footer span {
+  background: rgba(80, 43, 61, 0.14);
+}
+
 .showcase-card.portal .showcase-preview {
   background: linear-gradient(135deg, #7186d8, #5762c8 58%, #454eb2);
   color: white;
@@ -1688,6 +1710,13 @@ h3 {
 .product-preview-large.studio .product-preview-shell {
   background: linear-gradient(135deg, #f0ece7, #f3f1eb 54%, #e6dfd7);
   color: #da5430;
+}
+
+.product-preview-large.fashion .product-preview-shell {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 227, 237, 0.28), transparent 20%),
+    linear-gradient(160deg, #f8edf3 0%, #efdce6 44%, #e7d6da 100%);
+  color: #2d1f2e;
 }
 
 .product-preview-large.portal .product-preview-shell {

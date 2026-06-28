@@ -1464,10 +1464,10 @@ h3 {
 
 .showcase-card.fashion .showcase-preview {
   background:
-    radial-gradient(circle at 18% 18%, rgba(255, 227, 237, 0.3), transparent 20%),
-    radial-gradient(circle at 82% 24%, rgba(231, 155, 101, 0.12), transparent 18%),
-    linear-gradient(160deg, #f8edf3 0%, #efdce6 44%, #e7d6da 100%);
-  color: #2d1f2e;
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.3), transparent 18%),
+    radial-gradient(circle at 82% 24%, rgba(225, 159, 183, 0.24), transparent 18%),
+    linear-gradient(160deg, #fff2f6 0%, #f4dfe8 42%, #e5ccd7 100%);
+  color: #342237;
 }
 
 .fashion-preview-card-view {
@@ -1501,7 +1501,7 @@ h3 {
   flex: 1;
   padding: 12px;
   border-radius: 26px;
-  background: rgba(255, 247, 250, 0.5);
+  background: rgba(255, 250, 252, 0.62);
   box-shadow: inset 0 0 0 1px rgba(93, 47, 67, 0.08);
 }
 
@@ -1512,7 +1512,7 @@ h3 {
 
 .fashion-card-branding p {
   margin-bottom: 0;
-  color: #3a2434;
+  color: #3d2433;
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-size: 1.1rem;
   font-weight: 600;
@@ -1520,7 +1520,7 @@ h3 {
 }
 
 .fashion-card-branding span {
-  color: rgba(77, 54, 68, 0.72);
+  color: rgba(77, 54, 68, 0.74);
   font-size: 0.54rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1534,7 +1534,7 @@ h3 {
   border-radius: 20px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(64, 35, 48, 0.1), rgba(64, 35, 48, 0.22)),
+    linear-gradient(180deg, rgba(64, 35, 48, 0.08), rgba(64, 35, 48, 0.18)),
     url("/velora-fashion-preview/assets/hero-tailored-set.png") center/cover no-repeat;
   box-shadow:
     inset 0 0 0 1px rgba(61, 31, 44, 0.06),
@@ -1559,8 +1559,8 @@ h3 {
   min-height: 22px;
   padding: 0 9px;
   border-radius: 999px;
-  background: rgba(255, 248, 250, 0.88);
-  color: #7b5870;
+  background: rgba(255, 248, 250, 0.9);
+  color: #7f5b72;
   font-size: 0.48rem;
   font-weight: 800;
   letter-spacing: 0.09em;
@@ -1582,7 +1582,8 @@ h3 {
   height: 60px;
   border-radius: 16px;
   background:
-    url("/velora-fashion-preview/assets/tile-linen-dress.png") center/cover no-repeat;
+    linear-gradient(180deg, rgba(255, 248, 250, 0.06), rgba(255, 248, 250, 0.06)),
+    url("/velora-fashion-preview/assets/hero-evening-dress.png") center 16%/cover no-repeat;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.28),
     0 10px 24px rgba(76, 50, 66, 0.12);
@@ -1595,13 +1596,13 @@ h3 {
 
 .fashion-card-copy h3 {
   margin-bottom: 0;
-  color: #3a2434;
+  color: #3d2433;
   font-size: 1.04rem;
   line-height: 0.98;
 }
 
 .fashion-card-copy span {
-  color: rgba(77, 54, 68, 0.72);
+  color: rgba(77, 54, 68, 0.74);
   font-size: 0.64rem;
   line-height: 1.35;
 }

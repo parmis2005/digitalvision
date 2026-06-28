@@ -9,6 +9,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
   const isCoffee = product.slug === "bean-bark";
+  const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
 
   if (isBeauty) {
@@ -144,6 +145,36 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="coffee-card-copy">
               <h3>Bean & Bark</h3>
               <span>Specialty Coffee · Interior · Menü</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isFashion) {
+    if (size === "card") {
+      return (
+        <div className="fashion-preview-card-view">
+          <div className="fashion-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="fashion-card-cta">Lookbook</span>
+          </div>
+          <div className="fashion-card-shell">
+            <div className="fashion-card-branding">
+              <p>VELORA Fashion</p>
+              <span>Damenmode & Styling</span>
+            </div>
+            <div className="fashion-card-stage">
+              <div className="fashion-card-overlay">
+                <span className="fashion-card-kicker">Editoriale Auswahl</span>
+                <strong>Leichte Looks für Alltag, Office und besondere Anlässe.</strong>
+              </div>
+              <div className="fashion-card-accent" />
             </div>
           </div>
         </div>

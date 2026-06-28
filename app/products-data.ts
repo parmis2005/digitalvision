@@ -3,7 +3,7 @@ export type ProductItem = {
   type: string;
   title: string;
   detail: string;
-  variant: "earth" | "forest" | "studio" | "portal" | "schedule" | "seo" | "auto" | "coffee" | "wellness";
+  variant: "earth" | "forest" | "studio" | "fashion" | "portal" | "schedule" | "seo" | "auto" | "coffee" | "wellness";
   category: string;
   intro: string;
   highlights: string[];
@@ -55,6 +55,22 @@ export const products: ProductItem[] = [
       "Geeignet für Cafés, Röstereien, Brunch-Spots und urbane Gastro-Konzepte",
     ],
     previewUrl: "/coffeeshop-preview/index.html",
+  },
+  {
+    slug: "velora-fashion",
+    type: "Damenmode Online-Shop",
+    title: "VELORA Fashion",
+    detail: "Femininer Fashion-Shop mit Kleidern, Blusen und Tailoring-Fokus",
+    variant: "fashion",
+    category: "Webseiten",
+    intro:
+      "Beispiel für einen modernen Damenmode-Shop mit editorialer Bildsprache, sanfter Farbwelt und klarer Produktführung.",
+    highlights: [
+      "Editoriale Startseite mit Hero, Kategorien und Produkt-Sets",
+      "Klarer Fokus auf Kleider, Blusen, Tailoring und Sale",
+      "Geeignet für Mode-Shops, Boutiquen und feminine Kollektionen",
+    ],
+    previewUrl: "/velora-fashion-preview/site/index.html",
   },
   {
     slug: "serenity-studio",

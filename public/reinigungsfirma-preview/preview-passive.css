@@ -52,12 +52,26 @@ html[data-preview-passive="true"] [tabindex] {
   }
 
   html[data-preview-passive="true"] #home .relative.hidden.lg\:block > .absolute.bottom-4.right-4 {
-    right: auto !important;
-    bottom: auto !important;
-    left: 1rem !important;
-    top: 1rem !important;
-    transform: scale(0.78) !important;
-    transform-origin: top left !important;
+    display: none !important;
+  }
+
+  html[data-preview-passive="true"] #home::after {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 2rem;
+    z-index: 2;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: pre;
+    box-shadow: 0 14px 30px rgba(2, 22, 38, 0.18);
+    backdrop-filter: blur(12px);
+    content: "4.9 Google Bewertung\\A★★★★★";
   }
 
   html[data-preview-passive="true"] #home .relative.max-w-7xl > .grid > div:first-child {

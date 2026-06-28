@@ -70,7 +70,7 @@ export const products: ProductItem[] = [
       "Klarer Fokus auf Kleider, Blusen, Tailoring und Sale",
       "Geeignet für Mode-Shops, Boutiquen und feminine Kollektionen",
     ],
-    previewUrl: "http://127.0.0.1:3001",
+    previewUrl: "/velora-fashion-preview/site/index.html",
   },
   {
     slug: "serenity-studio",

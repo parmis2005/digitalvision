@@ -1097,12 +1097,12 @@ h3 {
   border-radius: 20px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(7, 11, 20, 0.14), rgba(7, 11, 20, 0.46)),
-    url("/autohaus-preview/assets/cars/mercedes-c-class.png"),
+    linear-gradient(180deg, rgba(7, 11, 20, 0.08), rgba(7, 11, 20, 0.36)),
+    url("/autohaus-preview/assets/cars/mercedes-c-class.png") center 58%/cover,
     linear-gradient(135deg, #21412d 0%, #1f3a2a 48%, #647758 100%);
-  background-size: cover, 78%, 100%;
+  background-size: cover, cover, 100%;
   background-repeat: no-repeat;
-  background-position: center, center right -12px, center;
+  background-position: center, center 58%, center;
 }
 
 .auto-card-overlay {

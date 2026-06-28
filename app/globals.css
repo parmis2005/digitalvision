@@ -2122,6 +2122,12 @@ h3 {
   background: #eefaf7;
 }
 
+.product-preview-large.cleaning .product-preview-iframe {
+  width: 220%;
+  height: 1160px;
+  transform: scale(0.455);
+}
+
 .product-details {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

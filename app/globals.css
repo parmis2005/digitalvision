@@ -2581,6 +2581,10 @@ h3 {
     box-shadow 180ms ease;
 }
 
+.service-card {
+  padding-bottom: 72px;
+}
+
 .service-card::before,
 .process-step::before,
 .package-card::before {
@@ -2615,6 +2619,44 @@ h3 {
 .package-card p {
   color: var(--muted);
   line-height: 1.55;
+}
+
+.service-info-button {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(155, 228, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(248, 251, 255, 0.82);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.service-info-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(155, 228, 255, 0.46);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.service-info-button:focus-visible {
+  outline: 2px solid rgba(155, 228, 255, 0.72);
+  outline-offset: 2px;
 }
 
 .split-section {

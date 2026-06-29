@@ -14,16 +14,19 @@ const services = [
     icon: Search,
     title: "SEO & Google-Ranking",
     text: "Technische SEO, schnelle Ladezeiten, klare Seitenstruktur und Inhalte, die bei Google besser gefunden werden.",
+    infoHref: "#kontakt",
   },
   {
     icon: MonitorSmartphone,
     title: "Webseiten-Erstellung",
     text: "Moderne Homepages, Landingpages und Unternehmensseiten mit starkem Design, klarer Struktur und professioneller Umsetzung.",
+    infoHref: "#kontakt",
   },
   {
     icon: LayoutDashboard,
     title: "Verwaltungssysteme",
     text: "Individuelle Admin-Bereiche, Dashboards und Systeme, mit denen du Inhalte, Anfragen und Prozesse verwalten kannst.",
+    infoHref: "#kontakt",
   },
 ];
 
@@ -141,6 +144,9 @@ export default function Home() {
               <service.icon size={27} aria-hidden="true" />
               <h3>{service.title}</h3>
               <p>{service.text}</p>
+              <a className="service-info-button" href={service.infoHref}>
+                Info
+              </a>
             </article>
           ))}
         </div>

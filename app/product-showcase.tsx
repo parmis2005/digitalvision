@@ -9,6 +9,7 @@ import { ProductPreview } from "./product-preview";
 export function ProductShowcase() {
   const railRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+  const resumeTimerRef = useRef<number | null>(null);
   const showcaseProducts = repeatedProducts;
 
   useEffect(() => {
@@ -35,6 +36,9 @@ export function ProductShowcase() {
 
     return () => {
       window.cancelAnimationFrame(frame);
+      if (resumeTimerRef.current !== null) {
+        window.clearTimeout(resumeTimerRef.current);
+      }
     };
   }, []);
 
@@ -44,8 +48,22 @@ export function ProductShowcase() {
       return;
     }
 
-    rail.scrollBy({
-      left: direction === "left" ? -360 : 360,
+    const card = rail.querySelector<HTMLElement>(".showcase-card");
+    const cardWidth = card?.offsetWidth ?? 350;
+    const gap = 18;
+    const distance = Math.max(rail.clientWidth * 0.7, cardWidth + gap);
+    const nextLeft = rail.scrollLeft + (direction === "left" ? -distance : distance);
+
+    pausedRef.current = true;
+    if (resumeTimerRef.current !== null) {
+      window.clearTimeout(resumeTimerRef.current);
+    }
+    resumeTimerRef.current = window.setTimeout(() => {
+      pausedRef.current = false;
+    }, 1200);
+
+    rail.scrollTo({
+      left: Math.max(0, nextLeft),
       behavior: "smooth",
     });
   };
@@ -55,7 +73,7 @@ export function ProductShowcase() {
       <div className="showcase-header">
         <div>
           <p className="showcase-label">Beispiele</p>
-          <h2 className="showcase-title">Webseiten, SEO und Systeme im passenden Look.</h2>
+          <h2 className="showcase-title">Webseiten im passenden Look.</h2>
         </div>
         <div className="showcase-controls" aria-label="Produkte verschieben">
           <button type="button" onClick={() => move("left")} aria-label="Nach links">

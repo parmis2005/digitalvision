@@ -13,6 +13,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
   const isCleaning = product.slug === "cleanpro-reinigung";
+  const isInsurance = product.slug === "alphaschutz-versicherung";
 
   if (isBeauty) {
     if (size === "card") {
@@ -281,6 +282,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="cleaning-card-copy">
               <h3>CleanPro Reinigung</h3>
               <span>Leistungen · Standorte · Angebote · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isInsurance) {
+    if (size === "card") {
+      return (
+        <div className="insurance-preview-card-view">
+          <div className="insurance-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="insurance-card-cta">Beratung anfragen</span>
+          </div>
+          <div className="insurance-card-shell">
+            <div className="insurance-card-branding">
+              <p>AlphaSchutz</p>
+              <span>Versicherung & Beratung</span>
+            </div>
+            <div className="insurance-card-stage">
+              <div className="insurance-card-overlay">
+                <span className="insurance-card-kicker">Unabhängig. Persönlich. Sicher.</span>
+                <strong>Versicherungsschutz mit klarer Beratung und Vertrauen.</strong>
+              </div>
+              <div className="insurance-card-accent" />
+            </div>
+            <div className="insurance-card-copy">
+              <h3>AlphaSchutz Versicherung</h3>
+              <span>Leistungen · Prozess · Bewertungen · Kontakt</span>
             </div>
           </div>
         </div>

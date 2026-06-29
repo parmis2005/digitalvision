@@ -15,7 +15,8 @@ export type ProductItem = {
     | "coffee"
     | "wellness"
     | "medical"
-    | "cleaning";
+    | "cleaning"
+    | "insurance";
   category: string;
   intro: string;
   highlights: string[];
@@ -130,6 +131,22 @@ export const products: ProductItem[] = [
       "Geeignet für Reinigungsfirmen, Facility-Services und regionale Dienstleister",
     ],
     previewUrl: "/reinigungsfirma-preview/index.html",
+  },
+  {
+    slug: "alphaschutz-versicherung",
+    type: "Versicherungsberatung Website",
+    title: "AlphaSchutz Versicherung",
+    detail: "Premium-Website für Versicherungsberatung, Schutzkonzepte und Kontakt",
+    variant: "insurance",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Versicherungsberater-Website mit seriöser Markenwirkung, klarer Leistungsstruktur und direktem Beratungsfokus.",
+    highlights: [
+      "Starker Hero-Bereich für Vertrauen, Beratung und Absicherung",
+      "Klare Struktur für Leistungen, Prozess, Bewertungen und Kontakt",
+      "Geeignet für Versicherungsmakler, Finanzberater und Beratungsbüros",
+    ],
+    previewUrl: "/versicherung-preview/index.html",
   },
   {
     slug: "lead-funnel",

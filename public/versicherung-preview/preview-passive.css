@@ -1,0 +1,9 @@
+html[data-preview-passive="true"] a,
+html[data-preview-passive="true"] button,
+html[data-preview-passive="true"] input,
+html[data-preview-passive="true"] select,
+html[data-preview-passive="true"] textarea,
+html[data-preview-passive="true"] [role="button"],
+html[data-preview-passive="true"] [tabindex] {
+  cursor: default !important;
+}

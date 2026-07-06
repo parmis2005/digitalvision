@@ -14,7 +14,7 @@ const services = [
     icon: Search,
     title: "SEO & Google-Ranking",
     text: "Technische SEO, schnelle Ladezeiten, klare Seitenstruktur und Inhalte, die bei Google besser gefunden werden.",
-    infoHref: "#kontakt",
+    infoHref: "/seo-info",
   },
   {
     icon: MonitorSmartphone,

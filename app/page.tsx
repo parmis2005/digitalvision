@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
+import { DigitalVisionLogo } from "./digitalvision-logo";
 import { ProductShowcase } from "./product-showcase";
 
 const services = [
@@ -75,8 +76,7 @@ export default function Home() {
       <AmbientScene />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="DigitalVision Startseite">
-          <span className="brand-mark">DV</span>
-          <span>DigitalVision</span>
+          <DigitalVisionLogo size="sm" showTagline={false} />
         </a>
         <nav className="desktop-nav" aria-label="Hauptnavigation">
           <a href="#leistungen">Leistungen</a>
@@ -92,15 +92,18 @@ export default function Home() {
 
       <section id="top" className="hero">
         <div className="hero-copy">
+          <div className="hero-branding">
+            <DigitalVisionLogo size="lg" showMark={false} />
+          </div>
           <p className="eyebrow">SEO, Webseiten-Erstellung und Verwaltungssysteme</p>
           <h1>
             <span className="hero-line">Digitale Systeme, die sichtbar machen</span>
             <span className="hero-line">und Kunden gewinnen.</span>
           </h1>
           <p className="hero-text">
-            DigitalVision erstellt moderne Webseiten, verbessert dein Google
-            Ranking und entwickelt Verwaltungssysteme, die dein Unternehmen
-            <span className="keep-together"> digital strukturieren.</span>
+            Wir entwickeln Webseiten, SEO-Strukturen und Verwaltungssysteme,
+            die professionell wirken, gefunden werden und im Alltag einfach
+            funktionieren.
           </p>
           <div className="hero-actions">
             <a className="primary-button" href="#kontakt">
@@ -220,9 +223,9 @@ export default function Home() {
             <article className="process-step" key={step}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{step}</h3>
-            <p>
-              {index === 0 &&
-                "Wir klären Angebot, Zielgruppe und was die Website leisten soll."}
+              <p>
+                {index === 0 &&
+                  "Wir klären Angebot, Zielgruppe und was die Website leisten soll."}
                 {index === 1 &&
                   "Seitenstruktur, SEO-Basis und Systemlogik werden sauber geplant."}
                 {index === 2 &&
@@ -274,7 +277,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="footer-top">
           <div className="footer-branding">
-            <span>DigitalVision</span>
+            <DigitalVisionLogo size="md" showTagline={false} />
             <span>SEO, Webseiten-Erstellung und Verwaltungssysteme</span>
           </div>
           <a className="footer-back-to-top" href="#top">

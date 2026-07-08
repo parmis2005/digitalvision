@@ -94,16 +94,15 @@ export default function Home() {
         <div className="hero-copy">
           <div className="hero-branding">
             <DigitalVisionLogo size="lg" showMark={false} />
+            <p className="eyebrow">SEO, Webseiten-Erstellung und Verwaltungssysteme</p>
           </div>
-          <p className="eyebrow">SEO, Webseiten-Erstellung und Verwaltungssysteme</p>
           <h1>
-            <span className="hero-line">Digitale Systeme, die sichtbar machen</span>
+            <span className="hero-line">Digitale Systeme, die wirken</span>
             <span className="hero-line">und Kunden gewinnen.</span>
           </h1>
           <p className="hero-text">
-            Wir entwickeln Webseiten, SEO-Strukturen und Verwaltungssysteme,
-            die professionell wirken, gefunden werden und im Alltag einfach
-            funktionieren.
+            Webseiten, SEO und Systeme mit klarer Struktur, starker Wirkung und
+            sauberer Umsetzung.
           </p>
           <div className="hero-actions">
             <a className="primary-button" href="#kontakt">

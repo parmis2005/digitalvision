@@ -79,7 +79,9 @@ export function DigitalVisionLogo({
         </span>
       ) : null}
       <span className="dv-logo-copy">
-        <span className="dv-logo-name">DIGITALVISION</span>
+        <span className="dv-logo-wordmark">
+          <span className="dv-logo-name">DIGITALVISION</span>
+        </span>
         {showTagline ? (
           <span className="dv-logo-tagline">
             <span className="dv-logo-rule" />

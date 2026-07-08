@@ -238,8 +238,14 @@ textarea {
 
 .dv-logo-copy {
   display: grid;
-  gap: 6px;
+  gap: 10px;
   min-width: 0;
+}
+
+.dv-logo-wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dv-logo-name {
@@ -279,15 +285,16 @@ textarea {
   align-items: center;
   gap: 16px;
   color: var(--cyan);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 850;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.34em;
   line-height: 1;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .dv-logo-rule {
-  width: 42px;
+  width: 28px;
   height: 1px;
   flex: none;
   background: linear-gradient(90deg, transparent, rgba(155, 228, 255, 0.95), transparent);
@@ -345,6 +352,10 @@ textarea {
   max-width: min(100%, 720px);
 }
 
+.hero .eyebrow {
+  margin-top: 14px;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -367,9 +378,9 @@ p {
 h1 {
   max-width: 660px;
   margin-bottom: 8px;
-  font-size: clamp(2rem, 3vw, 3.45rem);
+  font-size: clamp(1.85rem, 2.7vw, 3.1rem);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 1.02;
   letter-spacing: 0;
   text-shadow: none;
 }
@@ -392,10 +403,10 @@ h3 {
 }
 
 .hero-text {
-  max-width: 560px;
+  max-width: 540px;
   color: var(--muted);
-  font-size: clamp(1.06rem, 1.5vw, 1.28rem);
-  line-height: 1.58;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.55;
 }
 
 .hero-text span {

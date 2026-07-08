@@ -92,28 +92,29 @@ export default function Home() {
 
       <section id="top" className="hero">
         <div className="hero-copy">
-          <div className="hero-branding">
-            <DigitalVisionLogo size="lg" showMark={false} />
-            <p className="eyebrow">SEO, Webseiten-Erstellung und Verwaltungssysteme</p>
+          <div className="hero-panel">
+            <div className="hero-branding">
+              <DigitalVisionLogo size="lg" showMark={false} />
+              <p className="eyebrow">SEO, Webdesign und Systeme</p>
+            </div>
+            <h1>
+              <span className="hero-line">Digitale Systeme, die wirken</span>
+              <span className="hero-line">und Kunden gewinnen.</span>
+            </h1>
+            <p className="hero-text">
+              Webseiten, SEO und Systeme mit klarer Struktur und starker Wirkung.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-button" href="#kontakt">
+                Kostenlose Anfrage
+                <ArrowRight size={18} aria-hidden="true" />
+              </a>
+              <a className="secondary-button" href="#prozess">
+                Unsere Vision
+              </a>
+            </div>
+            <p className="hero-note">Kostenlose Ersteinschätzung. Klarer Fahrplan. Keine Verpflichtung.</p>
           </div>
-          <h1>
-            <span className="hero-line">Digitale Systeme, die wirken</span>
-            <span className="hero-line">und Kunden gewinnen.</span>
-          </h1>
-          <p className="hero-text">
-            Webseiten, SEO und Systeme mit klarer Struktur, starker Wirkung und
-            sauberer Umsetzung.
-          </p>
-          <div className="hero-actions">
-            <a className="primary-button" href="#kontakt">
-              Kostenlose Anfrage
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a className="secondary-button" href="#prozess">
-              Unsere Vision
-            </a>
-          </div>
-          <p className="hero-note">Kostenlose Ersteinschätzung. Klarer Fahrplan. Keine Verpflichtung.</p>
         </div>
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-visual-stage">

@@ -95,15 +95,17 @@ export default function Home() {
           <div className="hero-panel">
             <div className="hero-branding">
               <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
-              <p className="eyebrow">SEO, Webdesign und Systeme</p>
             </div>
-            <h1>
-              <span className="hero-line">Digitale Systeme, die wirken</span>
-              <span className="hero-line">und Kunden gewinnen.</span>
-            </h1>
-            <p className="hero-text">
-              Webseiten, SEO und Systeme mit klarer Struktur und starker Wirkung.
-            </p>
+            <div className="hero-statement">
+              <p className="eyebrow">Webdesign · SEO · Systeme</p>
+              <h1>
+                <span className="hero-line">Webseiten, die gefunden werden.</span>
+                <span className="hero-line hero-line-muted">Systeme, die verkaufen.</span>
+              </h1>
+              <p className="hero-text">
+                Klare digitale Auftritte, die Vertrauen schaffen und Anfragen auslösen.
+              </p>
+            </div>
             <div className="hero-actions">
               <a className="primary-button" href="#kontakt">
                 Kostenlose Anfrage

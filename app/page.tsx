@@ -97,13 +97,13 @@ export default function Home() {
               <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
             </div>
             <div className="hero-statement">
-              <p className="eyebrow">Webdesign · SEO · Systeme</p>
+              <p className="eyebrow">Webdesign · SEO · Verwaltungssysteme</p>
               <h1>
-                <span className="hero-line">Webseiten, die gefunden werden.</span>
-                <span className="hero-line hero-line-muted">Systeme, die verkaufen.</span>
+                <span className="hero-line">Digitale Auftritte, die überzeugen.</span>
+                <span className="hero-line hero-line-muted">Systeme, die Abläufe ordnen.</span>
               </h1>
               <p className="hero-text">
-                Klare digitale Auftritte, die Vertrauen schaffen und Anfragen auslösen.
+                Webseiten, Sichtbarkeit und digitale Organisation aus einer Hand.
               </p>
             </div>
             <div className="hero-actions">

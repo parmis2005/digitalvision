@@ -94,7 +94,7 @@ export default function Home() {
         <div className="hero-copy">
           <div className="hero-panel">
             <div className="hero-branding">
-              <DigitalVisionLogo size="lg" showMark={false} />
+              <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
               <p className="eyebrow">SEO, Webdesign und Systeme</p>
             </div>
             <h1>

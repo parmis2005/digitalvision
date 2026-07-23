@@ -93,27 +93,46 @@ export default function Home() {
       <section id="top" className="hero">
         <div className="hero-copy">
           <div className="hero-panel">
-            <div className="hero-branding">
-              <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
-            </div>
-            <div className="hero-statement">
-              <p className="eyebrow">Webdesign · SEO · Verwaltungssysteme</p>
-              <h1>
-                <span className="hero-line">Digitale Auftritte, die überzeugen.</span>
-                <span className="hero-line hero-line-muted">Systeme, die Abläufe ordnen.</span>
-              </h1>
-              <p className="hero-text">
-                Webseiten, Sichtbarkeit und digitale Organisation aus einer Hand.
-              </p>
-            </div>
-            <div className="hero-actions">
-              <a className="primary-button" href="#kontakt">
-                Kostenlose Anfrage
-                <ArrowRight size={18} aria-hidden="true" />
-              </a>
-              <a className="secondary-button" href="#prozess">
-                Unsere Vision
-              </a>
+            <div className="hero-console">
+              <div className="hero-console-top">
+                <span className="hero-console-dots" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span className="hero-console-label">Digitaler Systemkern</span>
+                <span className="hero-console-status">Startklar</span>
+              </div>
+              <div className="hero-console-main">
+                <div className="hero-console-content">
+                  <div className="hero-branding">
+                    <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
+                  </div>
+                  <div className="hero-statement">
+                    <p className="eyebrow">Webdesign · SEO · Systeme</p>
+                    <h1>
+                      <span className="hero-line">Klarer auftreten.</span>
+                      <span className="hero-line hero-line-muted">Besser gefunden werden.</span>
+                    </h1>
+                    <p className="hero-text">
+                      Websites mit Struktur.
+                      <br />
+                      Sichtbar und einfach verwaltbar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="hero-console-footer">
+                <div className="hero-actions">
+                  <a className="primary-button" href="#kontakt">
+                    Kostenlose Anfrage
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </a>
+                  <a className="secondary-button" href="#prozess">
+                    Ablauf ansehen
+                  </a>
+                </div>
+              </div>
             </div>
             <p className="hero-note">Kostenlose Ersteinschätzung. Klarer Fahrplan. Keine Verpflichtung.</p>
           </div>

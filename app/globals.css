@@ -66,13 +66,17 @@ main {
   z-index: 1;
 }
 
-.seo-info-page {
+.seo-info-page,
+.webseite-info-page,
+.verwaltungssystem-info-page {
   height: 100dvh;
   overflow: hidden;
   background: #020611;
 }
 
-.seo-info-frame {
+.seo-info-frame,
+.webseite-info-frame,
+.verwaltungssystem-info-frame {
   display: block;
   width: 100%;
   height: 100dvh;

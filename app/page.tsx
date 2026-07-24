@@ -21,13 +21,13 @@ const services = [
     icon: MonitorSmartphone,
     title: "Webseiten-Erstellung",
     text: "Moderne Homepages, Landingpages und Unternehmensseiten mit starkem Design, klarer Struktur und professioneller Umsetzung.",
-    infoHref: "#kontakt",
+    infoHref: "/webseite-info",
   },
   {
     icon: LayoutDashboard,
     title: "Verwaltungssysteme",
     text: "Individuelle Admin-Bereiche, Dashboards und Systeme, mit denen du Inhalte, Anfragen und Prozesse verwalten kannst.",
-    infoHref: "#kontakt",
+    infoHref: "/verwaltungssystem-info",
   },
 ];
 

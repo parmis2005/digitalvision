@@ -259,6 +259,18 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="section-flow-line" aria-hidden="true">
+        <span className="section-flow-line-main" />
+        <span className="section-flow-knot">
+          <span className="section-flow-knot-inner">
+            <span />
+            <span />
+            <span />
+          </span>
+        </span>
+        <span className="section-flow-line-main" />
+      </div>
+
       <section id="preise" className="section packages-section">
         <div className="section-heading">
           <p className="eyebrow">Pakete</p>

@@ -3268,6 +3268,18 @@ h3 {
   font-weight: 900;
 }
 
+.package-card .package-note {
+  margin: -6px 0 26px;
+  color: rgba(216, 225, 244, 0.68);
+  font-size: 0.82rem;
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.package-card.featured .package-note {
+  color: rgba(255, 255, 255, 0.68);
+}
+
 .package-card a {
   display: inline-flex;
   align-items: center;

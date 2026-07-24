@@ -56,6 +56,7 @@ const packages = [
     name: "Website",
     price: "ab 1300€",
     detail: "Für professionelle Webseiten mit modernem Design und klarer Struktur.",
+    note: "(Anzahlung möglich · Pflege & Erhalt monatlich)",
   },
   {
     name: "SEO Growth",
@@ -285,6 +286,7 @@ export default function Home() {
               <h3>{item.name}</h3>
               <p className="price">{item.price}</p>
               <p>{item.detail}</p>
+              {"note" in item && <p className="package-note">{item.note}</p>}
               <a href="#kontakt">
                 Anfragen
                 <ArrowRight size={17} aria-hidden="true" />

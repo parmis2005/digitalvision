@@ -2672,9 +2672,9 @@ h3 {
 }
 
 .product-preview-large.nails .product-preview-iframe {
-  width: 250%;
-  height: 1800px;
-  transform: scale(0.4);
+  width: 220%;
+  height: 1500px;
+  transform: scale(0.455);
 }
 
 .product-preview-large.forest .product-preview-shell {

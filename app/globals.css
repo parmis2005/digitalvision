@@ -2671,6 +2671,12 @@ h3 {
   background: #faf7f2;
 }
 
+.product-preview-large.nails .product-preview-iframe {
+  width: 220%;
+  height: 1500px;
+  transform: scale(0.455);
+}
+
 .product-preview-large.forest .product-preview-shell {
   background: linear-gradient(135deg, #153223, #1d3b2c 54%, #efe4b0 100%);
   color: #f0e9c3;

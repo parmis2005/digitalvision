@@ -16,7 +16,8 @@ export type ProductItem = {
     | "wellness"
     | "medical"
     | "cleaning"
-    | "insurance";
+    | "insurance"
+    | "nails";
   category: string;
   intro: string;
   highlights: string[];
@@ -38,6 +39,22 @@ export const products: ProductItem[] = [
       "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
     previewUrl: "https://kosmetik-test.vercel.app/",
+  },
+  {
+    slug: "luna-nails",
+    type: "Nagelstudio Website",
+    title: "Luna Nails",
+    detail: "Elegante Nagelstudio-Website für Maniküre, Pediküre, Nailart und Termine",
+    variant: "nails",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Nagelstudio-Website mit hochwertiger Beauty-Wirkung, klarer Leistungsstruktur und direktem Terminfokus.",
+    highlights: [
+      "Eleganter Hero-Bereich mit Video, Bewertungen und direktem Termin-Einstieg",
+      "Klare Bereiche für Maniküre, Pediküre, Gel-Modellage, Nailart und Galerie",
+      "Geeignet für Nagelstudios, Beauty-Ateliers und moderne Pflegeangebote",
+    ],
+    previewUrl: "/happynails-preview/index.html",
   },
   {
     slug: "autohaus-nordglanz",

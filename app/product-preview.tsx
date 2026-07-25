@@ -14,6 +14,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isMedical = product.slug === "arztpraxis-weber";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
+  const isNails = product.slug === "luna-nails";
 
   if (isBeauty) {
     if (size === "card") {
@@ -82,6 +83,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
         </div>
       </div>
     );
+  }
+
+  if (isNails) {
+    if (size === "card") {
+      return (
+        <div className="nails-preview-card-view">
+          <div className="nails-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="nails-card-cta">Termin anfragen</span>
+          </div>
+          <div className="nails-card-shell">
+            <div className="nails-card-branding">
+              <p>Luna Nails</p>
+              <span>Maniküre · Pediküre · Nailart</span>
+            </div>
+            <div className="nails-card-stage">
+              <div className="nails-card-overlay">
+                <span className="nails-card-kicker">Beauty Moments</span>
+                <strong>Gepflegte Nägel mit ruhiger Studio-Atmosphäre.</strong>
+              </div>
+              <div className="nails-card-accent" />
+            </div>
+            <div className="nails-card-copy">
+              <h3>Luna Nails</h3>
+              <span>Leistungen · Galerie · Bewertungen · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 
   if (isAuto) {

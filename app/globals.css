@@ -1031,6 +1031,12 @@ h3 {
   height: 100%;
 }
 
+.nails-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .auto-preview-card-view {
   display: grid;
   gap: 10px;
@@ -1071,6 +1077,124 @@ h3 {
   display: grid;
   gap: 10px;
   height: 100%;
+}
+
+.nails-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nails-card-cta {
+  color: rgba(255, 247, 240, 0.88);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nails-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.nails-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.nails-card-branding p {
+  margin-bottom: 0;
+  color: #fff8f1;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.nails-card-branding span {
+  color: rgba(255, 235, 222, 0.78);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.nails-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(76, 50, 45, 0.72), rgba(76, 50, 45, 0.16)),
+    url("/happynails-preview/images/gallery/fake-hero-manicure.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 247, 240, 0.18);
+}
+
+.nails-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff8f1;
+  text-shadow: 0 8px 24px rgba(64, 41, 36, 0.34);
+}
+
+.nails-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 248, 240, 0.78);
+  color: #7d5942;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.nails-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.95;
+}
+
+.nails-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 102px;
+  height: 62px;
+  border: 1px solid rgba(255, 247, 240, 0.5);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(201, 168, 130, 0.12)),
+    url("/happynails-preview/images/gallery/fake-glitter-nailart.jpg") center/cover no-repeat;
+  box-shadow: 0 10px 24px rgba(64, 41, 36, 0.2);
+}
+
+.nails-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.nails-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8f1;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.nails-card-copy span {
+  color: rgba(242, 222, 212, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
 }
 
 .insurance-card-top {
@@ -2255,6 +2379,14 @@ h3 {
     linear-gradient(135deg, #dcc6b0, #b19778 52%, #8b7f55);
 }
 
+.showcase-card.nails .showcase-preview {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 248, 240, 0.2), transparent 18%),
+    radial-gradient(circle at 82% 22%, rgba(201, 168, 130, 0.18), transparent 20%),
+    linear-gradient(160deg, #6f4e40 0%, #c9a882 46%, #faf7f2 100%);
+  color: #fff8f1;
+}
+
 .showcase-card.forest .showcase-preview {
   background: linear-gradient(135deg, #153223, #1d3b2c 54%, #efe4b0 100%);
   color: #f0e9c3;
@@ -2525,6 +2657,18 @@ h3 {
   box-shadow:
     inset 0 1px 0 rgba(255, 244, 220, 0.04),
     0 24px 54px rgba(1, 5, 16, 0.18);
+}
+
+.product-preview-large.nails .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 248, 240, 0.18), transparent 20%),
+    linear-gradient(135deg, #6f4e40, #c9a882 54%, #faf7f2);
+  color: #fff8f1;
+}
+
+.product-preview-large.nails .product-preview-viewport,
+.product-preview-large.nails .product-preview-iframe {
+  background: #faf7f2;
 }
 
 .product-preview-large.forest .product-preview-shell {

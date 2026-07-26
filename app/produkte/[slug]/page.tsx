@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { products } from "../../products-data";
 import { ProductPreview } from "../../product-preview";
 
-const baseUrl = "https://digitalvision.site";
+const baseUrl = "https://www.digitalvision.site";
 
 const categoryInfoHref: Record<string, string> = {
   Webseiten: "/webseite-info",

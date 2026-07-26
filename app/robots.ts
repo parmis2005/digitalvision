@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://digitalvision.site";
+const baseUrl = "https://www.digitalvision.site";
 
 export default function robots(): MetadataRoute.Robots {
   return {

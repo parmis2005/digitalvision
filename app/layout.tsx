@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const baseUrl = "https://digitalvision.site";
+const baseUrl = "https://www.digitalvision.site";
 const siteTitle = "DigitalVision | Webseiten, die verkaufen";
 const siteDescription =
   "Visionäre Webdesign-Agentur für moderne Homepages, SEO und Verwaltungssysteme.";

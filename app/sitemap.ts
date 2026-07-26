@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { products } from "./products-data";
 
-const baseUrl = "https://digitalvision.site";
+const baseUrl = "https://www.digitalvision.site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

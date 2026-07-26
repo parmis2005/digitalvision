@@ -1053,7 +1053,7 @@ export function ContactForm() {
               />
               <span>
                 Ich akzeptiere die{" "}
-                <a href="#rechtliches" onClick={(event) => event.stopPropagation()}>
+                <a href="/datenschutz" target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()}>
                   Datenschutzerklärung
                 </a>
               </span>

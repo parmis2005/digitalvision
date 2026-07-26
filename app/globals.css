@@ -69,8 +69,7 @@ main {
 .seo-info-page,
 .webseite-info-page,
 .verwaltungssystem-info-page {
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
   background: #020611;
 }
 
@@ -82,6 +81,36 @@ main {
   height: 100dvh;
   border: 0;
   background: #020611;
+}
+
+.info-page-intro {
+  max-width: 900px;
+  padding: 28px clamp(18px, 4vw, 56px) 48px;
+}
+
+.info-page-intro .product-highlights {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin: 28px 0 32px;
+}
+
+.info-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.info-page-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 26px;
+  font-size: 0.92rem;
+}
+
+.info-page-related a {
+  color: var(--cyan);
 }
 
 .ambient-particles {
@@ -2539,6 +2568,10 @@ h3 {
 }
 
 .product-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
   margin-top: 30px;
 }
 
@@ -4697,6 +4730,14 @@ h3 {
   align-items: center;
 }
 
+.footer-links-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .footer-legal-nav {
   display: flex;
   flex-wrap: wrap;
@@ -4706,12 +4747,14 @@ h3 {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.footer-links-nav a,
 .footer-legal-nav a {
   display: inline-flex;
   align-items: center;
   color: rgba(248, 251, 255, 0.66);
 }
 
+.footer-links-nav a:hover,
 .footer-legal-nav a:hover,
 .footer-back-to-top:hover {
   color: white;
@@ -5110,5 +5153,56 @@ h3 {
   .footer-top,
   .footer-legal-nav {
     justify-content: flex-start;
+  }
+}
+
+.legal-page {
+  min-height: 100vh;
+  padding: 90px clamp(18px, 4vw, 56px) 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.legal-page-inner {
+  width: 100%;
+  max-width: 760px;
+}
+
+.legal-page-inner h1 {
+  margin: 6px 0 40px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.legal-page-inner section {
+  margin-bottom: 32px;
+}
+
+.legal-page-inner h2 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  color: var(--cyan);
+}
+
+.legal-page-inner p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.legal-page-inner a {
+  color: var(--cyan);
+}
+
+.legal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: rgba(248, 251, 255, 0.76);
+}
+
+@media (max-width: 760px) {
+  .info-page-intro .product-highlights {
+    grid-template-columns: 1fr;
   }
 }

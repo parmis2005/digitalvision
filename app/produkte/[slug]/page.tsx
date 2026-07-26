@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { products } from "../../products-data";
 import { ProductPreview } from "../../product-preview";
+
+const baseUrl = "https://digitalvision.site";
+
+const categoryInfoHref: Record<string, string> = {
+  Webseiten: "/webseite-info",
+  SEO: "/seo-info",
+  Verwaltungssysteme: "/verwaltungssystem-info",
+};
 
 type PageProps = {
   params: Promise<{
@@ -16,6 +25,38 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = products.find((entry) => entry.slug === slug);
+
+  if (!product) {
+    return {};
+  }
+
+  const title = `${product.title} – ${product.type}`;
+  const description = product.intro;
+  const url = `/produkte/${product.slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
   const product = products.find((entry) => entry.slug === slug);
@@ -24,8 +65,49 @@ export default async function ProductPage({ params }: PageProps) {
     notFound();
   }
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: product.title,
+    serviceType: product.type,
+    description: product.intro,
+    provider: {
+      "@type": "Organization",
+      name: "DigitalVision",
+      url: baseUrl,
+    },
+    url: `${baseUrl}/produkte/${product.slug}`,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Startseite",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.title,
+        item: `${baseUrl}/produkte/${product.slug}`,
+      },
+    ],
+  };
+
   return (
     <main className="product-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <header className="product-page-header">
         <Link className="product-back-link" href="/">
           <ArrowLeft size={16} aria-hidden="true" />
@@ -44,6 +126,14 @@ export default async function ProductPage({ params }: PageProps) {
               Projekt anfragen
               <ArrowRight size={18} aria-hidden="true" />
             </a>
+            {categoryInfoHref[product.category] ? (
+              <Link
+                className="secondary-button"
+                href={categoryInfoHref[product.category]}
+              >
+                Mehr zu {product.category}
+              </Link>
+            ) : null}
           </div>
         </div>
         {product.previewUrl ? (

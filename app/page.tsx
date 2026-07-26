@@ -320,13 +320,16 @@ export default function Home() {
             Nach oben
           </a>
         </div>
+        <nav className="footer-links-nav" aria-label="Leistungen">
+          <a href="/seo-info">SEO & Google-Ranking</a>
+          <a href="/webseite-info">Webseiten-Erstellung</a>
+          <a href="/verwaltungssystem-info">Verwaltungssysteme</a>
+          <a href="#preise">Pakete</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
         <nav className="footer-legal-nav" aria-label="Rechtliche Hinweise">
-          <a href="/">Impressum</a>
-          <a href="/">Datenschutz</a>
-          <a href="/">Rechtliches</a>
-          <a href="/">Cookie-Einstellungen</a>
-          <a href="/">Sicherheitsangaben</a>
-          <a href="/">Sitemap</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
         </nav>
       </footer>
     </main>

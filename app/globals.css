@@ -886,6 +886,8 @@ h3 {
 .showcase-rail {
   overflow-x: auto;
   overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
 }
@@ -5011,6 +5013,7 @@ h3 {
   }
 
   .showcase-header {
+    flex-direction: column;
     align-items: start;
     gap: 16px;
   }
@@ -5021,8 +5024,8 @@ h3 {
   }
 
   .showcase-card {
-    width: 292px;
-    min-width: 292px;
+    width: min(292px, calc(100vw - 36px));
+    min-width: min(292px, calc(100vw - 36px));
   }
 
   .beauty-preview-body,

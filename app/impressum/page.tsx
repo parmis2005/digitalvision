@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const title = "Impressum";
 const description = "Impressum und Anbieterkennzeichnung von DigitalVision.";
 
 export const metadata: Metadata = {
-  title,
+  title: {
+    absolute: "Impressum | Digital Vision – Parmis Paschaei",
+  },
   description,
   alternates: {
     canonical: "/impressum",
@@ -27,6 +28,8 @@ export default function ImpressumPage() {
           <h2>Angaben gemäß § 5 DDG</h2>
           <p>
             Parmis Paschaei
+            <br />
+            Inhaberin von Digital Vision
             <br />
             Erfurter Straße 16
             <br />

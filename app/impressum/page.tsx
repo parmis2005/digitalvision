@@ -26,13 +26,11 @@ export default function ImpressumPage() {
         <section>
           <h2>Angaben gemäß § 5 DDG</h2>
           <p>
-            Sebastian Ziemianski
+            Parmis Paschaei
             <br />
-            DigitalVision
+            Erfurter Straße 16
             <br />
-            Gromansfeld 24
-            <br />
-            47647 Kerken
+            41069 Mönchengladbach
             <br />
             Deutschland
           </p>
@@ -41,7 +39,7 @@ export default function ImpressumPage() {
         <section>
           <h2>Kontakt</h2>
           <p>
-            Telefon: 01727410221
+            Telefon: 017623467326
             <br />
             E-Mail: info@digitalvision.site
           </p>
@@ -57,11 +55,11 @@ export default function ImpressumPage() {
         <section>
           <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
           <p>
-            Sebastian Ziemianski
+            Parmis Paschaei
             <br />
-            Gromansfeld 24
+            Erfurter Straße 16
             <br />
-            47647 Kerken
+            41069 Mönchengladbach
           </p>
         </section>
 

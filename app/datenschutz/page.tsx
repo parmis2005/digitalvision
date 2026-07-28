@@ -26,15 +26,13 @@ export default function DatenschutzPage() {
         <section>
           <h2>1. Verantwortlicher</h2>
           <p>
-            Sebastian Ziemianski
+            Parmis Paschaei
             <br />
-            DigitalVision
+            Erfurter Straße 16
             <br />
-            Gromansfeld 24
+            41069 Mönchengladbach
             <br />
-            47647 Kerken
-            <br />
-            Telefon: 01727410221
+            Telefon: 017623467326
             <br />
             E-Mail: info@digitalvision.site
           </p>

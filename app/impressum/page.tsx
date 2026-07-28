@@ -22,7 +22,7 @@ export default function ImpressumPage() {
     <main className="legal-page">
       <div className="legal-page-inner">
         <p className="eyebrow">Rechtliches</p>
-        <h1>Impressum</h1>
+        <h1>Impressum | Digital Vision – Parmis Paschaei</h1>
 
         <section>
           <h2>Angaben gemäß § 5 DDG</h2>

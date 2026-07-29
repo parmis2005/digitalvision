@@ -4890,11 +4890,11 @@ h3 {
   }
 
   .hero {
-    grid-template-columns: minmax(0, calc(100vw - 90px)) minmax(48px, 1fr);
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: 6px;
-    min-height: auto;
-    padding: 28px 12px 34px;
+    justify-items: center;
+    min-height: calc(100svh - 68px);
+    padding: 28px 14px 34px;
   }
 
   .section-flow-line {
@@ -4918,12 +4918,14 @@ h3 {
 
   .hero-panel {
     width: 100%;
-    justify-self: start;
+    justify-self: center;
   }
 
-  .hero-copy,
-  .hero-visual {
-    zoom: 0.9;
+  .hero-copy {
+    width: min(100%, 430px);
+    justify-self: center;
+    z-index: 2;
+    zoom: 1;
   }
 
   .hero-console {
@@ -5027,16 +5029,20 @@ h3 {
   }
 
   .hero-visual {
-    position: relative;
-    width: 100%;
-    min-height: 390px;
-    transform: translateX(-46px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: min(118vw, 560px);
+    min-height: 520px;
+    opacity: 0.98;
+    transform: translate(-50%, -44%);
   }
 
   .hero-visual-stage {
-    width: clamp(225px, 64vw, 310px);
-    height: 390px;
-    margin-left: 0;
+    width: 100%;
+    height: 520px;
+    margin-inline: auto;
     transform: translate3d(0, calc(var(--parallax-shift-soft) * -0.22), 0);
   }
 
@@ -5179,18 +5185,17 @@ h3 {
 
 @media (max-width: 360px) {
   .hero {
-    grid-template-columns: minmax(0, calc(100vw - 78px)) minmax(38px, 1fr);
-    gap: 4px;
-    padding-inline: 10px;
+    grid-template-columns: 1fr;
+    padding-inline: 12px;
   }
 
   .hero-panel {
     width: 100%;
   }
 
-  .hero-copy,
-  .hero-visual {
-    zoom: 0.86;
+  .hero-copy {
+    width: min(100%, 380px);
+    zoom: 0.96;
   }
 
   .hero h1 {
@@ -5198,13 +5203,13 @@ h3 {
   }
 
   .hero-visual {
-    width: 100%;
-    transform: translateX(-54px);
+    width: min(124vw, 430px);
+    transform: translate(-50%, -44%);
   }
 
   .hero-visual-stage {
-    width: 220px;
-    height: 370px;
+    width: 100%;
+    height: 460px;
   }
 }
 

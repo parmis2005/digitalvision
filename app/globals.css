@@ -4930,6 +4930,10 @@ h3 {
 
   .hero-console {
     border-radius: 22px;
+    background:
+      radial-gradient(circle at 50% 48%, rgba(255, 199, 116, 0.12), transparent 30%),
+      radial-gradient(circle at 50% 42%, rgba(155, 228, 255, 0.1), transparent 36%),
+      linear-gradient(145deg, rgba(5, 13, 32, 0.72), rgba(8, 12, 31, 0.64) 60%, rgba(23, 15, 38, 0.48));
   }
 
   .hero-console-top {
@@ -5030,13 +5034,13 @@ h3 {
 
   .hero-visual {
     position: absolute;
-    top: 42%;
+    top: 50%;
     left: 50%;
     z-index: 0;
     width: min(118vw, 560px);
     min-height: 520px;
     opacity: 0.98;
-    transform: translate(-51%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .hero-visual-stage {
@@ -5044,6 +5048,60 @@ h3 {
     height: 520px;
     margin-inline: auto;
     transform: translate3d(0, calc(var(--parallax-shift-soft) * -0.22), 0);
+  }
+
+  .hero-grid-glow {
+    inset: 8% 4%;
+    background:
+      radial-gradient(circle at 50% 44%, rgba(255, 199, 116, 0.3), transparent 24%),
+      radial-gradient(circle at 50% 44%, rgba(155, 228, 255, 0.22), transparent 38%),
+      radial-gradient(circle at 50% 42%, rgba(184, 107, 255, 0.16), transparent 48%);
+    filter: blur(11px);
+  }
+
+  .hero-core {
+    left: calc(50% - 84px);
+    top: calc(45% - 84px);
+    width: 168px;
+    height: 168px;
+    opacity: 1;
+    transform-origin: center;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 224, 156, 0.98) 20%, rgba(255, 153, 84, 0.72) 44%, rgba(255, 143, 82, 0.08) 76%);
+    box-shadow:
+      0 0 56px rgba(255, 199, 116, 0.92),
+      0 0 150px rgba(255, 130, 79, 0.52);
+  }
+
+  .hero-ring {
+    border-color: rgba(155, 228, 255, 0.32);
+    border-right-color: rgba(255, 199, 116, 0.92);
+    border-bottom-color: rgba(255, 123, 86, 0.66);
+    opacity: 1;
+  }
+
+  .hero-ring-one {
+    inset: 5% 5%;
+  }
+
+  .hero-ring-two {
+    inset: 13% 13%;
+  }
+
+  .hero-ring-three {
+    inset: 22% 22%;
+  }
+
+  .hero-arc-one {
+    inset: 10% 10%;
+  }
+
+  .hero-arc-two {
+    inset: 18% 18%;
+  }
+
+  .hero-arc-three {
+    inset: 27% 27%;
   }
 
   .hero-actions,
@@ -5204,7 +5262,7 @@ h3 {
 
   .hero-visual {
     width: min(124vw, 430px);
-    transform: translate(-51%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .hero-visual-stage {

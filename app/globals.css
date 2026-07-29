@@ -5030,13 +5030,13 @@ h3 {
 
   .hero-visual {
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 50%;
     z-index: 0;
     width: min(118vw, 560px);
     min-height: 520px;
     opacity: 0.98;
-    transform: translate(-50%, -44%);
+    transform: translate(-51%, -50%);
   }
 
   .hero-visual-stage {
@@ -5204,7 +5204,7 @@ h3 {
 
   .hero-visual {
     width: min(124vw, 430px);
-    transform: translate(-50%, -44%);
+    transform: translate(-51%, -50%);
   }
 
   .hero-visual-stage {

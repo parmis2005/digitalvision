@@ -26,7 +26,7 @@ export default function DatenschutzPage() {
         <section>
           <h2>1. Verantwortlicher</h2>
           <p>
-            Parmis Paschaei
+            Frau Parmis Paschaei
             <br />
             Erfurter Straße 16
             <br />

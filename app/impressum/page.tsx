@@ -27,7 +27,7 @@ export default function ImpressumPage() {
         <section>
           <h2>Angaben gemäß § 5 DDG</h2>
           <p>
-            Parmis Paschaei
+            Frau Parmis Paschaei
             <br />
             Inhaberin von Digital Vision
             <br />
@@ -58,7 +58,7 @@ export default function ImpressumPage() {
         <section>
           <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
           <p>
-            Parmis Paschaei
+            Frau Parmis Paschaei
             <br />
             Erfurter Straße 16
             <br />

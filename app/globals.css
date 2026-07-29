@@ -4890,11 +4890,11 @@ h3 {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 0.72fr) minmax(96px, 0.28fr);
+    grid-template-columns: minmax(0, calc(100vw - 90px)) minmax(48px, 1fr);
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     min-height: auto;
-    padding: 34px 16px 38px;
+    padding: 28px 12px 34px;
   }
 
   .section-flow-line {
@@ -4955,17 +4955,17 @@ h3 {
 
   .hero-console-main {
     grid-template-columns: 1fr;
-    padding: 20px 13px 16px;
+    padding: 16px 12px 14px;
   }
 
   .hero-console-content {
-    gap: 16px;
+    gap: 12px;
   }
 
   .hero-console-footer {
     flex-direction: column;
     align-items: stretch;
-    padding: 14px;
+    padding: 12px;
   }
 
   .hero-branding {
@@ -4974,7 +4974,7 @@ h3 {
 
   .hero-branding .dv-logo {
     align-items: center;
-    gap: 12px;
+    gap: 9px;
   }
 
   .hero-branding .dv-logo-mark {
@@ -4983,7 +4983,7 @@ h3 {
   }
 
   .hero-branding .dv-logo-name {
-    font-size: clamp(1.15rem, 5.2vw, 1.55rem);
+    font-size: clamp(1.08rem, 4.8vw, 1.46rem);
     letter-spacing: 0.16em;
   }
 
@@ -4997,18 +4997,19 @@ h3 {
     width: 24px;
   }
 
-  h1 {
-    font-size: clamp(1.36rem, 5.8vw, 1.85rem);
-    line-height: 1;
+  .hero h1 {
+    font-size: clamp(1.16rem, 4.9vw, 1.62rem);
+    line-height: 1.04;
   }
 
   .hero-line {
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .hero-text {
     max-width: 100%;
-    font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+    font-size: clamp(0.78rem, 3.15vw, 0.9rem);
+    line-height: 1.38;
   }
 
   .vision-visual {
@@ -5023,13 +5024,13 @@ h3 {
   .hero-visual {
     position: relative;
     width: 100%;
-    min-height: 420px;
-    transform: translateX(-10px);
+    min-height: 390px;
+    transform: translateX(-18px);
   }
 
   .hero-visual-stage {
-    width: clamp(220px, 62vw, 300px);
-    height: 420px;
+    width: clamp(225px, 64vw, 310px);
+    height: 390px;
     margin-left: 0;
     transform: translate3d(0, calc(var(--parallax-shift-soft) * -0.22), 0);
   }
@@ -5042,9 +5043,9 @@ h3 {
 
   .hero-actions .primary-button,
   .hero-actions .secondary-button {
-    min-height: 48px;
+    min-height: 44px;
     padding-inline: 12px;
-    font-size: clamp(0.78rem, 3.2vw, 0.9rem);
+    font-size: clamp(0.76rem, 3vw, 0.88rem);
   }
 
   .service-grid,
@@ -5173,9 +5174,9 @@ h3 {
 
 @media (max-width: 360px) {
   .hero {
-    grid-template-columns: minmax(0, 0.74fr) minmax(70px, 0.26fr);
-    gap: 2px;
-    padding-inline: 12px;
+    grid-template-columns: minmax(0, calc(100vw - 78px)) minmax(38px, 1fr);
+    gap: 4px;
+    padding-inline: 10px;
   }
 
   .hero-panel {
@@ -5183,16 +5184,17 @@ h3 {
   }
 
   .hero h1 {
-    font-size: 1.27rem;
+    font-size: clamp(1rem, 4.6vw, 1.16rem);
   }
 
   .hero-visual {
     width: 100%;
-    transform: translateX(-8px);
+    transform: translateX(-22px);
   }
 
   .hero-visual-stage {
     width: 220px;
+    height: 370px;
   }
 }
 

@@ -32,7 +32,7 @@ export default function DatenschutzPage() {
             <br />
             41069 Mönchengladbach
             <br />
-            Telefon: 017623467326
+            Telefon: +49 178 8324883
             <br />
             E-Mail: info@digitalvision.site
           </p>

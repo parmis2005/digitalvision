@@ -51,7 +51,7 @@ const organizationJsonLd = {
   name: "DigitalVision",
   url: baseUrl,
   description: siteDescription,
-  telephone: "+4917623467326",
+  telephone: "+491788324883",
   email: "info@digitalvision.site",
   address: {
     "@type": "PostalAddress",

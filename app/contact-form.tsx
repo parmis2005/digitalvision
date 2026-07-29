@@ -155,7 +155,7 @@ const seoCompetitionLabels = ["Niedrig", "Mittel", "Hoch"] as const;
 const startWindowLabels = ["Sofort", "In 1-3 Monaten", "Flexibel"] as const;
 
 const websitePriceRanges = [
-  { min: 1300, max: 1900 },
+  { min: 1000, max: 1900 },
   { min: 2000, max: 3400 },
   { min: 3600, max: 5000 },
 ] as const;

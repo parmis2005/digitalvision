@@ -54,7 +54,7 @@ const visionPoints = [
 const packages = [
   {
     name: "Website",
-    price: "ab 1300€",
+    price: "ab 1000€",
     detail: "Für professionelle Webseiten mit modernem Design und klarer Struktur.",
     note: "(Anzahlung möglich · Pflege & Erhalt monatlich)",
   },

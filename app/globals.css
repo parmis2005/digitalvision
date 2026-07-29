@@ -2893,98 +2893,251 @@ h3 {
 }
 
 .vision-visual {
-  min-height: 560px;
+  min-height: 600px;
+  overflow: visible;
 }
 
 .vision-stage {
   position: relative;
-  width: min(100%, 620px);
-  height: 560px;
+  width: min(112%, 760px);
+  height: 600px;
+  isolation: isolate;
+  overflow: visible;
   transform: translate3d(0, calc(var(--parallax-shift) * -0.16), 0);
 }
 
-.vision-core,
-.vision-ring,
-.vision-pulse,
-.vision-particle {
+.vision-galaxy,
+.vision-nebula,
+.vision-stream,
+.vision-light-trail,
+.vision-comet,
+.vision-star {
   position: absolute;
 }
 
-.vision-core {
-  left: 16%;
-  top: 40%;
-  width: 130px;
-  height: 130px;
+.vision-galaxy {
+  inset: -9% -7% -6% -13%;
+  background:
+    radial-gradient(circle at 23% 53%, rgba(255, 255, 255, 0.72), transparent 6%),
+    radial-gradient(circle at 28% 53%, rgba(255, 199, 116, 0.48), transparent 19%),
+    radial-gradient(ellipse at 46% 43%, rgba(155, 228, 255, 0.28), transparent 34%),
+    radial-gradient(ellipse at 71% 32%, rgba(184, 107, 255, 0.28), transparent 32%),
+    radial-gradient(ellipse at 62% 67%, rgba(255, 123, 86, 0.12), transparent 32%);
+  perspective: 900px;
+}
+
+.vision-galaxy::before,
+.vision-galaxy::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.vision-galaxy::before {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(214, 246, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 57% 15%, rgba(155, 228, 255, 0.72) 0 2px, transparent 4px),
+    radial-gradient(circle at 74% 34%, rgba(255, 199, 116, 0.55) 0 1px, transparent 3px),
+    radial-gradient(circle at 83% 69%, rgba(255, 255, 255, 0.52) 0 1px, transparent 3px),
+    radial-gradient(circle at 27% 78%, rgba(155, 228, 255, 0.48) 0 2px, transparent 4px),
+    radial-gradient(circle at 49% 62%, rgba(255, 255, 255, 0.3) 0 1px, transparent 3px);
+  opacity: 0.82;
+  animation: galaxy-stars-drift 18s ease-in-out infinite alternate;
+}
+
+.vision-galaxy::after {
+  background:
+    linear-gradient(112deg, transparent 0 17%, rgba(255, 255, 255, 0.12) 25%, transparent 36%),
+    linear-gradient(123deg, transparent 0 38%, rgba(155, 228, 255, 0.1) 47%, transparent 60%),
+    radial-gradient(ellipse at 42% 51%, rgba(255, 255, 255, 0.14), transparent 38%);
+  filter: blur(7px);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  animation: galaxy-haze-drift 20s ease-in-out infinite alternate;
+}
+
+.vision-nebula {
+  left: -18%;
+  top: 15%;
+  z-index: 1;
+  width: 138%;
+  height: 56%;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 216, 146, 0.92) 18%, rgba(255, 123, 86, 0.42) 44%, rgba(255, 123, 86, 0) 70%);
-  box-shadow:
-    0 0 40px rgba(255, 199, 116, 0.8),
-    0 0 120px rgba(255, 123, 86, 0.26);
-  animation: core-pulse 8s ease-in-out infinite;
+    radial-gradient(ellipse at 25% 52%, rgba(255, 255, 255, 1), transparent 8%),
+    radial-gradient(ellipse at 31% 51%, rgba(255, 213, 144, 0.62), transparent 21%),
+    radial-gradient(ellipse at 44% 48%, rgba(155, 228, 255, 0.5), transparent 36%),
+    radial-gradient(ellipse at 63% 42%, rgba(184, 107, 255, 0.44), transparent 42%),
+    radial-gradient(ellipse at 78% 36%, rgba(255, 123, 86, 0.18), transparent 35%),
+    linear-gradient(100deg, transparent 3%, rgba(255, 255, 255, 0.42), rgba(155, 228, 255, 0.32), rgba(184, 107, 255, 0.3), transparent 90%);
+  filter: blur(9px);
+  mix-blend-mode: screen;
+  transform: rotate(-18deg);
+  animation: milky-way-flow 16s ease-in-out infinite alternate;
 }
 
-.vision-ring {
-  border-radius: 50%;
-  border: 1px solid rgba(155, 228, 255, 0.22);
-  border-right-color: rgba(255, 199, 116, 0.82);
-  border-bottom-color: rgba(255, 123, 86, 0.38);
+.vision-stream {
+  z-index: 2;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(155, 228, 255, 0.78), rgba(255, 255, 255, 0.62), rgba(255, 199, 116, 0.28), transparent);
+  filter: blur(0.2px) drop-shadow(0 0 16px rgba(155, 228, 255, 0.46));
+  transform-origin: center;
+  opacity: 0.88;
 }
 
-.vision-ring-one {
-  inset: 6% 10% 6% 10%;
-  animation: ring-drift 20s linear infinite;
+.vision-stream-one {
+  left: -3%;
+  top: 32%;
+  width: 91%;
+  transform: rotate(-21deg);
+  animation: galaxy-line-drift-one 12s ease-in-out infinite alternate;
 }
 
-.vision-ring-two {
-  inset: 16% 19% 16% 19%;
-  transform: rotate(-14deg);
-  animation: ring-drift 17s linear infinite reverse;
+.vision-stream-two {
+  left: 6%;
+  top: 43%;
+  width: 78%;
+  background: linear-gradient(90deg, transparent, rgba(255, 199, 116, 0.7), rgba(255, 255, 255, 0.5), rgba(184, 107, 255, 0.26), transparent);
+  transform: rotate(-12deg);
+  animation: galaxy-line-drift-two 15s ease-in-out infinite alternate;
 }
 
-.vision-ring-three {
-  inset: 26% 28% 26% 28%;
+.vision-stream-three {
+  left: 15%;
+  top: 55%;
+  width: 67%;
+  background: linear-gradient(90deg, transparent, rgba(184, 107, 255, 0.6), rgba(155, 228, 255, 0.5), transparent);
+  transform: rotate(8deg);
+  animation: galaxy-line-drift-one 18s ease-in-out infinite alternate-reverse;
+}
+
+.vision-stream-four {
+  left: -12%;
+  top: 67%;
+  width: 95%;
+  background: linear-gradient(90deg, transparent, rgba(255, 123, 86, 0.46), rgba(255, 199, 116, 0.24), transparent);
   transform: rotate(18deg);
-  animation: ring-drift 14s linear infinite;
+  animation: galaxy-line-drift-two 20s ease-in-out infinite alternate-reverse;
 }
 
-.vision-pulse {
-  inset: 0;
+.vision-light-trail {
+  z-index: 3;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.76), rgba(155, 228, 255, 0.3), transparent);
+  filter: blur(0.2px) drop-shadow(0 0 10px rgba(155, 228, 255, 0.44));
+  transform-origin: center;
+}
+
+.vision-light-trail-one {
+  left: 12%;
+  top: 43%;
+  width: 72%;
+  transform: rotate(-18deg);
+  animation: light-trail-sweep 7.5s ease-in-out infinite;
+}
+
+.vision-light-trail-two {
+  left: 25%;
+  top: 53%;
+  width: 54%;
+  transform: rotate(12deg);
+  animation: light-trail-sweep 9s ease-in-out infinite reverse;
+}
+
+.vision-comet {
+  z-index: 4;
+  width: 92px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), rgba(155, 228, 255, 0.2));
+  box-shadow: 0 0 20px rgba(155, 228, 255, 0.5);
+}
+
+.vision-comet-one {
+  left: 12%;
+  top: 29%;
+  transform: rotate(-28deg);
+  animation: comet-pass-one 8.5s ease-in-out infinite;
+}
+
+.vision-comet-two {
+  left: 56%;
+  top: 66%;
+  width: 70px;
+  transform: rotate(-20deg);
+  animation: comet-pass-two 11s ease-in-out infinite;
+}
+
+.vision-star {
+  z-index: 5;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: radial-gradient(circle at 36% 48%, rgba(255, 255, 255, 0.06), transparent 20%);
-  filter: blur(8px);
+  background: rgba(214, 246, 255, 0.95);
+  box-shadow:
+    0 0 18px rgba(155, 228, 255, 0.9),
+    0 0 48px rgba(255, 255, 255, 0.32);
+  animation: galaxy-twinkle 4.6s ease-in-out infinite;
 }
 
-.vision-particle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(155, 228, 255, 0.92);
-  box-shadow: 0 0 18px rgba(155, 228, 255, 0.66);
-  animation: particle-float 10s ease-in-out infinite;
+.vision-star-one {
+  left: 19%;
+  top: 36%;
 }
 
-.vision-particle-one {
-  left: 73%;
-  top: 16%;
+.vision-star-two {
+  left: 48%;
+  top: 24%;
+  animation-delay: -1.2s;
 }
 
-.vision-particle-two {
-  left: 64%;
-  top: 52%;
-  animation-delay: -2.2s;
+.vision-star-three {
+  left: 69%;
+  top: 44%;
+  animation-delay: -2.1s;
 }
 
-.vision-particle-three {
-  left: 82%;
+.vision-star-four {
+  left: 78%;
   top: 68%;
-  animation-delay: -4.4s;
+  animation-delay: -3.3s;
+}
+
+.vision-star-five {
+  left: 28%;
+  top: 71%;
+  animation-delay: -0.8s;
+}
+
+.vision-star-six {
+  left: 59%;
+  top: 58%;
+  animation-delay: -2.8s;
+}
+
+.vision-star-seven {
+  left: 39%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  animation-delay: -3.8s;
+}
+
+.vision-star-eight {
+  left: 84%;
+  top: 24%;
+  width: 5px;
+  height: 5px;
+  animation-delay: -1.7s;
 }
 
 .vision-copy h2 {
-  max-width: 860px;
-  font-size: clamp(2rem, 3.6vw, 3.9rem);
-  line-height: 0.98;
+  max-width: 780px;
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+  line-height: 1.02;
 }
 
 .vision-copy p {
@@ -4755,6 +4908,131 @@ h3 {
   }
 }
 
+@keyframes milky-way-flow {
+  from {
+    transform: rotate(-20deg) translate3d(-14px, 8px, 0) scale(0.98);
+    opacity: 0.72;
+  }
+
+  to {
+    transform: rotate(-15deg) translate3d(18px, -10px, 0) scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes galaxy-haze-drift {
+  from {
+    transform: translate3d(-8px, 4px, 0) scale(1);
+    opacity: 0.56;
+  }
+
+  to {
+    transform: translate3d(12px, -6px, 0) scale(1.04);
+    opacity: 0.82;
+  }
+}
+
+@keyframes galaxy-stars-drift {
+  from {
+    transform: translate3d(-6px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(10px, -8px, 0);
+  }
+}
+
+@keyframes galaxy-line-drift-one {
+  from {
+    opacity: 0.42;
+    translate: -10px 8px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 18px -10px;
+  }
+}
+
+@keyframes galaxy-line-drift-two {
+  from {
+    opacity: 0.36;
+    translate: 12px -8px;
+  }
+
+  to {
+    opacity: 0.92;
+    translate: -16px 10px;
+  }
+}
+
+@keyframes light-trail-sweep {
+  0%,
+  100% {
+    opacity: 0.16;
+    clip-path: inset(0 84% 0 0);
+  }
+
+  48% {
+    opacity: 0.9;
+    clip-path: inset(0 0 0 0);
+  }
+
+  70% {
+    opacity: 0.28;
+    clip-path: inset(0 0 0 76%);
+  }
+}
+
+@keyframes comet-pass-one {
+  0%,
+  64%,
+  100% {
+    opacity: 0;
+    transform: translate3d(-42px, 26px, 0) rotate(-28deg);
+  }
+
+  74% {
+    opacity: 0.95;
+  }
+
+  86% {
+    opacity: 0;
+    transform: translate3d(220px, -82px, 0) rotate(-28deg);
+  }
+}
+
+@keyframes comet-pass-two {
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+    transform: translate3d(90px, 46px, 0) rotate(-20deg);
+  }
+
+  62% {
+    opacity: 0.8;
+  }
+
+  76% {
+    opacity: 0;
+    transform: translate3d(-160px, -40px, 0) rotate(-20deg);
+  }
+}
+
+@keyframes galaxy-twinkle {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scale(0.82);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.34);
+  }
+}
+
 @keyframes ring-drift {
   from {
     transform: rotate(0deg);
@@ -5166,9 +5444,13 @@ h3 {
     height: 980px;
   }
 
-  .vision-copy h2,
   .split-copy h2 {
     font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .vision-copy h2 {
+    font-size: clamp(1.85rem, 7.8vw, 2.55rem);
+    line-height: 1.04;
   }
 
   .section,

@@ -183,14 +183,25 @@ export default function Home() {
       <section id="vision" className="vision-section">
         <div className="vision-visual" aria-hidden="true">
           <div className="vision-stage">
-            <div className="vision-core" />
-            <div className="vision-ring vision-ring-one" />
-            <div className="vision-ring vision-ring-two" />
-            <div className="vision-ring vision-ring-three" />
-            <div className="vision-pulse" />
-            <span className="vision-particle vision-particle-one" />
-            <span className="vision-particle vision-particle-two" />
-            <span className="vision-particle vision-particle-three" />
+            <div className="vision-galaxy">
+              <span className="vision-nebula" />
+              <span className="vision-stream vision-stream-one" />
+              <span className="vision-stream vision-stream-two" />
+              <span className="vision-stream vision-stream-three" />
+              <span className="vision-stream vision-stream-four" />
+              <span className="vision-light-trail vision-light-trail-one" />
+              <span className="vision-light-trail vision-light-trail-two" />
+              <span className="vision-comet vision-comet-one" />
+              <span className="vision-comet vision-comet-two" />
+              <span className="vision-star vision-star-one" />
+              <span className="vision-star vision-star-two" />
+              <span className="vision-star vision-star-three" />
+              <span className="vision-star vision-star-four" />
+              <span className="vision-star vision-star-five" />
+              <span className="vision-star vision-star-six" />
+              <span className="vision-star vision-star-seven" />
+              <span className="vision-star vision-star-eight" />
+            </div>
           </div>
         </div>
         <div className="vision-copy">

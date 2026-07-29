@@ -662,6 +662,10 @@ h3 {
   font-weight: 600;
 }
 
+.hero-note-break {
+  white-space: nowrap;
+}
+
 .hero-console-footer {
   display: flex;
   align-items: center;
@@ -4914,6 +4918,10 @@ h3 {
 
   .section-flow-knot {
     width: 62px;
+  }
+
+  .hero-note-break {
+    display: block;
   }
 
   .hero-panel {

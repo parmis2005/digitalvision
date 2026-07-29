@@ -135,7 +135,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <p className="hero-note">Kostenlose Ersteinschätzung. Klarer Fahrplan. Keine Verpflichtung.</p>
+            <p className="hero-note">
+              Kostenlose Ersteinschätzung. Klarer Fahrplan.
+              <span className="hero-note-break"> Keine Verpflichtung.</span>
+            </p>
           </div>
         </div>
         <div className="hero-visual" aria-hidden="true">

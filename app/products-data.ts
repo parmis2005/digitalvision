@@ -119,22 +119,6 @@ export const products: ProductItem[] = [
     previewUrl: "/arztpraxis-preview/index.html",
   },
   {
-    slug: "st-elisabeth-klinikum",
-    type: "Krankenhaus Website",
-    title: "St. Elisabeth Klinikum",
-    detail: "Moderne Krankenhaus-Website für Fachbereiche, Notaufnahme, Team und Termine",
-    variant: "hospital",
-    category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Krankenhaus-Website mit klarer Patientenführung, 24/7-Notaufnahme, Fachbereichen und direkter Terminvereinbarung.",
-    highlights: [
-      "Starker Hero-Bereich mit Notfall-Hinweis, Termin-Einstieg und Klinikprofil",
-      "Klare Struktur für Fachbereiche, Ärzteteam, Patientenstimmen und Kontakt",
-      "Geeignet für Kliniken, Medizinzentren und größere Gesundheitseinrichtungen",
-    ],
-    previewUrl: "/krankenhaus-preview/index.html",
-  },
-  {
     slug: "cleanpro-reinigung",
     type: "Reinigungsfirma Website",
     title: "CleanPro Reinigung",
@@ -181,6 +165,22 @@ export const products: ProductItem[] = [
       "Geeignet für Nagelstudios, Beauty-Ateliers und moderne Pflegeangebote",
     ],
     previewUrl: "/happynails-preview/index.html",
+  },
+  {
+    slug: "st-elisabeth-klinikum",
+    type: "Krankenhaus Website",
+    title: "St. Elisabeth Klinikum",
+    detail: "Moderne Krankenhaus-Website für Fachbereiche, Notaufnahme, Team und Termine",
+    variant: "hospital",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Krankenhaus-Website mit klarer Patientenführung, 24/7-Notaufnahme, Fachbereichen und direkter Terminvereinbarung.",
+    highlights: [
+      "Starker Hero-Bereich mit Notfall-Hinweis, Termin-Einstieg und Klinikprofil",
+      "Klare Struktur für Fachbereiche, Ärzteteam, Patientenstimmen und Kontakt",
+      "Geeignet für Kliniken, Medizinzentren und größere Gesundheitseinrichtungen",
+    ],
+    previewUrl: "/krankenhaus-preview/index.html",
   },
   {
     slug: "lead-funnel",

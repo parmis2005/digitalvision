@@ -12,6 +12,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
+  const isHospital = product.slug === "st-elisabeth-klinikum";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
   const isNails = product.slug === "luna-nails";
@@ -283,6 +284,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="medical-card-copy">
               <h3>Arztpraxis Weber</h3>
               <span>Praxis · Leistungen · Team · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isHospital) {
+    if (size === "card") {
+      return (
+        <div className="hospital-preview-card-view">
+          <div className="hospital-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="hospital-card-cta">Termin vereinbaren</span>
+          </div>
+          <div className="hospital-card-shell">
+            <div className="hospital-card-branding">
+              <p>St. Elisabeth</p>
+              <span>Klinikum · Notaufnahme · Fachbereiche</span>
+            </div>
+            <div className="hospital-card-stage">
+              <div className="hospital-card-overlay">
+                <span className="hospital-card-kicker">Notaufnahme 24/7</span>
+                <strong>Ihre Gesundheit in besten Händen.</strong>
+              </div>
+              <div className="hospital-card-accent">
+                <span>12</span>
+                <small>Fachabteilungen</small>
+              </div>
+            </div>
+            <div className="hospital-card-copy">
+              <h3>St. Elisabeth Klinikum</h3>
+              <span>Fachbereiche · Ärzte & Team · Notfall · Kontakt</span>
             </div>
           </div>
         </div>

@@ -1072,6 +1072,12 @@ h3 {
   height: 100%;
 }
 
+.hospital-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .cleaning-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2225,6 +2231,177 @@ h3 {
   line-height: 1.35;
 }
 
+.hospital-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hospital-card-cta {
+  color: rgba(231, 244, 255, 0.88);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hospital-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.hospital-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.hospital-card-branding p {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.hospital-card-branding span {
+  color: rgba(226, 239, 249, 0.78);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hospital-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.2), transparent 18%),
+    radial-gradient(circle at 78% 78%, rgba(14, 165, 233, 0.22), transparent 24%),
+    linear-gradient(135deg, #075985 0%, #0f75a8 48%, #e0f2fe 100%);
+  box-shadow: inset 0 0 0 1px rgba(226, 242, 255, 0.16);
+}
+
+.hospital-card-stage::before {
+  position: absolute;
+  right: 14px;
+  top: 16px;
+  width: 86px;
+  height: 72px;
+  border-radius: 22px;
+  background:
+    linear-gradient(#f8fbff, #f8fbff) center/10px 42px no-repeat,
+    linear-gradient(#f8fbff, #f8fbff) center/42px 10px no-repeat,
+    rgba(255, 255, 255, 0.16);
+  box-shadow:
+    -38px 30px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  content: "";
+}
+
+.hospital-card-stage::after {
+  position: absolute;
+  right: 48px;
+  bottom: 26px;
+  width: 96px;
+  height: 28px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 14px 14px, #e0f2fe 0 10px, transparent 11px),
+    radial-gradient(circle at 36px 14px, #bae6fd 0 10px, transparent 11px),
+    radial-gradient(circle at 58px 14px, #f8fbff 0 10px, transparent 11px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  content: "";
+}
+
+.hospital-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #f8fbff;
+  text-shadow: 0 8px 24px rgba(4, 33, 54, 0.3);
+}
+
+.hospital-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(225, 29, 72, 0.86);
+  color: #fff;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.hospital-card-overlay strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.95;
+}
+
+.hospital-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  width: 102px;
+  height: 62px;
+  padding: 10px;
+  border: 1px solid rgba(226, 242, 255, 0.5);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(4, 33, 54, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.hospital-card-accent span {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.hospital-card-accent small {
+  color: rgba(248, 251, 255, 0.82);
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hospital-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.hospital-card-copy h3 {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.hospital-card-copy span {
+  color: rgba(205, 226, 238, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .cleaning-card-top {
   display: flex;
   align-items: center;
@@ -2490,6 +2667,14 @@ h3 {
   color: #f8fbff;
 }
 
+.showcase-card.hospital .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255, 255, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(14, 165, 233, 0.18), transparent 20%),
+    linear-gradient(160deg, #075985 0%, #0f75a8 46%, #e0f2fe 100%);
+  color: #f8fbff;
+}
+
 .showcase-card.cleaning .showcase-preview {
   background:
     radial-gradient(circle at 82% 20%, rgba(255, 255, 255, 0.16), transparent 18%),
@@ -2748,6 +2933,19 @@ h3 {
 .product-preview-large.medical .product-preview-viewport,
 .product-preview-large.medical .product-preview-iframe {
   background: #eef8f9;
+}
+
+.product-preview-large.hospital .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.22), transparent 20%),
+    radial-gradient(circle at 16% 82%, rgba(14, 165, 233, 0.16), transparent 22%),
+    linear-gradient(135deg, #075985, #0f75a8 52%, #e0f2fe);
+  color: #f8fbff;
+}
+
+.product-preview-large.hospital .product-preview-viewport,
+.product-preview-large.hospital .product-preview-iframe {
+  background: #eef8ff;
 }
 
 .product-preview-large.cleaning .product-preview-shell {

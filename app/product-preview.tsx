@@ -13,6 +13,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
   const isHospital = product.slug === "st-elisabeth-klinikum";
+  const isHair = product.slug === "haarwerk-studio";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
   const isNails = product.slug === "luna-nails";
@@ -321,6 +322,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="hospital-card-copy">
               <h3>St. Elisabeth Klinikum</h3>
               <span>Fachbereiche · Ärzte & Team · Notfall · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isHair) {
+    if (size === "card") {
+      return (
+        <div className="hair-preview-card-view">
+          <div className="hair-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="hair-card-cta">Termin buchen</span>
+          </div>
+          <div className="hair-card-shell">
+            <div className="hair-card-branding">
+              <p>Haarwerk Studio</p>
+              <span>Haare · Handwerk · Haltung</span>
+            </div>
+            <div className="hair-card-stage">
+              <div className="hair-card-overlay">
+                <span className="hair-card-kicker">Friseur Berlin</span>
+                <strong>Haare verstehen. Stil erleben.</strong>
+              </div>
+              <div className="hair-card-accent" />
+            </div>
+            <div className="hair-card-copy">
+              <h3>Haarwerk Studio</h3>
+              <span>Schnitt · Coloration · Galerie · Termine</span>
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ export type ProductItem = {
     | "wellness"
     | "medical"
     | "hospital"
+    | "hair"
     | "cleaning"
     | "insurance"
     | "nails";
@@ -181,6 +182,22 @@ export const products: ProductItem[] = [
       "Geeignet für Kliniken, Medizinzentren und größere Gesundheitseinrichtungen",
     ],
     previewUrl: "/krankenhaus-preview/index.html",
+  },
+  {
+    slug: "haarwerk-studio",
+    type: "Friseur Website",
+    title: "Haarwerk Studio",
+    detail: "Moderne Friseur-Website für Schnitte, Coloration, Galerie und Termine",
+    variant: "hair",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Friseur-Website mit hochwertiger Salon-Atmosphäre, Video-Hero, klaren Leistungen und direkter Terminbuchung.",
+    highlights: [
+      "Starker Video-Hero für Salon-Atmosphäre, Beratung und moderne Looks",
+      "Klare Bereiche für Galerie, Leistungen, Preise, Portfolio und Bewertungen",
+      "Geeignet für Friseursalons, Barber-Shops und hochwertige Beauty-Studios",
+    ],
+    previewUrl: "/friseur-preview/index.html",
   },
   {
     slug: "lead-funnel",

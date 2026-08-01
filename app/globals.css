@@ -3920,6 +3920,10 @@ h3 {
   flex-direction: column;
 }
 
+.website-package-card {
+  gap: 12px;
+}
+
 .package-card.featured {
   background:
     linear-gradient(135deg, rgba(155, 228, 255, 0.18), rgba(255, 199, 116, 0.16), rgba(181, 107, 255, 0.18)),
@@ -3951,6 +3955,62 @@ h3 {
 
 .package-card.featured .package-note {
   color: rgba(255, 255, 255, 0.68);
+}
+
+.website-payment-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 0;
+  border-block: 1px solid rgba(155, 228, 255, 0.13);
+}
+
+.website-payment-model {
+  display: grid;
+  gap: 5px;
+  padding: 10px 12px 10px 0;
+}
+
+.website-payment-model + .website-payment-model {
+  padding-inline: 12px 0;
+  border-left: 1px solid rgba(155, 228, 255, 0.13);
+}
+
+.website-payment-model strong {
+  color: rgba(248, 251, 255, 0.96);
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.package-card p.website-payment-price {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1.02rem, 1.25vw, 1.24rem);
+  font-weight: 900;
+  line-height: 1.12;
+}
+
+.package-card p.website-payment-follow-up {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+  font-weight: 760;
+  line-height: 1.28;
+  min-height: 2em;
+}
+
+.package-card p.website-payment-follow-up-placeholder {
+  visibility: hidden;
+}
+
+.package-card p.website-payment-hint {
+  color: rgba(216, 225, 244, 0.74);
+  font-size: 0.75rem;
+  line-height: 1.34;
+}
+
+.package-card .website-package-note {
+  margin: 0 0 8px;
+  font-size: 0.74rem;
+  line-height: 1.32;
 }
 
 .package-card a {

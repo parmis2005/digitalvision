@@ -51,12 +51,48 @@ const visionPoints = [
   "Sichtbarkeit, Vertrauen und Struktur aus einem System",
 ];
 
-const packages = [
+type WebsitePaymentModel = {
+  label: string;
+  price: string;
+  followUp?: string;
+  hint: string;
+};
+
+type PackageItem =
+  | {
+      name: string;
+      paymentModels: WebsitePaymentModel[];
+      note: string;
+      price?: never;
+      detail?: never;
+      featured?: never;
+    }
+  | {
+      name: string;
+      price: string;
+      detail: string;
+      featured?: boolean;
+      note?: string;
+      paymentModels?: never;
+    };
+
+const packages: PackageItem[] = [
   {
     name: "Website",
-    price: "ab 1000€",
-    detail: "Für professionelle Webseiten mit modernem Design und klarer Struktur.",
-    note: "(Anzahlung möglich · Pflege & Erhalt monatlich)",
+    paymentModels: [
+      {
+        label: "Mit Anzahlung",
+        price: "ab 1.300 € einmalig",
+        followUp: "danach ab 100 € monatlich",
+        hint: "Inklusive Webseite, Hosting, Pflege & Support.",
+      },
+      {
+        label: "Ohne Anzahlung",
+        price: "ab 300 € monatlich",
+        hint: "Inklusive Webseite, Hosting, Pflege & Support.",
+      },
+    ],
+    note: "Laufzeit, Kosten und Leistungen werden individuell besprochen.",
   },
   {
     name: "SEO Growth",
@@ -294,13 +330,44 @@ export default function Home() {
         <div className="package-grid">
           {packages.map((item) => (
             <article
-              className={item.featured ? "package-card featured" : "package-card"}
+              className={[
+                "package-card",
+                "featured",
+                item.paymentModels ? "website-package-card" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
               key={item.name}
             >
               <h3>{item.name}</h3>
-              <p className="price">{item.price}</p>
-              <p>{item.detail}</p>
-              {"note" in item && <p className="package-note">{item.note}</p>}
+              {item.paymentModels ? (
+                <>
+                  <div className="website-payment-options">
+                    {item.paymentModels.map((model) => (
+                      <div className="website-payment-model" key={model.label}>
+                        <strong>{model.label}</strong>
+                        <p className="website-payment-price">{model.price}</p>
+                        {model.followUp ? (
+                          <p className="website-payment-follow-up">{model.followUp}</p>
+                        ) : (
+                          <p
+                            className="website-payment-follow-up website-payment-follow-up-placeholder"
+                            aria-hidden="true"
+                          />
+                        )}
+                        <p className="website-payment-hint">{model.hint}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="package-note website-package-note">{item.note}</p>
+                </>
+              ) : (
+                <>
+                  <p className="price">{item.price}</p>
+                  <p>{item.detail}</p>
+                  {"note" in item && <p className="package-note">{item.note}</p>}
+                </>
+              )}
               <a href="#kontakt">
                 Anfragen
                 <ArrowRight size={17} aria-hidden="true" />

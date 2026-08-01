@@ -119,6 +119,7 @@ export default function Home() {
           <a href="#leistungen">Leistungen</a>
           <a href="#prozess">Prozess</a>
           <a href="#preise">Pakete</a>
+          <a href="/blog">Blog</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
         <a className="header-cta" href="#kontakt">

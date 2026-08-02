@@ -5714,6 +5714,64 @@ h3 {
   gap: 24px;
 }
 
+.blog-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.blog-pagination-pages {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-pagination-number,
+.blog-pagination-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid rgba(155, 228, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(248, 251, 255, 0.78);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.blog-pagination-number {
+  width: 42px;
+}
+
+.blog-pagination-control {
+  gap: 7px;
+  padding: 0 16px;
+}
+
+.blog-pagination-number:hover,
+.blog-pagination-control:hover {
+  transform: translateY(-2px);
+  border-color: rgba(155, 228, 255, 0.36);
+  color: white;
+  background: rgba(155, 228, 255, 0.09);
+}
+
+.blog-pagination-number.is-active {
+  border-color: rgba(255, 199, 116, 0.72);
+  color: #07112a;
+  background: linear-gradient(135deg, rgba(255, 199, 116, 0.96), rgba(155, 228, 255, 0.88));
+}
+
 .blog-related-list {
   display: grid;
   gap: 18px;
@@ -6789,6 +6847,26 @@ h3 {
 
   .blog-list {
     gap: 20px;
+  }
+
+  .blog-pagination {
+    justify-content: flex-start;
+    gap: 10px;
+    padding-top: 8px;
+  }
+
+  .blog-pagination-number,
+  .blog-pagination-control {
+    min-height: 38px;
+    font-size: 0.8rem;
+  }
+
+  .blog-pagination-number {
+    width: 38px;
+  }
+
+  .blog-pagination-control {
+    padding: 0 14px;
   }
 
   .blog-related-list {

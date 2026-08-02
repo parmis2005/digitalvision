@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "./blog-data";
+import { getBlogPageCount, getBlogPagePath } from "./blog-pagination";
 import { products } from "./products-data";
 
 const baseUrl = "https://www.digitalvision.site";
@@ -64,5 +65,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes];
+  const paginatedBlogRoutes: MetadataRoute.Sitemap = Array.from(
+    { length: Math.max(0, getBlogPageCount() - 1) },
+    (_, index) => index + 2,
+  ).map((page) => ({
+    url: `${baseUrl}${getBlogPagePath(page)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.65,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...paginatedBlogRoutes];
 }

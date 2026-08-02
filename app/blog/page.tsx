@@ -7,9 +7,9 @@ import { DigitalVisionLogo } from "../digitalvision-logo";
 import { blogPosts } from "../blog-data";
 
 const baseUrl = "https://www.digitalvision.site";
-const title = "Blog: Webdesign, SEO & digitale Systeme";
+const title = "Blog: Websites, Systeme & digitale Auftritte";
 const description =
-  "DigitalVision Blog mit praxisnahen Tipps zu Webdesign, SEO, Google-Ranking, Website-Erstellung und Verwaltungssystemen.";
+  "DigitalVision Blog mit praxisnahen Artikeln zu Websites, Online-Shops, Branchenauftritten, digitalen Abläufen und Systemen.";
 
 export const metadata: Metadata = {
   title,
@@ -74,58 +74,57 @@ export default function BlogPage() {
             <ArrowLeft size={17} aria-hidden="true" />
             Zurück zu DigitalVision
           </Link>
-          <h1>Webdesign, SEO & Systeme.</h1>
+          <h1>Impulse für digitale Projekte.</h1>
           <p>
-            Praxisnahe Artikel für Unternehmen, die online klarer auftreten,
-            besser gefunden werden und ihre digitalen Prozesse sauberer
-            organisieren wollen.
+            Praxisnahe Artikel für Unternehmen, die ihre Website, ihren
+            Online-Auftritt und ihre digitalen Abläufe klarer planen möchten.
           </p>
           <div className="blog-hero-actions">
             <Link className="primary-button" href="/#kontakt">
               Kostenlose Anfrage
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
-            <Link className="secondary-button" href="/seo-info">
-              SEO ansehen
+            <Link className="secondary-button" href="/#leistungen">
+              Leistungen ansehen
             </Link>
           </div>
         </div>
         <div className="blog-seo-visual" aria-hidden="true">
-          <span className="blog-seo-kicker">SEO-System</span>
+          <span className="blog-seo-kicker">DigitalVision Magazin</span>
           <span className="blog-search-panel">
             <span className="blog-search-bar">
               <span />
-              Webdesign Mönchengladbach
+              Website, Inhalte und Abläufe klar planen
             </span>
             <span className="blog-search-result blog-search-result-main">
-              <strong>DigitalVision</strong>
-              <em>Webdesign · SEO · Systeme</em>
+              <strong>Starker Online-Auftritt</strong>
+              <em>klarer Aufbau, passende Gestaltung</em>
             </span>
             <span className="blog-search-result">
-              <strong>Leistungsseite</strong>
-              <em>klar strukturiert</em>
+              <strong>Kundenanfragen</strong>
+              <em>einfach geführt und verständlich</em>
             </span>
             <span className="blog-search-result">
-              <strong>Blogartikel</strong>
-              <em>intern verlinkt</em>
+              <strong>Digitale Systeme</strong>
+              <em>sauber organisiert im Alltag</em>
             </span>
           </span>
           <span className="blog-conversion-panel">
-            <strong>Anfrage</strong>
-            <em>aus Sichtbarkeit wird Kontakt</em>
+            <strong>Klarer Plan</strong>
+            <em>von Idee bis Umsetzung</em>
           </span>
           <span className="blog-funnel-row">
             <span>
               <strong>01</strong>
-              Website
+              Idee
             </span>
             <span>
               <strong>02</strong>
-              Ranking
+              Aufbau
             </span>
             <span>
               <strong>03</strong>
-              Anfrage
+              Ergebnis
             </span>
           </span>
         </div>
@@ -140,7 +139,7 @@ export default function BlogPage() {
       <section className="blog-section">
         <div className="section-heading">
           <p className="eyebrow">Alle Artikel</p>
-          <h2>Blogbeiträge für bessere Sichtbarkeit.</h2>
+          <h2>Artikel für bessere digitale Auftritte.</h2>
         </div>
         <div className="blog-list">
           {blogPosts.map((post, index) => (
@@ -187,10 +186,10 @@ export default function BlogPage() {
 
       <section className="blog-footer-cta">
         <p className="eyebrow">Nächster Schritt</p>
-        <h2>Du willst mit deiner Website besser gefunden werden?</h2>
+        <h2>Du willst deine Website klarer und moderner aufstellen?</h2>
         <p>
-          DigitalVision prüft, welche Seiten, Inhalte und technischen Punkte
-          für dein Projekt zuerst wichtig sind.
+          DigitalVision prüft, welche Struktur, Inhalte und Funktionen für dein
+          Projekt zuerst wichtig sind.
         </p>
         <Link className="primary-button" href="/#kontakt">
           Projekt anfragen

@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <Clock size={15} aria-hidden="true" />
               {post.readingTime}
             </span>
-            <span>Fokus: {post.focusKeyword}</span>
+            <span>Thema: {post.focusKeyword}</span>
           </div>
         </header>
 

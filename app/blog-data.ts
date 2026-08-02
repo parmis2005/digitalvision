@@ -27,239 +27,288 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "webseite-erstellen-lassen-unternehmen",
-    title: "Webseite erstellen lassen: Worauf Unternehmen achten sollten",
+    slug: "website-planen-vor-dem-design",
+    title: "Website planen: Was vor dem Design geklärt sein sollte",
     description:
-      "Ein praktischer Leitfaden für Unternehmen, die eine professionelle Website erstellen lassen möchten: Struktur, Inhalte, SEO, Vertrauen und Conversion.",
+      "Eine gute Website beginnt nicht mit Farben, sondern mit Ziel, Struktur, Inhalten und einem klaren Weg zur Anfrage.",
     excerpt:
-      "Eine gute Unternehmenswebsite braucht mehr als ein modernes Design. Entscheidend sind klare Ziele, saubere Struktur, schnelle Ladezeiten und Inhalte, die Vertrauen aufbauen.",
-    category: "Webdesign",
-    date: "2026-08-02",
-    readingTime: "7 Min. Lesezeit",
-    focusKeyword: "Webseite erstellen lassen",
-    featured: true,
-    takeaways: [
-      "Eine Website sollte zuerst ein klares Geschaeftsziel verfolgen.",
-      "Struktur, Texte, Design und Technik müssen zusammen geplant werden.",
-      "SEO beginnt nicht nach dem Launch, sondern bei der Seitenarchitektur.",
-    ],
-    sections: [
-      {
-        heading: "Warum eine Website kein digitales Prospekt sein sollte",
-        body: [
-          "Viele Unternehmen sehen ihre Website zuerst als optische Visitenkarte. Das ist zu wenig. Eine moderne Website muss Besucher führen, Fragen beantworten und aus Interesse eine konkrete Anfrage machen.",
-          "Bevor Design oder Farben entschieden werden, sollte klar sein, welche Leistung verkauft wird, welche Zielgruppe erreicht werden soll und welcher nächste Schritt auf jeder Seite logisch ist.",
-        ],
-      },
-      {
-        heading: "Die wichtigsten Bausteine einer professionellen Website",
-        body: [
-          "Eine starke Startseite erklärt sofort, wer das Unternehmen ist, welches Problem gelöst wird und warum Besucher vertrauen können. Danach folgen Leistungen, Referenzen, Ablauf, häufige Fragen und ein einfacher Kontaktweg.",
-          "Gerade für lokale Dienstleister ist eine klare Leistungsstruktur wichtig. Jede wichtige Leistung sollte eine eigene, suchmaschinenfreundliche Fläche bekommen, statt nur als kurzer Stichpunkt auf einer Sammelseite zu stehen.",
-        ],
-        bullets: [
-          "Klare Hero-Botschaft mit direktem Nutzen",
-          "Leistungsbereiche mit eigener Struktur",
-          "Vertrauenssignale wie Beispiele, Bewertungen oder Prozess",
-          "Schneller Kontakt auf Desktop und Smartphone",
-        ],
-      },
-      {
-        heading: "SEO gehört in die Planung",
-        body: [
-          "Wenn SEO erst nach dem Design beginnt, entstehen oft unklare URLs, doppelte Inhalte oder Seiten ohne Suchintention. Besser ist es, die wichtigsten Suchbegriffe und Themen schon vor dem Aufbau zu definieren.",
-          "Dazu gehoeren sprechende Seitentitel, klare H1- und H2-Strukturen, interne Verlinkung, schnelle Ladezeiten und Inhalte, die echte Fragen beantworten.",
-        ],
-      },
-      {
-        heading: "Was DigitalVision anders macht",
-        body: [
-          "DigitalVision verbindet Webdesign, SEO-Struktur und technische Umsetzung in einem Prozess. Ziel ist kein austauschbares Layout, sondern eine Website, die zur Branche passt und Anfragen erleichtert.",
-          "Der Aufbau wird so geplant, dass Besucher die richtige Information schnell finden und Google die Inhalte sauber einordnen kann.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "Was kostet es, eine Website erstellen zu lassen?",
-        answer:
-          "Das haengt von Umfang, Seitenanzahl, Designanspruch, SEO-Zielen und Zusatzfunktionen ab. DigitalVision bietet Websites mit Anzahlung oder als monatliches Modell an.",
-      },
-      {
-        question: "Wie lange dauert eine professionelle Website?",
-        answer:
-          "Kleine Unternehmensseiten können oft in wenigen Wochen umgesetzt werden. Umfangreichere Projekte mit mehreren Unterseiten, SEO-Struktur oder Systemfunktionen brauchen mehr Planung.",
-      },
-      {
-        question: "Kann eine neue Website direkt für Google optimiert werden?",
-        answer:
-          "Ja. Dafür sollten Struktur, URLs, Inhalte, Meta-Daten, interne Links und technische Performance von Anfang an berücksichtigt werden.",
-      },
-    ],
-  },
-  {
-    slug: "lokale-seo-google-ranking",
-    title: "Lokale SEO: Wie Unternehmen bei Google besser gefunden werden",
-    description:
-      "Lokale SEO für Dienstleister und Unternehmen: So verbessern Standortseiten, Leistungsseiten, Google-Unternehmensprofil und Inhalte die Sichtbarkeit.",
-    excerpt:
-      "Wer lokal gefunden werden will, braucht mehr als eine schoene Website. Entscheidend sind Standortbezug, klare Leistungen und ein konsistentes Vertrauenssignal.",
-    category: "SEO",
-    date: "2026-08-02",
-    readingTime: "8 Min. Lesezeit",
-    focusKeyword: "lokale SEO",
-    featured: true,
-    takeaways: [
-      "Lokale SEO verbindet Website, Standortsignale und Vertrauen.",
-      "Leistungsseiten sollten konkrete Suchanfragen abdecken.",
-      "Google-Unternehmensprofil, Bewertungen und Kontaktdaten müssen zusammenpassen.",
-    ],
-    sections: [
-      {
-        heading: "Was lokale SEO bedeutet",
-        body: [
-          "Lokale SEO sorgt dafür, dass ein Unternehmen bei Suchanfragen mit regionalem Bezug besser gefunden wird. Das betrifft zum Beispiel Suchanfragen wie Webdesign Mönchengladbach, SEO Agentur in der Nähe oder Website erstellen lassen für Handwerker.",
-          "Google bewertet dabei nicht nur die Website selbst, sondern auch Standortdaten, Bewertungen, Branchenbezug und die Klarheit der angebotenen Leistungen.",
-        ],
-      },
-      {
-        heading: "Die Website bleibt die Basis",
-        body: [
-          "Ein Google-Unternehmensprofil hilft, ersetzt aber keine starke Website. Die Website erklärt Leistungen, beantwortet Fragen und schafft Vertrauen, bevor jemand Kontakt aufnimmt.",
-          "Wichtig ist, dass zentrale Leistungen nicht nur in einem Menue stehen, sondern mit eigenen Texten, Beispielen und Kontaktwegen sichtbar werden.",
-        ],
-        bullets: [
-          "Eine eigene Seite pro wichtiger Leistung",
-          "Standort und Einzugsgebiet klar nennen",
-          "Einheitliche Telefonnummer, Adresse und E-Mail",
-          "Bewertungen und Projektbeispiele einbinden",
-        ],
-      },
-      {
-        heading: "Warum Inhalte lokal konkret sein müssen",
-        body: [
-          "Allgemeine Texte wie Wir sind Ihr Partner für alles bringen wenig. Besser sind klare Aussagen: Welche Leistung wird angeboten, für wen, in welchem Gebiet und mit welchem Ergebnis?",
-          "Je konkreter eine Seite eine Suchintention beantwortet, desto leichter können Besucher und Suchmaschinen den Nutzen verstehen.",
-        ],
-      },
-      {
-        heading: "Wie DigitalVision lokale SEO aufbaut",
-        body: [
-          "DigitalVision plant lokale Sichtbarkeit über Struktur, Texte, technische Sauberkeit und klare Anfragewege. Besonders für Dienstleister, Praxen, Studios und Beratungen ist das ein wichtiger Hebel.",
-          "Ziel ist eine Website, die nicht nur besucht wird, sondern Besucher zu passenden Anfragen führt.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "Wie schnell wirkt lokale SEO?",
-        answer:
-          "Erste Verbesserungen können nach einigen Wochen sichtbar werden. Nachhaltige lokale Rankings brauchen aber saubere Inhalte, technische Pflege und kontinuierliche Optimierung.",
-      },
-      {
-        question: "Braucht jedes Unternehmen lokale SEO?",
-        answer:
-          "Wenn Kunden regional suchen oder ein Standort wichtig ist, lohnt lokale SEO fast immer. Das gilt für Praxen, Studios, Handwerker, Beratungen und viele Dienstleister.",
-      },
-      {
-        question: "Was ist wichtiger: Website oder Google-Unternehmensprofil?",
-        answer:
-          "Beides gehört zusammen. Das Profil erzeugt Sichtbarkeit in Maps und lokalen Ergebnissen, die Website baut Vertrauen auf und erklärt Leistungen ausführlicher.",
-      },
-    ],
-  },
-  {
-    slug: "moderne-webseiten-struktur-conversion",
-    title: "Moderne Webseiten brauchen Struktur, nicht nur Design",
-    description:
-      "Warum gutes Webdesign erst wirkt, wenn Seitenaufbau, Nutzerführung, Vertrauen und Conversion zusammenspielen.",
-    excerpt:
-      "Schoene Websites werden schnell vergessen, wenn Besucher nicht verstehen, was sie tun sollen. Struktur entscheidet, ob aus Aufmerksamkeit eine Anfrage wird.",
-    category: "Webdesign",
+      "Bevor ein Layout entsteht, sollten Zielgruppe, Leistungen, Kontaktwege und Inhalte sauber sortiert sein. So wird aus einer Website ein funktionierender digitaler Auftritt.",
+    category: "Websites",
     date: "2026-08-02",
     readingTime: "6 Min. Lesezeit",
-    focusKeyword: "moderne Website",
+    focusKeyword: "Website planen",
+    featured: true,
     takeaways: [
-      "Design muss Orientierung geben, nicht nur gut aussehen.",
-      "Jede Seite braucht eine klare Aufgabe.",
-      "Vertrauen entsteht durch Aufbau, Sprache und Beweise.",
+      "Eine Website braucht zuerst ein klares Ziel.",
+      "Struktur und Inhalte entscheiden, ob Besucher verstehen, was angeboten wird.",
+      "Design wirkt besser, wenn die Nutzerführung vorher feststeht.",
     ],
     sections: [
       {
-        heading: "Der erste Eindruck reicht nicht",
+        heading: "Warum Planung wichtiger ist als der erste Entwurf",
         body: [
-          "Eine moderne Website kann visuell stark sein und trotzdem wenig bringen. Wenn Besucher nicht schnell verstehen, welche Leistung angeboten wird und warum sie vertrauen sollen, verlassen sie die Seite wieder.",
-          "Design ist deshalb kein Selbstzweck. Es muss Inhalte ordnen, Prioritaeten sichtbar machen und den nächsten Schritt erleichtern.",
+          "Viele Projekte starten direkt mit Farben, Bildern und Animationen. Das sieht schnell nach Fortschritt aus, löst aber selten das eigentliche Problem. Eine Website muss zuerst erklären, wer du bist, was du anbietest und warum Besucher den nächsten Schritt machen sollten.",
+          "Wenn diese Grundlage fehlt, wird selbst ein hochwertiges Design unruhig. Gute Planung sorgt dafür, dass jede Fläche eine Aufgabe hat.",
         ],
       },
       {
-        heading: "Gute Struktur beantwortet Fragen in der richtigen Reihenfolge",
+        heading: "Diese Fragen sollten vor dem Aufbau geklärt sein",
         body: [
-          "Besucher kommen selten ohne Frage auf eine Website. Sie wollen wissen, ob das Unternehmen ihr Problem versteht, ob die Leistung passt, wie der Ablauf ist und wie sie Kontakt aufnehmen können.",
-          "Eine gute Seite führt durch diese Fragen. Sie beginnt mit Nutzen, zeigt Leistungen, erklärt Vertrauen, reduziert Unsicherheit und endet mit einem klaren Kontaktangebot.",
-        ],
-      },
-      {
-        heading: "Conversion entsteht durch Reibungsfreiheit",
-        body: [
-          "Wenn Kontaktbuttons versteckt sind, Texte zu allgemein bleiben oder wichtige Informationen fehlen, entstehen Reibungsverluste. Jede Unsicherheit senkt die Wahrscheinlichkeit einer Anfrage.",
-          "Darum sollten Formulare kurz, Kontaktwege sichtbar und Call-to-Actions eindeutig sein.",
+          "Eine starke Website entsteht aus klaren Entscheidungen. Welche Leistung steht im Fokus? Welche Zielgruppe soll angesprochen werden? Welche Fragen müssen beantwortet werden, bevor jemand Kontakt aufnimmt?",
+          "Auch der Ablauf nach der Anfrage gehört dazu. Ein Kontaktformular bringt wenig, wenn danach intern Chaos entsteht.",
         ],
         bullets: [
-          "Ein Hauptziel pro Seite",
-          "Wiederkehrende Kontaktmoeglichkeiten",
-          "Kurze Abschnitte statt Textbloecke",
-          "Visuelle Beweise wie Projekte oder Bewertungen",
+          "Welche Leistung soll zuerst verstanden werden?",
+          "Welche Einwände haben Besucher vor der Anfrage?",
+          "Welche Beispiele, Bewertungen oder Bilder schaffen Vertrauen?",
+          "Welche Aktion soll auf jeder Seite möglich sein?",
+        ],
+      },
+      {
+        heading: "Wie DigitalVision Websites strukturiert",
+        body: [
+          "DigitalVision plant Websites als klare Wege: Einstieg, Orientierung, Vertrauen, Entscheidung und Kontakt. Dadurch wirkt die Seite nicht nur moderner, sondern wird für Besucher leichter verständlich.",
+          "Das Ergebnis ist keine reine Online-Visitenkarte, sondern ein Auftritt, der zur Branche, zum Angebot und zum Alltag des Unternehmens passt.",
         ],
       },
     ],
     faq: [
       {
-        question: "Was macht eine moderne Website aus?",
+        question: "Wann sollte man mit der Website-Planung beginnen?",
         answer:
-          "Eine moderne Website verbindet klares Design, schnelle Ladezeiten, mobile Optimierung, gute Inhalte und eine eindeutige Nutzerführung.",
+          "Am besten vor Design und Umsetzung. Je früher Ziel, Seitenstruktur und Inhalte klar sind, desto sauberer wird das Ergebnis.",
       },
       {
-        question: "Warum ist Conversion wichtig?",
+        question: "Braucht jede Website viele Unterseiten?",
         answer:
-          "Sichtbarkeit allein reicht nicht. Conversion beschreibt, ob Besucher den gewuenschten Schritt machen, zum Beispiel eine Anfrage senden oder einen Termin buchen.",
+          "Nein. Wichtig ist nicht die Menge, sondern ob die Seiten die wichtigsten Leistungen und Fragen klar abdecken.",
       },
       {
-        question: "Kann man bestehende Websites strukturell verbessern?",
+        question: "Kann DigitalVision auch bestehende Websites neu strukturieren?",
         answer:
-          "Ja. Oft reicht schon eine bessere Startseite, klarere Leistungsstruktur und sichtbarere Kontaktführung, um die Wirkung deutlich zu verbessern.",
+          "Ja. Bestehende Inhalte können analysiert, neu geordnet und in einen klareren Aufbau gebracht werden.",
+      },
+    ],
+  },
+  {
+    slug: "branchenwebsites-richtig-aufbauen",
+    title: "Warum Praxis, Studio und Beratung nicht gleich aussehen sollten",
+    description:
+      "Branchenwebsites funktionieren besser, wenn Aufbau, Bildsprache und Kontaktführung zum echten Angebot passen.",
+    excerpt:
+      "Eine Arztpraxis braucht andere Signale als ein Nagelstudio, eine Versicherung oder ein Online-Shop. Genau deshalb sollte jede Website einen eigenen Aufbau bekommen.",
+    category: "Branchen",
+    date: "2026-08-02",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Branchenwebsite",
+    featured: true,
+    takeaways: [
+      "Jede Branche hat andere Vertrauenssignale.",
+      "Der Aufbau sollte zur Entscheidungssituation der Kunden passen.",
+      "Gute Websites fühlen sich nicht austauschbar an.",
+    ],
+    sections: [
+      {
+        heading: "Warum Vorlagen oft nicht reichen",
+        body: [
+          "Viele Websites wirken gleich, obwohl die Unternehmen dahinter völlig unterschiedlich sind. Das passiert, wenn Layouts nur optisch angepasst werden, aber nicht an die Branche und das Angebot.",
+          "Ein Studio verkauft Atmosphäre und Terminvertrauen. Eine Praxis verkauft Kompetenz und Erreichbarkeit. Eine Beratung verkauft Sicherheit und Klarheit. Diese Unterschiede müssen im Aufbau sichtbar werden.",
+        ],
+      },
+      {
+        heading: "Der richtige Schwerpunkt pro Branche",
+        body: [
+          "Bei lokalen Dienstleistern sind schnelle Kontaktwege, Bewertungen und Leistungen wichtig. Bei beratungsintensiven Angeboten braucht es mehr Erklärung, Prozess und Vertrauen. Bei Shops zählen Produktführung, Kategorien und ein leichter Kaufweg.",
+          "Die Frage ist deshalb nicht: Welche Website sieht schön aus? Sondern: Welche Website hilft Kunden, schneller zu verstehen und sicherer zu entscheiden?",
+        ],
+        bullets: [
+          "Praxis: Erreichbarkeit, Leistungen, Team, Termine",
+          "Studio: Atmosphäre, Bilder, Preise, Buchung",
+          "Beratung: Vertrauen, Ablauf, Nutzen, Kontakt",
+          "Shop: Kategorien, Produkte, Orientierung, Kaufimpuls",
+        ],
+      },
+      {
+        heading: "Wie daraus ein passender Look entsteht",
+        body: [
+          "Der Look folgt dem Inhalt. Farben, Typografie, Bildflächen und Abstände sollten die Positionierung unterstützen. Eine Website für Wellness darf ruhig und hochwertig wirken, während eine Reinigungsfirma klarer, direkter und leistungsorientierter auftreten sollte.",
+          "So entsteht ein Auftritt, der nicht generisch aussieht, sondern zur Marke passt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Kann DigitalVision Websites für unterschiedliche Branchen bauen?",
+        answer:
+          "Ja. DigitalVision erstellt individuelle Website-Konzepte für Praxen, Studios, Dienstleister, Beratungen, Shops und weitere Branchen.",
+      },
+      {
+        question: "Warum ist der Branchenlook wichtig?",
+        answer:
+          "Weil Besucher innerhalb weniger Sekunden spüren, ob eine Website professionell wirkt und zum erwarteten Angebot passt.",
+      },
+      {
+        question: "Soll eine Branchenwebsite komplett individuell sein?",
+        answer:
+          "Sie sollte mindestens in Struktur, Text, Bildsprache und Kontaktführung individuell auf das Angebot abgestimmt sein.",
+      },
+    ],
+  },
+  {
+    slug: "kundenanfragen-digital-organisieren",
+    title: "Kundenanfragen digital organisieren: Vom Formular zum Überblick",
+    description:
+      "Wie Kontaktformulare, Terminwünsche und interne Abläufe besser zusammenarbeiten, damit keine Anfrage verloren geht.",
+    excerpt:
+      "Eine moderne Website endet nicht beim Formular. Entscheidend ist, was danach passiert: Benachrichtigung, Übersicht, Status und klare Zuständigkeit.",
+    category: "Prozesse",
+    date: "2026-08-02",
+    readingTime: "6 Min. Lesezeit",
+    focusKeyword: "Kundenanfragen organisieren",
+    takeaways: [
+      "Anfragen sollten sichtbar, sortierbar und nachvollziehbar sein.",
+      "Ein gutes Formular fragt nur ab, was wirklich gebraucht wird.",
+      "Digitale Prozesse sparen Zeit, wenn sie zum Team passen.",
+    ],
+    sections: [
+      {
+        heading: "Warum Formulare allein nicht genug sind",
+        body: [
+          "Ein Kontaktformular ist nur der Eingang. Wenn Anfragen danach in E-Mails untergehen, mehrfach beantwortet werden oder niemand den Status kennt, entsteht unnötiger Aufwand.",
+          "Ein sauberer digitaler Ablauf macht sichtbar, welche Anfrage neu ist, wer zuständig ist und was als Nächstes passieren muss.",
+        ],
+      },
+      {
+        heading: "Welche Informationen wirklich wichtig sind",
+        body: [
+          "Je länger ein Formular ist, desto eher brechen Besucher ab. Trotzdem braucht ein Unternehmen genug Informationen, um sinnvoll reagieren zu können. Gute Formulare treffen diesen Mittelweg.",
+          "Statt alles abzufragen, sollten nur die wichtigsten Angaben erfasst werden: Anliegen, Kontaktmöglichkeit, Zeitraum und relevante Details zum Projekt.",
+        ],
+        bullets: [
+          "Kurze Felder mit klarer Beschriftung",
+          "Auswahlmöglichkeiten für typische Anliegen",
+          "Automatische Bestätigung nach dem Absenden",
+          "Interne Übersicht für neue und bearbeitete Anfragen",
+        ],
+      },
+      {
+        heading: "Vom Formular zum kleinen System",
+        body: [
+          "Je nach Bedarf kann aus einer Website ein einfaches Anfrage-System entstehen. Dort werden Kontakte gesammelt, sortiert und weiterbearbeitet.",
+          "Für Studios, Praxen, Dienstleister und Beratungen kann das den Alltag deutlich vereinfachen, weil Website und Verwaltung zusammenarbeiten.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Kann ein Formular mit einem Dashboard verbunden werden?",
+        answer:
+          "Ja. Anfragen können in einem Admin-Bereich gesammelt, markiert und weiterbearbeitet werden.",
+      },
+      {
+        question: "Was sollte ein Kontaktformular abfragen?",
+        answer:
+          "Nur die Informationen, die für eine erste Einschätzung nötig sind. Zu viele Pflichtfelder senken die Anfragequote.",
+      },
+      {
+        question: "Lohnt sich ein digitales Anfrage-System für kleine Unternehmen?",
+        answer:
+          "Ja, wenn regelmäßig Anfragen eingehen und der Überblick über Status, Rückmeldung oder Zuständigkeit wichtig ist.",
+      },
+    ],
+  },
+  {
+    slug: "online-shop-oder-website",
+    title: "Online-Shop oder Website: Welche Lösung passt zu deinem Angebot?",
+    description:
+      "Nicht jedes Unternehmen braucht sofort einen kompletten Shop. Oft entscheidet der Angebotsprozess, welche digitale Lösung sinnvoll ist.",
+    excerpt:
+      "Produkte, Buchungen, Anfragen und Beratung brauchen unterschiedliche Wege. Ein guter digitaler Auftritt wählt die passende Lösung statt unnötige Funktionen einzubauen.",
+    category: "Online-Shops",
+    date: "2026-08-02",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Online-Shop oder Website",
+    takeaways: [
+      "Ein Shop lohnt sich, wenn Produkte direkt online verkauft werden sollen.",
+      "Für Beratungen und Dienstleistungen reicht oft ein klarer Anfrageprozess.",
+      "Die Lösung sollte zum Kaufverhalten der Kunden passen.",
+    ],
+    sections: [
+      {
+        heading: "Der Unterschied liegt im nächsten Schritt",
+        body: [
+          "Eine Website informiert und führt zur Anfrage. Ein Online-Shop führt zum Kauf. Dazwischen gibt es viele Mischformen: Buchungsseiten, Produktkataloge, Anfrage-Konfiguratoren oder Landingpages.",
+          "Die richtige Lösung hängt davon ab, wie Kunden entscheiden. Kaufen sie sofort? Vergleichen sie zuerst? Brauchen sie Beratung oder einen Termin?",
+        ],
+      },
+      {
+        heading: "Wann ein Online-Shop sinnvoll ist",
+        body: [
+          "Ein Shop ist sinnvoll, wenn Produkte klar beschrieben, bepreist und direkt versendet oder digital bereitgestellt werden können. Dann zählen gute Kategorien, Produktseiten, Warenkorb und ein sauberer Checkout.",
+          "Für Mode, Beauty-Produkte, digitale Vorlagen oder klar definierte Angebote kann ein Shop ein starker Verkaufskanal sein.",
+        ],
+        bullets: [
+          "Produkte sind eindeutig und direkt kaufbar",
+          "Preise und Varianten sind klar",
+          "Kunden brauchen wenig persönliche Beratung",
+          "Versand, Zahlung und Bestellabwicklung sind vorbereitet",
+        ],
+      },
+      {
+        heading: "Wann eine Website besser passt",
+        body: [
+          "Wenn das Angebot individuell ist, sollte die Website zuerst Vertrauen und Klarheit aufbauen. Dann ist eine Anfrage, ein Erstgespräch oder eine Terminbuchung oft sinnvoller als ein Warenkorb.",
+          "DigitalVision plant solche Entscheidungen früh, damit die Website nicht unnötig kompliziert wird.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Kann man eine Website später zum Shop erweitern?",
+        answer:
+          "Ja, wenn Struktur und Technik sinnvoll geplant sind, kann ein Shop später ergänzt werden.",
+      },
+      {
+        question: "Braucht ein kleiner Shop viele Funktionen?",
+        answer:
+          "Nein. Ein kleiner Shop sollte übersichtlich starten und nur Funktionen enthalten, die wirklich gebraucht werden.",
+      },
+      {
+        question: "Was ist besser für Dienstleistungen?",
+        answer:
+          "Für Dienstleistungen ist häufig eine klare Website mit Anfrage- oder Buchungsfunktion besser als ein klassischer Shop.",
       },
     ],
   },
   {
     slug: "verwaltungssystem-dashboard-statt-excel",
-    title: "Verwaltungssystem statt Excel-Chaos: Wann sich ein Dashboard lohnt",
+    title: "Verwaltungssystem statt Excel-Chaos: Wann ein Dashboard hilft",
     description:
-      "Wann Unternehmen von einem eigenen Verwaltungssystem profitieren und welche Prozesse sich durch Dashboards, Admin-Bereiche und Automatisierung vereinfachen lassen.",
+      "Wann Unternehmen von einem eigenen Verwaltungssystem profitieren und welche Abläufe sich durch Dashboards vereinfachen lassen.",
     excerpt:
-      "Wenn Anfragen, Kundendaten oder Termine über mehrere Listen verteilt sind, wird Arbeit unnötig langsam. Ein eigenes System kann Ordnung schaffen.",
+      "Wenn Anfragen, Kundendaten oder Termine über mehrere Listen verteilt sind, wird Arbeit unnötig langsam. Ein eigenes System schafft Überblick.",
     category: "Systeme",
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",
     focusKeyword: "Verwaltungssystem",
     takeaways: [
-      "Ein Verwaltungssystem lohnt sich, wenn Prozesse wiederholt und fehleranfällig sind.",
-      "Dashboards schaffen Überblick über Anfragen, Inhalte und Aufgaben.",
-      "Individuelle Systeme sollten genau zum Ablauf des Unternehmens passen.",
+      "Ein Dashboard lohnt sich, wenn Abläufe wiederholt und fehleranfällig sind.",
+      "Zentrale Übersichten reduzieren Sucherei und doppelte Arbeit.",
+      "Individuelle Systeme sollten genau zum Alltag des Unternehmens passen.",
     ],
     sections: [
       {
         heading: "Wann Excel nicht mehr reicht",
         body: [
           "Tabellen sind für den Start praktisch. Sobald mehrere Personen, viele Anfragen oder wiederkehrende Prozesse beteiligt sind, entstehen schnell Fehler: doppelte Daten, veraltete Stände und unklare Verantwortlichkeiten.",
-          "Ein Verwaltungssystem lohnt sich besonders dann, wenn Informationen zentral verfügbar sein sollen und Arbeitsabläufe wiederholt werden.",
+          "Ein Verwaltungssystem lohnt sich besonders dann, wenn Informationen zentral verfügbar sein sollen und Arbeitsschritte regelmäßig wiederkehren.",
         ],
       },
       {
         heading: "Typische Einsatzbereiche",
         body: [
           "Ein eigenes Dashboard kann Kundenanfragen, Termine, Leistungen, Produkte, Projektstatus oder interne Aufgaben verwalten. Wichtig ist nicht die Menge der Funktionen, sondern die Passung zum echten Alltag.",
-          "Ein gutes System nimmt Arbeit ab, statt neue Komplexitaet zu erzeugen.",
+          "Ein gutes System nimmt Arbeit ab, statt neue Komplexität zu erzeugen.",
         ],
         bullets: [
           "Anfragen zentral erfassen und bearbeiten",
@@ -295,129 +344,65 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "seo-texte-schreiben",
-    title: "SEO-Texte schreiben: Inhalte, die Menschen und Google verstehen",
+    slug: "website-pflege-nach-dem-launch",
+    title: "Nach dem Launch: Warum eine Website Pflege braucht",
     description:
-      "So entstehen SEO-Texte, die nicht kuenstlich wirken: Suchintention, klare Struktur, hilfreiche Antworten und interne Verlinkung.",
+      "Eine Website ist nach dem Launch nicht fertig. Inhalte, Technik, Bilder, Formulare und Erweiterungen sollten regelmäßig geprüft werden.",
     excerpt:
-      "Gute SEO-Texte sind keine Keyword-Sammlungen. Sie beantworten echte Fragen, strukturieren Informationen und führen Besucher zum nächsten Schritt.",
-    category: "Content SEO",
+      "Der Launch ist nur der Start. Damit eine Website professionell bleibt, müssen Inhalte aktuell, Formulare funktionsfähig und Technik sauber gepflegt werden.",
+    category: "Betreuung",
     date: "2026-08-02",
     readingTime: "6 Min. Lesezeit",
-    focusKeyword: "SEO Texte schreiben",
+    focusKeyword: "Website Pflege",
     takeaways: [
-      "SEO-Texte müssen Suchintentionen beantworten.",
-      "Überschriften strukturieren Inhalt für Leser und Suchmaschinen.",
-      "Interne Links helfen Google und Besuchern bei der Orientierung.",
+      "Websites sollten nach dem Launch regelmäßig geprüft werden.",
+      "Aktuelle Inhalte wirken vertrauenswürdiger.",
+      "Technische Pflege schützt vor Fehlern, Langsamkeit und veralteten Bereichen.",
     ],
     sections: [
       {
-        heading: "Was einen guten SEO-Text ausmacht",
+        heading: "Warum der Launch nicht das Ende ist",
         body: [
-          "Ein SEO-Text soll nicht nur ein Keyword enthalten. Er soll eine konkrete Frage beantworten und dem Besucher helfen, eine Entscheidung zu treffen.",
-          "Dafür braucht der Text eine klare Hauptaussage, sinnvolle Zwischenüberschriften und konkrete Beispiele statt austauschbarer Werbesprache.",
+          "Nach dem Launch verändert sich fast jedes Unternehmen weiter. Leistungen kommen dazu, Preise ändern sich, Bilder werden alt oder Kontaktwege passen nicht mehr. Wenn die Website nicht mitzieht, wirkt sie schnell veraltet.",
+          "Regelmäßige Pflege sorgt dafür, dass Besucher aktuelle Informationen finden und das Unternehmen professionell wahrnehmen.",
         ],
       },
       {
-        heading: "Suchintention vor Keyword-Dichte",
+        heading: "Was regelmäßig geprüft werden sollte",
         body: [
-          "Frueher wurden Texte oft auf Keyword-Dichte geschrieben. Heute ist wichtiger, ob der Inhalt die Absicht hinter der Suche trifft. Wer Website erstellen lassen sucht, braucht andere Informationen als jemand, der Website Pflege Kosten sucht.",
-          "Deshalb sollten Inhalte nach Fragen, Problemen und Entscheidungssituationen aufgebaut werden.",
-        ],
-      },
-      {
-        heading: "Die Struktur eines starken SEO-Textes",
-        body: [
-          "Ein guter Text beginnt mit einer klaren Antwort und vertieft danach Details. Lange Einleitungen ohne Mehrwert sollten vermieden werden.",
-          "Am Ende sollte klar sein, welcher nächste Schritt sinnvoll ist: mehr Informationen lesen, eine Leistung vergleichen oder eine Anfrage stellen.",
+          "Nicht jede Website braucht jede Woche neue Inhalte. Trotzdem sollten die wichtigsten Bereiche kontrolliert werden: Formulare, Ladezeiten, Texte, Bilder, Links und rechtliche Pflichtseiten.",
+          "Gerade kleine Fehler fallen intern oft nicht auf, können aber Anfragen kosten.",
         ],
         bullets: [
-          "H1 mit Hauptthema",
-          "H2-Struktur für Teilfragen",
-          "Kurze Absaetze mit konkreten Aussagen",
-          "Interne Links zu passenden Leistungen",
-          "FAQ-Bereich für häufige Suchfragen",
+          "Kontaktformulare testen",
+          "Leistungen und Öffnungszeiten aktualisieren",
+          "Bilder und Referenzen erneuern",
+          "Technische Updates und Ladezeiten prüfen",
+        ],
+      },
+      {
+        heading: "Wie Betreuung entlasten kann",
+        body: [
+          "Viele Unternehmen wollen ihre Website nutzen, aber nicht ständig technisch betreuen. Eine laufende Betreuung nimmt diese Arbeit ab und hält den Auftritt sauber.",
+          "DigitalVision kann Inhalte, Technik und Erweiterungen so begleiten, dass die Website langfristig nutzbar bleibt.",
         ],
       },
     ],
     faq: [
       {
-        question: "Wie lang sollte ein SEO-Text sein?",
+        question: "Wie oft sollte eine Website gepflegt werden?",
         answer:
-          "So lang wie noetig, um die Suchintention gut zu beantworten. Ein klarer, hilfreicher Text ist wichtiger als eine feste Wortzahl.",
+          "Das hängt vom Projekt ab. Inhalte sollten immer dann aktualisiert werden, wenn sich Leistungen, Öffnungszeiten, Preise oder Ansprechpartner ändern.",
       },
       {
-        question: "Sind Keywords noch wichtig?",
+        question: "Kann ich Inhalte selbst ändern?",
         answer:
-          "Ja, aber sie sollten natuerlich eingesetzt werden. Wichtiger ist, dass der Text Thema, Kontext und Nutzerfrage vollstaendig abdeckt.",
+          "Je nach Aufbau kann ein Admin-Bereich sinnvoll sein, damit Texte, Bilder oder Angebote selbst gepflegt werden können.",
       },
       {
-        question: "Soll jede Leistung einen eigenen SEO-Text haben?",
+        question: "Warum sind Formular-Tests wichtig?",
         answer:
-          "Wenn die Leistung gesucht wird und wichtig für das Unternehmen ist, sollte sie eine eigene gut strukturierte Seite bekommen.",
-      },
-    ],
-  },
-  {
-    slug: "website-relaunch-ohne-ranking-verlust",
-    title: "Website-Relaunch ohne Ranking-Verlust: Die wichtigste Checkliste",
-    description:
-      "Worauf Unternehmen beim Website-Relaunch achten sollten, damit Rankings, URLs, Inhalte und technische Signale nicht verloren gehen.",
-    excerpt:
-      "Ein Relaunch kann Sichtbarkeit verbessern oder Rankings kosten. Entscheidend ist, dass SEO-Struktur, Weiterleitungen und Inhalte kontrolliert umgezogen werden.",
-    category: "SEO",
-    date: "2026-08-02",
-    readingTime: "7 Min. Lesezeit",
-    focusKeyword: "Website Relaunch",
-    takeaways: [
-      "Ein Relaunch braucht eine SEO-Bestandsaufnahme vor dem Designstart.",
-      "Wichtige URLs dürfen nicht ohne Weiterleitung verschwinden.",
-      "Performance, Meta-Daten und interne Links sollten vor dem Launch geprüft werden.",
-    ],
-    sections: [
-      {
-        heading: "Warum Relaunches riskant sein können",
-        body: [
-          "Bei einem Relaunch werden oft Design, Technik, Inhalte und URLs gleichzeitig verändert. Wenn dabei wichtige Seiten verschwinden oder falsch weitergeleitet werden, kann Google bestehende Rankings verlieren.",
-          "Darum sollte ein Relaunch nicht nur als Designprojekt betrachtet werden, sondern als kontrollierter Umzug der gesamten Website-Struktur.",
-        ],
-      },
-      {
-        heading: "Vor dem Relaunch: Bestand sichern",
-        body: [
-          "Vor dem Start sollten alle wichtigen Seiten, aktuellen Rankings, Suchbegriffe und Kontaktwege dokumentiert werden. Nur so lässt sich entscheiden, was erhalten, verbessert oder entfernt werden darf.",
-          "Besonders Seiten mit Besuchern, Backlinks oder Anfragen sollten nicht leichtfertig gelöscht werden.",
-        ],
-        bullets: [
-          "Bestehende URLs exportieren",
-          "Wichtige Rankings und Seiten identifizieren",
-          "Inhalte auf Aktualität prüfen",
-          "Weiterleitungen für geänderte URLs planen",
-        ],
-      },
-      {
-        heading: "Nach dem Launch: Kontrolle statt Hoffnung",
-        body: [
-          "Nach dem Launch sollten Sitemap, Robots, Indexierung, Ladezeiten, interne Links und Formulare geprüft werden. Kleine technische Fehler können sonst viel Wirkung kosten.",
-          "Ein guter Relaunch verbessert nicht nur die Optik, sondern macht die Website schneller, klarer und besser auffindbar.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "Kann ein Relaunch SEO verbessern?",
-        answer:
-          "Ja, wenn Struktur, Inhalte, Technik und Nutzerführung verbessert werden. Ohne SEO-Plan kann ein Relaunch aber auch Rankings kosten.",
-      },
-      {
-        question: "Sind Weiterleitungen beim Relaunch wichtig?",
-        answer:
-          "Ja. Wenn URLs geändert werden, sollten passende 301-Weiterleitungen eingerichtet werden, damit Besucher und Suchmaschinen die neuen Seiten finden.",
-      },
-      {
-        question: "Wann sollte SEO beim Relaunch eingeplant werden?",
-        answer:
-          "Von Anfang an. SEO sollte vor Design und Umsetzung in die Seitenstruktur und Content-Planung einfließen.",
+          "Weil defekte Formulare direkt Anfragen kosten können. Sie sollten nach Änderungen und in regelmäßigen Abständen geprüft werden.",
       },
     ],
   },

@@ -406,6 +406,7 @@ export default function Home() {
           <a href="/seo-info">SEO & Google-Ranking</a>
           <a href="/webseite-info">Webseiten-Erstellung</a>
           <a href="/verwaltungssystem-info">Verwaltungssysteme</a>
+          <a href="/blog">Blog</a>
           <a href="#preise">Pakete</a>
           <a href="#kontakt">Kontakt</a>
         </nav>

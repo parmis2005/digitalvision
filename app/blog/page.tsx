@@ -74,7 +74,7 @@ export default function BlogPage() {
             <ArrowLeft size={17} aria-hidden="true" />
             Zurück zu DigitalVision
           </Link>
-          <h1>Wissen für Websites, SEO und digitale Systeme.</h1>
+          <h1>Webdesign, SEO & Systeme.</h1>
           <p>
             Praxisnahe Artikel für Unternehmen, die online klarer auftreten,
             besser gefunden werden und ihre digitalen Prozesse sauberer

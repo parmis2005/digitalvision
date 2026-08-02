@@ -19,6 +19,8 @@ export type BlogPost = {
   updatedAt?: string;
   readingTime: string;
   focusKeyword: string;
+  image: string;
+  imageAlt: string;
   featured?: boolean;
   takeaways: string[];
   sections: BlogSection[];
@@ -37,6 +39,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "6 Min. Lesezeit",
     focusKeyword: "Website planen",
+    image: "/blog/website-planen-vor-dem-design.jpg",
+    imageAlt: "Workspace mit Laptop, Wireframes und Website-Planung",
     featured: true,
     takeaways: [
       "Eine Website braucht zuerst ein klares Ziel.",
@@ -101,6 +105,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",
     focusKeyword: "Branchenwebsite",
+    image: "/blog/branchenwebsites-richtig-aufbauen.jpg",
+    imageAlt: "Digitale Design-Panels für unterschiedliche Branchenwebsites",
     featured: true,
     takeaways: [
       "Jede Branche hat andere Vertrauenssignale.",
@@ -165,6 +171,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "6 Min. Lesezeit",
     focusKeyword: "Kundenanfragen organisieren",
+    image: "/blog/kundenanfragen-digital-organisieren.jpg",
+    imageAlt: "Dashboard für Kundenanfragen, Nachrichten und Statusübersicht",
     takeaways: [
       "Anfragen sollten sichtbar, sortierbar und nachvollziehbar sein.",
       "Ein gutes Formular fragt nur ab, was wirklich gebraucht wird.",
@@ -228,6 +236,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",
     focusKeyword: "Online-Shop oder Website",
+    image: "/blog/online-shop-oder-website.jpg",
+    imageAlt: "Digitale Entscheidung zwischen Online-Shop und Unternehmenswebsite",
     takeaways: [
       "Ein Shop lohnt sich, wenn Produkte direkt online verkauft werden sollen.",
       "Für Beratungen und Dienstleistungen reicht oft ein klarer Anfrageprozess.",
@@ -291,6 +301,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",
     focusKeyword: "Verwaltungssystem",
+    image: "/blog/verwaltungssystem-dashboard-statt-excel.jpg",
+    imageAlt: "Modernes Dashboard als Alternative zu Tabellen und Papierchaos",
     takeaways: [
       "Ein Dashboard lohnt sich, wenn Abläufe wiederholt und fehleranfällig sind.",
       "Zentrale Übersichten reduzieren Sucherei und doppelte Arbeit.",
@@ -354,6 +366,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-02",
     readingTime: "6 Min. Lesezeit",
     focusKeyword: "Website Pflege",
+    image: "/blog/website-pflege-nach-dem-launch.jpg",
+    imageAlt: "Laptop mit Website-Wartung, Checklisten und Update-Symbolen",
     takeaways: [
       "Websites sollten nach dem Launch regelmäßig geprüft werden.",
       "Aktuelle Inhalte wirken vertrauenswürdiger.",

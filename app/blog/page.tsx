@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, PenLine } from "lucide-react";
 import { AmbientScene } from "../ambient-scene";
@@ -142,23 +143,22 @@ export default function BlogPage() {
           <h2>Artikel für bessere digitale Auftritte.</h2>
         </div>
         <div className="blog-list">
-          {blogPosts.map((post, index) => (
+          {blogPosts.map((post) => (
             <Link
               className="blog-list-card"
               href={`/blog/${post.slug}`}
               key={post.slug}
             >
-              <span className="blog-list-visual" aria-hidden="true">
-                <span className="blog-list-visual-glow" />
-                <span className="blog-list-visual-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+              <span className="blog-list-visual">
+                <Image
+                  className="blog-list-image"
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width={480}
+                  height={270}
+                  sizes="(max-width: 760px) calc(100vw - 32px), 230px"
+                />
                 <span className="blog-list-visual-label">{post.category}</span>
-                <span className="blog-list-visual-lines">
-                  <span />
-                  <span />
-                  <span />
-                </span>
               </span>
               <span className="blog-list-content">
                 <span className="blog-card-meta">

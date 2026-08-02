@@ -32,8 +32,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const categories = Array.from(new Set(blogPosts.map((post) => post.category)));
-
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -126,12 +124,6 @@ export default function BlogPage() {
             </span>
           </span>
         </div>
-      </section>
-
-      <section className="blog-topic-strip" aria-label="Blog Themen">
-        {categories.map((category) => (
-          <span key={category}>{category}</span>
-        ))}
       </section>
 
       <section className="blog-section">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock, PenLine } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, PenLine } from "lucide-react";
 import { AmbientScene } from "../ambient-scene";
 import { blogSerif } from "../blog-font";
 import { DigitalVisionLogo } from "../digitalvision-logo";
@@ -69,21 +69,47 @@ export default function BlogPage() {
       </header>
 
       <section className="blog-hero">
-        <p className="eyebrow">DigitalVision Blog</p>
-        <h1>Wissen für Websites, SEO und digitale Systeme.</h1>
-        <p>
-          Praxisnahe Artikel für Unternehmen, die online klarer auftreten,
-          besser gefunden werden und ihre digitalen Prozesse sauberer
-          organisieren wollen.
-        </p>
-        <div className="blog-hero-actions">
-          <Link className="primary-button" href="/#kontakt">
-            Kostenlose Anfrage
-            <ArrowRight size={18} aria-hidden="true" />
+        <div className="blog-hero-copy">
+          <Link className="blog-home-link" href="/">
+            <ArrowLeft size={17} aria-hidden="true" />
+            Zurück zu DigitalVision
           </Link>
-          <Link className="secondary-button" href="/seo-info">
-            SEO ansehen
-          </Link>
+          <p className="eyebrow">DigitalVision Blog</p>
+          <h1>Wissen für Websites, SEO und digitale Systeme.</h1>
+          <p>
+            Praxisnahe Artikel für Unternehmen, die online klarer auftreten,
+            besser gefunden werden und ihre digitalen Prozesse sauberer
+            organisieren wollen.
+          </p>
+          <div className="blog-hero-actions">
+            <Link className="primary-button" href="/#kontakt">
+              Kostenlose Anfrage
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+            <Link className="secondary-button" href="/seo-info">
+              SEO ansehen
+            </Link>
+          </div>
+        </div>
+        <div className="blog-hero-graphic" aria-hidden="true">
+          <span className="blog-graphic-orbit blog-graphic-orbit-one" />
+          <span className="blog-graphic-orbit blog-graphic-orbit-two" />
+          <span className="blog-graphic-node blog-graphic-node-one" />
+          <span className="blog-graphic-node blog-graphic-node-two" />
+          <span className="blog-graphic-card blog-graphic-card-main">
+            <span>SEO</span>
+            <strong>Content System</strong>
+            <em>Indexierbar · Schnell · Klar</em>
+          </span>
+          <span className="blog-graphic-card blog-graphic-card-small">
+            <span>Ranking</span>
+            <strong>+42%</strong>
+          </span>
+          <span className="blog-graphic-lines">
+            <span />
+            <span />
+            <span />
+          </span>
         </div>
       </section>
 

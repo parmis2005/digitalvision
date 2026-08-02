@@ -95,7 +95,7 @@ export default function BlogPage() {
           <span className="blog-search-panel">
             <span className="blog-search-bar">
               <span />
-              Website, Inhalte und Abläufe klar planen
+              Digitale Projekte klar planen
             </span>
             <span className="blog-search-result blog-search-result-main">
               <strong>Starker Online-Auftritt</strong>

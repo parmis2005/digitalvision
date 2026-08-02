@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
 import { AmbientScene } from "../../ambient-scene";
+import { blogSerif } from "../../blog-font";
 import { DigitalVisionLogo } from "../../digitalvision-logo";
 import { blogPosts, getBlogPost, getRelatedPosts } from "../../blog-data";
 
@@ -108,7 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
-    <main className="blog-page blog-article-page">
+    <main className={`blog-page blog-article-page ${blogSerif.variable}`}>
       <AmbientScene />
       <script
         type="application/ld+json"

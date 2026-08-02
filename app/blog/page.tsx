@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock, PenLine } from "lucide-react";
 import { AmbientScene } from "../ambient-scene";
+import { blogSerif } from "../blog-font";
 import { DigitalVisionLogo } from "../digitalvision-logo";
 import { blogPosts } from "../blog-data";
 
@@ -45,7 +46,7 @@ export default function BlogPage() {
   };
 
   return (
-    <main className="blog-page">
+    <main className={`blog-page ${blogSerif.variable}`}>
       <AmbientScene />
       <script
         type="application/ld+json"

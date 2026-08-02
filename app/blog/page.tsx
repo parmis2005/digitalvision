@@ -139,8 +139,7 @@ export default function BlogPage() {
 
       <section className="blog-section">
         <div className="section-heading">
-          <p className="eyebrow">Alle Artikel</p>
-          <h2>Artikel für bessere digitale Auftritte.</h2>
+          <p className="eyebrow">Alle Artikel für bessere digitale Auftritte.</p>
         </div>
         <div className="blog-list">
           {blogPosts.map((post) => (

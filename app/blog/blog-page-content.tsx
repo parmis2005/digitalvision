@@ -219,10 +219,9 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
 
       <section className="blog-footer-cta">
         <p className="eyebrow">Nächster Schritt</p>
-        <h2>Du willst deine Website klarer und moderner aufstellen?</h2>
+        <h2>Website klarer aufstellen?</h2>
         <p>
-          DigitalVision prüft, welche Struktur, Inhalte und Funktionen für dein
-          Projekt zuerst wichtig sind.
+          Wir klären Struktur, Inhalte und Funktionen für dein Projekt.
         </p>
         <Link className="primary-button" href="/#kontakt">
           Projekt anfragen

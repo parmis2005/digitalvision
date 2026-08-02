@@ -33,8 +33,7 @@ export const blogPosts: BlogPost[] = [
     title: "Website planen: Was vor dem Design geklärt sein sollte",
     description:
       "Eine gute Website beginnt nicht mit Farben, sondern mit Ziel, Struktur, Inhalten und einem klaren Weg zur Anfrage.",
-    excerpt:
-      "Bevor ein Layout entsteht, sollten Zielgruppe, Leistungen, Kontaktwege und Inhalte sauber sortiert sein. So wird aus einer Website ein funktionierender digitaler Auftritt.",
+    excerpt: "Ziel, Struktur und Inhalte zuerst klären, bevor das Design entsteht.",
     category: "Websites",
     date: "2026-08-02",
     readingTime: "8 Min. Lesezeit",
@@ -125,8 +124,7 @@ export const blogPosts: BlogPost[] = [
     title: "Warum Praxis, Studio und Beratung nicht gleich aussehen sollten",
     description:
       "Branchenwebsites funktionieren besser, wenn Aufbau, Bildsprache und Kontaktführung zum echten Angebot passen.",
-    excerpt:
-      "Eine Arztpraxis braucht andere Signale als ein Nagelstudio, eine Versicherung oder ein Online-Shop. Genau deshalb sollte jede Website einen eigenen Aufbau bekommen.",
+    excerpt: "Jede Branche braucht eigene Signale, Inhalte und Kontaktwege.",
     category: "Branchen",
     date: "2026-08-02",
     readingTime: "8 Min. Lesezeit",
@@ -217,8 +215,7 @@ export const blogPosts: BlogPost[] = [
     title: "Kundenanfragen digital organisieren: Vom Formular zum Überblick",
     description:
       "Wie Kontaktformulare, Terminwünsche und interne Abläufe besser zusammenarbeiten, damit keine Anfrage verloren geht.",
-    excerpt:
-      "Eine moderne Website endet nicht beim Formular. Entscheidend ist, was danach passiert: Benachrichtigung, Übersicht, Status und klare Zuständigkeit.",
+    excerpt: "So werden Formulare, Status und Zuständigkeiten sauber organisiert.",
     category: "Prozesse",
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",
@@ -308,8 +305,7 @@ export const blogPosts: BlogPost[] = [
     title: "Online-Shop oder Website: Welche Lösung passt zu deinem Angebot?",
     description:
       "Nicht jedes Unternehmen braucht sofort einen kompletten Shop. Oft entscheidet der Angebotsprozess, welche digitale Lösung sinnvoll ist.",
-    excerpt:
-      "Produkte, Buchungen, Anfragen und Beratung brauchen unterschiedliche Wege. Ein guter digitaler Auftritt wählt die passende Lösung statt unnötige Funktionen einzubauen.",
+    excerpt: "Shop, Anfrage oder Buchung: Die Lösung muss zum Angebot passen.",
     category: "Online-Shops",
     date: "2026-08-02",
     readingTime: "8 Min. Lesezeit",
@@ -399,8 +395,7 @@ export const blogPosts: BlogPost[] = [
     title: "Verwaltungssystem statt Excel-Chaos: Wann ein Dashboard hilft",
     description:
       "Wann Unternehmen von einem eigenen Verwaltungssystem profitieren und welche Abläufe sich durch Dashboards vereinfachen lassen.",
-    excerpt:
-      "Wenn Anfragen, Kundendaten oder Termine über mehrere Listen verteilt sind, wird Arbeit unnötig langsam. Ein eigenes System schafft Überblick.",
+    excerpt: "Wann ein Dashboard mehr Überblick schafft als verstreute Tabellen.",
     category: "Systeme",
     date: "2026-08-02",
     readingTime: "8 Min. Lesezeit",
@@ -490,8 +485,7 @@ export const blogPosts: BlogPost[] = [
     title: "Nach dem Launch: Warum eine Website Pflege braucht",
     description:
       "Eine Website ist nach dem Launch nicht fertig. Inhalte, Technik, Bilder, Formulare und Erweiterungen sollten regelmäßig geprüft werden.",
-    excerpt:
-      "Der Launch ist nur der Start. Damit eine Website professionell bleibt, müssen Inhalte aktuell, Formulare funktionsfähig und Technik sauber gepflegt werden.",
+    excerpt: "Warum Websites nach dem Launch regelmäßig gepflegt werden sollten.",
     category: "Betreuung",
     date: "2026-08-02",
     readingTime: "7 Min. Lesezeit",

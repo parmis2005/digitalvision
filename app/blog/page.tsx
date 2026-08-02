@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Search } from "lucide-react";
+import { ArrowRight, Clock, PenLine } from "lucide-react";
 import { AmbientScene } from "../ambient-scene";
 import { DigitalVisionLogo } from "../digitalvision-logo";
 import { blogPosts } from "../blog-data";
@@ -30,8 +30,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const featuredPosts = blogPosts.filter((post) => post.featured);
-  const regularPosts = blogPosts.filter((post) => !post.featured);
   const categories = Array.from(new Set(blogPosts.map((post) => post.category)));
 
   const itemListJsonLd = {
@@ -96,48 +94,46 @@ export default function BlogPage() {
 
       <section className="blog-section">
         <div className="section-heading">
-          <p className="eyebrow">Empfohlen</p>
-          <h2>Startpunkte für bessere Sichtbarkeit.</h2>
-        </div>
-        <div className="blog-featured-grid">
-          {featuredPosts.map((post) => (
-            <Link className="blog-card blog-card-featured" href={`/blog/${post.slug}`} key={post.slug}>
-              <span className="blog-card-icon" aria-hidden="true">
-                <Search size={20} />
-              </span>
-              <span className="blog-card-meta">
-                {post.category} · {post.readingTime}
-              </span>
-              <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
-              <span className="blog-card-link">
-                Artikel lesen
-                <ArrowRight size={17} aria-hidden="true" />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="blog-section">
-        <div className="section-heading">
           <p className="eyebrow">Alle Artikel</p>
-          <h2>SEO-Themen für deinen digitalen Auftritt.</h2>
+          <h2>Blogbeiträge für bessere Sichtbarkeit.</h2>
         </div>
-        <div className="blog-grid">
-          {regularPosts.map((post) => (
-            <Link className="blog-card" href={`/blog/${post.slug}`} key={post.slug}>
-              <span className="blog-card-icon" aria-hidden="true">
-                <BookOpen size={19} />
+        <div className="blog-list">
+          {blogPosts.map((post, index) => (
+            <Link
+              className="blog-list-card"
+              href={`/blog/${post.slug}`}
+              key={post.slug}
+            >
+              <span className="blog-list-visual" aria-hidden="true">
+                <span className="blog-list-visual-glow" />
+                <span className="blog-list-visual-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="blog-list-visual-label">{post.category}</span>
+                <span className="blog-list-visual-lines">
+                  <span />
+                  <span />
+                  <span />
+                </span>
               </span>
-              <span className="blog-card-meta">
-                {post.category} · {post.readingTime}
-              </span>
-              <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
-              <span className="blog-card-link">
-                Mehr erfahren
-                <ArrowRight size={17} aria-hidden="true" />
+              <span className="blog-list-content">
+                <span className="blog-card-meta">
+                  <span>
+                    <PenLine size={15} aria-hidden="true" />
+                    DigitalVision
+                  </span>
+                  <span>
+                    <Clock size={15} aria-hidden="true" />
+                    {post.readingTime}
+                  </span>
+                  <span>{post.category}</span>
+                </span>
+                <span className="blog-list-title">{post.title}</span>
+                <span className="blog-list-excerpt">{post.excerpt}</span>
+                <span className="blog-card-link">
+                  Artikel lesen
+                  <ArrowRight size={17} aria-hidden="true" />
+                </span>
               </span>
             </Link>
           ))}

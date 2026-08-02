@@ -78,12 +78,20 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
           </div>
         </div>
         <div className="blog-seo-visual" aria-hidden="true">
+          <span className="blog-cosmic-halo" />
+          <span className="blog-nebula blog-nebula-one" />
+          <span className="blog-nebula blog-nebula-two" />
+          <span className="blog-starfield" />
           <span className="blog-orbit blog-orbit-one" />
           <span className="blog-orbit blog-orbit-two" />
+          <span className="blog-orbit blog-orbit-three" />
           <span className="blog-comet" />
+          <span className="blog-comet blog-comet-secondary" />
           <span className="blog-star blog-star-one" />
           <span className="blog-star blog-star-two" />
           <span className="blog-star blog-star-three" />
+          <span className="blog-star blog-star-four" />
+          <span className="blog-star blog-star-five" />
           <div className="blog-laptop">
             <div className="blog-laptop-screen">
               <div className="blog-window-bar">
@@ -122,8 +130,8 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
             </div>
           </div>
           <div className="blog-visual-note">
-            <strong>Digitaler Fokus</strong>
-            <span>Idee, Aufbau, Ergebnis</span>
+            <strong>Fokus</strong>
+            <span>Idee / Aufbau / Ergebnis</span>
           </div>
         </div>
       </section>

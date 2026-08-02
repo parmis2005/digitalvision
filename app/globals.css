@@ -5451,6 +5451,19 @@ h3 {
     0 22px 70px rgba(0, 0, 0, 0.2);
 }
 
+.blog-seo-visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 38%, rgba(155, 228, 255, 0.075) 42%, transparent 48%),
+    linear-gradient(68deg, transparent 0 56%, rgba(255, 199, 116, 0.07) 61%, transparent 68%);
+  mix-blend-mode: screen;
+  content: "";
+  animation: blog-aurora-flow 8s ease-in-out infinite alternate;
+}
+
 .blog-seo-visual::before {
   position: absolute;
   inset: 24px;
@@ -5462,10 +5475,71 @@ h3 {
 .blog-orbit,
 .blog-comet,
 .blog-star,
+.blog-cosmic-halo,
+.blog-nebula,
+.blog-starfield,
 .blog-laptop,
 .blog-visual-note {
   position: absolute;
   z-index: 1;
+}
+
+.blog-cosmic-halo {
+  inset: 32px;
+  border: 1px solid rgba(155, 228, 255, 0.12);
+  border-radius: 50%;
+  box-shadow:
+    0 0 42px rgba(155, 228, 255, 0.11),
+    inset 0 0 52px rgba(255, 199, 116, 0.055);
+  opacity: 0.65;
+  transform: rotate(-16deg) scaleX(1.16);
+  animation: blog-halo-breathe 7s ease-in-out infinite;
+}
+
+.blog-nebula {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.54;
+  mix-blend-mode: screen;
+  animation: blog-nebula-drift 10s ease-in-out infinite alternate;
+}
+
+.blog-nebula-one {
+  left: -50px;
+  top: -54px;
+  background:
+    radial-gradient(circle at 42% 44%, rgba(155, 228, 255, 0.44), transparent 58%),
+    radial-gradient(circle at 68% 62%, rgba(255, 199, 116, 0.18), transparent 62%);
+}
+
+.blog-nebula-two {
+  right: -64px;
+  bottom: -70px;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 199, 116, 0.34), transparent 56%),
+    radial-gradient(circle at 34% 62%, rgba(155, 228, 255, 0.2), transparent 66%);
+  animation-delay: -4s;
+}
+
+.blog-starfield {
+  inset: 22px;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle, rgba(248, 251, 255, 0.84) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(155, 228, 255, 0.82) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(255, 199, 116, 0.74) 0 1px, transparent 1.4px);
+  background-position:
+    12px 26px,
+    58px 74px,
+    104px 18px;
+  background-size:
+    92px 88px,
+    128px 116px,
+    154px 136px;
+  animation: blog-starfield-drift 14s linear infinite;
 }
 
 .blog-orbit {
@@ -5490,6 +5564,18 @@ h3 {
   animation-delay: -3s;
 }
 
+.blog-orbit-three {
+  left: 44px;
+  top: 72px;
+  width: 286px;
+  height: 136px;
+  border-color: rgba(255, 199, 116, 0.13);
+  border-radius: 50%;
+  transform: rotate(18deg);
+  animation-duration: 11s;
+  animation-delay: -5s;
+}
+
 .blog-comet {
   top: 62px;
   right: 46px;
@@ -5499,6 +5585,17 @@ h3 {
   background: linear-gradient(90deg, transparent, rgba(155, 228, 255, 0.86), transparent);
   transform: rotate(-22deg);
   animation: blog-comet-sweep 5.8s ease-in-out infinite;
+}
+
+.blog-comet-secondary {
+  left: 46px;
+  right: auto;
+  top: auto;
+  bottom: 82px;
+  width: 64px;
+  opacity: 0;
+  transform: rotate(18deg);
+  animation-delay: -2.7s;
 }
 
 .blog-star {
@@ -5525,6 +5622,22 @@ h3 {
   left: 52%;
   bottom: 28px;
   animation-delay: -1.7s;
+}
+
+.blog-star-four {
+  left: 22%;
+  bottom: 94px;
+  width: 6px;
+  height: 6px;
+  animation-delay: -2.2s;
+}
+
+.blog-star-five {
+  right: 28%;
+  top: 84px;
+  width: 5px;
+  height: 5px;
+  animation-delay: -1.3s;
 }
 
 .blog-laptop {
@@ -5643,27 +5756,38 @@ h3 {
 }
 
 .blog-visual-note {
-  right: 22px;
-  bottom: 24px;
+  right: 20px;
+  bottom: 22px;
   z-index: 3;
-  display: grid;
-  gap: 2px;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  background: rgba(5, 10, 24, 0.58);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 40px);
+  padding: 8px 11px;
+  border: 1px solid rgba(155, 228, 255, 0.22);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(155, 228, 255, 0.18), transparent 34%),
+    rgba(5, 10, 24, 0.54);
+  box-shadow:
+    0 0 22px rgba(155, 228, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
 }
 
 .blog-visual-note strong {
-  color: white;
-  font-size: 0.86rem;
-  font-weight: 600;
+  color: rgba(255, 199, 116, 0.9);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .blog-visual-note span {
-  color: rgba(220, 231, 247, 0.66);
-  font-size: 0.72rem;
+  color: rgba(220, 231, 247, 0.72);
+  font-size: 0.64rem;
+  white-space: nowrap;
 }
 
 .blog-section,
@@ -6273,6 +6397,51 @@ h3 {
   padding-top: 42px;
 }
 
+@keyframes blog-aurora-flow {
+  from {
+    opacity: 0.42;
+    transform: translate3d(-12px, 8px, 0) scale(1);
+  }
+
+  to {
+    opacity: 0.78;
+    transform: translate3d(16px, -10px, 0) scale(1.03);
+  }
+}
+
+@keyframes blog-halo-breathe {
+  0%,
+  100% {
+    opacity: 0.44;
+    transform: rotate(-16deg) scaleX(1.1) scaleY(0.86);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: rotate(-10deg) scaleX(1.2) scaleY(0.92);
+  }
+}
+
+@keyframes blog-nebula-drift {
+  from {
+    transform: translate3d(-6px, 4px, 0) scale(0.96);
+  }
+
+  to {
+    transform: translate3d(12px, -10px, 0) scale(1.08);
+  }
+}
+
+@keyframes blog-starfield-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-32px, 24px, 0);
+  }
+}
+
 @keyframes blog-laptop-float {
   0%,
   100% {
@@ -6667,6 +6836,23 @@ h3 {
     display: none;
   }
 
+  .blog-cosmic-halo {
+    inset: 34px 18px;
+    opacity: 0.45;
+  }
+
+  .blog-nebula {
+    width: 140px;
+    height: 140px;
+    filter: blur(16px);
+    opacity: 0.42;
+  }
+
+  .blog-starfield {
+    inset: 14px;
+    opacity: 0.38;
+  }
+
   .blog-orbit-one {
     right: -106px;
     top: 18px;
@@ -6677,9 +6863,21 @@ h3 {
     bottom: -112px;
   }
 
+  .blog-orbit-three {
+    left: 18px;
+    top: 70px;
+    width: 250px;
+    height: 112px;
+  }
+
   .blog-comet {
     top: 42px;
     right: 28px;
+  }
+
+  .blog-comet-secondary {
+    left: 28px;
+    bottom: 58px;
   }
 
   .blog-star-one {
@@ -6695,6 +6893,16 @@ h3 {
   .blog-star-three {
     left: 50%;
     bottom: 22px;
+  }
+
+  .blog-star-four {
+    left: 18%;
+    bottom: 82px;
+  }
+
+  .blog-star-five {
+    right: 24%;
+    top: 60px;
   }
 
   .blog-laptop {
@@ -6735,18 +6943,19 @@ h3 {
   }
 
   .blog-visual-note {
-    right: 15px;
-    bottom: 15px;
-    padding: 10px 12px;
-    border-radius: 15px;
+    right: 12px;
+    bottom: 12px;
+    gap: 6px;
+    max-width: calc(100% - 24px);
+    padding: 7px 9px;
   }
 
   .blog-visual-note strong {
-    font-size: 0.78rem;
+    font-size: 0.5rem;
   }
 
   .blog-visual-note span {
-    font-size: 0.66rem;
+    font-size: 0.56rem;
   }
 
   .blog-home-link {

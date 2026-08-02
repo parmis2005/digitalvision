@@ -86,43 +86,53 @@ export default function BlogPage() {
           </div>
         </div>
         <div className="blog-seo-visual" aria-hidden="true">
-          <span className="blog-seo-kicker">DigitalVision Magazin</span>
-          <span className="blog-search-panel">
-            <span className="blog-search-bar">
+          <span className="blog-orbit blog-orbit-one" />
+          <span className="blog-orbit blog-orbit-two" />
+          <span className="blog-comet" />
+          <span className="blog-star blog-star-one" />
+          <span className="blog-star blog-star-two" />
+          <span className="blog-star blog-star-three" />
+          <div className="blog-laptop">
+            <div className="blog-laptop-screen">
+              <div className="blog-window-bar">
+                <span />
+                <span />
+                <span />
+                <strong>DigitalVision Magazin</strong>
+              </div>
+              <div className="blog-magazine-viewport">
+                <div className="blog-magazine-track">
+                  <article className="blog-magazine-card">
+                    <span>01 Websites</span>
+                    <strong>Klare Struktur vor dem Design</strong>
+                    <em>Planung, Inhalte, Kontaktwege</em>
+                  </article>
+                  <article className="blog-magazine-card">
+                    <span>02 Prozesse</span>
+                    <strong>Anfragen sauber organisieren</strong>
+                    <em>Formulare, Status, Überblick</em>
+                  </article>
+                  <article className="blog-magazine-card">
+                    <span>03 Systeme</span>
+                    <strong>Digitale Abläufe sichtbar machen</strong>
+                    <em>Dashboards, Verwaltung, Routine</em>
+                  </article>
+                  <article className="blog-magazine-card">
+                    <span>01 Websites</span>
+                    <strong>Klare Struktur vor dem Design</strong>
+                    <em>Planung, Inhalte, Kontaktwege</em>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <div className="blog-laptop-base">
               <span />
-              Digitale Projekte klar planen
-            </span>
-            <span className="blog-search-result blog-search-result-main">
-              <strong>Starker Online-Auftritt</strong>
-              <em>klarer Aufbau, passende Gestaltung</em>
-            </span>
-            <span className="blog-search-result">
-              <strong>Kundenanfragen</strong>
-              <em>einfach geführt und verständlich</em>
-            </span>
-            <span className="blog-search-result">
-              <strong>Digitale Systeme</strong>
-              <em>sauber organisiert im Alltag</em>
-            </span>
-          </span>
-          <span className="blog-conversion-panel">
-            <strong>Klarer Plan</strong>
-            <em>von Idee bis Umsetzung</em>
-          </span>
-          <span className="blog-funnel-row">
-            <span>
-              <strong>01</strong>
-              Idee
-            </span>
-            <span>
-              <strong>02</strong>
-              Aufbau
-            </span>
-            <span>
-              <strong>03</strong>
-              Ergebnis
-            </span>
-          </span>
+            </div>
+          </div>
+          <div className="blog-visual-note">
+            <strong>Digitaler Fokus</strong>
+            <span>Idee, Aufbau, Ergebnis</span>
+          </div>
         </div>
       </section>
 

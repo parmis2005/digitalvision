@@ -5478,6 +5478,11 @@ h3 {
 .blog-cosmic-halo,
 .blog-nebula,
 .blog-starfield,
+.blog-cosmic-dust,
+.blog-constellation,
+.blog-planet,
+.blog-moon,
+.blog-spark,
 .blog-laptop,
 .blog-visual-note {
   position: absolute;
@@ -5542,6 +5547,57 @@ h3 {
   animation: blog-starfield-drift 14s linear infinite;
 }
 
+.blog-cosmic-dust {
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle, rgba(155, 228, 255, 0.7) 0 0.9px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 199, 116, 0.46) 0 0.8px, transparent 1.4px);
+  background-position:
+    18px 36px,
+    88px 42px,
+    132px 94px;
+  background-size:
+    118px 128px,
+    162px 146px,
+    206px 176px;
+  mask-image: radial-gradient(circle at 50% 48%, black 0 58%, transparent 78%);
+  animation: blog-cosmic-dust-drift 22s linear infinite;
+}
+
+.blog-constellation {
+  left: 34px;
+  top: 28px;
+  width: 128px;
+  height: 82px;
+  opacity: 0.62;
+  background:
+    linear-gradient(28deg, transparent 0 18%, rgba(155, 228, 255, 0.32) 18.6% 19.4%, transparent 20%),
+    linear-gradient(136deg, transparent 0 37%, rgba(155, 228, 255, 0.25) 37.4% 38%, transparent 38.6%),
+    linear-gradient(74deg, transparent 0 58%, rgba(255, 199, 116, 0.22) 58.5% 59.2%, transparent 59.8%);
+  filter: drop-shadow(0 0 12px rgba(155, 228, 255, 0.34));
+  animation: blog-constellation-glow 4.8s ease-in-out infinite;
+}
+
+.blog-constellation::before {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(155, 228, 255, 0.92);
+  box-shadow:
+    44px 18px 0 rgba(255, 255, 255, 0.72),
+    92px 8px 0 rgba(155, 228, 255, 0.76),
+    74px 54px 0 rgba(255, 199, 116, 0.82),
+    18px 62px 0 rgba(255, 255, 255, 0.62);
+  content: "";
+}
+
 .blog-orbit {
   border: 1px solid rgba(155, 228, 255, 0.14);
   border-radius: 50%;
@@ -5598,6 +5654,50 @@ h3 {
   animation-delay: -2.7s;
 }
 
+.blog-planet {
+  right: 44px;
+  bottom: 46px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.68), transparent 18%),
+    radial-gradient(circle at 72% 72%, rgba(255, 199, 116, 0.58), transparent 38%),
+    linear-gradient(145deg, rgba(155, 228, 255, 0.82), rgba(40, 60, 112, 0.78));
+  box-shadow:
+    0 0 28px rgba(155, 228, 255, 0.34),
+    inset -10px -12px 22px rgba(5, 10, 24, 0.28);
+  animation: blog-planet-float 6.6s ease-in-out infinite;
+}
+
+.blog-planet::before {
+  position: absolute;
+  left: -15px;
+  top: 18px;
+  width: 76px;
+  height: 14px;
+  border: 1px solid rgba(255, 199, 116, 0.42);
+  border-right-color: rgba(155, 228, 255, 0.28);
+  border-left-color: rgba(155, 228, 255, 0.24);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-18deg);
+}
+
+.blog-moon {
+  left: 58px;
+  bottom: 42px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.88), transparent 30%),
+    rgba(203, 215, 236, 0.74);
+  box-shadow: 0 0 22px rgba(155, 228, 255, 0.3);
+  opacity: 0.72;
+  animation: blog-planet-float 7.8s ease-in-out infinite reverse;
+}
+
 .blog-star {
   width: 8px;
   height: 8px;
@@ -5638,6 +5738,51 @@ h3 {
   width: 5px;
   height: 5px;
   animation-delay: -1.3s;
+}
+
+.blog-spark {
+  width: 2px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.88), transparent);
+  box-shadow: 0 0 14px rgba(155, 228, 255, 0.55);
+  opacity: 0.62;
+  animation: blog-star-pulse 3.2s ease-in-out infinite;
+}
+
+.blog-spark::before {
+  position: absolute;
+  left: -8px;
+  top: 8px;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.82), transparent);
+  content: "";
+}
+
+.blog-spark-one {
+  right: 104px;
+  top: 34px;
+  rotate: 24deg;
+}
+
+.blog-spark-two {
+  left: 132px;
+  bottom: 38px;
+  width: 2px;
+  height: 14px;
+  rotate: -16deg;
+  animation-delay: -1.3s;
+}
+
+.blog-spark-three {
+  right: 168px;
+  bottom: 92px;
+  width: 2px;
+  height: 13px;
+  rotate: 42deg;
+  animation-delay: -2.1s;
 }
 
 .blog-laptop {
@@ -6449,6 +6594,40 @@ h3 {
   }
 }
 
+@keyframes blog-cosmic-dust-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(-42px, 28px, 0) rotate(3deg);
+  }
+}
+
+@keyframes blog-constellation-glow {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: translate3d(0, 0, 0) scale(0.98);
+  }
+
+  50% {
+    opacity: 0.72;
+    transform: translate3d(5px, -4px, 0) scale(1.02);
+  }
+}
+
+@keyframes blog-planet-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -9px, 0);
+  }
+}
+
 @keyframes blog-laptop-float {
   0%,
   100% {
@@ -6860,6 +7039,19 @@ h3 {
     opacity: 0.38;
   }
 
+  .blog-cosmic-dust {
+    inset: -12%;
+    opacity: 0.3;
+  }
+
+  .blog-constellation {
+    left: 18px;
+    top: 22px;
+    width: 92px;
+    height: 58px;
+    opacity: 0.46;
+  }
+
   .blog-orbit-one {
     right: -106px;
     top: 18px;
@@ -6887,6 +7079,27 @@ h3 {
     bottom: 58px;
   }
 
+  .blog-planet {
+    right: 24px;
+    bottom: 44px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .blog-planet::before {
+    left: -11px;
+    top: 13px;
+    width: 56px;
+    height: 10px;
+  }
+
+  .blog-moon {
+    left: 32px;
+    bottom: 50px;
+    width: 15px;
+    height: 15px;
+  }
+
   .blog-star-one {
     left: 20px;
     top: 34px;
@@ -6910,6 +7123,32 @@ h3 {
   .blog-star-five {
     right: 24%;
     top: 60px;
+  }
+
+  .blog-spark {
+    height: 12px;
+    opacity: 0.48;
+  }
+
+  .blog-spark::before {
+    left: -6px;
+    top: 5px;
+    width: 14px;
+  }
+
+  .blog-spark-one {
+    right: 72px;
+    top: 30px;
+  }
+
+  .blog-spark-two {
+    left: 74px;
+    bottom: 34px;
+  }
+
+  .blog-spark-three {
+    right: 98px;
+    bottom: 78px;
   }
 
   .blog-laptop {

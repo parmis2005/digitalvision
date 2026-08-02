@@ -5406,6 +5406,12 @@ h3 {
   letter-spacing: -0.04em;
 }
 
+.blog-hero h1 {
+  max-width: none;
+  font-size: clamp(1.15rem, 3vw, 2.55rem);
+  white-space: nowrap;
+}
+
 .blog-hero p:not(.eyebrow),
 .blog-article-hero > p {
   max-width: 680px;
@@ -6554,6 +6560,11 @@ h3 {
     margin-bottom: 14px;
     font-size: clamp(2rem, 9vw, 2.55rem);
     letter-spacing: -0.045em;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(1.15rem, 5vw, 2.15rem);
+    white-space: nowrap;
   }
 
   .blog-hero p:not(.eyebrow),

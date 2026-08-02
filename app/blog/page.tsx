@@ -90,6 +90,45 @@ export default function BlogPage() {
             </Link>
           </div>
         </div>
+        <div className="blog-seo-visual" aria-hidden="true">
+          <span className="blog-seo-kicker">SEO-System</span>
+          <span className="blog-search-panel">
+            <span className="blog-search-bar">
+              <span />
+              Webdesign Mönchengladbach
+            </span>
+            <span className="blog-search-result blog-search-result-main">
+              <strong>DigitalVision</strong>
+              <em>Webdesign · SEO · Systeme</em>
+            </span>
+            <span className="blog-search-result">
+              <strong>Leistungsseite</strong>
+              <em>klar strukturiert</em>
+            </span>
+            <span className="blog-search-result">
+              <strong>Blogartikel</strong>
+              <em>intern verlinkt</em>
+            </span>
+          </span>
+          <span className="blog-conversion-panel">
+            <strong>Anfrage</strong>
+            <em>aus Sichtbarkeit wird Kontakt</em>
+          </span>
+          <span className="blog-funnel-row">
+            <span>
+              <strong>01</strong>
+              Website
+            </span>
+            <span>
+              <strong>02</strong>
+              Ranking
+            </span>
+            <span>
+              <strong>03</strong>
+              Anfrage
+            </span>
+          </span>
+        </div>
       </section>
 
       <section className="blog-topic-strip" aria-label="Blog Themen">

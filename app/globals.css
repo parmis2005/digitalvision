@@ -5319,6 +5319,19 @@ h3 {
   font-family: var(--font-blog-serif), Georgia, serif;
 }
 
+.blog-page *,
+.blog-page *::before,
+.blog-page *::after {
+  font-family: inherit;
+}
+
+.blog-page button,
+.blog-page input,
+.blog-page textarea,
+.blog-page select {
+  font-family: var(--font-blog-serif), Georgia, serif;
+}
+
 .blog-header {
   position: relative;
   z-index: 2;

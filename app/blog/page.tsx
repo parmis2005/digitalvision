@@ -91,26 +91,6 @@ export default function BlogPage() {
             </Link>
           </div>
         </div>
-        <div className="blog-hero-graphic" aria-hidden="true">
-          <span className="blog-graphic-orbit blog-graphic-orbit-one" />
-          <span className="blog-graphic-orbit blog-graphic-orbit-two" />
-          <span className="blog-graphic-node blog-graphic-node-one" />
-          <span className="blog-graphic-node blog-graphic-node-two" />
-          <span className="blog-graphic-card blog-graphic-card-main">
-            <span>SEO</span>
-            <strong>Content System</strong>
-            <em>Indexierbar · Schnell · Klar</em>
-          </span>
-          <span className="blog-graphic-card blog-graphic-card-small">
-            <span>Ranking</span>
-            <strong>+42%</strong>
-          </span>
-          <span className="blog-graphic-lines">
-            <span />
-            <span />
-            <span />
-          </span>
-        </div>
       </section>
 
       <section className="blog-topic-strip" aria-label="Blog Themen">

@@ -5352,196 +5352,103 @@ h3 {
 .blog-hero {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
-  align-items: center;
-  gap: clamp(28px, 5vw, 72px);
-  width: min(980px, calc(100% - 36px));
+  width: min(1040px, calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(54px, 7vw, 92px) 0 32px;
+  padding: clamp(44px, 6vw, 74px) 0 34px;
+  overflow: hidden;
+}
+
+.blog-hero::before,
+.blog-hero::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+
+.blog-hero::before {
+  right: 0;
+  top: 52px;
+  z-index: 0;
+  width: min(36vw, 360px);
+  height: 210px;
+  border: 1px solid rgba(155, 228, 255, 0.12);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 76% 24%, rgba(155, 228, 255, 0.22), transparent 20%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.018));
+  opacity: 0.72;
+}
+
+.blog-hero::after {
+  right: 42px;
+  top: 92px;
+  z-index: 0;
+  width: min(27vw, 250px);
+  height: 118px;
+  border-radius: 26px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.13) 0 8px,
+      transparent 8px 22px
+    ),
+    linear-gradient(135deg, rgba(255, 199, 116, 0.12), rgba(155, 228, 255, 0.08));
+  opacity: 0.42;
+  transform: rotate(-5deg);
 }
 
 .blog-hero-copy {
   position: relative;
   z-index: 2;
+  max-width: 760px;
 }
 
 .blog-home-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  min-height: 38px;
-  margin-bottom: 22px;
-  padding: 0 15px;
-  border: 1px solid rgba(155, 228, 255, 0.18);
-  border-radius: 999px;
-  color: rgba(248, 251, 255, 0.74);
-  background: rgba(255, 255, 255, 0.055);
-  font-size: 0.86rem;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: rgba(155, 228, 255, 0.78);
+  font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
 }
 
 .blog-home-link:hover {
   color: white;
-  border-color: rgba(155, 228, 255, 0.36);
-  background: rgba(255, 255, 255, 0.09);
 }
 
 .blog-hero h1,
 .blog-article-hero h1 {
-  max-width: 850px;
+  max-width: 760px;
   margin: 10px 0 18px;
   color: white;
-  font-size: clamp(2.15rem, 4.8vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3.35rem);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.055em;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
 .blog-hero p:not(.eyebrow),
 .blog-article-hero > p {
-  max-width: 780px;
+  max-width: 680px;
   color: rgba(220, 231, 247, 0.78);
-  font-size: clamp(1rem, 1.55vw, 1.16rem);
+  font-size: clamp(0.98rem, 1.35vw, 1.08rem);
   line-height: 1.65;
 }
 
 .blog-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 26px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
-.blog-hero-graphic {
-  position: relative;
-  min-height: 310px;
-  border: 1px solid rgba(155, 228, 255, 0.14);
-  border-radius: 34px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 62% 32%, rgba(155, 228, 255, 0.22), transparent 22%),
-    radial-gradient(circle at 34% 74%, rgba(255, 199, 116, 0.18), transparent 28%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 24px 76px rgba(0, 0, 0, 0.2);
-}
-
-.blog-hero-graphic::before {
-  position: absolute;
-  inset: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  content: "";
-}
-
-.blog-graphic-orbit {
-  position: absolute;
-  border: 1px solid rgba(155, 228, 255, 0.16);
-  border-radius: 50%;
-}
-
-.blog-graphic-orbit-one {
-  inset: 32px 18px 44px 28px;
-  transform: rotate(-18deg);
-}
-
-.blog-graphic-orbit-two {
-  inset: 70px -32px -18px 74px;
-  transform: rotate(28deg);
-}
-
-.blog-graphic-node {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #bff0ff;
-  box-shadow: 0 0 22px rgba(155, 228, 255, 0.78);
-}
-
-.blog-graphic-node-one {
-  right: 62px;
-  top: 52px;
-}
-
-.blog-graphic-node-two {
-  left: 58px;
-  bottom: 64px;
-}
-
-.blog-graphic-card {
-  position: absolute;
-  display: grid;
-  gap: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
-  background: rgba(4, 12, 30, 0.72);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(14px);
-}
-
-.blog-graphic-card span {
-  color: rgba(255, 199, 116, 0.88);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.blog-graphic-card strong {
-  color: white;
-  font-size: 1.25rem;
-  line-height: 1.08;
-}
-
-.blog-graphic-card em {
-  color: rgba(220, 231, 247, 0.68);
-  font-size: 0.82rem;
-  font-style: normal;
-}
-
-.blog-graphic-card-main {
-  left: 36px;
-  right: 34px;
-  top: 72px;
-  padding: 24px;
-}
-
-.blog-graphic-card-small {
-  right: 32px;
-  bottom: 36px;
-  min-width: 128px;
-  padding: 18px 20px;
-}
-
-.blog-graphic-card-small strong {
-  font-size: 2.05rem;
-}
-
-.blog-graphic-lines {
-  position: absolute;
-  left: 38px;
-  right: 180px;
-  bottom: 58px;
-  display: grid;
-  gap: 9px;
-}
-
-.blog-graphic-lines span {
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.13);
-}
-
-.blog-graphic-lines span:nth-child(2) {
-  width: 74%;
-}
-
-.blog-graphic-lines span:nth-child(3) {
-  width: 48%;
+.blog-page .primary-button,
+.blog-page .secondary-button {
+  min-height: 50px;
+  padding-inline: 24px;
+  font-size: 0.98rem;
 }
 
 .blog-topic-strip,
@@ -6264,14 +6171,6 @@ h3 {
     display: block;
   }
 
-  .blog-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .blog-hero-graphic {
-    min-height: 250px;
-  }
-
   .blog-list-card {
     grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
   }
@@ -6325,31 +6224,6 @@ h3 {
   .blog-article-hero h1 {
     font-size: clamp(2rem, 10vw, 3rem);
     letter-spacing: -0.045em;
-  }
-
-  .blog-hero-graphic {
-    min-height: 210px;
-    border-radius: 24px;
-  }
-
-  .blog-graphic-card-main {
-    left: 22px;
-    right: 22px;
-    top: 48px;
-    padding: 18px;
-  }
-
-  .blog-graphic-card-small {
-    right: 20px;
-    bottom: 22px;
-    min-width: 112px;
-    padding: 14px 16px;
-  }
-
-  .blog-graphic-lines {
-    left: 24px;
-    right: 148px;
-    bottom: 42px;
   }
 
   .blog-hero-actions,

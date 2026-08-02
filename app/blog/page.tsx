@@ -74,7 +74,6 @@ export default function BlogPage() {
             <ArrowLeft size={17} aria-hidden="true" />
             Zurück zu DigitalVision
           </Link>
-          <p className="eyebrow">DigitalVision Blog</p>
           <h1>Wissen für Websites, SEO und digitale Systeme.</h1>
           <p>
             Praxisnahe Artikel für Unternehmen, die online klarer auftreten,

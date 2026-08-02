@@ -76,10 +76,7 @@ export default function BlogPage() {
             Zurück zu DigitalVision
           </Link>
           <h1>Impulse für digitale Projekte.</h1>
-          <p>
-            Praxisnahe Artikel für Unternehmen, die ihre Website, ihren
-            Online-Auftritt und ihre digitalen Abläufe klarer planen möchten.
-          </p>
+          <p>Praxisnahe Artikel für klare Websites und digitale Abläufe.</p>
           <div className="blog-hero-actions">
             <Link className="primary-button" href="/#kontakt">
               Kostenlose Anfrage

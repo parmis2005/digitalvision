@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
@@ -20,6 +21,10 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
   month: "long",
   year: "numeric",
 });
+
+function getSectionId(index: number) {
+  return `abschnitt-${index + 1}`;
+}
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -162,48 +167,89 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </header>
 
-        <section className="blog-takeaways" aria-label="Das Wichtigste">
-          <h2>Das Wichtigste kurz gesagt</h2>
-          <div className="blog-takeaway-grid">
-            {post.takeaways.map((takeaway) => (
-              <div className="blog-takeaway" key={takeaway}>
-                <Check size={18} aria-hidden="true" />
-                <span>{takeaway}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        <figure className="blog-article-cover">
+          <Image
+            src={post.image}
+            alt={post.imageAlt}
+            width={1120}
+            height={630}
+            sizes="(max-width: 760px) calc(100vw - 32px), 1040px"
+            priority
+          />
+        </figure>
 
-        <div className="blog-article-content">
-          {post.sections.map((section) => (
-            <section className="blog-content-section" key={section.heading}>
-              <h2>{section.heading}</h2>
-              {section.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-              {section.bullets ? (
-                <ul>
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              ) : null}
+        <div className="blog-article-layout">
+          <aside className="blog-article-sidebar" aria-label="Artikelübersicht">
+            <div className="blog-sidebar-card">
+              <span className="blog-sidebar-label">In diesem Artikel</span>
+              <nav>
+                {post.sections.map((section, index) => (
+                  <a href={`#${getSectionId(index)}`} key={section.heading}>
+                    {section.heading}
+                  </a>
+                ))}
+              </nav>
+            </div>
+            <div className="blog-sidebar-card blog-sidebar-cta">
+              <span className="blog-sidebar-label">DigitalVision</span>
+              <strong>Website oder System geplant?</strong>
+              <p>Wir sortieren Struktur, Inhalte und Funktionen vor der Umsetzung.</p>
+              <Link href="/#kontakt">
+                Projekt anfragen
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+          </aside>
+
+          <div className="blog-article-main">
+            <section className="blog-takeaways" aria-label="Das Wichtigste">
+              <h2>Das Wichtigste kurz gesagt</h2>
+              <div className="blog-takeaway-grid">
+                {post.takeaways.map((takeaway) => (
+                  <div className="blog-takeaway" key={takeaway}>
+                    <Check size={18} aria-hidden="true" />
+                    <span>{takeaway}</span>
+                  </div>
+                ))}
+              </div>
             </section>
-          ))}
-        </div>
 
-        <section className="blog-faq-section">
-          <p className="eyebrow">FAQ</p>
-          <h2>Häufige Fragen</h2>
-          <div className="blog-faq-list">
-            {post.faq.map((entry) => (
-              <div className="blog-faq-item" key={entry.question}>
-                <h3>{entry.question}</h3>
-                <p>{entry.answer}</p>
+            <div className="blog-article-content">
+              {post.sections.map((section, index) => (
+                <section
+                  className="blog-content-section"
+                  id={getSectionId(index)}
+                  key={section.heading}
+                >
+                  <h2>{section.heading}</h2>
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {section.bullets ? (
+                    <ul>
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              ))}
+            </div>
+
+            <section className="blog-faq-section">
+              <p className="eyebrow">FAQ</p>
+              <h2>Häufige Fragen</h2>
+              <div className="blog-faq-list">
+                {post.faq.map((entry) => (
+                  <div className="blog-faq-item" key={entry.question}>
+                    <h3>{entry.question}</h3>
+                    <p>{entry.answer}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
           </div>
-        </section>
+        </div>
       </article>
 
       <section className="blog-section blog-related-section">
@@ -211,17 +257,38 @@ export default async function BlogPostPage({ params }: PageProps) {
           <p className="eyebrow">Weiterlesen</p>
           <h2>Passende Artikel für dein Projekt.</h2>
         </div>
-        <div className="blog-grid">
+        <div className="blog-related-list">
           {relatedPosts.map((relatedPost) => (
-            <Link className="blog-card" href={`/blog/${relatedPost.slug}`} key={relatedPost.slug}>
-              <span className="blog-card-meta">
-                {relatedPost.category} · {relatedPost.readingTime}
+            <Link
+              className="blog-list-card blog-related-card"
+              href={`/blog/${relatedPost.slug}`}
+              key={relatedPost.slug}
+            >
+              <span className="blog-list-visual">
+                <Image
+                  className="blog-list-image"
+                  src={relatedPost.image}
+                  alt={relatedPost.imageAlt}
+                  width={480}
+                  height={270}
+                  sizes="(max-width: 760px) calc(100vw - 32px), 230px"
+                />
+                <span className="blog-list-visual-label">{relatedPost.category}</span>
               </span>
-              <h2>{relatedPost.title}</h2>
-              <p>{relatedPost.excerpt}</p>
-              <span className="blog-card-link">
-                Artikel lesen
-                <ArrowRight size={17} aria-hidden="true" />
+              <span className="blog-list-content">
+                <span className="blog-card-meta">
+                  <span>{relatedPost.category}</span>
+                  <span>
+                    <Clock size={15} aria-hidden="true" />
+                    {relatedPost.readingTime}
+                  </span>
+                </span>
+                <span className="blog-list-title">{relatedPost.title}</span>
+                <span className="blog-list-excerpt">{relatedPost.excerpt}</span>
+                <span className="blog-card-link">
+                  Artikel lesen
+                  <ArrowRight size={17} aria-hidden="true" />
+                </span>
               </span>
             </Link>
           ))}

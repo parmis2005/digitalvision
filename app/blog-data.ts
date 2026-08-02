@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
       "Bevor ein Layout entsteht, sollten Zielgruppe, Leistungen, Kontaktwege und Inhalte sauber sortiert sein. So wird aus einer Website ein funktionierender digitaler Auftritt.",
     category: "Websites",
     date: "2026-08-02",
-    readingTime: "6 Min. Lesezeit",
+    readingTime: "8 Min. Lesezeit",
     focusKeyword: "Website planen",
     image: "/blog/website-planen-vor-dem-design.jpg",
     imageAlt: "Workspace mit Laptop, Wireframes und Website-Planung",
@@ -66,6 +66,32 @@ export const blogPosts: BlogPost[] = [
           "Welche Einwände haben Besucher vor der Anfrage?",
           "Welche Beispiele, Bewertungen oder Bilder schaffen Vertrauen?",
           "Welche Aktion soll auf jeder Seite möglich sein?",
+        ],
+      },
+      {
+        heading: "Der praktische Ablauf vor dem Design",
+        body: [
+          "Sinnvoll ist ein kurzer Vorbereitungsprozess, bevor die eigentliche Gestaltung beginnt. Zuerst wird gesammelt, welche Leistungen, Zielgruppen, Referenzen und Kontaktwege wichtig sind. Danach entsteht eine Seitenstruktur, die festlegt, welche Information wo erscheinen soll.",
+          "Erst wenn diese Grundlage steht, wird das Design leichter. Dann muss die Gestaltung nicht mehr raten, sondern kann klare Inhalte sichtbar machen: Einstieg, Nutzen, Leistungsbereiche, Vertrauen, Ablauf und Anfrage.",
+        ],
+        bullets: [
+          "Leistungen und Zielgruppen sortieren",
+          "Startseite und Unterseiten grob strukturieren",
+          "Bilder, Beispiele und Vertrauenssignale festlegen",
+          "Kontaktweg und Anfrageprozess definieren",
+        ],
+      },
+      {
+        heading: "Typische Fehler in der Vorbereitung",
+        body: [
+          "Ein häufiger Fehler ist, zu früh über einzelne Farben oder Effekte zu sprechen. Dadurch wird die Website optisch diskutiert, obwohl noch nicht klar ist, welche Inhalte überzeugen müssen und welche Seite welche Aufgabe hat.",
+          "Auch zu viele gleich wichtige Aussagen schwächen den Auftritt. Wenn alles im Mittelpunkt steht, erkennt der Besucher keinen nächsten Schritt. Eine gute Planung reduziert deshalb, sortiert Prioritäten und macht die wichtigsten Wege sichtbar.",
+        ],
+        bullets: [
+          "Zu viele Leistungen ohne klare Reihenfolge",
+          "Keine eindeutige Hauptaktion auf der Startseite",
+          "Texte ohne Bezug zu echten Kundenfragen",
+          "Designentscheidungen ohne fertige Inhaltsstruktur",
         ],
       },
       {
@@ -103,7 +129,7 @@ export const blogPosts: BlogPost[] = [
       "Eine Arztpraxis braucht andere Signale als ein Nagelstudio, eine Versicherung oder ein Online-Shop. Genau deshalb sollte jede Website einen eigenen Aufbau bekommen.",
     category: "Branchen",
     date: "2026-08-02",
-    readingTime: "7 Min. Lesezeit",
+    readingTime: "8 Min. Lesezeit",
     focusKeyword: "Branchenwebsite",
     image: "/blog/branchenwebsites-richtig-aufbauen.jpg",
     imageAlt: "Digitale Design-Panels für unterschiedliche Branchenwebsites",
@@ -132,6 +158,32 @@ export const blogPosts: BlogPost[] = [
           "Studio: Atmosphäre, Bilder, Preise, Buchung",
           "Beratung: Vertrauen, Ablauf, Nutzen, Kontakt",
           "Shop: Kategorien, Produkte, Orientierung, Kaufimpuls",
+        ],
+      },
+      {
+        heading: "Welche Inhalte je Branche Vertrauen schaffen",
+        body: [
+          "Vertrauen entsteht nicht überall gleich. Eine Praxis profitiert von klaren Informationen zu Leistungen, Team, Erreichbarkeit und Terminablauf. Ein Studio braucht starke Bilder, Preise, Atmosphäre und einfache Buchung. Eine Versicherung oder Beratung muss Sicherheit, Erfahrung und einen verständlichen Prozess zeigen.",
+          "Wenn diese Inhalte fehlen, bleibt der Look zwar schön, aber die Website beantwortet zu wenig. Deshalb sollte jede Branchenwebsite zuerst definieren, welche Zweifel Besucher haben und welche Belege diese Zweifel reduzieren.",
+        ],
+        bullets: [
+          "Praxen brauchen klare Erreichbarkeit und Leistungsübersicht",
+          "Studios brauchen Atmosphäre, Bilder und einfache Terminwege",
+          "Beratungen brauchen Vertrauen, Ablauf und Nutzenargumente",
+          "Shops brauchen Kategorien, Produktlogik und Kaufanreize",
+        ],
+      },
+      {
+        heading: "Warum die Reihenfolge auf der Seite entscheidet",
+        body: [
+          "Nicht nur die Inhalte selbst sind wichtig, sondern auch ihre Reihenfolge. Besucher müssen zuerst verstehen, worum es geht, danach Vertrauen aufbauen und anschließend einfach handeln können. Wird diese Reihenfolge vertauscht, wirkt die Website schnell anstrengend.",
+          "Ein Praxisbesucher sucht zuerst Orientierung und Kontakt. Eine Kundin eines Studios will Atmosphäre, Leistungen und Termine sehen. Ein Beratungskunde möchte verstehen, wie der Ablauf funktioniert und warum er Vertrauen haben kann.",
+        ],
+        bullets: [
+          "Erst Orientierung, dann Details",
+          "Vertrauen sichtbar machen, bevor die Anfrage erwartet wird",
+          "Kontaktwege dort platzieren, wo Entscheidungen entstehen",
+          "Branchenlogik stärker gewichten als reine Designvorlagen",
         ],
       },
       {
@@ -169,7 +221,7 @@ export const blogPosts: BlogPost[] = [
       "Eine moderne Website endet nicht beim Formular. Entscheidend ist, was danach passiert: Benachrichtigung, Übersicht, Status und klare Zuständigkeit.",
     category: "Prozesse",
     date: "2026-08-02",
-    readingTime: "6 Min. Lesezeit",
+    readingTime: "7 Min. Lesezeit",
     focusKeyword: "Kundenanfragen organisieren",
     image: "/blog/kundenanfragen-digital-organisieren.jpg",
     imageAlt: "Dashboard für Kundenanfragen, Nachrichten und Statusübersicht",
@@ -197,6 +249,32 @@ export const blogPosts: BlogPost[] = [
           "Auswahlmöglichkeiten für typische Anliegen",
           "Automatische Bestätigung nach dem Absenden",
           "Interne Übersicht für neue und bearbeitete Anfragen",
+        ],
+      },
+      {
+        heading: "Wie aus einer Anfrage ein sauberer Prozess wird",
+        body: [
+          "Nach dem Absenden sollte klar sein, was automatisch passiert und was intern erledigt werden muss. Eine gute Lösung sendet eine Bestätigung, informiert die richtige Person und legt die Anfrage so ab, dass sie später nachvollziehbar bleibt.",
+          "Noch besser wird der Ablauf, wenn Anfragen nach Thema, Dringlichkeit oder Status sortiert werden können. Dann sieht das Team sofort, was neu ist, was beantwortet wurde und wo noch Rückmeldung fehlt.",
+        ],
+        bullets: [
+          "Automatische Bestätigung an den Kunden",
+          "Interne Benachrichtigung an die richtige Stelle",
+          "Status wie neu, in Bearbeitung oder erledigt",
+          "Saubere Ablage für spätere Rückfragen",
+        ],
+      },
+      {
+        heading: "Welche Fehler im Alltag Zeit kosten",
+        body: [
+          "Viele Unternehmen verlieren keine Anfrage, weil das Formular schlecht aussieht, sondern weil der interne Ablauf danach unsauber ist. Eine Nachricht landet im falschen Postfach, wird nicht markiert oder niemand weiß, ob bereits geantwortet wurde.",
+          "Besonders problematisch wird es, wenn mehrere Personen gleichzeitig mit Kundenanfragen arbeiten. Ohne Status, Zuständigkeit und Verlauf entstehen doppelte Antworten, lange Reaktionszeiten und vermeidbare Rückfragen.",
+        ],
+        bullets: [
+          "Anfragen werden nur per E-Mail weitergeleitet",
+          "Es gibt keinen Bearbeitungsstatus",
+          "Zuständigkeiten sind nicht klar sichtbar",
+          "Wichtige Kundendaten müssen mehrfach gesucht werden",
         ],
       },
       {
@@ -234,7 +312,7 @@ export const blogPosts: BlogPost[] = [
       "Produkte, Buchungen, Anfragen und Beratung brauchen unterschiedliche Wege. Ein guter digitaler Auftritt wählt die passende Lösung statt unnötige Funktionen einzubauen.",
     category: "Online-Shops",
     date: "2026-08-02",
-    readingTime: "7 Min. Lesezeit",
+    readingTime: "8 Min. Lesezeit",
     focusKeyword: "Online-Shop oder Website",
     image: "/blog/online-shop-oder-website.jpg",
     imageAlt: "Digitale Entscheidung zwischen Online-Shop und Unternehmenswebsite",
@@ -262,6 +340,32 @@ export const blogPosts: BlogPost[] = [
           "Preise und Varianten sind klar",
           "Kunden brauchen wenig persönliche Beratung",
           "Versand, Zahlung und Bestellabwicklung sind vorbereitet",
+        ],
+      },
+      {
+        heading: "Welche Lösung Kunden wirklich erwarten",
+        body: [
+          "Die Entscheidung sollte aus Sicht der Kunden getroffen werden. Wer ein Produkt kaufen möchte, erwartet Varianten, Preis, Bilder, Lieferinformationen und eine einfache Bestellung. Wer eine Dienstleistung sucht, erwartet eher Vertrauen, Erklärung, Beispiele und einen unkomplizierten Anfrageweg.",
+          "Deshalb ist ein Shop nicht automatisch professioneller als eine Website. Professionell ist die Lösung, die zur Entscheidungssituation passt und den nächsten Schritt ohne Umwege ermöglicht.",
+        ],
+        bullets: [
+          "Bei Produkten zählt schnelle Orientierung im Sortiment",
+          "Bei Dienstleistungen zählt Vertrauen vor der Anfrage",
+          "Bei individuellen Angeboten hilft ein Anfrageformular mehr als ein Warenkorb",
+          "Bei wiederkehrenden Buchungen kann ein Terminmodul sinnvoll sein",
+        ],
+      },
+      {
+        heading: "Warum weniger Funktionen oft besser sind",
+        body: [
+          "Viele digitale Auftritte werden zu kompliziert geplant. Ein Shop braucht nicht sofort jedes Feature, wenn am Anfang nur wenige Produkte verkauft werden. Eine Dienstleistungsseite braucht keinen Warenkorb, wenn jedes Angebot individuell besprochen wird.",
+          "Besser ist ein schlanker Start mit den Funktionen, die Kunden wirklich nutzen. Danach kann die Lösung erweitert werden, wenn echte Anforderungen entstehen und nicht nur theoretische Möglichkeiten gesammelt werden.",
+        ],
+        bullets: [
+          "Nur Funktionen einbauen, die den nächsten Schritt erleichtern",
+          "Checkout, Anfrage oder Buchung klar voneinander trennen",
+          "Komplexität erst erweitern, wenn sie gebraucht wird",
+          "Technik nicht wichtiger machen als Verständlichkeit",
         ],
       },
       {
@@ -299,7 +403,7 @@ export const blogPosts: BlogPost[] = [
       "Wenn Anfragen, Kundendaten oder Termine über mehrere Listen verteilt sind, wird Arbeit unnötig langsam. Ein eigenes System schafft Überblick.",
     category: "Systeme",
     date: "2026-08-02",
-    readingTime: "7 Min. Lesezeit",
+    readingTime: "8 Min. Lesezeit",
     focusKeyword: "Verwaltungssystem",
     image: "/blog/verwaltungssystem-dashboard-statt-excel.jpg",
     imageAlt: "Modernes Dashboard als Alternative zu Tabellen und Papierchaos",
@@ -327,6 +431,32 @@ export const blogPosts: BlogPost[] = [
           "Inhalte oder Angebote selbst verwalten",
           "Termine, Status und Aufgaben sichtbar machen",
           "Wiederkehrende Schritte automatisieren",
+        ],
+      },
+      {
+        heading: "Woran man ein gutes Dashboard erkennt",
+        body: [
+          "Ein gutes Dashboard zeigt nicht alles, was technisch möglich ist, sondern genau das, was im Alltag gebraucht wird. Die wichtigsten Informationen stehen oben, wiederkehrende Aufgaben sind schnell erreichbar und Zustände sind eindeutig erkennbar.",
+          "Wenn Mitarbeitende lange suchen müssen oder zu viele Felder pflegen sollen, wird das System nicht genutzt. Deshalb sollte ein Dashboard schlank starten und später dort erweitert werden, wo echte Arbeitszeit verloren geht.",
+        ],
+        bullets: [
+          "Wichtige Kennzahlen und neue Einträge sofort sichtbar",
+          "Klare Statuslogik statt unübersichtlicher Listen",
+          "Kurze Bearbeitungswege für wiederkehrende Aufgaben",
+          "Erweiterbar, aber nicht überladen",
+        ],
+      },
+      {
+        heading: "Welche Daten nicht ins System gehören",
+        body: [
+          "Ein System wird nicht besser, nur weil es mehr Felder hat. Zu viele Eingaben verlangsamen die Arbeit und führen dazu, dass wichtige Daten unvollständig gepflegt werden. Deshalb sollte vor der Umsetzung entschieden werden, welche Informationen wirklich gebraucht werden.",
+          "Alles, was niemand auswertet, bearbeitet oder für eine Entscheidung benötigt, sollte nicht im Mittelpunkt stehen. Ein gutes Verwaltungssystem macht den Alltag einfacher und zwingt Teams nicht in unnötige Pflegearbeit.",
+        ],
+        bullets: [
+          "Keine Felder ohne klaren Nutzen",
+          "Keine doppelten Angaben aus mehreren Quellen",
+          "Keine Prozesse, die nur auf dem Papier sinnvoll wirken",
+          "Keine Übersichten, die niemand regelmäßig verwendet",
         ],
       },
       {
@@ -364,7 +494,7 @@ export const blogPosts: BlogPost[] = [
       "Der Launch ist nur der Start. Damit eine Website professionell bleibt, müssen Inhalte aktuell, Formulare funktionsfähig und Technik sauber gepflegt werden.",
     category: "Betreuung",
     date: "2026-08-02",
-    readingTime: "6 Min. Lesezeit",
+    readingTime: "7 Min. Lesezeit",
     focusKeyword: "Website Pflege",
     image: "/blog/website-pflege-nach-dem-launch.jpg",
     imageAlt: "Laptop mit Website-Wartung, Checklisten und Update-Symbolen",
@@ -392,6 +522,32 @@ export const blogPosts: BlogPost[] = [
           "Leistungen und Öffnungszeiten aktualisieren",
           "Bilder und Referenzen erneuern",
           "Technische Updates und Ladezeiten prüfen",
+        ],
+      },
+      {
+        heading: "Welche Pflege besonders häufig vergessen wird",
+        body: [
+          "Oft werden nur sichtbare Texte aktualisiert, während technische und funktionale Punkte liegen bleiben. Dabei sind gerade Formulare, Weiterleitungen, Ladezeiten, Bildgrößen und mobile Ansichten entscheidend dafür, ob eine Website zuverlässig funktioniert.",
+          "Auch alte Referenzen, veraltete Teamangaben oder nicht mehr passende Angebote schwächen den Eindruck. Pflege bedeutet deshalb nicht nur Technik, sondern auch Aktualität und Vertrauen.",
+        ],
+        bullets: [
+          "Kontaktformulare und Benachrichtigungen regelmäßig testen",
+          "Veraltete Leistungen, Preise und Teamangaben entfernen",
+          "Bilder komprimieren und mobile Darstellung prüfen",
+          "Neue Projekte oder Beispiele ergänzen",
+        ],
+      },
+      {
+        heading: "Wie Website-Pflege planbar bleibt",
+        body: [
+          "Pflege funktioniert am besten, wenn sie nicht zufällig passiert. Sinnvoll ist ein kurzer Rhythmus, in dem wichtige Bereiche geprüft werden: Kontaktwege, Leistungen, Bilder, technische Funktion und sichtbare Aktualität.",
+          "Dadurch entstehen keine großen Baustellen, sondern kleine, regelmäßige Verbesserungen. Die Website bleibt verständlich, aktuell und technisch sauber, ohne dass jedes Mal ein kompletter Relaunch nötig wird.",
+        ],
+        bullets: [
+          "Monatlich Formulare und Kontaktwege prüfen",
+          "Quartalsweise Inhalte und Bilder kontrollieren",
+          "Nach jeder Änderung mobile Darstellung testen",
+          "Neue Leistungen oder Referenzen direkt ergänzen",
         ],
       },
       {

@@ -5642,7 +5642,7 @@ h3 {
 
 .blog-list {
   display: grid;
-  gap: 14px;
+  gap: 24px;
 }
 
 .blog-list-card {
@@ -6447,6 +6447,10 @@ h3 {
 
   .blog-list-card {
     grid-template-columns: 1fr;
+  }
+
+  .blog-list {
+    gap: 20px;
   }
 
   .blog-list-visual {

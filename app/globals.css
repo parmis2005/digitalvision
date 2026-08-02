@@ -3015,26 +3015,9 @@ h3 {
   background: #faf7f2;
 }
 
-.product-preview-large.nails .product-preview-viewport {
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-}
-
-.product-preview-large.nails .product-preview-viewport::-webkit-scrollbar {
-  width: 8px;
-}
-
-.product-preview-large.nails .product-preview-viewport::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 130, 0.55);
-  border-radius: 999px;
-}
-
 .product-preview-large.nails .product-preview-iframe {
   width: 220%;
-  height: 5600px;
-  pointer-events: none;
+  height: 880px;
   transform: scale(0.455);
 }
 

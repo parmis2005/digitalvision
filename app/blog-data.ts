@@ -481,6 +481,96 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
+    slug: "seo-grundlagen-fuer-kleine-unternehmen",
+    title: "SEO-Grundlagen für kleine Unternehmen: Was wirklich zählt",
+    description:
+      "Suchmaschinenoptimierung muss nicht kompliziert starten. Entscheidend sind klare Inhalte, saubere Seitenstruktur und Antworten auf echte Kundenfragen.",
+    excerpt: "Wie kleine Unternehmen mit klaren Inhalten und Struktur sichtbarer werden.",
+    category: "SEO",
+    date: "2026-08-03",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "SEO-Grundlagen",
+    image: "/blog/seo-grundlagen-fuer-kleine-unternehmen.jpg",
+    imageAlt: "Laptop mit Suchergebnissen, Keyword-Notizen und SEO-Struktur",
+    takeaways: [
+      "SEO beginnt mit verständlichen Inhalten, nicht mit Tricks.",
+      "Jede wichtige Leistung sollte eine klare eigene Seite oder Sektion haben.",
+      "Technik, Struktur und Aktualität entscheiden mit über Sichtbarkeit.",
+    ],
+    sections: [
+      {
+        heading: "Warum SEO nicht erst nach dem Launch beginnt",
+        body: [
+          "Viele Unternehmen denken erst an SEO, wenn die Website bereits fertig ist. Dann fehlen oft klare Seitenstrukturen, passende Überschriften oder Inhalte, die echte Suchanfragen beantworten.",
+          "Besser ist es, Sichtbarkeit von Anfang an mitzudenken. Wenn Leistungen, Orte, Zielgruppen und Kundenfragen sauber sortiert sind, kann die Website leichter verstanden werden: von Besuchern und von Suchmaschinen.",
+        ],
+      },
+      {
+        heading: "Welche Inhalte für kleine Unternehmen wichtig sind",
+        body: [
+          "Gute SEO-Inhalte beantworten konkrete Fragen. Was wird angeboten? Für wen ist die Leistung gedacht? In welcher Region ist das Unternehmen tätig? Wie läuft die Anfrage oder Buchung ab?",
+          "Dabei geht es nicht darum, Texte künstlich mit Keywords zu füllen. Wichtig ist, dass jede Seite ein klares Thema hat und Besucher schnell erkennen, ob sie richtig sind.",
+        ],
+        bullets: [
+          "Leistungen klar benennen und einzeln erklären",
+          "Häufige Kundenfragen direkt beantworten",
+          "Region, Kontaktwege und Öffnungszeiten sichtbar machen",
+          "Vertrauen durch Beispiele, Bewertungen oder Referenzen stärken",
+        ],
+      },
+      {
+        heading: "Warum Seitenstruktur so viel ausmacht",
+        body: [
+          "Eine Website mit guter Struktur ist leichter zu nutzen und leichter zu indexieren. Wenn alle Leistungen nur auf einer langen Startseite stehen, bleiben wichtige Themen oft zu oberflächlich.",
+          "Sinnvoll ist eine klare Ordnung: Startseite für Überblick, Leistungsbereiche für Details, Kontaktseite für den nächsten Schritt und bei Bedarf einzelne Unterseiten für besonders wichtige Angebote.",
+        ],
+        bullets: [
+          "Jede wichtige Leistung bekommt genug Raum",
+          "Überschriften beschreiben den Inhalt eindeutig",
+          "Interne Links verbinden passende Seiten miteinander",
+          "Besucher finden den nächsten Schritt ohne Umwege",
+        ],
+      },
+      {
+        heading: "Technische Grundlagen, die nicht fehlen sollten",
+        body: [
+          "SEO ist nicht nur Text. Ladezeit, mobile Darstellung, Bildgrößen, Meta-Titel, Beschreibungen und saubere Links beeinflussen, wie zuverlässig eine Website funktioniert.",
+          "Gerade kleine technische Fehler können die Wirkung guter Inhalte schwächen. Deshalb sollten wichtige Seiten regelmäßig geprüft werden, besonders nach Designänderungen, neuen Bildern oder neuen Funktionen.",
+        ],
+        bullets: [
+          "Schnelle Ladezeiten auf mobilen Geräten",
+          "Aussagekräftige Seitentitel und Beschreibungen",
+          "Komprimierte Bilder mit passenden Alt-Texten",
+          "Fehlerfreie Links, Formulare und Weiterleitungen",
+        ],
+      },
+      {
+        heading: "Wie DigitalVision SEO pragmatisch einbindet",
+        body: [
+          "DigitalVision betrachtet SEO als Teil der Website-Planung. Zuerst werden Leistungen, Zielgruppen und Suchintentionen sortiert. Danach entsteht eine Struktur, die Besucher führt und Suchmaschinen klare Signale gibt.",
+          "So entsteht keine überladene SEO-Strategie, sondern eine Website, die verständlich aufgebaut ist, relevante Inhalte zeigt und langfristig gepflegt werden kann.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Wann sollte SEO bei einer neuen Website eingeplant werden?",
+        answer:
+          "Am besten direkt vor oder während der Website-Planung. Dann können Seitenstruktur, Inhalte, Überschriften und technische Grundlagen sauber berücksichtigt werden.",
+      },
+      {
+        question: "Braucht jedes kleine Unternehmen einen großen SEO-Plan?",
+        answer:
+          "Nein. Oft reicht ein sauberer Start mit klaren Leistungsseiten, guter lokaler Orientierung, schnellen Ladezeiten und regelmäßig gepflegten Inhalten.",
+      },
+      {
+        question: "Kann DigitalVision bestehende Websites für SEO verbessern?",
+        answer:
+          "Ja. Bestehende Seiten können strukturell, inhaltlich und technisch geprüft und Schritt für Schritt verbessert werden.",
+      },
+    ],
+  },
+  {
     slug: "website-pflege-nach-dem-launch",
     title: "Nach dem Launch: Warum eine Website Pflege braucht",
     description:

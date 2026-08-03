@@ -6,7 +6,12 @@ import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
 import { AmbientScene } from "../../ambient-scene";
 import { blogSerif } from "../../blog-font";
 import { DigitalVisionLogo } from "../../digitalvision-logo";
-import { blogPosts, getBlogPost, getRelatedPosts } from "../../blog-data";
+import {
+  type BlogPost,
+  blogPosts,
+  getBlogPost,
+  getRelatedPosts,
+} from "../../blog-data";
 
 const baseUrl = "https://www.digitalvision.site";
 
@@ -24,6 +29,30 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
 
 function getSectionId(index: number) {
   return `abschnitt-${index + 1}`;
+}
+
+function getBlogTitleLines(post: BlogPost) {
+  const separatorIndex = post.title.indexOf(":");
+
+  if (separatorIndex === -1) {
+    return {
+      firstLine: `${post.category}:`,
+      secondLine: post.title,
+    };
+  }
+
+  return {
+    firstLine: post.title.slice(0, separatorIndex + 1),
+    secondLine: post.title.slice(separatorIndex + 1).trim(),
+  };
+}
+
+function getBlogTitleClassName(firstLine: string) {
+  return `blog-article-title${firstLine.length > 30 ? " is-long-main" : ""}`;
+}
+
+function getSectionHeadingClassName(heading: string) {
+  return heading.length > 34 ? "is-long-section-heading" : undefined;
 }
 
 export function generateStaticParams() {
@@ -80,6 +109,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const relatedPosts = getRelatedPosts(post);
+  const titleLines = getBlogTitleLines(post);
+  const titleClassName = getBlogTitleClassName(titleLines.firstLine);
   const articleBody = post.sections
     .flatMap((section) => [section.heading, ...section.body, ...(section.bullets ?? [])])
     .join(" ");
@@ -155,7 +186,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <header className="blog-article-hero">
           <p className="eyebrow">{post.category}</p>
-          <h1>{post.title}</h1>
+          <h1 className={titleClassName}>
+            <span className="blog-article-title-main">{titleLines.firstLine}</span>
+            <span className="blog-article-title-sub">{titleLines.secondLine}</span>
+          </h1>
           <p>{post.description}</p>
           <div className="blog-article-meta">
             <span>{dateFormatter.format(new Date(post.date))}</span>
@@ -221,7 +255,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                   id={getSectionId(index)}
                   key={section.heading}
                 >
-                  <h2>{section.heading}</h2>
+                  <h2 className={getSectionHeadingClassName(section.heading)}>
+                    {section.heading}
+                  </h2>
                   {section.body.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}

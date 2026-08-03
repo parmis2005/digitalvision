@@ -121,7 +121,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "branchenwebsites-richtig-aufbauen",
-    title: "Warum Praxis, Studio und Beratung nicht gleich aussehen sollten",
+    title: "Branchenwebsites: Praxis, Studio und Beratung richtig aufbauen",
     description:
       "Branchenwebsites funktionieren besser, wenn Aufbau, Bildsprache und Kontaktführung zum echten Angebot passen.",
     excerpt: "Jede Branche braucht eigene Signale, Inhalte und Kontaktwege.",

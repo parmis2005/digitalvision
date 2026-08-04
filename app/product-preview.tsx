@@ -16,6 +16,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isHair = product.slug === "haarwerk-studio";
   const isSalt = product.slug === "salzgrotte-aura";
   const isFootcare = product.slug === "fussoase-eppendorf";
+  const isSinjaNails = product.slug === "nagelstudio-sinja";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
   const isNails = product.slug === "luna-nails";
@@ -426,6 +427,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="footcare-card-copy">
               <h3>Fußoase Eppendorf</h3>
               <span>Behandlungen · Preise · Galerie · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isSinjaNails) {
+    if (size === "card") {
+      return (
+        <div className="sinja-nails-preview-card-view">
+          <div className="sinja-nails-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="sinja-nails-card-cta">Termin buchen</span>
+          </div>
+          <div className="sinja-nails-card-shell">
+            <div className="sinja-nails-card-branding">
+              <p>Nagelstudio by Mira</p>
+              <span>Modellage · Nailart · Maniküre</span>
+            </div>
+            <div className="sinja-nails-card-stage">
+              <div className="sinja-nails-card-overlay">
+                <span className="sinja-nails-card-kicker">Nagelmodellage</span>
+                <strong>Stil, Modellage und kreative Nailart.</strong>
+              </div>
+              <div className="sinja-nails-card-accent" />
+            </div>
+            <div className="sinja-nails-card-copy">
+              <h3>Nagelstudio by Mira</h3>
+              <span>Leistungen · Preise · Galerie · Kontakt</span>
             </div>
           </div>
         </div>

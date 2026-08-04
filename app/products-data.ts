@@ -19,6 +19,7 @@ export type ProductItem = {
     | "hair"
     | "salt"
     | "footcare"
+    | "sinja-nails"
     | "cleaning"
     | "insurance"
     | "nails";
@@ -232,6 +233,22 @@ export const products: ProductItem[] = [
       "Geeignet für Fußpflege-Studios, Podologie-Angebote und Beauty-Praxen",
     ],
     previewUrl: "/fusspflege-preview/index.html",
+  },
+  {
+    slug: "nagelstudio-sinja",
+    type: "Nagelstudio Website",
+    title: "Nagelstudio by Mira",
+    detail: "Kreative Nagelstudio-Website für Modellage, Nailart, Preise und Termine",
+    variant: "sinja-nails",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Nagelstudio-Website mit kreativer Nailart-Wirkung, klaren Leistungen, Preisen und direktem Kontaktfokus.",
+    highlights: [
+      "Auffälliger Hero-Bereich für Modellage, Nailart und direkte Terminführung",
+      "Klare Bereiche für Leistungen, Preise, Galerie, Reels, Studio und Kontakt",
+      "Geeignet für Nagelstudios, Nailart-Angebote und moderne Beauty-Ateliers",
+    ],
+    previewUrl: "/nagelstudio-sinja-preview/index.html",
   },
   {
     slug: "lead-funnel",

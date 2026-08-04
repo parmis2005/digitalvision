@@ -1367,6 +1367,12 @@ h3 {
   height: 100%;
 }
 
+.footcare-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .cleaning-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2951,6 +2957,135 @@ h3 {
   line-height: 1.35;
 }
 
+.footcare-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footcare-card-cta {
+  color: rgba(255, 246, 241, 0.9);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footcare-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.footcare-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.footcare-card-branding p {
+  margin-bottom: 0;
+  color: #fff8f5;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.footcare-card-branding span {
+  color: rgba(255, 231, 224, 0.8);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.footcare-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(62, 43, 45, 0.76), rgba(62, 43, 45, 0.14)),
+    url("/fusspflege-preview/videos/hero-poster.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 246, 241, 0.18);
+}
+
+.footcare-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 30%, rgba(245, 228, 225, 0.26), transparent 24%),
+    linear-gradient(180deg, transparent, rgba(62, 43, 45, 0.22));
+  content: "";
+}
+
+.footcare-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff8f5;
+  text-shadow: 0 8px 24px rgba(62, 43, 45, 0.38);
+}
+
+.footcare-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 246, 241, 0.82);
+  color: #9c645f;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.footcare-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.95;
+}
+
+.footcare-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  width: 102px;
+  height: 62px;
+  border: 1px solid rgba(255, 246, 241, 0.5);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(217, 168, 162, 0.12)),
+    url("https://images.unsplash.com/photo-1664643411326-6c589531be3c?w=600&q=85")
+      center/cover no-repeat;
+  box-shadow: 0 10px 24px rgba(62, 43, 45, 0.24);
+}
+
+.footcare-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.footcare-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8f5;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.footcare-card-copy span {
+  color: rgba(255, 231, 224, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .cleaning-card-top {
   display: flex;
   align-items: center;
@@ -3238,6 +3373,14 @@ h3 {
     radial-gradient(circle at 16% 82%, rgba(95, 125, 116, 0.18), transparent 20%),
     linear-gradient(160deg, #241f26 0%, #9c5a41 48%, #f8f1e9 100%);
   color: #fff7ed;
+}
+
+.showcase-card.footcare .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255, 246, 241, 0.24), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(169, 183, 158, 0.18), transparent 20%),
+    linear-gradient(160deg, #3e2b2d 0%, #b97f79 48%, #fbf6f3 100%);
+  color: #fff8f5;
 }
 
 .showcase-card.cleaning .showcase-preview {
@@ -3540,6 +3683,25 @@ h3 {
 }
 
 .product-preview-large.salt .product-preview-iframe {
+  width: 180%;
+  height: 1120px;
+  transform: scale(0.556);
+}
+
+.product-preview-large.footcare .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 246, 241, 0.22), transparent 20%),
+    radial-gradient(circle at 16% 82%, rgba(169, 183, 158, 0.16), transparent 22%),
+    linear-gradient(135deg, #3e2b2d, #b97f79 54%, #fbf6f3);
+  color: #fff8f5;
+}
+
+.product-preview-large.footcare .product-preview-viewport,
+.product-preview-large.footcare .product-preview-iframe {
+  background: #fbf6f3;
+}
+
+.product-preview-large.footcare .product-preview-iframe {
   width: 180%;
   height: 1120px;
   transform: scale(0.556);

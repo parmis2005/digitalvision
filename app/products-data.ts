@@ -18,6 +18,7 @@ export type ProductItem = {
     | "hospital"
     | "hair"
     | "salt"
+    | "footcare"
     | "cleaning"
     | "insurance"
     | "nails";
@@ -215,6 +216,22 @@ export const products: ProductItem[] = [
       "Geeignet für Salzgrotten, Halotherapie-Angebote und ruhige Wellness-Konzepte",
     ],
     previewUrl: "/salzgrotte-preview/index.html",
+  },
+  {
+    slug: "fussoase-eppendorf",
+    type: "Fußpflege Website",
+    title: "Fußoase Eppendorf",
+    detail: "Elegante Fußpflege-Website für Behandlungen, Preise und Termine",
+    variant: "footcare",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Fußpflege-Website mit ruhiger Beauty-Wirkung, klaren Leistungen, Preisen und direktem Terminbuchungsfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für Fußpflege, Podologie und Wohlgefühl",
+      "Klare Bereiche für Leistungen, Preise, Galerie, Bewertungen und Kontakt",
+      "Geeignet für Fußpflege-Studios, Podologie-Angebote und Beauty-Praxen",
+    ],
+    previewUrl: "/fusspflege-preview/index.html",
   },
   {
     slug: "lead-funnel",

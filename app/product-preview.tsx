@@ -15,6 +15,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isHospital = product.slug === "st-elisabeth-klinikum";
   const isHair = product.slug === "haarwerk-studio";
   const isSalt = product.slug === "salzgrotte-aura";
+  const isFootcare = product.slug === "fussoase-eppendorf";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
   const isNails = product.slug === "luna-nails";
@@ -391,6 +392,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="salt-card-copy">
               <h3>Salzgrotte Aura</h3>
               <span>Grotte · Anwendungen · Preise · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isFootcare) {
+    if (size === "card") {
+      return (
+        <div className="footcare-preview-card-view">
+          <div className="footcare-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="footcare-card-cta">Termin buchen</span>
+          </div>
+          <div className="footcare-card-shell">
+            <div className="footcare-card-branding">
+              <p>Fußoase Eppendorf</p>
+              <span>Fußpflege · Podologie · Hamburg</span>
+            </div>
+            <div className="footcare-card-stage">
+              <div className="footcare-card-overlay">
+                <span className="footcare-card-kicker">Sanfte Pflege</span>
+                <strong>Wohlgefühl beginnt bei Ihren Füßen.</strong>
+              </div>
+              <div className="footcare-card-accent" />
+            </div>
+            <div className="footcare-card-copy">
+              <h3>Fußoase Eppendorf</h3>
+              <span>Behandlungen · Preise · Galerie · Termine</span>
             </div>
           </div>
         </div>

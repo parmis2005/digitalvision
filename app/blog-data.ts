@@ -481,6 +481,96 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
+    slug: "website-relaunch-inhalte-richtig-uebernehmen",
+    title: "Website-Relaunch: Alte Inhalte richtig übernehmen",
+    description:
+      "Ein Relaunch sollte nicht nur moderner aussehen. Wichtig ist, bestehende Inhalte sauber zu prüfen, zu sortieren und sinnvoll zu übernehmen.",
+    excerpt: "Wie bestehende Inhalte beim Relaunch sauber geprüft und neu aufgebaut werden.",
+    category: "Websites",
+    date: "2026-08-04",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website-Relaunch",
+    image: "/blog/website-relaunch-inhalte-richtig-uebernehmen.jpg",
+    imageAlt: "Laptop mit Website-Relaunch, Inhaltskarten und Checkliste",
+    takeaways: [
+      "Ein Relaunch braucht eine klare Inhaltsprüfung vor dem neuen Design.",
+      "Nicht jeder alte Text sollte unverändert übernommen werden.",
+      "Weiterleitungen, Struktur und Kontaktwege müssen früh mitgedacht werden.",
+    ],
+    sections: [
+      {
+        heading: "Warum ein Relaunch mehr ist als ein neues Design",
+        body: [
+          "Viele Website-Relaunches starten mit dem Wunsch nach einem moderneren Look. Das ist verständlich, reicht aber nicht aus. Wenn alte Inhalte ungeprüft übernommen werden, sieht die Website zwar neu aus, bleibt aber inhaltlich oft genauso unklar wie vorher.",
+          "Ein guter Relaunch nutzt die Chance, Inhalte, Struktur und Nutzerführung neu zu ordnen. So entsteht nicht nur eine schönere Oberfläche, sondern ein Auftritt, der schneller verständlich ist und besser zu heutigen Kundenfragen passt.",
+        ],
+      },
+      {
+        heading: "Welche Inhalte zuerst geprüft werden sollten",
+        body: [
+          "Vor dem Design sollte geklärt werden, welche Inhalte wirklich gebraucht werden. Dazu gehören Leistungen, Referenzen, Kontaktwege, rechtliche Seiten, Bilder, alte Blogartikel und alle Texte, die aktuell auf der Website stehen.",
+          "Besonders wichtig ist die Frage, welche Inhalte noch stimmen. Veraltete Leistungen, alte Teamangaben oder unklare Beschreibungen schwächen den Relaunch, auch wenn das Layout hochwertig wirkt.",
+        ],
+        bullets: [
+          "Leistungen und Angebote auf Aktualität prüfen",
+          "Alte Texte auf Klarheit und Dopplungen prüfen",
+          "Bilder, Referenzen und Vertrauenssignale erneuern",
+          "Kontaktwege und Formulare vor dem Launch testen",
+        ],
+      },
+      {
+        heading: "Was nicht einfach kopiert werden sollte",
+        body: [
+          "Nicht jeder alte Text verdient einen Platz auf der neuen Website. Manche Inhalte sind zu lang, zu allgemein oder beantworten nicht mehr die Fragen, die Kunden heute stellen.",
+          "Statt alles zu kopieren, sollte jeder Abschnitt eine Aufgabe bekommen. Erklärt er eine Leistung? Baut er Vertrauen auf? Führt er zur Anfrage? Wenn ein Inhalt keine klare Aufgabe hat, sollte er gekürzt, zusammengeführt oder entfernt werden.",
+        ],
+        bullets: [
+          "Veraltete Leistungen nicht übernehmen",
+          "Doppelte Aussagen zusammenführen",
+          "Unklare Texte neu schreiben",
+          "Seiten ohne Nutzen entfernen oder weiterleiten",
+        ],
+      },
+      {
+        heading: "Warum Weiterleitungen beim Relaunch wichtig sind",
+        body: [
+          "Wenn sich URLs ändern, dürfen alte Seiten nicht einfach verschwinden. Besucher, gespeicherte Links und Suchmaschinen können sonst auf Fehlerseiten landen. Das wirkt unprofessionell und kann Sichtbarkeit kosten.",
+          "Deshalb sollte vor dem Launch eine einfache Zuordnung entstehen: Welche alte Seite führt auf welche neue Seite? Gerade bei bestehenden Blogartikeln, Leistungsseiten oder Kontaktseiten ist das wichtig.",
+        ],
+        bullets: [
+          "Alte URLs sammeln",
+          "Neue Zielseiten festlegen",
+          "Wichtige Seiten mit Weiterleitungen absichern",
+          "Nach dem Launch Fehlerseiten prüfen",
+        ],
+      },
+      {
+        heading: "Wie DigitalVision Relaunches strukturiert",
+        body: [
+          "DigitalVision behandelt einen Relaunch als Neustart mit vorhandener Substanz. Bestehende Inhalte werden geprüft, sortiert und dort übernommen, wo sie noch sinnvoll sind.",
+          "Danach entsteht eine klare Struktur für Startseite, Unterseiten, Kontaktwege und spätere Erweiterungen. So bleibt der Relaunch übersichtlich und führt nicht zu einer Website, die nur optisch neu ist.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Sollte man bei einem Relaunch alle alten Inhalte übernehmen?",
+        answer:
+          "Nein. Alte Inhalte sollten zuerst geprüft werden. Nur aktuelle, klare und hilfreiche Inhalte sollten unverändert oder überarbeitet übernommen werden.",
+      },
+      {
+        question: "Was passiert mit alten URLs nach einem Relaunch?",
+        answer:
+          "Wichtige alte URLs sollten auf passende neue Seiten weitergeleitet werden, damit Besucher und Suchmaschinen nicht auf Fehlerseiten landen.",
+      },
+      {
+        question: "Kann DigitalVision bestehende Websites für einen Relaunch analysieren?",
+        answer:
+          "Ja. Bestehende Seiten können vorab geprüft, neu strukturiert und in ein klares Relaunch-Konzept überführt werden.",
+      },
+    ],
+  },
+  {
     slug: "seo-grundlagen-fuer-kleine-unternehmen",
     title: "SEO-Grundlagen für kleine Unternehmen: Was wirklich zählt",
     description:

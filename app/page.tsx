@@ -8,6 +8,7 @@ import {
 import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
 import { DigitalVisionLogo } from "./digitalvision-logo";
+import { MobileNav } from "./mobile-nav";
 import { ProductShowcase } from "./product-showcase";
 
 const services = [
@@ -126,6 +127,7 @@ export default function Home() {
           Projekt starten
           <ArrowRight size={17} aria-hidden="true" />
         </a>
+        <MobileNav />
       </header>
 
       <section id="top" className="hero">

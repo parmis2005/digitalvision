@@ -110,7 +110,7 @@ const packages: PackageItem[] = [
 export default function Home() {
   return (
     <main>
-      <AmbientScene />
+      <AmbientScene density="home" />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Digital Vision Startseite">
           <DigitalVisionLogo size="sm" showTagline={false} />

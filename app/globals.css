@@ -94,23 +94,20 @@ main {
 
 .ambient-particle {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: rgba(155, 228, 255, 0.92);
+  --ambient-x: 0px;
+  --ambient-y: -10px;
+  background: rgba(142, 221, 255, 0.94);
   box-shadow:
-    0 0 10px rgba(155, 228, 255, 0.72),
-    0 0 24px rgba(155, 228, 255, 0.28);
-  animation: ambient-twinkle 8s ease-in-out infinite;
+    0 0 10px rgba(142, 221, 255, 0.76),
+    0 0 22px rgba(82, 186, 255, 0.28);
+  animation: ambient-drift 8s ease-in-out infinite;
 }
 
 .ambient-particle::after {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(155, 228, 255, 0.16);
-  content: "";
-  animation: ambient-orbit 16s linear infinite;
+  content: none;
 }
 
 .ambient-particle-one {
@@ -158,6 +155,207 @@ main {
   left: 88%;
   top: 82%;
   animation-delay: -2.8s;
+}
+
+.ambient-particle-home {
+  width: 4px;
+  height: 4px;
+  background: rgba(142, 221, 255, 0.94);
+  box-shadow:
+    0 0 10px rgba(142, 221, 255, 0.76),
+    0 0 22px rgba(82, 186, 255, 0.28);
+}
+
+.ambient-particle-9 {
+  left: 5%;
+  top: 27%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: 9px;
+  --ambient-y: -16px;
+  animation-delay: -0.8s;
+  animation-duration: 9.5s;
+}
+
+.ambient-particle-10 {
+  left: 31%;
+  top: 9%;
+  --ambient-x: -10px;
+  --ambient-y: 13px;
+  animation-delay: -4.8s;
+  animation-duration: 11s;
+}
+
+.ambient-particle-11 {
+  left: 34%;
+  top: 31%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: 13px;
+  --ambient-y: -9px;
+  animation-delay: -2.6s;
+  animation-duration: 10.2s;
+}
+
+.ambient-particle-12 {
+  left: 44%;
+  top: 6%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: -8px;
+  --ambient-y: 18px;
+  animation-delay: -6.4s;
+  animation-duration: 12.5s;
+}
+
+.ambient-particle-13 {
+  left: 18%;
+  top: 21%;
+  --ambient-x: -15px;
+  --ambient-y: 8px;
+  animation-delay: -3.7s;
+  animation-duration: 9.8s;
+}
+
+.ambient-particle-14 {
+  left: 38%;
+  top: 52%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: 10px;
+  --ambient-y: -18px;
+  animation-delay: -7.2s;
+  animation-duration: 13s;
+}
+
+.ambient-particle-15 {
+  left: 8%;
+  top: 78%;
+  --ambient-x: 16px;
+  --ambient-y: -8px;
+  animation-delay: -5.5s;
+  animation-duration: 10.8s;
+}
+
+.ambient-particle-16 {
+  left: 28%;
+  top: 88%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: -11px;
+  --ambient-y: -14px;
+  animation-delay: -1.4s;
+  animation-duration: 11.7s;
+}
+
+.ambient-particle-17 {
+  left: 49%;
+  top: 86%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: 12px;
+  --ambient-y: -12px;
+  animation-delay: -8.1s;
+  animation-duration: 12.2s;
+}
+
+.ambient-particle-18 {
+  left: 42%;
+  top: 58%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: -14px;
+  --ambient-y: 10px;
+  animation-delay: -2s;
+  animation-duration: 9.2s;
+}
+
+.ambient-particle-19 {
+  left: 34%;
+  top: 90%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: 7px;
+  --ambient-y: -20px;
+  animation-delay: -6.9s;
+  animation-duration: 14s;
+}
+
+.ambient-particle-20 {
+  left: 13%;
+  top: 70%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: -18px;
+  --ambient-y: -11px;
+  animation-delay: -3.2s;
+  animation-duration: 10.5s;
+}
+
+.ambient-particle-21 {
+  left: 19%;
+  top: 6%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: 11px;
+  --ambient-y: 16px;
+  animation-delay: -9.5s;
+  animation-duration: 13.6s;
+}
+
+.ambient-particle-22 {
+  left: 24%;
+  top: 44%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: -13px;
+  --ambient-y: 12px;
+  animation-delay: -4.1s;
+  animation-duration: 11.4s;
+}
+
+.ambient-particle-23 {
+  left: 2.5%;
+  top: 18%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: 10px;
+  --ambient-y: 14px;
+  animation-delay: -2.9s;
+  animation-duration: 12.8s;
+}
+
+.ambient-particle-24 {
+  left: 3.5%;
+  top: 43%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: 13px;
+  --ambient-y: -10px;
+  animation-delay: -6.1s;
+  animation-duration: 10.9s;
+}
+
+.ambient-particle-25 {
+  left: 1.8%;
+  top: 61%;
+  width: 3px;
+  height: 3px;
+  --ambient-x: 12px;
+  --ambient-y: -17px;
+  animation-delay: -8.6s;
+  animation-duration: 13.4s;
+}
+
+.ambient-particle-26 {
+  left: 4.8%;
+  top: 83%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: 9px;
+  --ambient-y: -13px;
+  animation-delay: -4.7s;
+  animation-duration: 11.8s;
 }
 
 a {
@@ -787,38 +985,36 @@ h3 {
 }
 
 .hero-particle {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: rgba(155, 228, 255, 0.92);
-  box-shadow: 0 0 20px currentColor;
+  background: rgba(142, 221, 255, 0.94);
+  box-shadow:
+    0 0 10px rgba(142, 221, 255, 0.76),
+    0 0 22px rgba(82, 186, 255, 0.28);
   animation: particle-float 9s ease-in-out infinite;
 }
 
 .hero-particle-one {
-  left: 70%;
-  top: 20%;
-  color: var(--cyan);
+  left: 84%;
+  top: 14%;
 }
 
 .hero-particle-two {
-  left: 83%;
-  top: 42%;
-  color: var(--gold);
+  left: 92%;
+  top: 36%;
   animation-delay: -3s;
 }
 
 .hero-particle-three {
-  left: 58%;
-  top: 65%;
-  color: var(--ember);
+  left: 72%;
+  top: 66%;
   animation-delay: -1.7s;
 }
 
 .hero-particle-four {
-  left: 77%;
-  top: 72%;
-  color: var(--violet);
+  left: 88%;
+  top: 80%;
   animation-delay: -4.2s;
 }
 
@@ -6916,7 +7112,7 @@ h3 {
   }
 }
 
-@keyframes ambient-twinkle {
+@keyframes ambient-drift {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(0.9);
@@ -6924,7 +7120,7 @@ h3 {
   }
 
   50% {
-    transform: translate3d(0, -10px, 0) scale(1.18);
+    transform: translate3d(var(--ambient-x), var(--ambient-y), 0) scale(1.18);
     opacity: 0.95;
   }
 }

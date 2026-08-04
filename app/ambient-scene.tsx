@@ -2,7 +2,13 @@
 
 import { useEffect } from "react";
 
-export function AmbientScene() {
+type AmbientSceneProps = {
+  density?: "default" | "home";
+};
+
+const homeParticles = Array.from({ length: 18 }, (_, index) => index + 9);
+
+export function AmbientScene({ density = "default" }: AmbientSceneProps) {
   useEffect(() => {
     let frame = 0;
 
@@ -44,6 +50,14 @@ export function AmbientScene() {
       <span className="ambient-particle ambient-particle-six" />
       <span className="ambient-particle ambient-particle-seven" />
       <span className="ambient-particle ambient-particle-eight" />
+      {density === "home"
+        ? homeParticles.map((particle) => (
+            <span
+              className={`ambient-particle ambient-particle-home ambient-particle-${particle}`}
+              key={particle}
+            />
+          ))
+        : null}
     </div>
   );
 }

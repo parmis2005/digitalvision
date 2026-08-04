@@ -155,6 +155,22 @@ export const products: ProductItem[] = [
     previewUrl: "/reinigungsfirma-preview/index.html",
   },
   {
+    slug: "fussoase-eppendorf",
+    type: "Fußpflege Website",
+    title: "Fußoase Eppendorf",
+    detail: "Elegante Fußpflege-Website für Behandlungen, Preise und Termine",
+    variant: "footcare",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Fußpflege-Website mit ruhiger Beauty-Wirkung, klaren Leistungen, Preisen und direktem Terminbuchungsfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für Fußpflege, Podologie und Wohlgefühl",
+      "Klare Bereiche für Leistungen, Preise, Galerie, Bewertungen und Kontakt",
+      "Geeignet für Fußpflege-Studios, Podologie-Angebote und Beauty-Praxen",
+    ],
+    previewUrl: "/fusspflege-preview/index.html",
+  },
+  {
     slug: "alphaschutz-versicherung",
     type: "Versicherungsberatung Website",
     title: "AlphaSchutz Versicherung",
@@ -217,22 +233,6 @@ export const products: ProductItem[] = [
       "Geeignet für Friseursalons, Barber-Shops und hochwertige Beauty-Studios",
     ],
     previewUrl: "/friseur-preview/index.html",
-  },
-  {
-    slug: "fussoase-eppendorf",
-    type: "Fußpflege Website",
-    title: "Fußoase Eppendorf",
-    detail: "Elegante Fußpflege-Website für Behandlungen, Preise und Termine",
-    variant: "footcare",
-    category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Fußpflege-Website mit ruhiger Beauty-Wirkung, klaren Leistungen, Preisen und direktem Terminbuchungsfokus.",
-    highlights: [
-      "Atmosphärischer Hero-Bereich für Fußpflege, Podologie und Wohlgefühl",
-      "Klare Bereiche für Leistungen, Preise, Galerie, Bewertungen und Kontakt",
-      "Geeignet für Fußpflege-Studios, Podologie-Angebote und Beauty-Praxen",
-    ],
-    previewUrl: "/fusspflege-preview/index.html",
   },
   {
     slug: "nagelstudio-sinja",

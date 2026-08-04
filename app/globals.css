@@ -1361,6 +1361,12 @@ h3 {
   height: 100%;
 }
 
+.salt-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .cleaning-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2815,6 +2821,136 @@ h3 {
   line-height: 1.35;
 }
 
+.salt-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.salt-card-cta {
+  color: rgba(255, 238, 220, 0.9);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.salt-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.salt-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.salt-card-branding p {
+  margin-bottom: 0;
+  color: #fff7ed;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.salt-card-branding span {
+  color: rgba(255, 229, 210, 0.8);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.salt-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(36, 31, 38, 0.78), rgba(36, 31, 38, 0.16)),
+    url("https://images.unsplash.com/photo-1760787402256-9502a373bd11?w=900&q=85")
+      center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 238, 220, 0.16);
+}
+
+.salt-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 32%, rgba(236, 176, 127, 0.24), transparent 24%),
+    linear-gradient(180deg, transparent, rgba(36, 31, 38, 0.2));
+  content: "";
+}
+
+.salt-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff7ed;
+  text-shadow: 0 8px 24px rgba(35, 24, 20, 0.36);
+}
+
+.salt-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 241, 226, 0.82);
+  color: #9c5a41;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.salt-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.95;
+}
+
+.salt-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  width: 102px;
+  height: 62px;
+  border: 1px solid rgba(255, 238, 220, 0.46);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(200, 120, 90, 0.12)),
+    url("https://images.unsplash.com/photo-1662058597154-fdb11c9d95ce?w=600&q=85")
+      center/cover no-repeat;
+  box-shadow: 0 10px 24px rgba(35, 24, 20, 0.24);
+}
+
+.salt-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.salt-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff7ed;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.salt-card-copy span {
+  color: rgba(255, 230, 214, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
 .cleaning-card-top {
   display: flex;
   align-items: center;
@@ -3094,6 +3230,14 @@ h3 {
     radial-gradient(circle at 16% 82%, rgba(139, 93, 59, 0.18), transparent 20%),
     linear-gradient(160deg, #231c18 0%, #6f4e38 46%, #e8cfaa 100%);
   color: #fff7e8;
+}
+
+.showcase-card.salt .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255, 226, 200, 0.22), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(95, 125, 116, 0.18), transparent 20%),
+    linear-gradient(160deg, #241f26 0%, #9c5a41 48%, #f8f1e9 100%);
+  color: #fff7ed;
 }
 
 .showcase-card.cleaning .showcase-preview {
@@ -3380,6 +3524,25 @@ h3 {
 .product-preview-large.hair .product-preview-viewport,
 .product-preview-large.hair .product-preview-iframe {
   background: #f7efe3;
+}
+
+.product-preview-large.salt .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 226, 200, 0.2), transparent 20%),
+    radial-gradient(circle at 16% 82%, rgba(95, 125, 116, 0.16), transparent 22%),
+    linear-gradient(135deg, #241f26, #9c5a41 54%, #f8f1e9);
+  color: #fff7ed;
+}
+
+.product-preview-large.salt .product-preview-viewport,
+.product-preview-large.salt .product-preview-iframe {
+  background: #f8f1e9;
+}
+
+.product-preview-large.salt .product-preview-iframe {
+  width: 180%;
+  height: 1120px;
+  transform: scale(0.556);
 }
 
 .product-preview-large.cleaning .product-preview-shell {

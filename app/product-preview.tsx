@@ -14,6 +14,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isMedical = product.slug === "arztpraxis-weber";
   const isHospital = product.slug === "st-elisabeth-klinikum";
   const isHair = product.slug === "haarwerk-studio";
+  const isSalt = product.slug === "salzgrotte-aura";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
   const isNails = product.slug === "luna-nails";
@@ -356,6 +357,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="hair-card-copy">
               <h3>Haarwerk Studio</h3>
               <span>Schnitt · Coloration · Galerie · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isSalt) {
+    if (size === "card") {
+      return (
+        <div className="salt-preview-card-view">
+          <div className="salt-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="salt-card-cta">Termin buchen</span>
+          </div>
+          <div className="salt-card-shell">
+            <div className="salt-card-branding">
+              <p>Salzgrotte Aura</p>
+              <span>Salzluft · Halotherapie · Ruhe</span>
+            </div>
+            <div className="salt-card-stage">
+              <div className="salt-card-overlay">
+                <span className="salt-card-kicker">Himalaya-Salz</span>
+                <strong>Kraft aus der Tiefe des Salzes.</strong>
+              </div>
+              <div className="salt-card-accent" />
+            </div>
+            <div className="salt-card-copy">
+              <h3>Salzgrotte Aura</h3>
+              <span>Grotte · Anwendungen · Preise · Termine</span>
             </div>
           </div>
         </div>

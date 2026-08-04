@@ -17,6 +17,7 @@ export type ProductItem = {
     | "medical"
     | "hospital"
     | "hair"
+    | "salt"
     | "cleaning"
     | "insurance"
     | "nails";
@@ -198,6 +199,22 @@ export const products: ProductItem[] = [
       "Geeignet für Friseursalons, Barber-Shops und hochwertige Beauty-Studios",
     ],
     previewUrl: "/friseur-preview/index.html",
+  },
+  {
+    slug: "salzgrotte-aura",
+    type: "Salzgrotte Website",
+    title: "Salzgrotte Aura",
+    detail: "Ruhige Salzgrotte-Website für Halotherapie, Preise und Termine",
+    variant: "salt",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Salzgrotte-Website mit ruhiger Wellness-Wirkung, klarer Angebotsstruktur und direktem Terminbuchungsfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für Salzluft, Ruhe und Wohlbefinden",
+      "Klare Bereiche für Anwendungen, Wirkung, Preise, Öffnungszeiten und Kontakt",
+      "Geeignet für Salzgrotten, Halotherapie-Angebote und ruhige Wellness-Konzepte",
+    ],
+    previewUrl: "/salzgrotte-preview/index.html",
   },
   {
     slug: "lead-funnel",

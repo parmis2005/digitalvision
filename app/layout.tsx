@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const baseUrl = "https://www.digitalvision.site";
-const siteTitle = "DigitalVision | Webseiten, die verkaufen";
+const siteTitle = "Digital Vision | Webseiten, die verkaufen";
 const siteDescription =
   "Visionäre Webdesign-Agentur für moderne Homepages, SEO und Verwaltungssysteme.";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: siteTitle,
-    template: "%s | DigitalVision",
+    template: "%s | Digital Vision",
   },
   description: siteDescription,
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     url: baseUrl,
-    siteName: "DigitalVision",
+    siteName: "Digital Vision",
     title: siteTitle,
     description: siteDescription,
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "DigitalVision",
+  name: "Digital Vision",
   url: baseUrl,
   description: siteDescription,
   telephone: "+491788324883",

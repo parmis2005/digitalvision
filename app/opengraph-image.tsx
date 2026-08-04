@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "DigitalVision – Webseiten, SEO und Verwaltungssysteme";
+export const alt = "Digital Vision – Webseiten, SEO und Verwaltungssysteme";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -86,7 +86,7 @@ export default function OpengraphImage() {
             letterSpacing: -2,
           }}
         >
-          DigitalVision
+          Digital Vision
         </div>
 
         <div

@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: PageProps) {
     description: product.intro,
     provider: {
       "@type": "Organization",
-      name: "DigitalVision",
+      name: "Digital Vision",
       url: baseUrl,
     },
     url: `${baseUrl}/produkte/${product.slug}`,
@@ -113,7 +113,7 @@ export default async function ProductPage({ params }: PageProps) {
           <ArrowLeft size={16} aria-hidden="true" />
           Zur Startseite
         </Link>
-        <span className="product-page-brand">DigitalVision</span>
+        <span className="product-page-brand">Digital Vision</span>
       </header>
 
       <section className="product-hero">

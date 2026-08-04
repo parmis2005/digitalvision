@@ -16,7 +16,7 @@ type PageProps = {
 
 const title = "Blog: Websites, Systeme & digitale Auftritte";
 const description =
-  "DigitalVision Blog mit praxisnahen Artikeln zu Websites, Online-Shops, Branchenauftritten, digitalen Abläufen und Systemen.";
+  "Digital Vision Blog mit praxisnahen Artikeln zu Websites, Online-Shops, Branchenauftritten, digitalen Abläufen und Systemen.";
 
 function parsePage(value: string) {
   const page = Number(value);

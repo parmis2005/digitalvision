@@ -27,7 +27,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "DigitalVision Blog",
+    name: "Digital Vision Blog",
     itemListElement: pagePosts.map((post, index) => ({
       "@type": "ListItem",
       position: itemOffset + index + 1,
@@ -44,7 +44,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <header className="blog-header">
-        <Link className="brand" href="/" aria-label="DigitalVision Startseite">
+        <Link className="brand" href="/" aria-label="Digital Vision Startseite">
           <DigitalVisionLogo size="sm" showTagline={false} />
         </Link>
         <nav className="blog-header-nav" aria-label="Blog Navigation">
@@ -63,7 +63,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         <div className="blog-hero-copy">
           <Link className="blog-home-link" href="/">
             <ArrowLeft size={17} aria-hidden="true" />
-            Zurück zu DigitalVision
+            Zurück zu Digital Vision
           </Link>
           <h1>Impulse für digitale Projekte.</h1>
           <p>Praxisnahe Artikel für klare Websites und digitale Abläufe.</p>
@@ -105,7 +105,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <span />
                 <span />
                 <span />
-                <strong>DigitalVision Magazin</strong>
+                <strong>Digital Vision Magazin</strong>
               </div>
               <div className="blog-magazine-viewport">
                 <div className="blog-magazine-track">
@@ -169,7 +169,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <span className="blog-card-meta">
                   <span>
                     <PenLine size={15} aria-hidden="true" />
-                    DigitalVision
+                    Digital Vision
                   </span>
                   <span>
                     <Clock size={15} aria-hidden="true" />

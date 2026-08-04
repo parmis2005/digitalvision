@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 const title = "Datenschutzerklärung";
-const description = "Datenschutzerklärung von DigitalVision.";
+const description = "Datenschutzerklärung von Digital Vision.";
 
 export const metadata: Metadata = {
   title,

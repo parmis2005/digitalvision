@@ -124,12 +124,12 @@ export default async function BlogPostPage({ params }: PageProps) {
     dateModified: post.updatedAt ?? post.date,
     author: {
       "@type": "Organization",
-      name: "DigitalVision",
+      name: "Digital Vision",
       url: baseUrl,
     },
     publisher: {
       "@type": "Organization",
-      name: "DigitalVision",
+      name: "Digital Vision",
       url: baseUrl,
     },
     image: `${baseUrl}${post.image}`,
@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <header className="blog-header">
-        <Link className="brand" href="/" aria-label="DigitalVision Startseite">
+        <Link className="brand" href="/" aria-label="Digital Vision Startseite">
           <DigitalVisionLogo size="sm" showTagline={false} />
         </Link>
         <nav className="blog-header-nav" aria-label="Blog Navigation">
@@ -225,7 +225,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </nav>
             </div>
             <div className="blog-sidebar-card blog-sidebar-cta">
-              <span className="blog-sidebar-label">DigitalVision</span>
+              <span className="blog-sidebar-label">Digital Vision</span>
               <strong>Website oder System geplant?</strong>
               <p>Wir sortieren Struktur, Inhalte und Funktionen vor der Umsetzung.</p>
               <Link href="/#kontakt">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const description = "Impressum und Anbieterkennzeichnung von DigitalVision.";
+const description = "Impressum und Anbieterkennzeichnung von Digital Vision.";
 
 export const metadata: Metadata = {
   title: {

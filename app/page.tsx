@@ -112,7 +112,7 @@ export default function Home() {
     <main>
       <AmbientScene />
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="DigitalVision Startseite">
+        <a className="brand" href="#top" aria-label="Digital Vision Startseite">
           <DigitalVisionLogo size="sm" showTagline={false} />
         </a>
         <nav className="desktop-nav" aria-label="Hauptnavigation">
@@ -242,7 +242,7 @@ export default function Home() {
           </div>
         </div>
         <div className="vision-copy">
-          <p className="eyebrow">Warum DigitalVision</p>
+          <p className="eyebrow">Warum Digital Vision</p>
           <h2>Wir bauen digitale Systeme, die Technik, Wirkung und Klarheit verbinden.</h2>
           <p>
             Gute digitale Systeme sehen nicht nur modern aus. Sie führen,
@@ -395,7 +395,6 @@ export default function Home() {
         <div className="footer-top">
           <div className="footer-branding">
             <DigitalVisionLogo size="md" showTagline={false} />
-            <span>SEO, Webseiten-Erstellung und Verwaltungssysteme</span>
           </div>
           <a className="footer-back-to-top" href="#top">
             <Search size={16} aria-hidden="true" />

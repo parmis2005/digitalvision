@@ -85,17 +85,17 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "DigitalVision <onboarding@resend.dev>",
+      from: process.env.CONTACT_FROM_EMAIL || "Digital Vision <onboarding@resend.dev>",
       to: recipient,
       reply_to: email,
       subject:
         submissionType === "Terminbuchung"
-          ? "Neue Terminbuchung über DigitalVision"
-          : "Neue Projektanfrage über DigitalVision",
+          ? "Neue Terminbuchung über Digital Vision"
+          : "Neue Projektanfrage über Digital Vision",
       text: [
         submissionType === "Terminbuchung"
-          ? "Neue Terminbuchung über DigitalVision"
-          : "Neue Projektanfrage über DigitalVision",
+          ? "Neue Terminbuchung über Digital Vision"
+          : "Neue Projektanfrage über Digital Vision",
         "",
         `Name: ${name || "Terminbuchung"}`,
         `E-Mail: ${email}`,

@@ -94,9 +94,9 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Wie DigitalVision Websites strukturiert",
+        heading: "Wie Digital Vision Websites strukturiert",
         body: [
-          "DigitalVision plant Websites als klare Wege: Einstieg, Orientierung, Vertrauen, Entscheidung und Kontakt. Dadurch wirkt die Seite nicht nur moderner, sondern wird für Besucher leichter verständlich.",
+          "Digital Vision plant Websites als klare Wege: Einstieg, Orientierung, Vertrauen, Entscheidung und Kontakt. Dadurch wirkt die Seite nicht nur moderner, sondern wird für Besucher leichter verständlich.",
           "Das Ergebnis ist keine reine Online-Visitenkarte, sondern ein Auftritt, der zur Branche, zum Angebot und zum Alltag des Unternehmens passt.",
         ],
       },
@@ -113,7 +113,7 @@ export const blogPosts: BlogPost[] = [
           "Nein. Wichtig ist nicht die Menge, sondern ob die Seiten die wichtigsten Leistungen und Fragen klar abdecken.",
       },
       {
-        question: "Kann DigitalVision auch bestehende Websites neu strukturieren?",
+        question: "Kann Digital Vision auch bestehende Websites neu strukturieren?",
         answer:
           "Ja. Bestehende Inhalte können analysiert, neu geordnet und in einen klareren Aufbau gebracht werden.",
       },
@@ -194,9 +194,9 @@ export const blogPosts: BlogPost[] = [
     ],
     faq: [
       {
-        question: "Kann DigitalVision Websites für unterschiedliche Branchen bauen?",
+        question: "Kann Digital Vision Websites für unterschiedliche Branchen bauen?",
         answer:
-          "Ja. DigitalVision erstellt individuelle Website-Konzepte für Praxen, Studios, Dienstleister, Beratungen, Shops und weitere Branchen.",
+          "Ja. Digital Vision erstellt individuelle Website-Konzepte für Praxen, Studios, Dienstleister, Beratungen, Shops und weitere Branchen.",
       },
       {
         question: "Warum ist der Branchenlook wichtig?",
@@ -368,7 +368,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Wann eine Website besser passt",
         body: [
           "Wenn das Angebot individuell ist, sollte die Website zuerst Vertrauen und Klarheit aufbauen. Dann ist eine Anfrage, ein Erstgespräch oder eine Terminbuchung oft sinnvoller als ein Warenkorb.",
-          "DigitalVision plant solche Entscheidungen früh, damit die Website nicht unnötig kompliziert wird.",
+          "Digital Vision plant solche Entscheidungen früh, damit die Website nicht unnötig kompliziert wird.",
         ],
       },
     ],
@@ -545,9 +545,9 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Wie DigitalVision Relaunches strukturiert",
+        heading: "Wie Digital Vision Relaunches strukturiert",
         body: [
-          "DigitalVision behandelt einen Relaunch als Neustart mit vorhandener Substanz. Bestehende Inhalte werden geprüft, sortiert und dort übernommen, wo sie noch sinnvoll sind.",
+          "Digital Vision behandelt einen Relaunch als Neustart mit vorhandener Substanz. Bestehende Inhalte werden geprüft, sortiert und dort übernommen, wo sie noch sinnvoll sind.",
           "Danach entsteht eine klare Struktur für Startseite, Unterseiten, Kontaktwege und spätere Erweiterungen. So bleibt der Relaunch übersichtlich und führt nicht zu einer Website, die nur optisch neu ist.",
         ],
       },
@@ -564,7 +564,7 @@ export const blogPosts: BlogPost[] = [
           "Wichtige alte URLs sollten auf passende neue Seiten weitergeleitet werden, damit Besucher und Suchmaschinen nicht auf Fehlerseiten landen.",
       },
       {
-        question: "Kann DigitalVision bestehende Websites für einen Relaunch analysieren?",
+        question: "Kann Digital Vision bestehende Websites für einen Relaunch analysieren?",
         answer:
           "Ja. Bestehende Seiten können vorab geprüft, neu strukturiert und in ein klares Relaunch-Konzept überführt werden.",
       },
@@ -635,9 +635,9 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Wie DigitalVision SEO pragmatisch einbindet",
+        heading: "Wie Digital Vision SEO pragmatisch einbindet",
         body: [
-          "DigitalVision betrachtet SEO als Teil der Website-Planung. Zuerst werden Leistungen, Zielgruppen und Suchintentionen sortiert. Danach entsteht eine Struktur, die Besucher führt und Suchmaschinen klare Signale gibt.",
+          "Digital Vision betrachtet SEO als Teil der Website-Planung. Zuerst werden Leistungen, Zielgruppen und Suchintentionen sortiert. Danach entsteht eine Struktur, die Besucher führt und Suchmaschinen klare Signale gibt.",
           "So entsteht keine überladene SEO-Strategie, sondern eine Website, die verständlich aufgebaut ist, relevante Inhalte zeigt und langfristig gepflegt werden kann.",
         ],
       },
@@ -654,7 +654,7 @@ export const blogPosts: BlogPost[] = [
           "Nein. Oft reicht ein sauberer Start mit klaren Leistungsseiten, guter lokaler Orientierung, schnellen Ladezeiten und regelmäßig gepflegten Inhalten.",
       },
       {
-        question: "Kann DigitalVision bestehende Websites für SEO verbessern?",
+        question: "Kann Digital Vision bestehende Websites für SEO verbessern?",
         answer:
           "Ja. Bestehende Seiten können strukturell, inhaltlich und technisch geprüft und Schritt für Schritt verbessert werden.",
       },
@@ -728,7 +728,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Wie Betreuung entlasten kann",
         body: [
           "Viele Unternehmen wollen ihre Website nutzen, aber nicht ständig technisch betreuen. Eine laufende Betreuung nimmt diese Arbeit ab und hält den Auftritt sauber.",
-          "DigitalVision kann Inhalte, Technik und Erweiterungen so begleiten, dass die Website langfristig nutzbar bleibt.",
+          "Digital Vision kann Inhalte, Technik und Erweiterungen so begleiten, dass die Website langfristig nutzbar bleibt.",
         ],
       },
     ],

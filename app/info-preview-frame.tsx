@@ -55,7 +55,9 @@ const backLinkStyles = `
 
   .digital-vision-light-cta {
     border-color: rgba(248, 251, 255, 0.92) !important;
-    background: linear-gradient(135deg, #ffffff 0%, #e6f8ff 64%, #ffdca5 100%) !important;
+    background:
+      radial-gradient(circle at 62% 18%, rgba(174, 240, 255, 0.9), transparent 34%),
+      linear-gradient(135deg, #fbfdff 0%, #d8f6ff 48%, #ffd58a 100%) !important;
     color: #05091d !important;
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.1),

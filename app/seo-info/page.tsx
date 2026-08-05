@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { InfoBackLink } from "../info-back-link";
+import { InfoPreviewFrame } from "../info-preview-frame";
 
 const title = "SEO & Google-Ranking";
 const description =
@@ -27,8 +27,7 @@ export const metadata: Metadata = {
 export default function SeoInfoPage() {
   return (
     <main className="seo-info-page">
-      <InfoBackLink />
-      <iframe
+      <InfoPreviewFrame
         className="seo-info-frame"
         src="/seo-info-preview/index.html"
         title="SEO & Google-Ranking Info"

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { InfoBackLink } from "../info-back-link";
+import { InfoPreviewFrame } from "../info-preview-frame";
 
 const title = "Verwaltungssysteme";
 const description =
@@ -27,8 +27,7 @@ export const metadata: Metadata = {
 export default function VerwaltungssystemInfoPage() {
   return (
     <main className="verwaltungssystem-info-page">
-      <InfoBackLink />
-      <iframe
+      <InfoPreviewFrame
         className="verwaltungssystem-info-frame"
         src="/verwaltungssystem-info-preview/index.html"
         title="Verwaltungssysteme Info"

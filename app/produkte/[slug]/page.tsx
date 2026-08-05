@@ -145,6 +145,7 @@ export default async function ProductPage({ params }: PageProps) {
                   src={product.previewUrl}
                   title={`${product.title} Vorschau`}
                   loading="lazy"
+                  scrolling="no"
                 />
               </div>
             </div>

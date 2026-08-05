@@ -13,9 +13,6 @@
   --deep-blue: #08172f;
   --gold: #ffc774;
   --ember: #ff7b56;
-  --project-cta-bg: linear-gradient(135deg, #ffffff 0%, #eefcff 58%, #ffe8b8 100%);
-  --project-cta-border: rgba(255, 255, 255, 0.96);
-  --project-cta-shadow: 0 0 30px rgba(255, 199, 116, 0.18);
   --parallax-shift: 0px;
   --parallax-shift-soft: 0px;
 }
@@ -541,18 +538,20 @@ textarea {
   gap: 8px;
   min-height: 52px;
   padding: 0 24px;
-  border: 1px solid var(--project-cta-border);
-  background: var(--project-cta-bg);
+  border: 1px solid white;
+  background: white;
   color: #05091d;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 850;
-  box-shadow: var(--project-cta-shadow);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(255, 199, 116, 0.14);
 }
 
 .header-cta:hover,
 .mobile-nav-cta:hover {
   border-color: white;
-  background: linear-gradient(135deg, #ffffff 0%, #f3fdff 52%, #ffdda0 100%);
+  background: white;
   color: #05091d;
 }
 
@@ -626,12 +625,14 @@ textarea {
   gap: 8px;
   min-height: 52px;
   margin-top: 18px;
-  border: 1px solid var(--project-cta-border);
-  border-radius: 6px;
-  background: var(--project-cta-bg);
+  border: 1px solid white;
+  border-radius: 10px;
+  background: white;
   color: #05091d;
   font-weight: 850;
-  box-shadow: var(--project-cta-shadow);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(255, 199, 116, 0.14);
 }
 
 .hero {

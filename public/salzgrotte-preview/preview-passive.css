@@ -7,3 +7,16 @@ html[data-preview-passive="true"] [role="button"],
 html[data-preview-passive="true"] [tabindex] {
   cursor: default !important;
 }
+
+html[data-preview-passive="true"],
+html[data-preview-passive="true"] body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html[data-preview-passive="true"]::-webkit-scrollbar,
+html[data-preview-passive="true"] body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}

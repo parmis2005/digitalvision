@@ -12,24 +12,24 @@ const backLinkStyles = `
   .digital-vision-info-back-link {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 9px;
     width: fit-content;
-    margin: 0 0 clamp(18px, 2.2vw, 26px);
-    color: #8edfff;
+    margin: 0 0 18px;
+    color: rgba(155, 228, 255, 0.78);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.28rem, 2.3vw, 2.05rem);
-    font-weight: 800;
+    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+    font-weight: 700;
     line-height: 1;
     text-decoration: none;
-    text-shadow: 0 0 18px rgba(142, 221, 255, 0.22);
+    text-shadow: 0 0 12px rgba(142, 221, 255, 0.16);
     transition: color 160ms ease, transform 160ms ease;
   }
 
   .digital-vision-info-back-link svg {
-    width: clamp(24px, 2.35vw, 32px);
-    height: clamp(24px, 2.35vw, 32px);
+    width: 18px;
+    height: 18px;
     flex: none;
-    stroke-width: 2.05;
+    stroke-width: 2.1;
   }
 
   .digital-vision-info-back-link:hover {
@@ -46,7 +46,7 @@ const backLinkStyles = `
     .digital-vision-info-back-link {
       justify-self: center;
       margin-inline: auto;
-      font-size: clamp(1.12rem, 4.9vw, 1.55rem);
+      font-size: 0.9rem;
     }
   }
 `;

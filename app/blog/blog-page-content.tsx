@@ -230,7 +230,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         <p>
           Wir klären Struktur, Inhalte und Funktionen für dein Projekt.
         </p>
-        <Link className="primary-button" href="/#kontakt">
+        <Link className="primary-button light-cta" href="/#kontakt">
           Projekt anfragen
           <ArrowRight size={18} aria-hidden="true" />
         </Link>

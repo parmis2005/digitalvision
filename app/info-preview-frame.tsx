@@ -4,8 +4,19 @@ import { useCallback } from "react";
 
 type InfoPreviewFrameProps = {
   className: string;
+  hideHeroEyebrow?: boolean;
   src: string;
   title: string;
+};
+
+type InfoPreviewOptions = {
+  hideHeroEyebrow?: boolean;
+};
+
+type PreviewWindow = Window & {
+  __digitalVisionInfoBackFrame?: number;
+  __digitalVisionInfoBackObserver?: MutationObserver;
+  __digitalVisionInfoBackRetry?: number;
 };
 
 const backLinkStyles = `
@@ -42,6 +53,20 @@ const backLinkStyles = `
     outline-offset: 5px;
   }
 
+  .digital-vision-light-cta {
+    border-color: rgba(248, 251, 255, 0.92) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e6f8ff 64%, #ffdca5 100%) !important;
+    color: #05091d !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 18px 34px rgba(255, 199, 116, 0.14) !important;
+  }
+
+  .digital-vision-light-cta svg {
+    color: currentColor !important;
+    stroke: currentColor !important;
+  }
+
   @media (max-width: 1100px) {
     .digital-vision-info-back-link {
       justify-self: center;
@@ -51,7 +76,19 @@ const backLinkStyles = `
   }
 `;
 
-function addBackLink(document: Document) {
+function normalizeButtonText(text: string) {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function highlightProjectRequestCtas(document: Document) {
+  document.querySelectorAll("a, button").forEach((element) => {
+    if (normalizeButtonText(element.textContent || "") === "Projekt anfragen") {
+      element.classList.add("digital-vision-light-cta");
+    }
+  });
+}
+
+function addBackLink(document: Document, { hideHeroEyebrow = false }: InfoPreviewOptions = {}) {
   if (!document.getElementById("digital-vision-info-back-link-style")) {
     const style = document.createElement("style");
     style.id = "digital-vision-info-back-link-style";
@@ -59,14 +96,28 @@ function addBackLink(document: Document) {
     document.head.appendChild(style);
   }
 
+  highlightProjectRequestCtas(document);
+
+  const heroStatement = document.querySelector(".hero-statement");
+
+  if (!heroStatement) {
+    return;
+  }
+
+  if (hideHeroEyebrow) {
+    const eyebrow = Array.from(heroStatement.children).find((child) =>
+      child.classList.contains("eyebrow"),
+    );
+    eyebrow?.remove();
+  }
+
   if (document.querySelector(".digital-vision-info-back-link")) {
     return;
   }
 
-  const heroStatement = document.querySelector(".hero-statement");
-  const heading = heroStatement?.querySelector("h1");
+  const heading = heroStatement.querySelector("h1");
 
-  if (!heroStatement || !heading) {
+  if (!heading) {
     return;
   }
 
@@ -99,14 +150,75 @@ function addBackLink(document: Document) {
   heroStatement.insertBefore(link, heading);
 }
 
-export function InfoPreviewFrame({ className, src, title }: InfoPreviewFrameProps) {
+function scheduleBackLinkCheck(document: Document, options: InfoPreviewOptions) {
+  const previewWindow = document.defaultView as PreviewWindow | null;
+
+  if (!previewWindow) {
+    addBackLink(document, options);
+    return;
+  }
+
+  if (previewWindow.__digitalVisionInfoBackFrame) {
+    previewWindow.cancelAnimationFrame(previewWindow.__digitalVisionInfoBackFrame);
+  }
+
+  previewWindow.__digitalVisionInfoBackFrame = previewWindow.requestAnimationFrame(() => {
+    previewWindow.__digitalVisionInfoBackFrame = undefined;
+    addBackLink(document, options);
+  });
+}
+
+function installBackLink(document: Document, options: InfoPreviewOptions) {
+  addBackLink(document, options);
+
+  const previewWindow = document.defaultView as PreviewWindow | null;
+
+  if (!previewWindow) {
+    return;
+  }
+
+  if (!previewWindow.__digitalVisionInfoBackObserver) {
+    previewWindow.__digitalVisionInfoBackObserver = new MutationObserver(() => {
+      scheduleBackLinkCheck(document, options);
+    });
+
+    previewWindow.__digitalVisionInfoBackObserver.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  if (previewWindow.__digitalVisionInfoBackRetry) {
+    previewWindow.clearInterval(previewWindow.__digitalVisionInfoBackRetry);
+  }
+
+  let retryCount = 0;
+  previewWindow.__digitalVisionInfoBackRetry = previewWindow.setInterval(() => {
+    retryCount += 1;
+    addBackLink(document, options);
+
+    if (retryCount >= 20) {
+      if (previewWindow.__digitalVisionInfoBackRetry) {
+        previewWindow.clearInterval(previewWindow.__digitalVisionInfoBackRetry);
+        previewWindow.__digitalVisionInfoBackRetry = undefined;
+      }
+    }
+  }, 250);
+}
+
+export function InfoPreviewFrame({
+  className,
+  hideHeroEyebrow = false,
+  src,
+  title,
+}: InfoPreviewFrameProps) {
   const handleLoad = useCallback((event: React.SyntheticEvent<HTMLIFrameElement>) => {
     const previewDocument = event.currentTarget.contentDocument;
 
     if (previewDocument) {
-      addBackLink(previewDocument);
+      installBackLink(previewDocument, { hideHeroEyebrow });
     }
-  }, []);
+  }, [hideHeroEyebrow]);
 
   return <iframe className={className} src={src} title={title} onLoad={handleLoad} />;
 }

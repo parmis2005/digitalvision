@@ -939,6 +939,19 @@ h3 {
     0 18px 34px rgba(255, 199, 116, 0.14);
 }
 
+.light-cta {
+  border-color: rgba(248, 251, 255, 0.92);
+  background: linear-gradient(135deg, #ffffff 0%, #e6f8ff 64%, #ffdca5 100%);
+  color: #05091d;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 18px 34px rgba(255, 199, 116, 0.14);
+}
+
+.light-cta svg {
+  color: currentColor;
+}
+
 .secondary-button {
   border: 1px solid rgba(155, 228, 255, 0.24);
   background: rgba(14, 27, 49, 0.74);
@@ -7266,6 +7279,15 @@ h3 {
   font-size: 0.88rem;
   font-weight: 800;
   text-decoration: none;
+}
+
+.blog-sidebar-cta a.light-cta {
+  width: fit-content;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(248, 251, 255, 0.92);
+  border-radius: 10px;
+  color: #05091d;
 }
 
 .blog-article-main {

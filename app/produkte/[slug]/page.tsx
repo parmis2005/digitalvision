@@ -122,7 +122,7 @@ export default async function ProductPage({ params }: PageProps) {
           <h1>{product.title}</h1>
           <p className="product-intro">{product.intro}</p>
           <div className="product-hero-actions">
-            <a className="primary-button" href="/#kontakt">
+            <a className="primary-button light-cta" href="/#kontakt">
               Projekt anfragen
               <ArrowRight size={18} aria-hidden="true" />
             </a>

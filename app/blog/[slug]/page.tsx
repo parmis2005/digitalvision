@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span className="blog-sidebar-label">Digital Vision</span>
               <strong>Website oder System geplant?</strong>
               <p>Wir sortieren Struktur, Inhalte und Funktionen vor der Umsetzung.</p>
-              <Link href="/#kontakt">
+              <Link className="light-cta" href="/#kontakt">
                 Projekt anfragen
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>

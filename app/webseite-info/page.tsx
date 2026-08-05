@@ -29,6 +29,7 @@ export default function WebseiteInfoPage() {
     <main className="webseite-info-page">
       <InfoPreviewFrame
         className="webseite-info-frame"
+        hideHeroEyebrow
         src="/webseite-info-preview/index.html"
         title="Webseiten-Erstellung Info"
       />

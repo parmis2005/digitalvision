@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { InfoBackLink } from "../info-back-link";
 
 const title = "Webseiten-Erstellung";
 const description =
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 export default function WebseiteInfoPage() {
   return (
     <main className="webseite-info-page">
+      <InfoBackLink />
       <iframe
         className="webseite-info-frame"
         src="/webseite-info-preview/index.html"

@@ -29,6 +29,97 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ki-funktionen-auf-websites-sinnvoll-einsetzen",
+    title: "KI auf Websites: Welche Funktionen wirklich sinnvoll sind",
+    description:
+      "KI kann Websites hilfreicher machen, wenn sie konkrete Aufgaben löst: bessere Anfragen, schnellere Antworten und klarere interne Abläufe.",
+    excerpt: "Wie KI-Funktionen auf Websites praktisch genutzt werden, ohne Besucher zu überfordern.",
+    category: "KI & Automatisierung",
+    date: "2026-08-05",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "KI auf Websites",
+    image: "/blog/ki-funktionen-auf-websites-sinnvoll-einsetzen.png",
+    imageAlt: "Laptop mit Website, KI-Assistent und digitalen Workflow-Karten",
+    featured: true,
+    takeaways: [
+      "KI sollte konkrete Aufgaben lösen, nicht nur modern wirken.",
+      "Besucher profitieren von schnellen Antworten und besseren Formularen.",
+      "Intern wird KI wertvoll, wenn sie Anfragen sortiert und Prozesse vorbereitet.",
+    ],
+    sections: [
+      {
+        heading: "Warum KI nicht als Effekt geplant werden sollte",
+        body: [
+          "Viele Unternehmen denken bei KI zuerst an Chatbots, automatische Texte oder spektakuläre Funktionen. Das kann interessant sein, bringt aber wenig, wenn die Funktion keinen echten Zweck erfüllt.",
+          "Sinnvoll wird KI dort, wo sie Besuchern Orientierung gibt oder dem Team Arbeit abnimmt. Eine gute Website bleibt verständlich, klar aufgebaut und menschlich ansprechbar. KI ergänzt diesen Ablauf, ersetzt ihn aber nicht.",
+        ],
+      },
+      {
+        heading: "Welche KI-Funktionen Besuchern wirklich helfen",
+        body: [
+          "Besucher haben meistens einfache Fragen: Welche Leistung passt zu mir? Was kostet der nächste Schritt? Wie läuft eine Anfrage ab? Eine KI-Funktion kann diese Fragen schneller beantworten, wenn sie sauber begrenzt und mit den richtigen Inhalten verbunden ist.",
+          "Besonders hilfreich sind intelligente FAQ-Bereiche, kurze Assistenten für die Vorauswahl oder Formulare, die passende Rückfragen stellen. Wichtig ist, dass Nutzer jederzeit verstehen, was passiert und wie sie direkt Kontakt aufnehmen können.",
+        ],
+        bullets: [
+          "FAQ-Assistent für häufige Kundenfragen",
+          "Formulare mit passenden Rückfragen je Anliegen",
+          "Empfehlungen für relevante Leistungen oder nächste Schritte",
+          "Automatische Zusammenfassung einer Anfrage vor dem Absenden",
+        ],
+      },
+      {
+        heading: "Wo KI intern Zeit sparen kann",
+        body: [
+          "Der größte Nutzen entsteht oft nach dem Absenden einer Anfrage. KI kann eingehende Nachrichten vorsortieren, wichtige Angaben erkennen und dem Team eine kurze Zusammenfassung geben.",
+          "So muss nicht jede E-Mail manuell gelesen, kopiert oder eingeordnet werden. Das Team sieht schneller, worum es geht, welche Informationen fehlen und welche Antwort vorbereitet werden sollte.",
+        ],
+        bullets: [
+          "Anfragen nach Thema oder Dringlichkeit markieren",
+          "Kontaktinformationen und Leistungswünsche herausfiltern",
+          "Antwortentwürfe für wiederkehrende Fragen vorbereiten",
+          "Status und nächste Schritte im Dashboard sichtbar machen",
+        ],
+      },
+      {
+        heading: "Welche Grenzen klar sein müssen",
+        body: [
+          "KI sollte nicht so eingebaut werden, dass Besucher ihr blind vertrauen müssen. Preise, rechtliche Aussagen, medizinische Hinweise oder verbindliche Zusagen brauchen weiterhin klare Regeln und menschliche Kontrolle.",
+          "Auch Datenschutz und Transparenz sind wichtig. Nutzer sollten wissen, welche Daten sie eingeben, wofür diese genutzt werden und wann ein Mensch die Anfrage übernimmt.",
+        ],
+        bullets: [
+          "Keine verbindlichen Zusagen ohne Prüfung",
+          "Keine unnötigen sensiblen Daten abfragen",
+          "Klare Übergabe an echte Ansprechpartner ermöglichen",
+          "KI-Antworten regelmäßig prüfen und verbessern",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision KI pragmatisch einbindet",
+        body: [
+          "Digital Vision plant KI-Funktionen nicht als Zusatzspielerei, sondern ausgehend vom echten Ablauf: Welche Fragen wiederholen sich? Wo verliert das Team Zeit? Welche Informationen fehlen bei Anfragen regelmäßig?",
+          "Daraus entsteht eine schlanke Lösung, die zur Website, zum Kontaktprozess und bei Bedarf zu einem internen Dashboard passt. So wird KI nicht lauter als der Auftritt, sondern macht ihn nützlicher.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Braucht jede Website einen KI-Chatbot?",
+        answer:
+          "Nein. Ein KI-Chatbot ist nur sinnvoll, wenn er konkrete Fragen zuverlässig beantworten kann und sauber in den Anfrageprozess eingebunden ist.",
+      },
+      {
+        question: "Kann KI mit Kontaktformularen verbunden werden?",
+        answer:
+          "Ja. KI kann Anfragen zusammenfassen, vorsortieren oder passende Rückfragen vorbereiten, wenn der Ablauf technisch sauber geplant ist.",
+      },
+      {
+        question: "Ist KI auf Websites auch für kleine Unternehmen sinnvoll?",
+        answer:
+          "Ja, wenn sie wiederkehrende Fragen beantwortet oder interne Arbeit vereinfacht. Der Umfang sollte klein starten und zum Alltag des Unternehmens passen.",
+      },
+    ],
+  },
+  {
     slug: "website-planen-vor-dem-design",
     title: "Website planen: Was vor dem Design geklärt sein sollte",
     description:

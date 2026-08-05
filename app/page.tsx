@@ -55,7 +55,8 @@ const visionPoints = [
 type WebsitePaymentModel = {
   label: string;
   price: string;
-  followUp?: string;
+  term?: string;
+  followUp: string;
   hint: string;
 };
 
@@ -90,6 +91,8 @@ const packages: PackageItem[] = [
       {
         label: "Ohne Anzahlung",
         price: "ab 300 € monatlich",
+        term: "(bis zur vollständigen Zahlung)",
+        followUp: "danach ab 100 € monatlich",
         hint: "Inklusive Webseite, Hosting, Pflege & Support.",
       },
     ],
@@ -350,14 +353,15 @@ export default function Home() {
                       <div className="website-payment-model" key={model.label}>
                         <strong>{model.label}</strong>
                         <p className="website-payment-price">{model.price}</p>
-                        {model.followUp ? (
-                          <p className="website-payment-follow-up">{model.followUp}</p>
+                        {model.term ? (
+                          <p className="website-payment-term">{model.term}</p>
                         ) : (
                           <p
-                            className="website-payment-follow-up website-payment-follow-up-placeholder"
+                            className="website-payment-term website-payment-term-placeholder"
                             aria-hidden="true"
                           />
                         )}
+                        <p className="website-payment-follow-up">{model.followUp}</p>
                         <p className="website-payment-hint">{model.hint}</p>
                       </div>
                     ))}

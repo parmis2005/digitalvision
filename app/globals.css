@@ -4731,7 +4731,9 @@ h3 {
 
 .website-payment-model {
   display: grid;
+  grid-template-rows: auto auto 20px 28px minmax(52px, auto);
   gap: 5px;
+  align-items: start;
   padding: 10px 12px 10px 0;
 }
 
@@ -4753,15 +4755,16 @@ h3 {
   line-height: 1.12;
 }
 
+.package-card p.website-payment-term,
 .package-card p.website-payment-follow-up {
   color: rgba(255, 255, 255, 0.76);
-  font-size: 0.78rem;
+  font-size: clamp(0.66rem, 1vw, 0.78rem);
   font-weight: 760;
   line-height: 1.28;
-  min-height: 2em;
+  white-space: nowrap;
 }
 
-.package-card p.website-payment-follow-up-placeholder {
+.package-card p.website-payment-term-placeholder {
   visibility: hidden;
 }
 
@@ -8468,6 +8471,20 @@ h3 {
   .process-grid,
   .package-grid {
     grid-template-columns: 1fr;
+  }
+
+  .website-payment-options {
+    grid-template-columns: 1fr;
+  }
+
+  .website-payment-model,
+  .website-payment-model + .website-payment-model {
+    padding-inline: 0;
+  }
+
+  .website-payment-model + .website-payment-model {
+    border-top: 1px solid rgba(155, 228, 255, 0.13);
+    border-left: 0;
   }
 
   .showcase-header {

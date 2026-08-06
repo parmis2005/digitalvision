@@ -29,6 +29,97 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "landingpage-erstellen-wann-eine-seite-reicht",
+    title: "Landingpage erstellen: Wann eine einzelne Seite reicht",
+    description:
+      "Eine Landingpage kann stärker wirken als eine komplette Website, wenn Ziel, Angebot, Vertrauen und Kontaktweg klar auf eine Aktion ausgerichtet sind.",
+    excerpt: "Wann eine Landingpage sinnvoll ist und welche Bausteine nicht fehlen sollten.",
+    category: "Landingpages",
+    date: "2026-08-06",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Landingpage erstellen",
+    image: "/blog/landingpage-erstellen-wann-eine-seite-reicht.png",
+    imageAlt: "Laptop mit Landingpage-Struktur, Conversion-Pfad und digitalen Planungskarten",
+    featured: true,
+    takeaways: [
+      "Eine Landingpage sollte auf ein klares Ziel ausgerichtet sein.",
+      "Angebot, Nutzen, Vertrauen und Anfrageweg müssen schnell verständlich werden.",
+      "Zu viele Ablenkungen schwächen die Wirkung einer einzelnen Seite.",
+    ],
+    sections: [
+      {
+        heading: "Warum eine Landingpage anders funktioniert als eine Website",
+        body: [
+          "Eine klassische Website erklärt ein Unternehmen mit mehreren Bereichen, Unterseiten und Kontaktwegen. Eine Landingpage ist enger gedacht: Sie führt Besucher zu einer bestimmten Aktion, zum Beispiel zu einer Anfrage, Buchung, Anmeldung oder Angebotsseite.",
+          "Genau deshalb muss sie stärker fokussieren. Jede Sektion sollte eine konkrete Aufgabe haben: Aufmerksamkeit gewinnen, Nutzen erklären, Vertrauen aufbauen, Einwände reduzieren und den nächsten Schritt leicht machen.",
+        ],
+      },
+      {
+        heading: "Wann eine einzelne Seite ausreicht",
+        body: [
+          "Eine Landingpage reicht oft aus, wenn ein Angebot klar begrenzt ist und Besucher keine große Seitentiefe brauchen. Das kann eine bestimmte Dienstleistung, ein saisonales Angebot, eine Kampagne, ein Beratungsformat oder ein lokaler Terminservice sein.",
+          "Wichtig ist, dass die Entscheidungssituation überschaubar bleibt. Wenn Kunden zuerst viele Leistungen vergleichen, Teamdetails prüfen oder umfangreiche Inhalte lesen müssen, ist eine vollständige Website meistens sinnvoller.",
+        ],
+        bullets: [
+          "Ein einzelnes Angebot steht im Mittelpunkt",
+          "Der nächste Schritt ist klar messbar",
+          "Besucher kommen aus einer Kampagne oder Anzeige",
+          "Die wichtigsten Fragen passen auf eine strukturierte Seite",
+        ],
+      },
+      {
+        heading: "Welche Bausteine eine gute Landingpage braucht",
+        body: [
+          "Eine starke Landingpage startet mit einer klaren Aussage. Besucher müssen sofort verstehen, worum es geht, für wen das Angebot gedacht ist und warum sie weiter lesen sollten. Danach folgen Nutzen, Belege und ein einfacher Kontaktweg.",
+          "Der Aufbau sollte nicht zufällig wirken. Gute Landingpages führen von der ersten Orientierung zur Entscheidung: Problem, Lösung, Vorteile, Vertrauen, Ablauf, FAQ und Anfrage.",
+        ],
+        bullets: [
+          "Klarer Hero-Bereich mit konkretem Nutzen",
+          "Kurze Leistungs- oder Angebotsbeschreibung",
+          "Vertrauenssignale wie Beispiele, Bewertungen oder Erfahrung",
+          "Sichtbarer CTA an mehreren sinnvollen Stellen",
+        ],
+      },
+      {
+        heading: "Was Landingpages schwach macht",
+        body: [
+          "Viele Landingpages verlieren Wirkung, weil sie wie eine gekürzte Startseite aufgebaut werden. Dann stehen zu viele Themen nebeneinander, die Hauptaktion ist unklar oder Besucher müssen lange suchen, bevor sie Kontakt aufnehmen können.",
+          "Auch zu viel Design kann stören. Animationen, große Effekte oder unklare Bildwelten helfen wenig, wenn das Angebot nicht präzise erklärt wird. Eine Landingpage sollte hochwertig wirken, aber vor allem verständlich bleiben.",
+        ],
+        bullets: [
+          "Mehrere gleich wichtige Ziele auf einer Seite",
+          "Unklare Überschriften ohne konkreten Nutzen",
+          "Zu wenig Vertrauen vor dem Kontaktformular",
+          "Kontaktbutton erst am Ende der Seite",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Landingpages plant",
+        body: [
+          "Digital Vision plant Landingpages vom Ziel aus. Zuerst wird geklärt, welche Aktion erreicht werden soll, welche Besucher auf die Seite kommen und welche Fragen vor der Anfrage beantwortet werden müssen.",
+          "Danach entsteht eine Seite mit klarer Reihenfolge, passendem Design, schnellen Ladezeiten und einem Kontaktweg, der nicht im Layout verschwindet. So wird die Landingpage nicht nur schön, sondern messbar nutzbar.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Was ist der Unterschied zwischen Landingpage und Website?",
+        answer:
+          "Eine Website bildet ein Unternehmen breiter ab. Eine Landingpage konzentriert sich auf ein bestimmtes Angebot und führt Besucher gezielt zu einer Aktion.",
+      },
+      {
+        question: "Braucht eine Landingpage SEO?",
+        answer:
+          "Ja, wenn sie organisch gefunden werden soll. Bei Kampagnen oder Anzeigen sind zusätzlich Ladezeit, klare Botschaft und passende Zielgruppenansprache besonders wichtig.",
+      },
+      {
+        question: "Kann Digital Vision eine Landingpage später zur Website erweitern?",
+        answer:
+          "Ja. Wenn Struktur und Technik sauber geplant sind, kann aus einer Landingpage später eine größere Website mit Unterseiten entstehen.",
+      },
+    ],
+  },
+  {
     slug: "ki-funktionen-auf-websites-sinnvoll-einsetzen",
     title: "KI auf Websites: Welche Funktionen wirklich sinnvoll sind",
     description:

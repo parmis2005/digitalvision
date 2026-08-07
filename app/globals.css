@@ -4827,91 +4827,29 @@ h3 {
   pointer-events: none;
 }
 
-.contact-frame-burst {
+.contact-frame-core-glow {
   position: absolute;
   z-index: 0;
-  right: -16%;
-  top: -38%;
-  width: 420px;
-  height: 420px;
-  max-width: 64vw;
-  max-height: 64vw;
-  pointer-events: none;
-}
-
-.contact-frame-burst-rays {
-  position: absolute;
   inset: 0;
-  border-radius: 50%;
-  filter: blur(0.3px);
-}
-
-.contact-frame-burst-rays-one {
-  background: repeating-conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0.85) 0deg 0.5deg,
-    transparent 0.5deg 5deg,
-    rgba(155, 228, 255, 0.55) 5deg 5.5deg,
-    transparent 5.5deg 10deg,
-    rgba(255, 199, 116, 0.4) 10deg 10.5deg,
-    transparent 10.5deg 16deg
-  );
-  -webkit-mask-image: radial-gradient(circle, transparent 10%, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.4) 52%, transparent 76%);
-  mask-image: radial-gradient(circle, transparent 10%, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.4) 52%, transparent 76%);
-  animation: ring-drift 140s linear infinite;
-}
-
-.contact-frame-burst-rays-two {
-  background: repeating-conic-gradient(
-    from 40deg,
-    rgba(184, 107, 255, 0.4) 0deg 0.5deg,
-    transparent 0.5deg 9deg,
-    rgba(255, 255, 255, 0.4) 9deg 9.5deg,
-    transparent 9.5deg 18deg
-  );
-  -webkit-mask-image: radial-gradient(circle, transparent 14%, rgba(0, 0, 0, 0.7) 26%, rgba(0, 0, 0, 0.3) 46%, transparent 68%);
-  mask-image: radial-gradient(circle, transparent 14%, rgba(0, 0, 0, 0.7) 26%, rgba(0, 0, 0, 0.3) 46%, transparent 68%);
-  animation: ring-drift 190s linear infinite reverse;
-}
-
-.contact-frame-burst-core {
-  position: absolute;
-  inset: 33%;
+  margin: auto;
+  width: 78%;
+  height: 68%;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(255, 215, 139, 0.85) 24%,
-    rgba(155, 228, 255, 0.46) 48%,
-    rgba(155, 228, 255, 0) 74%
+    rgba(255, 215, 139, 0.68) 0%,
+    rgba(255, 199, 116, 0.4) 30%,
+    rgba(155, 228, 255, 0.4) 52%,
+    rgba(155, 228, 255, 0) 76%
   );
-  filter: blur(6px);
-  box-shadow: 0 0 60px rgba(255, 199, 116, 0.4);
-  animation: core-pulse 6s ease-in-out infinite;
-}
-
-.contact-frame-star {
-  z-index: 1;
-}
-
-.contact-frame-star-one {
-  right: 4%;
-  top: -2%;
-  left: auto;
-  animation-delay: -1.4s;
-}
-
-.contact-frame-star-two {
-  right: 26%;
-  top: -12%;
-  left: auto;
-  width: 5px;
-  height: 5px;
-  animation-delay: -3.1s;
+  filter: blur(30px);
+  animation: core-pulse 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .contact-frame-dot {
   z-index: 1;
+  pointer-events: none;
 }
 
 .contact-frame-dot-1 {
@@ -4957,7 +4895,7 @@ h3 {
 
 .contact-form {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   gap: 16px;
   width: 100%;
@@ -4974,6 +4912,12 @@ h3 {
     0 20px 70px rgba(0, 0, 0, 0.24),
     0 0 60px rgba(155, 228, 255, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.contact-form-frame > [aria-hidden="true"],
+.contact-form::before,
+.contact-form::after {
+  pointer-events: none;
 }
 
 .contact-form-steps {
@@ -5244,6 +5188,8 @@ h3 {
 }
 
 .contact-form .contact-topic-card {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 74px minmax(0, 1fr);
   gap: 12px;
@@ -7924,14 +7870,7 @@ h3 {
   }
 
   .contact-form-frame {
-    margin-top: 56px;
-  }
-
-  .contact-frame-burst {
-    top: -14%;
-    right: -6%;
-    width: 260px;
-    height: 260px;
+    padding: 20px;
   }
 
   .hero {

@@ -356,7 +356,15 @@ export default function Home() {
             Einschätzung zu Umfang, Zeitplan und nächstem Schritt.
           </p>
         </div>
-        <ContactForm />
+        <div className="contact-form-frame">
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-1" aria-hidden="true" />
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-2" aria-hidden="true" />
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-3" aria-hidden="true" />
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-4" aria-hidden="true" />
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-5" aria-hidden="true" />
+          <span className="ambient-particle contact-frame-dot contact-frame-dot-6" aria-hidden="true" />
+          <ContactForm />
+        </div>
       </section>
 
       <footer className="site-footer">

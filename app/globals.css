@@ -527,13 +527,23 @@ textarea {
 .desktop-nav {
   justify-content: center;
   gap: 26px;
-  color: rgba(248, 251, 255, 0.72);
   font-size: 0.95rem;
 }
 
-.desktop-nav a:hover,
+.desktop-nav a {
+  background: var(--light-cta-bg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 .site-footer a:hover {
   color: white;
+}
+
+.desktop-nav a:hover {
+  opacity: 0.82;
 }
 
 .header-cta {
@@ -4796,6 +4806,55 @@ h3 {
   max-width: 760px;
   font-size: clamp(1.7rem, 2.9vw, 2.8rem);
   line-height: 1.05;
+}
+
+.contact-form-frame {
+  position: relative;
+}
+
+.contact-frame-dot {
+  z-index: 1;
+}
+
+.contact-frame-dot-1 {
+  left: -14px;
+  top: 6%;
+}
+
+.contact-frame-dot-2 {
+  left: 22%;
+  top: -14px;
+  animation-delay: -1.6s;
+}
+
+.contact-frame-dot-3 {
+  right: -14px;
+  left: auto;
+  top: 28%;
+  animation-delay: -3.4s;
+}
+
+.contact-frame-dot-4 {
+  right: 18%;
+  left: auto;
+  bottom: -14px;
+  top: auto;
+  animation-delay: -5.2s;
+}
+
+.contact-frame-dot-5 {
+  left: -12px;
+  bottom: 12%;
+  top: auto;
+  animation-delay: -2.4s;
+}
+
+.contact-frame-dot-6 {
+  right: -12px;
+  left: auto;
+  bottom: -10px;
+  top: auto;
+  animation-delay: -4.6s;
 }
 
 .contact-form {

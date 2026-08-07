@@ -357,12 +357,20 @@ export default function Home() {
           </p>
         </div>
         <div className="contact-form-frame">
+          <div className="contact-frame-glow" aria-hidden="true" />
+          <div className="contact-frame-burst" aria-hidden="true">
+            <span className="contact-frame-burst-rays contact-frame-burst-rays-one" />
+            <span className="contact-frame-burst-rays contact-frame-burst-rays-two" />
+            <span className="contact-frame-burst-core" />
+          </div>
           <span className="ambient-particle contact-frame-dot contact-frame-dot-1" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-2" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-3" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-4" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-5" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-6" aria-hidden="true" />
+          <span className="vision-star contact-frame-star contact-frame-star-one" aria-hidden="true" />
+          <span className="vision-star contact-frame-star contact-frame-star-two" aria-hidden="true" />
           <ContactForm />
         </div>
       </section>

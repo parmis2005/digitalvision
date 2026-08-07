@@ -52,51 +52,27 @@ const visionPoints = [
   "Sichtbarkeit, Vertrauen und Struktur aus einem System",
 ];
 
-type WebsitePaymentModel = {
-  label: string;
+type PackageItem = {
+  name: string;
   price: string;
-  term?: string;
-  followUp: string;
-  hint: string;
+  detail?: string;
+  detailLines?: Array<{
+    text: string;
+    emphasis?: boolean;
+  }>;
+  featured?: boolean;
+  note?: string;
 };
-
-type PackageItem =
-  | {
-      name: string;
-      paymentModels: WebsitePaymentModel[];
-      note: string;
-      price?: never;
-      detail?: never;
-      featured?: never;
-    }
-  | {
-      name: string;
-      price: string;
-      detail: string;
-      featured?: boolean;
-      note?: string;
-      paymentModels?: never;
-    };
 
 const packages: PackageItem[] = [
   {
     name: "Website",
-    paymentModels: [
-      {
-        label: "Mit Anzahlung",
-        price: "ab 1.300 € einmalig",
-        followUp: "danach ab 100 € monatlich",
-        hint: "Inklusive Webseite, Hosting, Pflege & Support.",
-      },
-      {
-        label: "Ohne Anzahlung",
-        price: "ab 300 € monatlich",
-        term: "(bis zur vollständigen Zahlung)",
-        followUp: "danach ab 100 € monatlich",
-        hint: "Inklusive Webseite, Hosting, Pflege & Support.",
-      },
+    price: "ab 300 € monatlich",
+    detailLines: [
+      { text: "Anzahlung auf wunsch möglich" },
+      { text: "Website, Hosting, Pflege & Support inklusive." },
+      { text: "Nach vollständiger Zahlung nur noch laufende Betreuung ab 100€.", emphasis: true },
     ],
-    note: "Laufzeit, Kosten und Leistungen werden individuell besprochen.",
   },
   {
     name: "SEO Growth",
@@ -339,42 +315,28 @@ export default function Home() {
               className={[
                 "package-card",
                 "featured",
-                item.paymentModels ? "website-package-card" : "",
               ]
                 .filter(Boolean)
                 .join(" ")}
               key={item.name}
             >
               <h3>{item.name}</h3>
-              {item.paymentModels ? (
-                <>
-                  <div className="website-payment-options">
-                    {item.paymentModels.map((model) => (
-                      <div className="website-payment-model" key={model.label}>
-                        <strong>{model.label}</strong>
-                        <p className="website-payment-price">{model.price}</p>
-                        {model.term ? (
-                          <p className="website-payment-term">{model.term}</p>
-                        ) : (
-                          <p
-                            className="website-payment-term website-payment-term-placeholder"
-                            aria-hidden="true"
-                          />
-                        )}
-                        <p className="website-payment-follow-up">{model.followUp}</p>
-                        <p className="website-payment-hint">{model.hint}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="package-note website-package-note">{item.note}</p>
-                </>
+              <p className="price">{item.price}</p>
+              {item.detailLines ? (
+                <div className="package-detail-list">
+                  {item.detailLines.map((line) => (
+                    <p
+                      className={line.emphasis ? "package-detail-note" : undefined}
+                      key={line.text}
+                    >
+                      {line.text}
+                    </p>
+                  ))}
+                </div>
               ) : (
-                <>
-                  <p className="price">{item.price}</p>
-                  <p>{item.detail}</p>
-                  {"note" in item && <p className="package-note">{item.note}</p>}
-                </>
+                <p>{item.detail}</p>
               )}
+              {item.note && <p className="package-note">{item.note}</p>}
               <a href="#kontakt">
                 Anfragen
                 <ArrowRight size={17} aria-hidden="true" />

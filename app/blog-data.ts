@@ -29,6 +29,279 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "website-kosten-verstehen-wovon-der-preis-abhaengt",
+    title: "Website-Kosten verstehen: Wovon der Preis wirklich abhängt",
+    description:
+      "Website-Kosten hängen nicht nur vom Design ab. Entscheidend sind Umfang, Inhalte, Funktionen, Technik, Betreuung und die Klarheit der Vorbereitung.",
+    excerpt: "Welche Faktoren den Preis einer professionellen Website wirklich beeinflussen.",
+    category: "Websites",
+    date: "2026-08-10",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website Kosten",
+    image: "/blog/website-kosten-verstehen-wovon-der-preis-abhaengt.png",
+    imageAlt: "Laptop mit Website-Kalkulation, Projektmodulen und Angebotsunterlagen",
+    featured: true,
+    takeaways: [
+      "Der Preis hängt stark von Ziel, Umfang und Vorbereitung ab.",
+      "Texte, Bilder, Funktionen und Betreuung beeinflussen den Aufwand deutlich.",
+      "Ein klares Konzept verhindert unnötige Korrekturen und Zusatzkosten.",
+    ],
+    sections: [
+      {
+        heading: "Warum Website-Kosten nicht pauschal vergleichbar sind",
+        body: [
+          "Zwei Websites können ähnlich aussehen und trotzdem völlig unterschiedlich aufwendig sein. Entscheidend ist nicht nur die sichtbare Oberfläche, sondern was dahinter geplant, geschrieben, gestaltet, entwickelt und getestet werden muss.",
+          "Eine einfache Präsentationsseite hat andere Anforderungen als ein Auftritt mit mehreren Leistungsseiten, Blog, Formularen, Terminlogik oder Admin-Bereich. Deshalb sollte der Preis immer mit dem Ziel und dem tatsächlichen Umfang betrachtet werden.",
+        ],
+      },
+      {
+        heading: "Welche Faktoren den Preis beeinflussen",
+        body: [
+          "Der größte Unterschied entsteht meist durch Struktur, Inhalt und Funktionen. Wenn Texte, Bilder und Seitenaufbau bereits klar sind, kann eine Website schlanker umgesetzt werden. Wenn zuerst Strategie, Inhalte und Nutzerführung entwickelt werden müssen, steigt der Aufwand.",
+          "Auch technische Anforderungen spielen eine Rolle. Ein Kontaktformular ist weniger komplex als ein Anfrageprozess mit Datei-Upload, Terminwahl, automatischer Bestätigung und interner Verwaltung.",
+        ],
+        bullets: [
+          "Anzahl und Tiefe der Seiten",
+          "Textkonzept, Bildauswahl und Inhaltsaufbereitung",
+          "Individuelles Design statt einfacher Vorlage",
+          "Formulare, Buchungen, CMS oder Admin-Funktionen",
+        ],
+      },
+      {
+        heading: "Warum Vorbereitung Geld sparen kann",
+        body: [
+          "Viele Kosten entstehen nicht durch die Umsetzung selbst, sondern durch unklare Entscheidungen. Wenn Zielgruppe, Leistungen, Inhalte und Kontaktweg während der Entwicklung ständig wechseln, muss auch Design und Struktur immer wieder angepasst werden.",
+          "Eine saubere Vorbereitung reduziert diese Schleifen. Vor dem Design sollte klar sein, welche Seiten gebraucht werden, welche Inhalte fehlen und welche Aktion Besucher ausführen sollen.",
+        ],
+        bullets: [
+          "Leistungen vorab sortieren",
+          "Pflichtinhalte und rechtliche Seiten sammeln",
+          "Bilder, Referenzen und Vertrauenssignale vorbereiten",
+          "Kontakt- und Anfrageprozess früh festlegen",
+        ],
+      },
+      {
+        heading: "Was bei günstigen Angeboten oft fehlt",
+        body: [
+          "Ein niedriger Einstiegspreis wirkt attraktiv, kann aber wichtige Punkte ausklammern. Häufig fehlen klare Texte, mobile Feinarbeit, saubere Ladezeiten, SEO-Grundlagen, Formular-Tests oder Betreuung nach dem Launch.",
+          "Dadurch sieht die Website zwar fertig aus, erfüllt aber nicht zuverlässig ihre Aufgabe. Entscheidend ist deshalb nicht nur, was eine Website kostet, sondern was im Leistungsumfang wirklich enthalten ist.",
+        ],
+        bullets: [
+          "Keine klare Seitenstruktur",
+          "Zu wenig Abstimmung zu Texten und Bildern",
+          "Schwache mobile Darstellung",
+          "Keine Prüfung von Formularen, Ladezeit und SEO-Basics",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Website-Kosten einordnet",
+        body: [
+          "Digital Vision betrachtet Kosten nicht als Paketzahl ohne Kontext. Zuerst wird geklärt, was die Website leisten soll, welche Inhalte gebraucht werden und welche Funktionen wirklich sinnvoll sind.",
+          "So entsteht ein realistischer Rahmen, der nicht künstlich aufgebläht ist, aber auch keine wichtigen Bausteine verschweigt. Das Ziel ist eine Website, die verständlich geplant, sauber umgesetzt und später erweiterbar bleibt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Warum unterscheiden sich Website-Angebote so stark?",
+        answer:
+          "Weil Umfang, Vorbereitung, Designanspruch, Inhalte, Funktionen und Betreuung sehr unterschiedlich sein können. Ein Angebot sollte deshalb immer den genauen Leistungsumfang erklären.",
+      },
+      {
+        question: "Kann eine Website später erweitert werden?",
+        answer:
+          "Ja. Wenn Struktur und Technik sauber geplant sind, können später neue Seiten, Funktionen, Formulare oder ein Admin-Bereich ergänzt werden.",
+      },
+      {
+        question: "Was sollte vor einer Anfrage vorbereitet werden?",
+        answer:
+          "Hilfreich sind Informationen zu Leistungen, Zielgruppe, bestehenden Inhalten, gewünschten Funktionen, Referenzen und dem Ziel der Website.",
+      },
+    ],
+  },
+  {
+    slug: "kontaktformular-optimieren-mehr-qualifizierte-anfragen",
+    title: "Kontaktformular optimieren: Mehr qualifizierte Anfragen erhalten",
+    description:
+      "Ein gutes Kontaktformular fragt nicht möglichst viel ab, sondern genau die Informationen, die für eine schnelle und passende Rückmeldung gebraucht werden.",
+    excerpt: "Wie Formulare klarer werden und bessere Anfragen ermöglichen.",
+    category: "Conversion",
+    date: "2026-08-10",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Kontaktformular optimieren",
+    image: "/blog/kontaktformular-optimieren-mehr-qualifizierte-anfragen.png",
+    imageAlt: "Laptop mit Kontaktformular, Anfrage-Schritten und Statusübersicht",
+    featured: true,
+    takeaways: [
+      "Formulare sollten kurz, klar und auf den nächsten Schritt ausgerichtet sein.",
+      "Auswahlfelder helfen, Anfragen schneller einzuordnen.",
+      "Nach dem Absenden braucht es einen sauberen internen Ablauf.",
+    ],
+    sections: [
+      {
+        heading: "Warum ein Formular mehr ist als ein paar Felder",
+        body: [
+          "Das Kontaktformular ist oft der Moment, in dem aus Interesse eine konkrete Anfrage wird. Wenn dieser Schritt unklar, zu lang oder technisch unsauber ist, gehen potenzielle Kunden verloren.",
+          "Ein gutes Formular reduziert Unsicherheit. Besucher verstehen, was gefragt wird, warum es gefragt wird und was nach dem Absenden passiert.",
+        ],
+      },
+      {
+        heading: "Welche Felder wirklich gebraucht werden",
+        body: [
+          "Nicht jede Information muss sofort abgefragt werden. Für eine erste Einschätzung reichen häufig Name, Kontaktmöglichkeit, Anliegen und ein kurzer Kontext. Alles Weitere kann im Gespräch oder in einem zweiten Schritt geklärt werden.",
+          "Wenn ein Projekt komplexer ist, helfen Auswahlfelder. Besucher müssen dann nicht frei formulieren, sondern können Thema, Umfang oder gewünschten Zeitraum schneller einordnen.",
+        ],
+        bullets: [
+          "Name und bevorzugter Kontaktweg",
+          "Art des Anliegens oder Projekts",
+          "Kurze Beschreibung statt langer Pflichttexte",
+          "Optionale Angaben für Budget, Zeitraum oder bestehende Website",
+        ],
+      },
+      {
+        heading: "Wie Formulare vertrauenswürdiger wirken",
+        body: [
+          "Menschen füllen Formulare eher aus, wenn der Aufwand überschaubar ist und der nächste Schritt klar bleibt. Kurze Hinweise, verständliche Labels und ein sichtbarer Absenden-Button helfen dabei.",
+          "Auch die Umgebung des Formulars zählt. Wenn vorher Nutzen, Ablauf und Erwartungen erklärt wurden, fühlt sich die Anfrage weniger riskant an.",
+        ],
+        bullets: [
+          "Klare Feldnamen ohne Fachbegriffe",
+          "Wenige Pflichtfelder",
+          "Kurzer Hinweis zur Rückmeldung",
+          "Fehlermeldungen, die konkret erklären, was fehlt",
+        ],
+      },
+      {
+        heading: "Was nach dem Absenden passieren sollte",
+        body: [
+          "Ein Formular endet nicht beim Klick auf Absenden. Danach sollte eine Bestätigung erscheinen, die Anfrage sollte zuverlässig ankommen und intern so sortiert werden, dass schnell reagiert werden kann.",
+          "Besonders bei mehreren Themen lohnt sich eine klare Einordnung. Dann weiß das Team sofort, ob es um eine Website, ein System, SEO, Betreuung oder eine andere Anfrage geht.",
+        ],
+        bullets: [
+          "Bestätigung für den Besucher",
+          "Saubere E-Mail oder Dashboard-Ablage",
+          "Themen und Prioritäten sichtbar machen",
+          "Status und Zuständigkeit intern klären",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Formulare plant",
+        body: [
+          "Digital Vision plant Kontaktformulare nicht isoliert, sondern als Teil des Anfrageprozesses. Die Fragen werden so gewählt, dass Besucher nicht überfordert werden und das Unternehmen trotzdem sinnvoll reagieren kann.",
+          "Bei Bedarf wird das Formular mit Bestätigungen, Uploads, Terminwünschen oder einem internen Dashboard verbunden. Dadurch wird aus einer Nachricht ein geordneter Ablauf.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Wie lang sollte ein Kontaktformular sein?",
+        answer:
+          "So kurz wie möglich und so ausführlich wie nötig. Für den ersten Kontakt reichen meist wenige Pflichtfelder und optionale Details.",
+      },
+      {
+        question: "Sind mehrstufige Formulare sinnvoll?",
+        answer:
+          "Ja, wenn mehrere Informationen gebraucht werden. Mehrstufige Formulare wirken oft leichter, weil Besucher Schritt für Schritt geführt werden.",
+      },
+      {
+        question: "Kann ein Formular mit einem Dashboard verbunden werden?",
+        answer:
+          "Ja. Anfragen können automatisch gespeichert, sortiert und mit Status oder Zuständigkeiten versehen werden.",
+      },
+    ],
+  },
+  {
+    slug: "admin-bereich-planen-inhalte-selbst-verwalten",
+    title: "Admin-Bereich planen: Inhalte einfach selbst verwalten",
+    description:
+      "Ein Admin-Bereich ist sinnvoll, wenn Inhalte, Anfragen oder Abläufe regelmäßig gepflegt werden sollen. Entscheidend ist eine klare und einfache Struktur.",
+    excerpt: "Wann ein Admin-Bereich sinnvoll ist und wie er übersichtlich bleibt.",
+    category: "Systeme",
+    date: "2026-08-10",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Admin-Bereich",
+    image: "/blog/admin-bereich-planen-inhalte-selbst-verwalten.png",
+    imageAlt: "Laptop mit Admin-Dashboard, Inhaltskarten, Rollen und Vorschauansicht",
+    featured: true,
+    takeaways: [
+      "Ein Admin-Bereich lohnt sich bei regelmäßig gepflegten Inhalten oder Prozessen.",
+      "Zu viele Optionen machen Systeme schwerer nutzbar.",
+      "Rollen, Eingaben und Vorschauen sollten klar geplant werden.",
+    ],
+    sections: [
+      {
+        heading: "Wann ein Admin-Bereich sinnvoll ist",
+        body: [
+          "Nicht jede Website braucht einen Admin-Bereich. Wenn Inhalte selten geändert werden, ist eine schlanke technische Lösung oft ausreichend. Sobald aber Leistungen, Bilder, Blogartikel, Anfragen oder Termine regelmäßig gepflegt werden, kann ein eigener Bereich viel Arbeit sparen.",
+          "Der Vorteil liegt nicht nur darin, Inhalte selbst zu ändern. Ein guter Admin-Bereich macht Abläufe nachvollziehbar und reduziert die Abhängigkeit von einzelnen Personen oder manuellen Listen.",
+        ],
+      },
+      {
+        heading: "Welche Inhalte verwaltet werden sollten",
+        body: [
+          "Ein Admin-Bereich sollte nur die Bereiche enthalten, die im Alltag wirklich gebraucht werden. Je mehr Felder und Menüpunkte angelegt werden, desto schwieriger wird die Pflege.",
+          "Typische Inhalte sind Leistungen, Referenzen, Bilder, Blogartikel, Teamangaben, Preise, Anfragen oder einfache Statuslisten. Wichtig ist, dass jede Eingabe einen klaren Zweck hat.",
+        ],
+        bullets: [
+          "Leistungen, Bilder und Referenzen",
+          "Blogartikel oder News",
+          "Kontaktanfragen und Projektstatus",
+          "Termine, Verfügbarkeiten oder einfache Prozesse",
+        ],
+      },
+      {
+        heading: "Warum Einfachheit wichtiger ist als Funktionsmenge",
+        body: [
+          "Viele Systeme scheitern nicht daran, dass sie zu wenig können, sondern daran, dass sie im Alltag zu kompliziert sind. Wenn Nutzer zu viele Pflichtfelder ausfüllen müssen oder nicht wissen, welche Aktion sicher ist, wird das System gemieden.",
+          "Ein guter Admin-Bereich zeigt nur relevante Optionen, erklärt Zustände klar und macht häufige Aufgaben schnell erreichbar. Erweiterungen können später ergänzt werden, wenn echte Anforderungen entstehen.",
+        ],
+        bullets: [
+          "Klare Navigation statt zu vieler Menüpunkte",
+          "Pflichtfelder nur dort, wo sie notwendig sind",
+          "Vorschau vor dem Veröffentlichen",
+          "Status für Entwurf, Prüfung und Veröffentlichung",
+        ],
+      },
+      {
+        heading: "Welche Rollen und Rechte bedacht werden sollten",
+        body: [
+          "Wenn mehrere Personen mit dem System arbeiten, sollten Rollen früh geplant werden. Nicht jeder muss alles bearbeiten, löschen oder veröffentlichen können.",
+          "Klare Rechte schützen Inhalte und machen Verantwortlichkeiten sichtbar. Gerade bei Anfragen, Kundendaten oder sensiblen Abläufen ist das wichtig.",
+        ],
+        bullets: [
+          "Redaktion für Inhalte",
+          "Admin-Rechte für Einstellungen",
+          "Leserechte für interne Übersichten",
+          "Sensible Daten nur für berechtigte Personen",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Admin-Bereiche umsetzt",
+        body: [
+          "Digital Vision plant Admin-Bereiche ausgehend vom echten Arbeitsalltag. Zuerst wird geklärt, was gepflegt werden soll, wer damit arbeitet und welche Abläufe regelmäßig wiederkehren.",
+          "Daraus entsteht ein übersichtliches System, das zur Website passt und nicht mehr Komplexität erzeugt als nötig. Ziel ist ein Admin-Bereich, der genutzt wird, weil er verständlich und hilfreich ist.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Braucht jede Website einen Admin-Bereich?",
+        answer:
+          "Nein. Ein Admin-Bereich lohnt sich vor allem, wenn Inhalte oder Anfragen regelmäßig gepflegt und intern verarbeitet werden.",
+      },
+      {
+        question: "Kann ein Admin-Bereich später ergänzt werden?",
+        answer:
+          "Ja. Wenn die Website technisch sauber geplant ist, kann ein Admin-Bereich später erweitert oder neu angebunden werden.",
+      },
+      {
+        question: "Was ist wichtiger: viele Funktionen oder einfache Bedienung?",
+        answer:
+          "Einfache Bedienung ist wichtiger. Funktionen helfen nur, wenn sie im Alltag verstanden und regelmäßig genutzt werden.",
+      },
+    ],
+  },
+  {
     slug: "landingpage-erstellen-wann-eine-seite-reicht",
     title: "Landingpage erstellen: Wann eine einzelne Seite reicht",
     description:

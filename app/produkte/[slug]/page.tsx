@@ -333,6 +333,32 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "vulkaneifeltherme" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Thermen-Auftritt mit Video-Hero, Wellness-Wirkung und direktem Ticketfokus.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Thermen-Projekts:
+              atmosphärischer Video-Einstieg, warme Naturfarben, klare Bereiche
+              für Thermalbad, Sauna, Wellness, Gastronomie, Preise, Öffnungszeiten
+              und ein Aufbau, der Besucher schnell zur Buchung führt.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : product.slug === "st-elisabeth-klinikum" ? (
         <section className="product-details">
           <div className="product-detail-card">

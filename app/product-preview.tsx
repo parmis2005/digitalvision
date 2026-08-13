@@ -12,6 +12,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
+  const isThermal = product.slug === "vulkaneifeltherme";
   const isHospital = product.slug === "st-elisabeth-klinikum";
   const isHair = product.slug === "haarwerk-studio";
   const isSalt = product.slug === "salzgrotte-aura";
@@ -288,6 +289,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="medical-card-copy">
               <h3>Arztpraxis Weber</h3>
               <span>Praxis · Leistungen · Team · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isThermal) {
+    if (size === "card") {
+      return (
+        <div className="thermal-preview-card-view">
+          <div className="thermal-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="thermal-card-cta">Tickets buchen</span>
+          </div>
+          <div className="thermal-card-shell">
+            <div className="thermal-card-branding">
+              <p>Vulkaneifel Therme</p>
+              <span>Thermalbad · Sauna · Wellness</span>
+            </div>
+            <div className="thermal-card-stage">
+              <div className="thermal-card-overlay">
+                <span className="thermal-card-kicker">Mineralquelle</span>
+                <strong>Kraft aus der Tiefe der Erde.</strong>
+              </div>
+              <div className="thermal-card-accent">
+                <span>32°C</span>
+                <small>Thermalwasser</small>
+              </div>
+            </div>
+            <div className="thermal-card-copy">
+              <h3>Vulkaneifel Therme</h3>
+              <span>Thermalbad · Sauna · Wellness · Tickets</span>
             </div>
           </div>
         </div>

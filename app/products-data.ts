@@ -14,6 +14,7 @@ export type ProductItem = {
     | "auto"
     | "coffee"
     | "wellness"
+    | "thermal"
     | "medical"
     | "hospital"
     | "hair"
@@ -137,6 +138,22 @@ export const products: ProductItem[] = [
       "Geeignet für Hausarztpraxen, Facharztpraxen und moderne Gesundheitsangebote",
     ],
     previewUrl: "/arztpraxis-preview/index.html",
+  },
+  {
+    slug: "vulkaneifeltherme",
+    type: "Thermalbad Website",
+    title: "Vulkaneifel Therme",
+    detail: "Atmosphärische Thermen-Website für Thermalbad, Sauna, Wellness und Tickets",
+    variant: "thermal",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Thermalbad-Website mit Video-Hero, Wellness-Wirkung, klaren Bereichen für Sauna, Preise, Öffnungszeiten und Ticketfokus.",
+    highlights: [
+      "Starker Video-Hero für Thermalbad, Mineralquelle, Sauna und Wellness",
+      "Klare Struktur für Badewelt, Saunen, Anwendungen, Gastronomie, Preise und Kontakt",
+      "Geeignet für Thermen, Erlebnisbäder, Saunalandschaften und Wellness-Resorts",
+    ],
+    previewUrl: "/vulkaneifeltherme-preview/index.html",
   },
   {
     slug: "cleanpro-reinigung",

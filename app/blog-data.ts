@@ -29,6 +29,461 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "mobile-website-optimieren-smartphone-nutzer",
+    title: "Mobile Website optimieren: Worauf Smartphone-Nutzer achten",
+    description:
+      "Eine Website muss auf dem Smartphone schnell, lesbar und einfach bedienbar sein. Mobile Optimierung entscheidet oft darüber, ob Besucher bleiben oder abspringen.",
+    excerpt: "Wie mobile Websites klarer, schneller und leichter bedienbar werden.",
+    category: "Websites",
+    date: "2026-08-13",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Mobile Website optimieren",
+    image: "/blog/mobile-website-optimieren-smartphone-nutzer.png",
+    imageAlt: "Smartphone mit responsiver Website, Performancekarten und Geräteansichten",
+    featured: true,
+    takeaways: [
+      "Mobile Besucher brauchen schnelle Ladezeiten und klare Prioritäten.",
+      "Buttons, Texte und Formulare müssen auf kleinen Screens leicht bedienbar sein.",
+      "Mobile Optimierung beginnt bei Struktur, nicht erst bei CSS.",
+    ],
+    sections: [
+      {
+        heading: "Warum Mobile nicht nur eine kleinere Desktop-Seite ist",
+        body: [
+          "Viele Websites werden zuerst am großen Bildschirm geplant und später nur verkleinert. Das reicht nicht aus. Auf dem Smartphone haben Besucher weniger Platz, weniger Geduld und oft ein konkreteres Ziel.",
+          "Mobile Optimierung bedeutet deshalb, Inhalte neu zu priorisieren. Was muss sofort sichtbar sein? Welche Aktion soll möglich sein? Welche Informationen können später folgen?",
+        ],
+      },
+      {
+        heading: "Was Smartphone-Nutzer zuerst brauchen",
+        body: [
+          "Mobile Besucher suchen meistens schnelle Orientierung. Sie möchten verstehen, ob das Angebot passt, wie sie Kontakt aufnehmen können und ob die Seite vertrauenswürdig wirkt.",
+          "Deshalb sollten Einstieg, Nutzen, Kontaktbutton und wichtige Vertrauenssignale auf mobilen Seiten klar erreichbar sein. Lange Textblöcke, zu kleine Buttons und versteckte Formulare bremsen den nächsten Schritt.",
+        ],
+        bullets: [
+          "Kurzer Einstieg mit klarer Aussage",
+          "Gut sichtbarer Kontakt- oder Anfragebutton",
+          "Lesbare Schriftgrößen und kurze Abschnitte",
+          "Schnelle Ladezeit trotz guter Bilder",
+        ],
+      },
+      {
+        heading: "Welche Fehler mobile Anfragen kosten",
+        body: [
+          "Viele mobile Probleme wirken klein, kosten aber direkt Anfragen. Wenn ein Button schwer zu treffen ist, ein Formularfeld springt oder eine Navigation zu viel Platz einnimmt, steigt die Abbruchquote.",
+          "Auch überladene Hero-Bereiche sind kritisch. Auf dem Smartphone sollte der erste Bildschirm nicht nur aus Dekoration bestehen, sondern sofort erklären, worum es geht.",
+        ],
+        bullets: [
+          "Buttons zu klein oder zu nah beieinander",
+          "Formulare mit zu vielen Pflichtfeldern",
+          "Bilder, die wichtige Inhalte nach unten drücken",
+          "Navigation, die mehr stört als hilft",
+        ],
+      },
+      {
+        heading: "Wie Performance und Design zusammenhängen",
+        body: [
+          "Eine schöne mobile Website wirkt nur professionell, wenn sie schnell lädt. Große Bilder, schwere Animationen oder unnötige Skripte machen Seiten langsam und lassen Besucher abspringen.",
+          "Gute mobile Gestaltung setzt deshalb auf saubere Bildgrößen, klare Komponenten und Effekte, die den Inhalt unterstützen statt ihn zu überdecken.",
+        ],
+        bullets: [
+          "Bilder passend komprimieren",
+          "Animationen sparsam einsetzen",
+          "Layout-Sprünge vermeiden",
+          "Formulare und Buttons regelmäßig mobil testen",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision mobile Seiten prüft",
+        body: [
+          "Digital Vision plant mobile Ansichten nicht als Nachtrag. Struktur, Inhalte und Kontaktwege werden so aufgebaut, dass sie auf Smartphone und Desktop funktionieren.",
+          "Vor dem Launch werden Lesbarkeit, Bedienung, Formulare, Bildgrößen und Ladezeiten geprüft. Dadurch wird die mobile Website nicht nur responsive, sondern wirklich nutzbar.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Warum ist mobile Optimierung so wichtig?",
+        answer:
+          "Weil viele Besucher über Smartphones kommen. Wenn die Seite dort schlecht lesbar oder langsam ist, gehen Vertrauen und Anfragen verloren.",
+      },
+      {
+        question: "Reicht Responsive Design allein aus?",
+        answer:
+          "Nicht immer. Responsive Design passt Layouts an, aber Inhalte, Prioritäten und Bedienung müssen ebenfalls mobil gedacht werden.",
+      },
+      {
+        question: "Kann Digital Vision bestehende mobile Websites verbessern?",
+        answer:
+          "Ja. Bestehende Seiten können auf Ladezeit, Lesbarkeit, Kontaktwege und mobile Bedienung geprüft und gezielt verbessert werden.",
+      },
+    ],
+  },
+  {
+    slug: "website-texte-schreiben-die-kunden-verstehen",
+    title: "Website-Texte schreiben, die Kunden wirklich verstehen",
+    description:
+      "Gute Website-Texte erklären nicht nur Leistungen, sondern beantworten echte Kundenfragen und führen verständlich zum nächsten Schritt.",
+    excerpt: "Wie Texte klarer werden und Besucher schneller zur Anfrage führen.",
+    category: "Content",
+    date: "2026-08-13",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website-Texte schreiben",
+    image: "/blog/website-texte-schreiben-die-kunden-verstehen.png",
+    imageAlt: "Laptop mit Website-Textstruktur, Inhaltskarten und redaktionellem Plan",
+    featured: true,
+    takeaways: [
+      "Website-Texte sollten konkrete Fragen beantworten, nicht nur schön klingen.",
+      "Klare Überschriften helfen Besuchern, Inhalte schnell zu scannen.",
+      "Gute Texte verbinden Nutzen, Vertrauen und Kontaktweg.",
+    ],
+    sections: [
+      {
+        heading: "Warum viele Website-Texte zu allgemein bleiben",
+        body: [
+          "Viele Websites beschreiben Leistungen mit austauschbaren Begriffen. Besucher lesen dann, dass ein Unternehmen professionell, individuell oder zuverlässig arbeitet, verstehen aber nicht konkret, was angeboten wird.",
+          "Gute Website-Texte übersetzen Leistungen in Nutzen. Sie zeigen, für wen das Angebot gedacht ist, welches Problem gelöst wird und wie der nächste Schritt aussieht.",
+        ],
+      },
+      {
+        heading: "Welche Fragen Texte beantworten müssen",
+        body: [
+          "Besucher kommen mit offenen Fragen auf eine Website. Sie möchten wissen, ob das Angebot passt, wie der Ablauf funktioniert, was sie erwarten können und warum sie Vertrauen haben sollten.",
+          "Texte sollten diese Fragen nicht verstecken. Je klarer eine Seite antwortet, desto leichter fällt die Entscheidung zur Anfrage.",
+        ],
+        bullets: [
+          "Was wird konkret angeboten?",
+          "Für wen ist die Leistung geeignet?",
+          "Wie läuft der nächste Schritt ab?",
+          "Welche Belege schaffen Vertrauen?",
+        ],
+      },
+      {
+        heading: "Warum Überschriften wichtiger sind als lange Absätze",
+        body: [
+          "Viele Besucher lesen Websites nicht von oben bis unten. Sie scannen Überschriften, Zwischenzeilen, Karten und Buttons. Wenn diese Elemente unklar sind, helfen auch gute Absätze wenig.",
+          "Eine gute Überschrift sagt nicht nur, worum es geht, sondern gibt Orientierung. Danach kann ein kurzer Absatz erklären, vertiefen und zur passenden Aktion führen.",
+        ],
+        bullets: [
+          "Überschriften konkret formulieren",
+          "Absätze kurz halten",
+          "Fachbegriffe erklären oder vermeiden",
+          "Buttons passend zum Inhalt benennen",
+        ],
+      },
+      {
+        heading: "Wie Texte Vertrauen aufbauen",
+        body: [
+          "Vertrauen entsteht nicht durch große Versprechen, sondern durch klare Informationen. Beispiele, Abläufe, Referenzen, häufige Fragen und transparente Kontaktwege machen ein Angebot greifbarer.",
+          "Auch ehrliche Begrenzung hilft. Wenn eine Website erklärt, für wen eine Leistung passt und wann sie nicht passt, wirkt sie glaubwürdiger.",
+        ],
+        bullets: [
+          "Konkrete Beispiele nennen",
+          "Ablauf verständlich erklären",
+          "Einwände direkt beantworten",
+          "Kontaktweg ohne Druck anbieten",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Website-Texte strukturiert",
+        body: [
+          "Digital Vision entwickelt Texte aus der Seitenstruktur heraus. Zuerst wird geklärt, welche Aufgabe eine Seite hat und welche Fragen dort beantwortet werden müssen.",
+          "Danach entstehen Texte, die Design, SEO und Nutzerführung unterstützen. Dadurch wirkt die Website nicht nur hochwertig, sondern verständlich und handlungsorientiert.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Müssen Website-Texte lang sein?",
+        answer:
+          "Nicht unbedingt. Sie sollten lang genug sein, um wichtige Fragen zu beantworten, aber klar genug, damit Besucher schnell verstehen, worum es geht.",
+      },
+      {
+        question: "Sind SEO-Texte anders als normale Website-Texte?",
+        answer:
+          "Gute SEO-Texte sind zuerst verständliche Website-Texte. Sie berücksichtigen Suchbegriffe, aber beantworten vor allem echte Nutzerfragen.",
+      },
+      {
+        question: "Kann Digital Vision bestehende Texte überarbeiten?",
+        answer:
+          "Ja. Bestehende Texte können gekürzt, neu strukturiert und stärker auf Nutzen, Vertrauen und Anfrage ausgerichtet werden.",
+      },
+    ],
+  },
+  {
+    slug: "lokale-sichtbarkeit-verbessern-fuer-dienstleister",
+    title: "Lokale Sichtbarkeit verbessern: Websites für Dienstleister",
+    description:
+      "Lokale Dienstleister werden besser gefunden, wenn Website, Leistungen, Standortsignale und Kontaktwege klar zusammenspielen.",
+    excerpt: "Wie lokale Anbieter online sichtbarer und leichter kontaktierbar werden.",
+    category: "SEO",
+    date: "2026-08-13",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Lokale Sichtbarkeit verbessern",
+    image: "/blog/lokale-sichtbarkeit-verbessern-fuer-dienstleister.png",
+    imageAlt: "Laptop mit lokaler Suche, Kartenansicht, Bewertungen und Standortsignalen",
+    featured: true,
+    takeaways: [
+      "Lokale Sichtbarkeit braucht klare Leistungen, Standortsignale und Vertrauen.",
+      "Kontaktwege und Öffnungszeiten sollten schnell erreichbar sein.",
+      "Bewertungen, Bilder und lokale Inhalte stärken die Entscheidung.",
+    ],
+    sections: [
+      {
+        heading: "Warum lokale Sichtbarkeit mehr ist als ein Eintrag",
+        body: [
+          "Ein Google-Eintrag ist wichtig, aber er ersetzt keine klare Website. Viele Besucher prüfen nach einem Suchergebnis, ob Leistungen, Standort, Kontakt und Vertrauen zusammenpassen.",
+          "Die Website sollte deshalb lokale Orientierung geben. Wer wird angesprochen? In welchem Gebiet wird gearbeitet? Welche Leistungen sind vor Ort verfügbar?",
+        ],
+      },
+      {
+        heading: "Welche Informationen lokale Kunden suchen",
+        body: [
+          "Lokale Besucher haben oft konkrete Anliegen. Sie wollen wissen, ob ein Anbieter in ihrer Nähe ist, welche Leistung angeboten wird, wann Kontakt möglich ist und ob andere Kunden gute Erfahrungen gemacht haben.",
+          "Diese Informationen sollten nicht versteckt sein. Besonders auf mobilen Geräten müssen Adresse, Telefonnummer, Anfrageweg und Leistungen schnell erreichbar bleiben.",
+        ],
+        bullets: [
+          "Standort, Region oder Einsatzgebiet",
+          "Leistungen mit klaren Beschreibungen",
+          "Telefon, Anfrageformular oder Buchung",
+          "Bewertungen, Referenzen oder echte Bilder",
+        ],
+      },
+      {
+        heading: "Wie Leistungsseiten lokale Suche unterstützen",
+        body: [
+          "Wenn alle Angebote nur auf einer Startseite genannt werden, bleiben wichtige Themen oft zu oberflächlich. Einzelne Leistungsbereiche können besser erklären, was angeboten wird und für wen es relevant ist.",
+          "Für lokale Anbieter ist außerdem wichtig, dass Inhalte nicht künstlich mit Ortsnamen gefüllt werden. Besser sind natürliche Standortsignale, klare Leistungen und hilfreiche Antworten auf echte Kundenfragen.",
+        ],
+        bullets: [
+          "Wichtige Leistungen einzeln erklären",
+          "Region natürlich einordnen",
+          "Häufige Fragen lokal beantworten",
+          "Interne Links zu Kontakt und Buchung setzen",
+        ],
+      },
+      {
+        heading: "Welche Fehler lokale Sichtbarkeit schwächen",
+        body: [
+          "Unvollständige Kontaktangaben, veraltete Öffnungszeiten oder widersprüchliche Informationen schaffen Unsicherheit. Auch generische Texte ohne lokalen Bezug helfen Besuchern wenig.",
+          "Besonders problematisch ist, wenn die Website zwar gefunden wird, aber der nächste Schritt nicht klar ist. Dann bleibt Sichtbarkeit ohne Anfrage.",
+        ],
+        bullets: [
+          "Adresse oder Einsatzgebiet schwer auffindbar",
+          "Keine klare Leistungsübersicht",
+          "Veraltete Bilder oder Öffnungszeiten",
+          "Kontaktweg erst am Seitenende",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision lokale Websites aufbaut",
+        body: [
+          "Digital Vision verbindet lokale Sichtbarkeit mit klarer Nutzerführung. Leistungen, Standortsignale, Vertrauen und Kontaktwege werden so strukturiert, dass Besucher schnell entscheiden können.",
+          "So entsteht kein überladener SEO-Text, sondern eine Website, die lokal verständlich ist und echte Anfragen unterstützt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Was hilft lokalen Dienstleistern online sichtbar zu werden?",
+        answer:
+          "Klare Leistungsseiten, vollständige Kontaktinformationen, lokale Orientierung, Bewertungen, schnelle Ladezeiten und eine gut nutzbare mobile Website.",
+      },
+      {
+        question: "Muss jede Stadt eine eigene Seite haben?",
+        answer:
+          "Nicht immer. Eigene Standortseiten sind nur sinnvoll, wenn sie echte Inhalte und Relevanz haben. Künstliche Ortsseiten wirken schnell schwach.",
+      },
+      {
+        question: "Kann Digital Vision lokale SEO-Grundlagen einbauen?",
+        answer:
+          "Ja. Standortsignale, Seitenstruktur, Meta-Daten, Inhalte und Kontaktwege können gezielt für lokale Sichtbarkeit geplant werden.",
+      },
+    ],
+  },
+  {
+    slug: "website-bilder-auswaehlen-und-vorbereiten",
+    title: "Website-Bilder auswählen und richtig vorbereiten",
+    description:
+      "Bilder prägen den ersten Eindruck einer Website. Entscheidend sind passende Motive, saubere Ausschnitte, gute Qualität und schnelle Ladezeiten.",
+    excerpt: "Wie Bilder professioneller wirken und die Website nicht langsam machen.",
+    category: "Design",
+    date: "2026-08-13",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Website-Bilder",
+    image: "/blog/website-bilder-auswaehlen-und-vorbereiten.png",
+    imageAlt: "Laptop mit Bildergalerie, Zuschnittkarten und Optimierungsanzeigen",
+    featured: true,
+    takeaways: [
+      "Bilder sollten zum Angebot passen und Vertrauen schaffen.",
+      "Ausschnitt, Format und Komprimierung beeinflussen Wirkung und Ladezeit.",
+      "Nicht jedes schöne Bild ist für eine Website geeignet.",
+    ],
+    sections: [
+      {
+        heading: "Warum Bilder mehr leisten als Dekoration",
+        body: [
+          "Bilder entscheiden stark darüber, wie professionell eine Website wirkt. Sie zeigen Atmosphäre, Qualität, Menschen, Räume, Produkte oder Ergebnisse und helfen Besuchern, ein Angebot schneller einzuordnen.",
+          "Gute Bilder unterstützen den Inhalt. Schlechte oder beliebige Bilder machen eine Website dagegen austauschbar, selbst wenn das Design hochwertig ist.",
+        ],
+      },
+      {
+        heading: "Welche Bilder auf eine Website gehören",
+        body: [
+          "Am stärksten wirken Bilder, die echten Bezug zum Unternehmen haben. Räume, Arbeitssituationen, Ergebnisse, Produkte oder Details schaffen mehr Vertrauen als generische Stockmotive.",
+          "Wenn keine eigenen Bilder vorhanden sind, sollte bewusst entschieden werden, welche Bildsprache zum Angebot passt und welche Motive vermieden werden sollten.",
+        ],
+        bullets: [
+          "Echte Räume, Produkte oder Ergebnisse",
+          "Team- oder Arbeitsbilder, wenn sie professionell wirken",
+          "Detailbilder für Atmosphäre und Qualität",
+          "Referenzbilder passend zur jeweiligen Leistung",
+        ],
+      },
+      {
+        heading: "Warum Bildformate früh geplant werden sollten",
+        body: [
+          "Ein Bild, das im Querformat gut aussieht, funktioniert nicht automatisch als mobiles Hochformat oder kleines Vorschaubild. Deshalb sollten wichtige Bildflächen früh im Layout mitgedacht werden.",
+          "Besonders Hero-Bilder brauchen genug Rand, damit Text, Zuschnitt und mobile Darstellung sauber funktionieren. Zu enge Motive führen schnell zu abgeschnittenen Köpfen, Produkten oder wichtigen Details.",
+        ],
+        bullets: [
+          "Hero-Bilder mit genügend Rand wählen",
+          "Quadratische Vorschaubilder separat prüfen",
+          "Mobile Zuschnitte testen",
+          "Wichtige Motive nicht zu nah am Rand platzieren",
+        ],
+      },
+      {
+        heading: "Wie Bilder die Ladezeit beeinflussen",
+        body: [
+          "Große Bilddateien gehören zu den häufigsten Gründen für langsame Websites. Ein hochwertiges Bild muss nicht mehrere Megabyte groß sein, wenn es passend komprimiert und im richtigen Format ausgeliefert wird.",
+          "Wichtig ist der Ausgleich zwischen Qualität und Performance. Bilder sollen klar wirken, aber die Seite nicht unnötig ausbremsen.",
+        ],
+        bullets: [
+          "Bildgröße passend zum Einsatzbereich wählen",
+          "Dateien komprimieren",
+          "Alt-Texte sinnvoll ergänzen",
+          "Unnötige Bildvarianten vermeiden",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Bildmaterial vorbereitet",
+        body: [
+          "Digital Vision plant Bildflächen zusammen mit Struktur und Design. Dadurch ist früh klar, welche Motive gebraucht werden, welche Formate sinnvoll sind und wo eigene Bilder den größten Unterschied machen.",
+          "Vor dem Launch werden Zuschnitt, Qualität, Dateigröße und mobile Wirkung geprüft, damit Bilder professionell aussehen und technisch sauber bleiben.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Sind eigene Bilder besser als Stockfotos?",
+        answer:
+          "Oft ja, wenn sie professionell wirken. Eigene Bilder schaffen mehr Vertrauen, weil sie echte Räume, Menschen, Produkte oder Ergebnisse zeigen.",
+      },
+      {
+        question: "Warum müssen Bilder komprimiert werden?",
+        answer:
+          "Damit die Website schneller lädt. Gute Komprimierung reduziert Dateigröße, ohne die sichtbare Qualität unnötig zu schwächen.",
+      },
+      {
+        question: "Kann Digital Vision beim Bildkonzept helfen?",
+        answer:
+          "Ja. Bildbedarf, Formate, Stilrichtung und technische Vorbereitung können direkt im Website-Konzept mitgeplant werden.",
+      },
+    ],
+  },
+  {
+    slug: "terminbuchung-auf-websites-sinnvoll-einbauen",
+    title: "Terminbuchung auf Websites sinnvoll einbauen",
+    description:
+      "Online-Terminbuchung kann Anfragen vereinfachen, wenn Leistungen, Verfügbarkeiten, Bestätigung und interne Abläufe sauber geplant sind.",
+    excerpt: "Wann eine Buchungsfunktion hilft und welche Fehler vermieden werden sollten.",
+    category: "Prozesse",
+    date: "2026-08-13",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Terminbuchung Website",
+    image: "/blog/terminbuchung-auf-websites-sinnvoll-einbauen.png",
+    imageAlt: "Laptop mit Kalender, Zeitslots, Buchungsprozess und Bestätigungskarte",
+    featured: true,
+    takeaways: [
+      "Terminbuchung ist sinnvoll, wenn Leistungen und Verfügbarkeiten klar sind.",
+      "Der Buchungsprozess muss kurz, verständlich und mobil gut bedienbar sein.",
+      "Bestätigung, Absagen und interne Zuordnung sollten mitgeplant werden.",
+    ],
+    sections: [
+      {
+        heading: "Wann eine Online-Terminbuchung sinnvoll ist",
+        body: [
+          "Eine Terminbuchung lohnt sich besonders, wenn Besucher klare Leistungen auswählen und direkt einen passenden Zeitraum buchen können. Das ist häufig bei Studios, Praxen, Beratungen oder lokalen Dienstleistungen der Fall.",
+          "Wenn jedes Projekt zuerst individuell geklärt werden muss, ist ein Anfrageformular oft besser. Die richtige Lösung hängt davon ab, wie planbar die Leistung ist.",
+        ],
+      },
+      {
+        heading: "Welche Informationen vor der Buchung klar sein müssen",
+        body: [
+          "Bevor Besucher einen Termin buchen, brauchen sie Orientierung. Welche Leistung wird gebucht? Wie lange dauert sie? Gibt es Voraussetzungen, Preise oder Hinweise? Ohne diese Informationen entstehen Rückfragen oder falsche Buchungen.",
+          "Die Buchungsfunktion sollte deshalb nicht isoliert stehen. Sie braucht erklärende Inhalte und klare Auswahlmöglichkeiten.",
+        ],
+        bullets: [
+          "Leistung oder Terminart verständlich benennen",
+          "Dauer und mögliche Hinweise anzeigen",
+          "Verfügbarkeiten realistisch pflegen",
+          "Kontaktmöglichkeit für Rückfragen anbieten",
+        ],
+      },
+      {
+        heading: "Wie ein guter Buchungsprozess aufgebaut ist",
+        body: [
+          "Ein guter Prozess führt Schritt für Schritt: Leistung wählen, Termin auswählen, Kontaktdaten eingeben, bestätigen. Je klarer diese Reihenfolge ist, desto weniger brechen Besucher ab.",
+          "Auf dem Smartphone müssen Kalender, Zeitslots und Buttons besonders gut funktionieren. Kleine Felder oder unklare Fehlermeldungen machen die Buchung unnötig schwer.",
+        ],
+        bullets: [
+          "Kurze Schritte statt langer Formularseite",
+          "Gut sichtbare freie Zeiten",
+          "Klare Bestätigung nach dem Absenden",
+          "Automatische Benachrichtigung intern und extern",
+        ],
+      },
+      {
+        heading: "Welche Fehler Terminbuchungen unzuverlässig machen",
+        body: [
+          "Eine Buchungsfunktion kann Arbeit sparen, aber auch neue Probleme schaffen. Wenn Zeiten nicht aktuell sind, Bestätigungen fehlen oder intern niemand den Termin sieht, entsteht mehr Aufwand als vorher.",
+          "Deshalb sollte nicht nur die Oberfläche geplant werden, sondern auch der Ablauf danach: Wer bekommt die Buchung? Wie wird abgesagt? Was passiert bei Änderungen?",
+        ],
+        bullets: [
+          "Veraltete Verfügbarkeiten",
+          "Keine automatische Bestätigung",
+          "Unklare Zuständigkeit intern",
+          "Zu viele Pflichtfelder vor der Buchung",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Buchungen einbindet",
+        body: [
+          "Digital Vision prüft zuerst, ob eine Buchung, Anfrage oder Kombination aus beidem sinnvoll ist. Danach wird der Ablauf so gestaltet, dass Besucher schnell buchen können und das Unternehmen intern den Überblick behält.",
+          "Bei Bedarf kann die Terminbuchung mit Formularen, Bestätigungen, Kalendern oder einem Admin-Bereich verbunden werden.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Ist eine Terminbuchung für jede Website sinnvoll?",
+        answer:
+          "Nein. Sie lohnt sich vor allem, wenn Leistungen gut planbar sind. Für individuelle Projekte ist oft ein Anfrageformular sinnvoller.",
+      },
+      {
+        question: "Kann eine Buchung mit Bestätigungs-E-Mails verbunden werden?",
+        answer:
+          "Ja. Besucher und Unternehmen können automatisch Bestätigungen oder Benachrichtigungen erhalten.",
+      },
+      {
+        question: "Kann Digital Vision Buchung und Anfrage kombinieren?",
+        answer:
+          "Ja. Je nach Angebot kann eine Website direkte Buchungen, qualifizierte Anfragen oder beide Wege anbieten.",
+      },
+    ],
+  },
+  {
     slug: "website-kosten-verstehen-wovon-der-preis-abhaengt",
     title: "Website-Kosten verstehen: Wovon der Preis wirklich abhängt",
     description:

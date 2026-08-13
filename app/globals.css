@@ -622,13 +622,17 @@ textarea {
   display: block;
   padding: 15px 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(248, 251, 255, 0.86);
+  background: linear-gradient(90deg, #8fe3ff 0%, #aebeff 46%, #c67cff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-size: 1.05rem;
   font-weight: 750;
 }
 
 .mobile-nav-panel nav a:hover {
-  color: white;
+  opacity: 0.82;
 }
 
 .mobile-nav-cta {
@@ -6237,13 +6241,17 @@ h3 {
 }
 
 .blog-header-nav a {
-  color: rgba(248, 251, 255, 0.66);
+  background: linear-gradient(90deg, #8fe3ff 0%, #aebeff 46%, #c67cff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-weight: 700;
   text-decoration: none;
 }
 
 .blog-header-nav a:hover {
-  color: white;
+  opacity: 0.82;
 }
 
 .blog-hero {

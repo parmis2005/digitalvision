@@ -8684,6 +8684,60 @@ h3 {
     font-size: clamp(1.45rem, 7vw, 2rem);
   }
 
+  .contact-calculator-copy h3,
+  .contact-booking-copy h3 {
+    font-size: clamp(1.15rem, 5.5vw, 1.4rem);
+  }
+
+  .contact-calculator-shell {
+    padding: 16px 14px 14px;
+    gap: 16px;
+  }
+
+  .contact-calculator {
+    gap: 16px;
+  }
+
+  .contact-calculator-field {
+    gap: 8px;
+  }
+
+  .contact-estimate-card {
+    padding: 16px 14px 14px;
+  }
+
+  .contact-booking-shell {
+    padding: 12px 12px 10px;
+    gap: 12px;
+  }
+
+  .contact-calendar-card,
+  .contact-time-card {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .contact-calendar-grid,
+  .contact-calendar-weekdays {
+    gap: 5px;
+  }
+
+  .contact-form .contact-calendar-day {
+    min-height: 34px;
+  }
+
+  .contact-time-list {
+    gap: 6px;
+  }
+
+  .contact-form .contact-time-button {
+    min-height: 42px;
+  }
+
+  .contact-form .contact-advisor-button {
+    min-height: 36px;
+  }
+
   .footer-branding {
     gap: 8px;
   }

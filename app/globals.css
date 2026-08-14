@@ -13,6 +13,7 @@
   --deep-blue: #08172f;
   --gold: #ffc774;
   --ember: #ff7b56;
+  --nav-text-gradient: linear-gradient(90deg, #8fe3ff 0%, #aebeff 46%, #c67cff 100%);
   --light-cta-bg:
     radial-gradient(circle at 62% 18%, rgba(174, 240, 255, 0.9), transparent 34%),
     linear-gradient(135deg, #fbfdff 0%, #d8f6ff 48%, #ffd58a 100%);
@@ -531,7 +532,7 @@ textarea {
 }
 
 .desktop-nav a {
-  background: linear-gradient(90deg, #8fe3ff 0%, #aebeff 46%, #c67cff 100%);
+  background: var(--nav-text-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -622,7 +623,7 @@ textarea {
   display: block;
   padding: 15px 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(90deg, #8fe3ff 0%, #aebeff 46%, #c67cff 100%);
+  background: var(--nav-text-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -793,6 +794,11 @@ textarea {
 .hero .eyebrow {
   margin: 0;
   max-width: 100%;
+  background: var(--nav-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-size: 0.78rem;
   font-weight: 760;
   letter-spacing: 0.08em;
@@ -888,7 +894,11 @@ h3 {
 
 .hero-text {
   max-width: 500px;
-  color: var(--muted);
+  background: var(--nav-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-size: clamp(0.98rem, 1vw, 1.06rem);
   line-height: 1.5;
 }

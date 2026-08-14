@@ -29,6 +29,188 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "call-to-action-richtig-platzieren",
+    title: "Call-to-Action richtig platzieren: Wo Buttons wirklich helfen",
+    description:
+      "Ein guter Call-to-Action macht den nächsten Schritt sichtbar, ohne aufdringlich zu wirken. Entscheidend sind Platzierung, Text, Kontext und Wiederholung.",
+    excerpt: "Wie Buttons Besucher führen und mehr klare Anfragen ermöglichen.",
+    category: "Conversion",
+    date: "2026-08-14",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Call-to-Action",
+    image: "/blog/call-to-action-richtig-platzieren.png",
+    imageAlt: "Laptop mit Website-Layout, hervorgehobenen Call-to-Action-Buttons und Entscheidungspfad",
+    featured: true,
+    takeaways: [
+      "Buttons funktionieren besser, wenn ihr Kontext verständlich ist.",
+      "Ein CTA sollte auf jeder wichtigen Entscheidungsstelle sichtbar sein.",
+      "Zu viele unterschiedliche Aktionen machen eine Website unklar.",
+    ],
+    sections: [
+      {
+        heading: "Warum Buttons allein nicht verkaufen",
+        body: [
+          "Ein Button wirkt nur dann, wenn Besucher verstehen, warum sie klicken sollten. Wenn vorher Nutzen, Vertrauen und nächster Schritt unklar bleiben, hilft auch ein auffälliger Call-to-Action wenig.",
+          "Gute CTAs sind deshalb Teil der Seitenstruktur. Sie stehen dort, wo eine Entscheidung logisch entsteht, und greifen den Inhalt der jeweiligen Sektion auf.",
+        ],
+      },
+      {
+        heading: "Wo ein Call-to-Action sinnvoll ist",
+        body: [
+          "Der erste CTA gehört meistens in den Hero-Bereich, damit der nächste Schritt sofort sichtbar ist. Danach sollte er an Stellen wiederholt werden, an denen Besucher genug Kontext bekommen haben: nach Leistungen, nach Vertrauenssignalen, nach FAQ oder vor dem Kontaktbereich.",
+          "Wichtig ist, dass die Wiederholung nicht zufällig wirkt. Jeder Button sollte zur Situation passen und nicht nur dieselbe Fläche füllen.",
+        ],
+        bullets: [
+          "Im Hero-Bereich für schnelle Orientierung",
+          "Nach Leistungsabschnitten für konkrete Anfragen",
+          "Nach Referenzen oder Vorteilen als nächster Schritt",
+          "Am Ende der Seite mit klarer Kontaktmöglichkeit",
+        ],
+      },
+      {
+        heading: "Welche Button-Texte besser funktionieren",
+        body: [
+          "Ein Button sollte klar sagen, was passiert. Allgemeine Texte wie Mehr erfahren können sinnvoll sein, sind aber oft schwächer als konkrete Formulierungen wie Anfrage starten, Termin buchen oder Angebot ansehen.",
+          "Der Text sollte außerdem zum Angebot passen. Eine Beratungsseite braucht oft einen anderen nächsten Schritt als eine Studio-Website oder ein Online-Shop.",
+        ],
+        bullets: [
+          "Konkrete Aktion nennen",
+          "Keine falschen Erwartungen erzeugen",
+          "Kurz und verständlich bleiben",
+          "Hauptaktion und Nebenaktion klar unterscheiden",
+        ],
+      },
+      {
+        heading: "Welche Fehler CTAs schwächen",
+        body: [
+          "Viele Websites haben entweder zu wenige oder zu viele Buttons. Fehlt der CTA, wissen Besucher nicht, wie es weitergeht. Gibt es zu viele verschiedene Aktionen, wirkt die Seite unruhig und die Priorität geht verloren.",
+          "Auch die Gestaltung zählt. Buttons müssen sichtbar sein, aber nicht alles dominieren. Farbe, Abstand und Größe sollten den nächsten Schritt markieren, ohne den Inhalt zu verdrängen.",
+        ],
+        bullets: [
+          "Mehrere Hauptaktionen nebeneinander",
+          "Buttons ohne erklärenden Kontext",
+          "Zu schwacher Kontrast auf dunklen oder hellen Flächen",
+          "Kontaktbutton nur ganz am Ende der Seite",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision CTAs plant",
+        body: [
+          "Digital Vision plant CTAs ausgehend vom Nutzerweg. Zuerst wird geklärt, welche Aktion die Seite auslösen soll und welche Informationen Besucher davor brauchen.",
+          "Danach werden Button-Texte, Platzierung und visuelle Gewichtung so abgestimmt, dass die Website klar führt und trotzdem hochwertig wirkt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Wie viele Call-to-Action-Buttons braucht eine Seite?",
+        answer:
+          "Das hängt vom Aufbau ab. Wichtig ist nicht die Menge, sondern dass der nächste Schritt an den entscheidenden Stellen sichtbar ist.",
+      },
+      {
+        question: "Soll jeder Button gleich aussehen?",
+        answer:
+          "Die Hauptaktion sollte konsistent erkennbar sein. Nebenaktionen dürfen ruhiger gestaltet sein, damit die Priorität klar bleibt.",
+      },
+      {
+        question: "Kann Digital Vision bestehende CTAs verbessern?",
+        answer:
+          "Ja. Bestehende Buttons, Texte und Kontaktwege können geprüft und so angepasst werden, dass Besucher leichter zur Anfrage finden.",
+      },
+    ],
+  },
+  {
+    slug: "cms-oder-statische-website-was-passt-besser",
+    title: "CMS oder statische Website: Welche Lösung passt besser?",
+    description:
+      "Nicht jede Website braucht ein CMS. Die passende technische Lösung hängt davon ab, wie oft Inhalte gepflegt werden, wer Änderungen macht und welche Funktionen gebraucht werden.",
+    excerpt: "Wann ein CMS sinnvoll ist und wann eine schlanke statische Website reicht.",
+    category: "Technik",
+    date: "2026-08-14",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "CMS oder statische Website",
+    image: "/blog/cms-oder-statische-website-was-passt-besser.png",
+    imageAlt: "Laptop mit Vergleich zwischen CMS-Dashboard und schneller statischer Website",
+    featured: true,
+    takeaways: [
+      "Ein CMS lohnt sich, wenn Inhalte regelmäßig selbst gepflegt werden.",
+      "Statische Websites können schneller, schlanker und wartungsärmer sein.",
+      "Die Technik sollte zum Alltag des Unternehmens passen, nicht umgekehrt.",
+    ],
+    sections: [
+      {
+        heading: "Warum die technische Basis früh entschieden werden sollte",
+        body: [
+          "Die Entscheidung zwischen CMS und statischer Website beeinflusst Pflege, Kosten, Geschwindigkeit und spätere Erweiterungen. Deshalb sollte sie nicht erst nach dem Design getroffen werden.",
+          "Wichtig ist die Frage, wie die Website im Alltag genutzt wird. Werden Inhalte regelmäßig geändert? Gibt es mehrere Redakteure? Müssen Blogartikel, Leistungen oder Bilder selbst gepflegt werden?",
+        ],
+      },
+      {
+        heading: "Wann ein CMS sinnvoll ist",
+        body: [
+          "Ein CMS ist sinnvoll, wenn Inhalte regelmäßig aktualisiert werden und das Team Änderungen selbst vornehmen möchte. Das betrifft häufig Blogartikel, News, Referenzen, Leistungen, Teamseiten oder Stellenangebote.",
+          "Auch bei mehreren Verantwortlichen kann ein CMS helfen, wenn Rollen, Entwürfe und Veröffentlichungen sauber organisiert werden.",
+        ],
+        bullets: [
+          "Regelmäßige Inhalte wie Blog, News oder Referenzen",
+          "Mehrere Personen bearbeiten Inhalte",
+          "Texte und Bilder sollen intern gepflegt werden",
+          "Ein Admin-Bereich ist für Abläufe sinnvoll",
+        ],
+      },
+      {
+        heading: "Wann eine statische Website reicht",
+        body: [
+          "Eine statische Website kann die bessere Wahl sein, wenn Inhalte selten geändert werden und der Fokus auf Geschwindigkeit, Stabilität und geringem Pflegeaufwand liegt.",
+          "Gerade kleinere Unternehmensseiten, Landingpages oder klare Leistungsseiten brauchen nicht automatisch ein CMS. Wenn Änderungen nur gelegentlich passieren, kann eine schlanke Umsetzung effizienter sein.",
+        ],
+        bullets: [
+          "Inhalte ändern sich selten",
+          "Schnelle Ladezeiten sind besonders wichtig",
+          "Die Website bleibt bewusst schlank",
+          "Kein internes Redaktionsteam notwendig",
+        ],
+      },
+      {
+        heading: "Welche Nachteile bedacht werden sollten",
+        body: [
+          "Ein CMS bringt Flexibilität, aber auch mehr Pflege. Updates, Rechte, Sicherheitsfragen und klare Eingabestrukturen müssen berücksichtigt werden. Ohne gute Struktur kann ein CMS schnell unübersichtlich werden.",
+          "Eine statische Website ist schlanker, aber weniger bequem für laufende Inhaltsänderungen. Wer jede Woche neue Inhalte veröffentlichen möchte, braucht dann einen passenden Pflegeprozess.",
+        ],
+        bullets: [
+          "CMS braucht klare Rollen und Pflege",
+          "Zu viele Optionen machen Inhalte unruhig",
+          "Statische Seiten sind weniger bequem selbst änderbar",
+          "Die spätere Erweiterung sollte früh mitgedacht werden",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision die passende Lösung auswählt",
+        body: [
+          "Digital Vision entscheidet die Technik nicht nach Gewohnheit, sondern nach Projektziel. Zuerst wird geklärt, welche Inhalte gepflegt werden, wer damit arbeitet und welche Funktionen langfristig sinnvoll sind.",
+          "So entsteht eine Website, die im Alltag funktioniert: entweder mit einem übersichtlichen CMS oder als schnelle, stabile statische Lösung.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Braucht jede Website ein CMS?",
+        answer:
+          "Nein. Ein CMS lohnt sich vor allem, wenn Inhalte regelmäßig selbst gepflegt werden sollen. Für stabile Seiten reicht oft eine statische Umsetzung.",
+      },
+      {
+        question: "Ist eine statische Website schlechter für SEO?",
+        answer:
+          "Nein. Entscheidend sind Struktur, Inhalte, Ladezeit und technische Qualität. Eine statische Website kann für SEO sehr gut funktionieren.",
+      },
+      {
+        question: "Kann ein CMS später ergänzt werden?",
+        answer:
+          "Ja, wenn die Website sauber geplant ist. Inhalte und Struktur sollten dafür früh so aufgebaut werden, dass Erweiterungen möglich bleiben.",
+      },
+    ],
+  },
+  {
     slug: "mobile-website-optimieren-smartphone-nutzer",
     title: "Mobile Website optimieren: Worauf Smartphone-Nutzer achten",
     description:

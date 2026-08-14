@@ -623,13 +623,18 @@ textarea {
   display: block;
   padding: 15px 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.mobile-nav-label {
+  display: inline-block;
   background: var(--nav-text-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  font-size: 1.05rem;
-  font-weight: 750;
 }
 
 .mobile-nav-panel nav a:hover {

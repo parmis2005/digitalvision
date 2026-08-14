@@ -39,7 +39,7 @@ export function MobileNav() {
         <nav aria-label="Hauptnavigation">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
-              {link.label}
+              <span className="mobile-nav-label">{link.label}</span>
             </a>
           ))}
         </nav>

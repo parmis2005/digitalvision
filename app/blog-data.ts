@@ -29,6 +29,279 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "website-navigation-planen-besucher-fuehren",
+    title: "Website-Navigation planen: Besucher schneller führen",
+    description:
+      "Eine gute Navigation hilft Besuchern, Leistungen, Informationen und Kontaktwege schnell zu finden. Entscheidend sind klare Begriffe, sinnvolle Reihenfolge und mobile Bedienbarkeit.",
+    excerpt: "Wie eine klare Navigation Orientierung schafft und Anfragen erleichtert.",
+    category: "UX",
+    date: "2026-08-16",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website-Navigation",
+    image: "/blog/website-navigation-planen-besucher-fuehren.png",
+    imageAlt: "Laptop mit Website-Navigation, Sitemap-Karten und hervorgehobenen Nutzerwegen",
+    featured: true,
+    takeaways: [
+      "Navigation sollte aus Sicht der Besucher geplant werden.",
+      "Klare Menüpunkte sind wichtiger als kreative Begriffe.",
+      "Mobile Navigation braucht eigene Prioritäten und kurze Wege.",
+    ],
+    sections: [
+      {
+        heading: "Warum Navigation mehr ist als ein Menü",
+        body: [
+          "Die Navigation entscheidet, wie schnell Besucher verstehen, was eine Website bietet. Sie ist nicht nur eine Liste von Links, sondern ein Orientierungssystem für Leistungen, Vertrauen, Informationen und Kontakt.",
+          "Wenn Menüpunkte unklar oder zu umfangreich sind, müssen Besucher raten. Das kostet Aufmerksamkeit und kann dazu führen, dass wichtige Inhalte nicht gefunden werden.",
+        ],
+      },
+      {
+        heading: "Welche Menüpunkte wirklich gebraucht werden",
+        body: [
+          "Eine gute Navigation zeigt die wichtigsten Bereiche, ohne jeden Unterpunkt sichtbar zu machen. Startseite, Leistungen, Projekte, Prozess, Preise, Blog und Kontakt können sinnvoll sein, wenn sie zur Website passen.",
+          "Nicht jede Website braucht dieselbe Struktur. Eine Praxis hat andere Prioritäten als ein Studio, ein Beratungsangebot oder ein Online-Shop.",
+        ],
+        bullets: [
+          "Leistungen klar und verständlich benennen",
+          "Kontakt oder Anfrage immer leicht erreichbar machen",
+          "Sekundäre Inhalte nicht in die Hauptnavigation drängen",
+          "Menüpunkte nach Nutzerinteresse statt interner Struktur ordnen",
+        ],
+      },
+      {
+        heading: "Warum Begrifflichkeit so wichtig ist",
+        body: [
+          "Kreative Begriffe können interessant wirken, aber sie helfen wenig, wenn Besucher nicht sofort verstehen, was dahinter liegt. Navigation sollte nicht erklären müssen, sondern direkt Orientierung geben.",
+          "Besonders bei Leistungen lohnt sich Klarheit. Ein Menüpunkt wie Leistungen ist oft stärker als ein abstrakter Begriff, wenn Besucher gezielt nach Angeboten suchen.",
+        ],
+        bullets: [
+          "Kurze Begriffe verwenden",
+          "Fachwörter vermeiden",
+          "Gleiche Themen nicht mehrfach anders benennen",
+          "Buttons und Menüpunkte sprachlich aufeinander abstimmen",
+        ],
+      },
+      {
+        heading: "Wie mobile Navigation anders funktioniert",
+        body: [
+          "Auf dem Smartphone ist Platz begrenzt. Deshalb sollte mobile Navigation nicht einfach alle Desktop-Menüpunkte übernehmen, wenn dadurch wichtige Aktionen verschwinden.",
+          "Ein gutes mobiles Menü zeigt klare Hauptwege und macht Kontakt, Anfrage oder Buchung schnell erreichbar. Zu viele Ebenen und lange Listen wirken auf kleinen Screens schnell schwerfällig.",
+        ],
+        bullets: [
+          "Kurze Menüs mit klarer Reihenfolge",
+          "Kontaktbutton sichtbar im Menü",
+          "Keine zu tiefen Untermenüs",
+          "Touch-Flächen groß genug gestalten",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Navigation plant",
+        body: [
+          "Digital Vision plant Navigation ausgehend vom Ziel der Website. Zuerst wird geklärt, welche Inhalte Besucher wirklich brauchen und welche Aktion am Ende stehen soll.",
+          "Daraus entsteht eine Struktur, die sowohl auf Desktop als auch mobil schnell verständlich ist und Besucher ohne Umwege zum passenden nächsten Schritt führt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Wie viele Menüpunkte sollte eine Website haben?",
+        answer:
+          "So wenige wie möglich und so viele wie nötig. Wichtig ist, dass die wichtigsten Bereiche schnell verstanden und erreicht werden.",
+      },
+      {
+        question: "Soll Kontakt immer in die Navigation?",
+        answer:
+          "In den meisten Fällen ja. Kontakt, Anfrage oder Buchung sollten leicht erreichbar sein, besonders auf mobilen Geräten.",
+      },
+      {
+        question: "Kann Digital Vision bestehende Navigationen verbessern?",
+        answer:
+          "Ja. Bestehende Menüs können auf Verständlichkeit, Reihenfolge, mobile Bedienung und Kontaktführung geprüft und neu strukturiert werden.",
+      },
+    ],
+  },
+  {
+    slug: "faq-bereich-auf-websites-richtig-nutzen",
+    title: "FAQ-Bereich auf Websites: Fragen beantworten und Vertrauen stärken",
+    description:
+      "Ein guter FAQ-Bereich reduziert Unsicherheit, beantwortet wiederkehrende Fragen und kann Besucher näher zur Anfrage führen.",
+    excerpt: "Warum FAQ-Bereiche mehr sind als ein Zusatz am Seitenende.",
+    category: "Content",
+    date: "2026-08-16",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "FAQ-Bereich Website",
+    image: "/blog/faq-bereich-auf-websites-richtig-nutzen.png",
+    imageAlt: "Laptop mit FAQ-Akkordeon, Fragekarten und Vertrauenssymbolen",
+    featured: true,
+    takeaways: [
+      "FAQs sollten echte Kundenfragen beantworten.",
+      "Gute Antworten reduzieren Einwände vor der Anfrage.",
+      "FAQ-Bereiche können Struktur, SEO und Vertrauen gleichzeitig stärken.",
+    ],
+    sections: [
+      {
+        heading: "Warum FAQs auf vielen Websites unterschätzt werden",
+        body: [
+          "Ein FAQ-Bereich wirkt oft wie ein kleiner Zusatz am Ende der Seite. Richtig eingesetzt kann er aber eine wichtige Rolle spielen: Er beantwortet Unsicherheiten genau dort, wo Besucher kurz vor einer Entscheidung stehen.",
+          "Gerade bei Dienstleistungen, Beratung, Preisen, Abläufen oder technischen Themen helfen FAQs, wiederkehrende Fragen kompakt und verständlich zu klären.",
+        ],
+      },
+      {
+        heading: "Welche Fragen in den FAQ-Bereich gehören",
+        body: [
+          "Gute FAQs entstehen nicht aus Vermutungen, sondern aus echten Kundengesprächen. Welche Fragen kommen vor einer Anfrage immer wieder? Welche Einwände halten Besucher zurück? Welche Informationen müssen schnell erklärt werden?",
+          "Die besten Fragen sind konkret. Statt allgemeiner Floskeln sollten Antworten zeigen, was Besucher wirklich wissen müssen.",
+        ],
+        bullets: [
+          "Fragen zu Ablauf, Dauer und Kosten",
+          "Fragen zu Vorbereitung und nächsten Schritten",
+          "Fragen zu Technik, Pflege oder Erweiterung",
+          "Fragen zu Kontakt, Buchung oder Zusammenarbeit",
+        ],
+      },
+      {
+        heading: "Wie Antworten Vertrauen aufbauen",
+        body: [
+          "Antworten sollten kurz, ehrlich und hilfreich sein. Ein FAQ-Bereich ist kein Ort für Werbetexte, sondern für klare Orientierung.",
+          "Vertrauen entsteht, wenn auch Grenzen und Voraussetzungen verständlich erklärt werden. Wer offen sagt, wann eine Lösung passt und wann nicht, wirkt glaubwürdiger.",
+        ],
+        bullets: [
+          "Direkt antworten statt ausweichen",
+          "Fachbegriffe einfach erklären",
+          "Keine überlangen Antwortblöcke schreiben",
+          "Bei Bedarf zur passenden Leistung oder Anfrage führen",
+        ],
+      },
+      {
+        heading: "Wo FAQs auf der Seite stehen sollten",
+        body: [
+          "FAQs müssen nicht immer ganz unten stehen. Bei langen Leistungsseiten können sie auch nach wichtigen Abschnitten sinnvoll sein, wenn genau dort typische Fragen entstehen.",
+          "Wichtig ist der Kontext. Fragen zu Preisen gehören näher an Angebotsbereiche, Fragen zum Ablauf eher zum Prozess, technische Fragen bei Funktionen oder Systemen.",
+        ],
+        bullets: [
+          "Am Ende einer Leistungsseite",
+          "Direkt nach Preis- oder Paketbereichen",
+          "In der Nähe von Formularen oder Buchungen",
+          "Als eigener Bereich bei erklärungsbedürftigen Angeboten",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision FAQ-Bereiche plant",
+        body: [
+          "Digital Vision nutzt FAQs als Teil der Nutzerführung. Die Fragen werden so ausgewählt, dass sie echte Unsicherheiten reduzieren und den nächsten Schritt verständlicher machen.",
+          "Dadurch wird der FAQ-Bereich nicht nur ein Textblock, sondern ein klarer Bestandteil von Vertrauen, SEO und Anfrageprozess.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Sind FAQs gut für SEO?",
+        answer:
+          "Ja, wenn sie echte Fragen verständlich beantworten und zur Seite passen. Sie ersetzen aber keine klare Seitenstruktur und keine guten Hauptinhalte.",
+      },
+      {
+        question: "Wie viele FAQ-Fragen sind sinnvoll?",
+        answer:
+          "Meist reichen fünf bis acht starke Fragen pro Seite. Qualität und Relevanz sind wichtiger als eine lange Liste.",
+      },
+      {
+        question: "Kann Digital Vision bestehende FAQs verbessern?",
+        answer:
+          "Ja. Bestehende Fragen können gekürzt, neu sortiert und stärker auf Nutzerfragen, Vertrauen und Anfrageführung ausgerichtet werden.",
+      },
+    ],
+  },
+  {
+    slug: "website-analytics-nutzen-und-verbessern",
+    title: "Website-Analytics nutzen: Daten verstehen und Seiten verbessern",
+    description:
+      "Website-Analytics helfen zu erkennen, welche Seiten funktionieren, wo Besucher abspringen und welche Kontaktwege wirklich genutzt werden.",
+    excerpt: "Wie Messdaten helfen, Websites gezielt und pragmatisch zu verbessern.",
+    category: "Analyse",
+    date: "2026-08-16",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website Analytics",
+    image: "/blog/website-analytics-nutzen-und-verbessern.png",
+    imageAlt: "Laptop mit Website-Analytics, Diagrammen, Funnel und Nutzerpfaden",
+    featured: true,
+    takeaways: [
+      "Analytics zeigen, welche Seiten und Kontaktwege wirklich genutzt werden.",
+      "Wichtiger als viele Daten sind klare Fragen und sinnvolle Kennzahlen.",
+      "Messung sollte datenschutzbewusst und verständlich eingerichtet werden.",
+    ],
+    sections: [
+      {
+        heading: "Warum Bauchgefühl allein nicht reicht",
+        body: [
+          "Viele Entscheidungen über Websites werden nach Gefühl getroffen. Das ist verständlich, aber nicht immer zuverlässig. Analytics zeigen, welche Seiten besucht werden, wo Nutzer abspringen und welche Aktionen tatsächlich passieren.",
+          "Daten ersetzen keine Strategie, aber sie machen Verbesserungen konkreter. Statt alles gleichzeitig zu ändern, kann gezielt geprüft werden, wo die größten Chancen liegen.",
+        ],
+      },
+      {
+        heading: "Welche Kennzahlen wirklich wichtig sind",
+        body: [
+          "Nicht jede Zahl ist hilfreich. Entscheidend ist, welche Frage beantwortet werden soll: Finden Besucher die Leistungen? Nutzen sie Kontaktbuttons? Brechen sie auf mobilen Geräten ab? Kommen Anfragen über bestimmte Seiten?",
+          "Für kleine und mittlere Websites reichen oft wenige Kennzahlen, wenn sie regelmäßig betrachtet und richtig eingeordnet werden.",
+        ],
+        bullets: [
+          "Besuche und Einstiegsseiten",
+          "Absprungraten und Verweildauer",
+          "Klicks auf Kontakt, Telefon oder Anfrage",
+          "Nutzung nach Gerät und Seite",
+        ],
+      },
+      {
+        heading: "Wie Daten zu besseren Entscheidungen führen",
+        body: [
+          "Analytics werden wertvoll, wenn daraus konkrete Maßnahmen entstehen. Wenn eine wichtige Leistungsseite viele Besucher hat, aber kaum Kontaktklicks, kann der CTA unklar sein. Wenn mobile Besucher früher abspringen, liegt vielleicht ein Layout- oder Ladezeitproblem vor.",
+          "So entstehen keine zufälligen Änderungen, sondern gezielte Verbesserungen an Struktur, Text, Design oder Formularen.",
+        ],
+        bullets: [
+          "Starke Seiten weiter ausbauen",
+          "Schwache Kontaktwege sichtbarer machen",
+          "Mobile Probleme priorisieren",
+          "Inhalte nach echten Nutzerfragen ergänzen",
+        ],
+      },
+      {
+        heading: "Warum Datenschutz mitgedacht werden muss",
+        body: [
+          "Website-Messung sollte nicht blind eingebaut werden. Datenschutz, Cookie-Hinweise und datensparsame Tools müssen zum Projekt passen.",
+          "Oft reichen schlanke Analysen, um wichtige Entscheidungen zu treffen. Es muss nicht jedes Detail gespeichert werden, wenn klare Kennzahlen ausreichen.",
+        ],
+        bullets: [
+          "Datensparsame Tools prüfen",
+          "Cookie- und Datenschutzanforderungen beachten",
+          "Nur relevante Ereignisse messen",
+          "Zahlen verständlich dokumentieren",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Analytics einbindet",
+        body: [
+          "Digital Vision richtet Messung nicht als Selbstzweck ein. Zuerst wird geklärt, welche Ziele die Website hat und welche Aktionen gemessen werden sollten.",
+          "Danach werden Kontaktwege, wichtige Seiten und technische Grundlagen so betrachtet, dass Verbesserungen nachvollziehbar und pragmatisch umgesetzt werden können.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Braucht jede Website Analytics?",
+        answer:
+          "Nicht jede Website braucht ein großes Tracking-Setup. Sinnvoll ist aber eine einfache Messung, wenn Entscheidungen zur Verbesserung getroffen werden sollen.",
+      },
+      {
+        question: "Welche Aktionen sollten gemessen werden?",
+        answer:
+          "Wichtig sind meist Kontaktklicks, Formularabsendungen, Telefonklicks, wichtige Seitenaufrufe und gegebenenfalls Buchungen oder Downloads.",
+      },
+      {
+        question: "Kann Digital Vision Analytics datensparsam einrichten?",
+        answer:
+          "Ja. Messung kann so geplant werden, dass nur relevante Kennzahlen erfasst und Datenschutzanforderungen berücksichtigt werden.",
+      },
+    ],
+  },
+  {
     slug: "call-to-action-richtig-platzieren",
     title: "Call-to-Action richtig platzieren: Wo Buttons wirklich helfen",
     description:

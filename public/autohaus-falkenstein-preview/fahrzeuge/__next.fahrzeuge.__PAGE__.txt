@@ -1,0 +1,22 @@
+1:"$Sreact.fragment"
+2:I[5500,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js","/autohaus-falkenstein-preview/_next/static/chunks/3gwzi_6mec6nz.js"],"Image"]
+3:"$Sreact.suspense"
+4:I[26441,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js","/autohaus-falkenstein-preview/_next/static/chunks/3gwzi_6mec6nz.js"],"default"]
+5:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"OutletBoundary"]
+9:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"ViewportBoundary"]
+a:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"MetadataBoundary"]
+b:I[27201,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"IconMark"]
+d:I[39756,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"default"]
+e:I[37457,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"default"]
+8:X
+10:X
+10:C
+0:{"buildId":"WkzgAzbiC-yh1uZ8f_u6J","data":[{"rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"relative flex min-h-[45vh] items-end overflow-hidden bg-black pt-24","children":[["$","$L2",null,{"src":"/autohaus-falkenstein-preview/images/ferrari-showroom.jpg","alt":"Alle Fahrzeuge","fill":true,"priority":true,"sizes":"100vw","className":"object-cover opacity-50"}],["$","div",null,{"className":"absolute inset-0 bg-gradient-to-t from-background via-black/50 to-black/60"}],["$","div",null,{"className":"relative mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6 lg:px-8","children":[["$","p",null,{"className":"text-sm font-semibold uppercase tracking-[0.3em] text-accent","children":"Unser Bestand"}],["$","h1",null,{"className":"mt-3 font-display text-4xl font-semibold text-white sm:text-5xl lg:text-6xl","children":"Alle Fahrzeuge"}],["$","p",null,{"className":"mt-4 max-w-2xl text-white/75","children":"Stöbern Sie durch unsere aktuelle Auswahl geprüfter Premium-Fahrzeuge."}]]}]]}],["$","section",null,{"className":"bg-background py-16","children":["$","div",null,{"className":"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8","children":["$","$3",null,{"fallback":["$","div",null,{"className":"text-muted","children":"Fahrzeuge werden geladen…"}],"children":["$","$L4",null,{}]}]}]}]],[["$","script","script-0",{"src":"/autohaus-falkenstein-preview/_next/static/chunks/3gwzi_6mec6nz.js","async":true}]],["$","$L5",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L9",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Fahrzeuge | Autohaus Falkenstein"}],["$","meta","1",{"name":"description","content":"Entdecken Sie unsere Auswahl an Premium Neu- und Gebrauchtwagen – von Sportwagen bis SUV."}],["$","meta","2",{"name":"keywords","content":"Autohaus,Gebrauchtwagen,Neuwagen,Berlin,Sportwagen,Autohändler"}],["$","link","3",{"rel":"icon","href":"/autohaus-falkenstein-preview/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$Lb","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@c","staleTime":"$8","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Ld",null,{"parallelRouterKey":"children","template":["$","$Le",null,{}]}]]}],"isPartial":"$@f","staleTime":"$8","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+6:null
+12:true
+8:300
+8:C
+11:0
+c:"$undefined"
+f:"$undefined"
+7:"$undefined"

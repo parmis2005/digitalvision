@@ -12,6 +12,7 @@ export type ProductItem = {
     | "schedule"
     | "seo"
     | "auto"
+    | "premium-auto"
     | "coffee"
     | "wellness"
     | "thermal"
@@ -186,6 +187,22 @@ export const products: ProductItem[] = [
       "Geeignet für Fußpflege-Studios, Podologie-Angebote und Beauty-Praxen",
     ],
     previewUrl: "/fusspflege-preview/index.html",
+  },
+  {
+    slug: "autohaus-falkenstein",
+    type: "Premium Autohaus Website",
+    title: "Autohaus Falkenstein",
+    detail: "Premium-Website für Sportwagen, Fahrzeugbestand, Service und Probefahrten",
+    variant: "premium-auto",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Autohaus-Website mit starkem Video-Hero, Premium-Fahrzeugbestand, Service-Bereichen und direktem Probefahrtfokus.",
+    highlights: [
+      "Starker Hero-Bereich für Premium-Fahrzeuge, Emotion und direkte Fahrzeugauswahl",
+      "Klare Struktur für Bestand, Fahrzeugdetails, Finanzierung, Service und Kontakt",
+      "Geeignet für Autohäuser, Premium-Händler, Sportwagenanbieter und Fahrzeugvermittler",
+    ],
+    previewUrl: "/autohaus-falkenstein-preview/index.html",
   },
   {
     slug: "alphaschutz-versicherung",

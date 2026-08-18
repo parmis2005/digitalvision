@@ -1,0 +1,5 @@
+:HL["/autohaus-falkenstein-preview/_next/static/chunks/2olu3x1iaw9j9.css","style"]
+:HL["/autohaus-falkenstein-preview/_next/static/media/0c89a48fa5027cee-s.p.2cyn07wtgehh0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/autohaus-falkenstein-preview/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/autohaus-falkenstein-preview/preview-passive.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"impressum","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"WkzgAzbiC-yh1uZ8f_u6J"}

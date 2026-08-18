@@ -1,0 +1,20 @@
+1:"$Sreact.fragment"
+2:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+7:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"ViewportBoundary"]
+8:I[97367,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"MetadataBoundary"]
+9:I[27201,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"IconMark"]
+b:I[39756,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"default"]
+c:I[37457,["/autohaus-falkenstein-preview/_next/static/chunks/3czqgpuun-yaj.js"],"default"]
+6:X
+e:X
+e:C
+0:{"buildId":"WkzgAzbiC-yh1uZ8f_u6J","data":[{"rsc":["$","$1","c",{"children":[["$","section",null,{"className":"mx-auto max-w-3xl px-4 py-32 sm:px-6 lg:px-8","children":[["$","h1",null,{"className":"font-display text-4xl font-semibold text-foreground","children":"Impressum"}],["$","div",null,{"className":"mt-10 space-y-6 text-sm leading-relaxed text-muted","children":[["$","p",null,{"children":"Dies ist eine Demo-Webseite mit Beispielinhalten. Alle Angaben sind fiktiv und dienen ausschließlich Demonstrationszwecken."}],["$","div",null,{"children":[["$","h2",null,{"className":"font-display text-lg font-semibold text-foreground","children":"Angaben gemäß § 5 TMG"}],["$","p",null,{"className":"mt-2","children":["Autohaus Falkenstein GmbH (Beispiel)",["$","br",null,{}],"Falkenstraße 12",["$","br",null,{}],"10115 Berlin"]}]]}],["$","div",null,{"children":[["$","h2",null,{"className":"font-display text-lg font-semibold text-foreground","children":"Kontakt"}],["$","p",null,{"className":"mt-2","children":["Telefon: 0123 / 456789",["$","br",null,{}],"E-Mail: kontakt@autohaus-falkenstein.de"]}]]}],["$","div",null,{"children":[["$","h2",null,{"className":"font-display text-lg font-semibold text-foreground","children":"Vertreten durch"}],["$","p",null,{"className":"mt-2","children":"Max Falkenstein (Geschäftsführer, Beispielname)"}]]}]]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Impressum | Autohaus Falkenstein"}],["$","meta","1",{"name":"description","content":"Autohaus Falkenstein in Berlin – Ihr Partner für Premium Neu- und Gebrauchtwagen, Finanzierung, Inzahlungnahme und Service. Jetzt Probefahrt vereinbaren."}],["$","meta","2",{"name":"keywords","content":"Autohaus,Gebrauchtwagen,Neuwagen,Berlin,Sportwagen,Autohändler"}],["$","link","3",{"rel":"icon","href":"/autohaus-falkenstein-preview/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L9","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@a","staleTime":"$6","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lb",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}]}]]}],"isPartial":"$@d","staleTime":"$6","varyParams":"$e"}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
+4:null
+10:true
+6:300
+6:C
+f:0
+a:"$undefined"
+d:"$undefined"
+5:"$undefined"

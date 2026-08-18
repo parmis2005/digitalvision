@@ -462,6 +462,32 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "autohaus-falkenstein" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Premium-Autohaus-Auftritt mit Video-Hero und direktem Probefahrtfokus.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Autohaus-Projekts:
+              dunkler Premium-Look, starke Fahrzeugbilder, Fahrzeugbestand,
+              Detailseiten, Service- und Finanzierungsbereiche sowie ein Aufbau,
+              der Interessenten schnell zur Probefahrt oder Anfrage führt.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : product.slug === "nagelstudio-sinja" ? (
         <section className="product-details">
           <div className="product-detail-card">

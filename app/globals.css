@@ -1395,6 +1395,12 @@ h3 {
   height: 100%;
 }
 
+.premium-auto-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .coffee-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2262,6 +2268,153 @@ h3 {
 .auto-card-copy span {
   color: rgba(196, 208, 227, 0.8);
   font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.premium-auto-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.premium-auto-card-cta {
+  color: rgba(240, 204, 124, 0.92);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.premium-auto-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.premium-auto-card-branding {
+  display: grid;
+  gap: 3px;
+}
+
+.premium-auto-card-branding p {
+  margin-bottom: 0;
+  color: #fff8e8;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.premium-auto-card-branding span {
+  color: rgba(234, 214, 170, 0.84);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.premium-auto-card-stage {
+  position: relative;
+  min-height: 126px;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(4, 7, 13, 0.76), rgba(4, 7, 13, 0.24)),
+    url("/autohaus-falkenstein-preview/images/hero-audi-r8-forest.jpg") center 54%/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(240, 204, 124, 0.18);
+}
+
+.premium-auto-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 34%, rgba(240, 204, 124, 0.24), transparent 18%),
+    linear-gradient(180deg, transparent 54%, rgba(5, 8, 14, 0.68));
+  content: "";
+}
+
+.premium-auto-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 7px;
+  max-width: 62%;
+  color: #fff8e8;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.42);
+}
+
+.premium-auto-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(240, 204, 124, 0.92);
+  color: #17100a;
+  font-size: 0.46rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.premium-auto-card-overlay strong {
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 0.94;
+}
+
+.premium-auto-card-spec {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 100px;
+  padding: 10px 11px;
+  border: 1px solid rgba(255, 248, 232, 0.22);
+  border-radius: 16px;
+  background: rgba(5, 8, 14, 0.72);
+  color: #fff8e8;
+  text-align: right;
+  backdrop-filter: blur(10px);
+}
+
+.premium-auto-card-spec span {
+  color: #f0cc7c;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.premium-auto-card-spec small {
+  color: rgba(255, 248, 232, 0.8);
+  font-size: 0.46rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.premium-auto-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.premium-auto-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8e8;
+  font-size: 1.06rem;
+  line-height: 0.98;
+}
+
+.premium-auto-card-copy span {
+  color: rgba(234, 214, 170, 0.8);
+  font-size: 0.62rem;
   line-height: 1.35;
 }
 
@@ -3680,6 +3833,14 @@ h3 {
   color: #f8fbff;
 }
 
+.showcase-card.premium-auto .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(240, 204, 124, 0.18), transparent 18%),
+    radial-gradient(circle at 20% 88%, rgba(130, 55, 22, 0.18), transparent 22%),
+    linear-gradient(160deg, #05080e 0%, #172338 46%, #b78b3e 100%);
+  color: #fff8e8;
+}
+
 .showcase-card.coffee .showcase-preview {
   background:
     radial-gradient(circle at 16% 18%, rgba(255, 240, 227, 0.14), transparent 20%),
@@ -3982,6 +4143,25 @@ h3 {
     radial-gradient(circle at 82% 26%, rgba(241, 178, 74, 0.12), transparent 20%),
     linear-gradient(135deg, #152034, #1d2f2f 58%, #4e5f49 100%);
   color: #f8fbff;
+}
+
+.product-preview-large.premium-auto .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(240, 204, 124, 0.18), transparent 20%),
+    radial-gradient(circle at 16% 82%, rgba(90, 44, 22, 0.18), transparent 22%),
+    linear-gradient(135deg, #05080e, #172338 54%, #b78b3e);
+  color: #fff8e8;
+}
+
+.product-preview-large.premium-auto .product-preview-viewport,
+.product-preview-large.premium-auto .product-preview-iframe {
+  background: #05080e;
+}
+
+.product-preview-large.premium-auto .product-preview-iframe {
+  width: 180%;
+  height: 1240px;
+  transform: scale(0.556);
 }
 
 .product-preview-large.coffee .product-preview-shell {

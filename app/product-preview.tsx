@@ -8,6 +8,7 @@ type ProductPreviewProps = {
 export function ProductPreview({ product, size = "card" }: ProductPreviewProps) {
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
+  const isPremiumAuto = product.slug === "autohaus-falkenstein";
   const isCoffee = product.slug === "bean-bark";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
@@ -149,6 +150,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <span>SUV</span>
                 <span>35.000 €</span>
               </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isPremiumAuto) {
+    if (size === "card") {
+      return (
+        <div className="premium-auto-preview-card-view">
+          <div className="premium-auto-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="premium-auto-card-cta">Probefahrt</span>
+          </div>
+          <div className="premium-auto-card-shell">
+            <div className="premium-auto-card-branding">
+              <p>Autohaus Falkenstein</p>
+              <span>Premium Neu- & Gebrauchtwagen</span>
+            </div>
+            <div className="premium-auto-card-stage">
+              <div className="premium-auto-card-overlay">
+                <span className="premium-auto-card-kicker">Porsche 911 Turbo S</span>
+                <strong>PS trifft Perfektion.</strong>
+              </div>
+              <div className="premium-auto-card-spec">
+                <span>650 PS</span>
+                <small>2,7 s · 330 km/h</small>
+              </div>
+            </div>
+            <div className="premium-auto-card-copy">
+              <h3>Autohaus Falkenstein</h3>
+              <span>Fahrzeuge · Service · Finanzierung · Kontakt</span>
             </div>
           </div>
         </div>

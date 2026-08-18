@@ -29,6 +29,279 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "website-ladezeiten-verbessern-schneller-zur-anfrage",
+    title: "Website-Ladezeiten verbessern: Schneller zur Anfrage führen",
+    description:
+      "Schnelle Ladezeiten machen Websites angenehmer, professioneller und leichter nutzbar. Besonders mobil entscheidet Geschwindigkeit oft darüber, ob Besucher bleiben oder abspringen.",
+    excerpt: "Warum Tempo Vertrauen schafft und Kontaktwege besser funktionieren lässt.",
+    category: "Technik",
+    date: "2026-08-18",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Website-Ladezeiten",
+    image: "/blog/website-ladezeiten-verbessern-schneller-zur-anfrage.png",
+    imageAlt: "Schnelle Website mit Ladezeiten-Dashboard, Performance-Karten und Kontaktbutton",
+    featured: true,
+    takeaways: [
+      "Ladezeiten beeinflussen den ersten Eindruck und die Nutzung direkt.",
+      "Bilder, Skripte und unnötige Effekte sind häufige Ursachen für langsame Seiten.",
+      "Performance sollte vor und nach dem Launch regelmäßig geprüft werden.",
+    ],
+    sections: [
+      {
+        heading: "Warum Ladezeit sofort spürbar ist",
+        body: [
+          "Besucher bewerten eine Website oft in wenigen Sekunden. Wenn Inhalte langsam erscheinen, wirkt der gesamte Auftritt schwerfällig, auch wenn Design und Texte eigentlich gut sind.",
+          "Gerade auf dem Smartphone ist Geschwindigkeit entscheidend. Mobile Verbindungen, ältere Geräte und kurze Aufmerksamkeit sorgen dafür, dass unnötige Wartezeit direkt Anfragen kosten kann.",
+        ],
+      },
+      {
+        heading: "Welche Bereiche Websites häufig langsam machen",
+        body: [
+          "Langsame Websites entstehen selten durch einen einzelnen Fehler. Meist kommen zu große Bilder, viele externe Skripte, unklare technische Struktur und zu schwere Effekte zusammen.",
+          "Deshalb reicht es nicht, nur ein Bild kleiner zu machen. Eine saubere Optimierung betrachtet Aufbau, Medien, Code, Hosting und die Reihenfolge, in der Inhalte geladen werden.",
+        ],
+        bullets: [
+          "Bilder in passender Größe ausgeben",
+          "Unnötige Skripte und Plugins reduzieren",
+          "Schriften bewusst und sparsam laden",
+          "Wichtige Inhalte zuerst sichtbar machen",
+        ],
+      },
+      {
+        heading: "Wie Geschwindigkeit Vertrauen stärkt",
+        body: [
+          "Eine schnelle Website fühlt sich verlässlicher an. Besucher können Leistungen prüfen, Referenzen ansehen und Kontakt aufnehmen, ohne durch Wartezeiten aus dem Ablauf gerissen zu werden.",
+          "Das wirkt besonders bei Dienstleistern professionell. Wer online sauber, schnell und klar auftritt, vermittelt bereits vor dem ersten Gespräch Struktur und Verbindlichkeit.",
+        ],
+        bullets: [
+          "Schneller sichtbarer Hero-Bereich",
+          "Kurze Wege zu Leistungen und Kontakt",
+          "Stabile Darstellung ohne Layoutsprünge",
+          "Gute Lesbarkeit auch auf mobilen Geräten",
+        ],
+      },
+      {
+        heading: "Warum Performance laufend geprüft werden sollte",
+        body: [
+          "Nach dem Launch verändern sich Websites weiter. Neue Bilder, Tracking-Tools, zusätzliche Bereiche oder externe Einbindungen können Ladezeiten wieder verschlechtern.",
+          "Performance ist deshalb kein einmaliger Schritt, sondern Teil der Pflege. Kleine regelmäßige Prüfungen verhindern, dass die Website mit der Zeit langsamer und unübersichtlicher wird.",
+        ],
+        bullets: [
+          "Neue Bilder vor dem Hochladen optimieren",
+          "Kontaktformulare und Ladeverhalten testen",
+          "Mobile Ansicht regelmäßig prüfen",
+          "Nicht mehr benötigte Einbindungen entfernen",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Ladezeiten verbessert",
+        body: [
+          "Digital Vision achtet schon beim Aufbau auf schlanke Seiten, passende Bildgrößen, klare Struktur und schnelle erste Inhalte. Dadurch wirkt die Website nicht nur besser, sondern funktioniert im Alltag zuverlässiger.",
+          "Bei bestehenden Websites können Performance-Probleme analysiert und gezielt reduziert werden, ohne den gesamten Auftritt unnötig neu aufzubauen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Warum sind schnelle Ladezeiten wichtig?",
+        answer:
+          "Schnelle Ladezeiten verbessern den ersten Eindruck, reduzieren Absprünge und machen Kontaktwege leichter erreichbar.",
+      },
+      {
+        question: "Müssen alle Bilder ersetzt werden?",
+        answer:
+          "Nicht unbedingt. Oft reicht es, Bilder passend zu komprimieren, in richtigen Größen auszugeben und unnötige Varianten zu entfernen.",
+      },
+      {
+        question: "Kann Digital Vision eine bestehende Website schneller machen?",
+        answer:
+          "Ja. Bestehende Seiten können auf Bilder, Skripte, Struktur und mobile Darstellung geprüft und gezielt optimiert werden.",
+      },
+    ],
+  },
+  {
+    slug: "leistungsseiten-strukturieren-angebote-klar-erklaeren",
+    title: "Leistungsseiten strukturieren: Angebote klar erklären",
+    description:
+      "Gute Leistungsseiten zeigen schnell, was angeboten wird, für wen es passt und wie der nächste Schritt aussieht. Klare Struktur ist wichtiger als lange Werbetexte.",
+    excerpt: "Wie Leistungsseiten verständlicher werden und Besucher gezielt zur Anfrage führen.",
+    category: "Content",
+    date: "2026-08-18",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Leistungsseiten",
+    image: "/blog/leistungsseiten-strukturieren-angebote-klar-erklaeren.png",
+    imageAlt: "Website-Leistungsseite mit Angebotskarten, Nutzenpunkten und Anfragebereich",
+    featured: true,
+    takeaways: [
+      "Leistungsseiten müssen Angebot, Nutzen und Ablauf klar verbinden.",
+      "Besucher brauchen konkrete Informationen statt allgemeiner Versprechen.",
+      "Ein sichtbarer nächster Schritt macht aus Interesse eher eine Anfrage.",
+    ],
+    sections: [
+      {
+        heading: "Warum Leistungsseiten oft zu unklar sind",
+        body: [
+          "Viele Leistungsseiten erklären zu viel und gleichzeitig zu wenig. Sie nennen Angebote, aber lassen offen, für wen sie gedacht sind, welches Problem gelöst wird und was nach der Anfrage passiert.",
+          "Besucher müssen dann selbst sortieren, ob ein Angebot passt. Je mehr Denkarbeit nötig ist, desto wahrscheinlicher wird der Kontakt verschoben oder ganz abgebrochen.",
+        ],
+      },
+      {
+        heading: "Was eine gute Leistungsseite beantworten sollte",
+        body: [
+          "Eine starke Leistungsseite beantwortet die wichtigsten Fragen, bevor sie gestellt werden. Besucher sollten verstehen, welches Ergebnis sie erwarten können und welche Schritte bis dahin nötig sind.",
+          "Dabei geht es nicht um möglichst viele Details, sondern um klare Orientierung. Die Seite muss genug Sicherheit geben, um den nächsten Schritt plausibel zu machen.",
+        ],
+        bullets: [
+          "Was wird konkret angeboten?",
+          "Für wen ist die Leistung geeignet?",
+          "Welches Ergebnis entsteht am Ende?",
+          "Wie läuft die Zusammenarbeit ab?",
+        ],
+      },
+      {
+        heading: "Wie Inhalte besser gegliedert werden",
+        body: [
+          "Gute Gliederung führt Besucher durch die Entscheidung. Zuerst sollte das Angebot verständlich sein, danach folgen Nutzen, Ablauf, Beispiele, häufige Fragen und ein klarer Kontaktweg.",
+          "Abschnitte dürfen kurz sein, solange sie konkret sind. Wiederholte Aussagen, austauschbare Floskeln und lange Textblöcke machen eine Leistungsseite schwerer nutzbar.",
+        ],
+        bullets: [
+          "Einstieg mit klarem Nutzen",
+          "Leistungsumfang in kurzen Abschnitten",
+          "Ablauf oder Prozess sichtbar machen",
+          "FAQ und Kontakt direkt passend platzieren",
+        ],
+      },
+      {
+        heading: "Warum der nächste Schritt sichtbar sein muss",
+        body: [
+          "Wenn Besucher eine Leistung verstanden haben, sollte die Seite direkt zeigen, was sie als Nächstes tun können. Ein Anfragebutton darf nicht erst nach langem Suchen sichtbar werden.",
+          "Der Kontaktweg sollte zur Leistung passen. Bei erklärungsbedürftigen Angeboten kann eine kostenlose Anfrage sinnvoller sein als ein sofortiger Kaufbutton.",
+        ],
+        bullets: [
+          "CTA im oberen Bereich platzieren",
+          "Nach wichtigen Abschnitten erneut anbieten",
+          "Buttontext klar und konkret formulieren",
+          "Formular oder Kontaktbereich ohne Umwege erreichbar machen",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Leistungsseiten aufbaut",
+        body: [
+          "Digital Vision strukturiert Leistungsseiten so, dass Besucher Angebot, Nutzen, Ablauf und Kontaktweg schnell verstehen. Inhalte werden nicht nur gestaltet, sondern in eine nachvollziehbare Reihenfolge gebracht.",
+          "Dadurch entstehen Seiten, die professionell wirken und im Alltag helfen, bessere und passendere Anfragen zu bekommen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Braucht jede Leistung eine eigene Seite?",
+        answer:
+          "Wenn eine Leistung erklärungsbedürftig ist oder gezielt gefunden werden soll, ist eine eigene Seite oft sinnvoll. Kleinere Angebote können auch gebündelt werden.",
+      },
+      {
+        question: "Wie lang sollte eine Leistungsseite sein?",
+        answer:
+          "So lang wie nötig, aber klar gegliedert. Entscheidend ist, dass Angebot, Nutzen, Ablauf und nächster Schritt verständlich sind.",
+      },
+      {
+        question: "Kann Digital Vision vorhandene Leistungsseiten überarbeiten?",
+        answer:
+          "Ja. Bestehende Seiten können sprachlich, strukturell und visuell so verbessert werden, dass sie klarer zur Anfrage führen.",
+      },
+    ],
+  },
+  {
+    slug: "vertrauen-auf-websites-aufbauen-bevor-kunden-anfragen",
+    title: "Vertrauen auf Websites aufbauen: Bevor Kunden anfragen",
+    description:
+      "Vertrauen entsteht online durch klare Informationen, echte Einblicke, saubere Gestaltung und nachvollziehbare Kontaktwege. So fühlen sich Besucher vor der Anfrage sicherer.",
+    excerpt: "Welche Elemente Vertrauen schaffen und warum sie zur Entscheidung beitragen.",
+    category: "Vertrauen",
+    date: "2026-08-18",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Vertrauen Website",
+    image: "/blog/vertrauen-auf-websites-aufbauen-bevor-kunden-anfragen.png",
+    imageAlt: "Professionelle Website mit Kundenstimmen, Referenzen und Vertrauenselementen",
+    featured: true,
+    takeaways: [
+      "Vertrauen entsteht durch Klarheit, Echtheit und konsistente Darstellung.",
+      "Referenzen, Kundenstimmen und konkrete Informationen reduzieren Unsicherheit.",
+      "Kontaktwege müssen einfach, nachvollziehbar und seriös wirken.",
+    ],
+    sections: [
+      {
+        heading: "Warum Vertrauen vor dem Kontakt entsteht",
+        body: [
+          "Bevor jemand eine Anfrage stellt, prüft er unbewusst, ob ein Anbieter seriös wirkt. Dabei zählen Gestaltung, Sprache, Bilder, Referenzen, Erreichbarkeit und der gesamte Eindruck der Website.",
+          "Wenn diese Signale nicht zusammenpassen, entsteht Unsicherheit. Besucher vergleichen weiter oder melden sich gar nicht, obwohl das Angebot grundsätzlich passen könnte.",
+        ],
+      },
+      {
+        heading: "Welche Signale besonders wichtig sind",
+        body: [
+          "Vertrauen entsteht nicht durch ein einzelnes Siegel. Viel stärker ist die Summe aus konkreten Informationen, echten Beispielen und einem professionellen Auftritt.",
+          "Besucher wollen erkennen, wer hinter dem Angebot steht, welche Erfahrung vorhanden ist und wie die Zusammenarbeit abläuft.",
+        ],
+        bullets: [
+          "Echte Bilder oder aussagekräftige Projektbeispiele",
+          "Klare Leistungsbeschreibungen",
+          "Kundenstimmen oder Referenzen",
+          "Transparente Kontakt- und Ablaufinformationen",
+        ],
+      },
+      {
+        heading: "Warum Gestaltung Vertrauen beeinflusst",
+        body: [
+          "Design muss nicht laut sein, um professionell zu wirken. Entscheidend sind Ordnung, Lesbarkeit, passende Abstände, gute mobile Darstellung und eine klare visuelle Linie.",
+          "Unruhige Layouts, zu viele Effekte oder uneinheitliche Farben lassen eine Website schnell weniger zuverlässig wirken. Eine ruhige Gestaltung hilft, Inhalte besser aufzunehmen.",
+        ],
+        bullets: [
+          "Saubere Abstände und klare Hierarchie",
+          "Gut lesbare Texte auf allen Geräten",
+          "Einheitliche Buttons und Kontaktbereiche",
+          "Professionelle Bildauswahl statt beliebiger Platzhalter",
+        ],
+      },
+      {
+        heading: "Wie Inhalte Unsicherheit reduzieren",
+        body: [
+          "Besucher stellen oft keine Anfrage, wenn wichtige Fragen offen bleiben. Was kostet es ungefähr? Wie lange dauert es? Was passiert nach dem Kontakt? Welche Informationen werden gebraucht?",
+          "Wenn eine Website solche Fragen verständlich beantwortet, fühlt sich der nächste Schritt leichter an. Vertrauen heißt deshalb auch: weniger Rätsel vor dem Kontakt.",
+        ],
+        bullets: [
+          "Ablauf kurz erklären",
+          "Häufige Fragen beantworten",
+          "Erwartungen realistisch formulieren",
+          "Kontaktbutton in passende Abschnitte integrieren",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Vertrauen sichtbar macht",
+        body: [
+          "Digital Vision verbindet Struktur, Design und Inhalte so, dass Besucher sich schneller orientieren können. Vertrauenselemente werden nicht zufällig verteilt, sondern dort platziert, wo sie Entscheidungen unterstützen.",
+          "So entsteht ein Auftritt, der seriös wirkt, Fragen beantwortet und Besucher ohne Druck zur Anfrage führt.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Welche Elemente schaffen auf Websites Vertrauen?",
+        answer:
+          "Klare Leistungen, echte Bilder, Referenzen, Kundenstimmen, verständliche Abläufe und sichtbare Kontaktwege stärken Vertrauen besonders.",
+      },
+      {
+        question: "Sind Kundenstimmen immer nötig?",
+        answer:
+          "Nicht zwingend, aber sie helfen. Wenn noch keine Kundenstimmen vorhanden sind, können klare Beispiele, transparente Abläufe und gute Inhalte Vertrauen aufbauen.",
+      },
+      {
+        question: "Kann Digital Vision Vertrauenselemente in eine Website einbauen?",
+        answer:
+          "Ja. Vertrauenselemente können passend zur Seite geplant, gestaltet und in die Nutzerführung integriert werden.",
+      },
+    ],
+  },
+  {
     slug: "website-navigation-planen-besucher-fuehren",
     title: "Website-Navigation planen: Besucher schneller führen",
     description:

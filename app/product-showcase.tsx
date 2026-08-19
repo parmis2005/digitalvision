@@ -27,6 +27,12 @@ export function ProductShowcase() {
     const syncScrollPosition = () => {
       if (pausedRef.current) {
         scrollPositionRef.current = rail.scrollLeft;
+        // Native momentum scrolling can keep firing after touchend. If a
+        // resume is already scheduled, push it back so we don't fight the
+        // browser's inertial scroll with our own scrollLeft writes.
+        if (resumeTimerRef.current !== null) {
+          scheduleResume(150);
+        }
       }
     };
 
@@ -80,7 +86,7 @@ export function ProductShowcase() {
     }
   };
 
-  const resumeAfter = (delay: number) => {
+  const scheduleResume = (delay: number) => {
     if (resumeTimerRef.current !== null) {
       window.clearTimeout(resumeTimerRef.current);
     }
@@ -110,7 +116,7 @@ export function ProductShowcase() {
       behavior: "smooth",
     });
 
-    resumeAfter(1200);
+    scheduleResume(1200);
   };
 
   return (
@@ -136,8 +142,8 @@ export function ProductShowcase() {
         onMouseEnter={pause}
         onMouseLeave={resume}
         onTouchStart={pause}
-        onTouchEnd={() => resumeAfter(700)}
-        onTouchCancel={() => resumeAfter(700)}
+        onTouchEnd={() => scheduleResume(150)}
+        onTouchCancel={() => scheduleResume(150)}
       >
         <div className="showcase-track">
           {showcaseProducts.map((product, index) => (

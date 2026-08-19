@@ -388,8 +388,9 @@ textarea {
   min-height: 84px;
   padding: 16px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(1, 4, 13, 0.8);
-  backdrop-filter: blur(18px);
+  background: rgba(1, 4, 13, 0.45);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .brand,
@@ -6492,11 +6493,13 @@ h3 {
 
 .site-footer {
   display: grid;
-  gap: 22px;
-  padding: 28px clamp(18px, 4vw, 56px) 34px;
+  gap: 14px;
+  padding: 22px clamp(18px, 4vw, 56px) 26px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  background: rgba(2, 4, 12, 0.92);
+  background: rgba(1, 4, 13, 0.45);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .footer-top {
@@ -6532,7 +6535,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 28px;
-  padding-top: 18px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -6541,7 +6544,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 18px 28px;
-  padding-top: 18px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 

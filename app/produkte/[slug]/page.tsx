@@ -514,6 +514,32 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      ) : product.slug === "maison-lumiere" ? (
+        <section className="product-details">
+          <div className="product-detail-card">
+            <p className="eyebrow">Projektcharakter</p>
+            <h2 className="product-detail-title-small">
+              Restaurant-Auftritt mit starker Atmosphäre und direktem Reservierungsfokus.
+            </h2>
+            <p>
+              Diese Produktseite zeigt den Stil des echten Restaurant-Projekts:
+              hochwertiger Video-Hero, warme Fine-Dining-Farbwelt, Speisekarte,
+              Galerie, Bewertungen, Standort und ein Aufbau, der Gäste schnell
+              zur Reservierung führt.
+            </p>
+          </div>
+          <div className="product-detail-card">
+            <p className="eyebrow">Highlights</p>
+            <div className="product-highlights">
+              {product.highlights.map((highlight) => (
+                <div className="product-highlight" key={highlight}>
+                  <Check size={18} aria-hidden="true" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : product.slug === "cleanpro-reinigung" ? (
         <section className="product-details">
           <div className="product-detail-card">

@@ -1,0 +1,13 @@
+html,
+body {
+  overscroll-behavior: contain;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  cursor: default !important;
+}

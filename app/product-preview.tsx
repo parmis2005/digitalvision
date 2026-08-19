@@ -10,6 +10,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isAuto = product.slug === "autohaus-nordglanz";
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
   const isCoffee = product.slug === "bean-bark";
+  const isRestaurant = product.slug === "maison-lumiere";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
@@ -229,6 +230,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="coffee-card-copy">
               <h3>Bean & Bark</h3>
               <span>Specialty Coffee · Interior · Menü</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isRestaurant) {
+    if (size === "card") {
+      return (
+        <div className="restaurant-preview-card-view">
+          <div className="restaurant-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="restaurant-card-cta">Tisch reservieren</span>
+          </div>
+          <div className="restaurant-card-shell">
+            <div className="restaurant-card-branding">
+              <p>Maison Lumière</p>
+              <span>Fine Dining · Düsseldorf</span>
+            </div>
+            <div className="restaurant-card-stage">
+              <div className="restaurant-card-overlay">
+                <span className="restaurant-card-kicker">Saisonale Küche</span>
+                <strong>Elegantes Dinner mit französischer Handschrift.</strong>
+              </div>
+              <div className="restaurant-card-accent" />
+            </div>
+            <div className="restaurant-card-copy">
+              <h3>Maison Lumière</h3>
+              <span>Speisekarte · Galerie · Reservierung · Standort</span>
             </div>
           </div>
         </div>

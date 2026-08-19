@@ -4405,6 +4405,39 @@ h3 {
     radial-gradient(circle at 82% 50%, rgba(255, 123, 86, 0.05), transparent 24%);
 }
 
+.services-section::after,
+.process-section::after,
+.split-section::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .services-section .section-heading-centered {
   width: 100%;
   max-width: none;
@@ -4771,6 +4804,46 @@ h3 {
 
 .service-card {
   padding-bottom: 72px;
+}
+
+.service-card,
+.process-section .process-step {
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.service-card::after,
+.process-step::after,
+.feature-item::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  content: "";
+  background: radial-gradient(circle at 30% 20%, rgba(155, 228, 255, 0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.service-card:hover::after,
+.process-step:hover::after,
+.feature-item:hover::after {
+  opacity: 1;
+}
+
+.service-card > *,
+.process-step > *,
+.feature-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-item {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 
 .service-card::before,

@@ -10,6 +10,8 @@ import { ContactForm } from "./contact-form";
 import { DigitalVisionLogo } from "./digitalvision-logo";
 import { MobileNav } from "./mobile-nav";
 import { ProductShowcase } from "./product-showcase";
+import { Reveal } from "./reveal";
+import { ServiceCard } from "./service-card";
 
 const services = [
   {
@@ -185,15 +187,15 @@ export default function Home() {
           <h2>Alles, was dein digitaler Auftritt wirklich braucht.</h2>
         </div>
         <div className="service-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.title}>
-              <service.icon size={27} aria-hidden="true" />
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-              <a className="service-info-button" href={service.infoHref}>
-                Info
-              </a>
-            </article>
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.title}
+              icon={<service.icon size={27} aria-hidden="true" />}
+              title={service.title}
+              text={service.text}
+              infoHref={service.infoHref}
+              delay={index * 90}
+            />
           ))}
         </div>
       </section>
@@ -258,11 +260,11 @@ export default function Home() {
           </p>
         </div>
         <div className="feature-list">
-          {features.map((feature) => (
-            <div className="feature-item" key={feature}>
+          {features.map((feature, index) => (
+            <Reveal as="div" className="feature-item" delay={index * 70} key={feature}>
               <Check size={18} aria-hidden="true" />
               <span>{feature}</span>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -274,7 +276,7 @@ export default function Home() {
         </div>
         <div className="process-grid">
           {process.map((step, index) => (
-            <article className="process-step" key={step}>
+            <Reveal as="article" className="process-step" delay={index * 90} key={step}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{step}</h3>
               <p>
@@ -287,7 +289,7 @@ export default function Home() {
                 {index === 3 &&
                   "Performance, Google-Grundlagen und Übergabe machen alles startklar."}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>

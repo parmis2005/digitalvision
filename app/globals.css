@@ -6700,10 +6700,12 @@ h3 {
 
 .contact-form .contact-next-button {
   min-width: 144px;
-  border: 0;
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
-  color: #081023;
-  box-shadow: 0 12px 32px rgba(109, 215, 255, 0.2);
+  border: 1px solid rgba(248, 251, 255, 0.92);
+  background: var(--light-cta-bg);
+  color: #05091d;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 18px 34px rgba(255, 199, 116, 0.14);
   cursor: pointer;
 }
 

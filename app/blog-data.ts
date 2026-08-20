@@ -29,6 +29,188 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "startseite-klar-aufbauen-erster-eindruck-und-naechster-schritt",
+    title: "Startseite klar aufbauen: Erster Eindruck und nächster Schritt",
+    description:
+      "Die Startseite muss in wenigen Sekunden zeigen, worum es geht, für wen das Angebot passt und welcher nächste Schritt sinnvoll ist. Klarheit schlägt dabei dekorative Überladung.",
+    excerpt: "Wie eine Startseite Orientierung gibt und Besucher gezielt weiterführt.",
+    category: "UX",
+    date: "2026-08-20",
+    readingTime: "8 Min. Lesezeit",
+    focusKeyword: "Startseite Website",
+    image: "/blog/startseite-klar-aufbauen-erster-eindruck-und-naechster-schritt.png",
+    imageAlt: "Moderne Website-Startseite mit klarer Hero-Struktur, Inhaltsblöcken und hervorgehobenem Kontaktweg",
+    featured: true,
+    takeaways: [
+      "Die Startseite muss Angebot, Zielgruppe und nächsten Schritt schnell zeigen.",
+      "Eine gute Reihenfolge ist wichtiger als viele einzelne Effekte.",
+      "Vertrauen, Leistungen und Kontakt sollten klar miteinander verbunden sein.",
+    ],
+    sections: [
+      {
+        heading: "Warum die Startseite so viel entscheiden kann",
+        body: [
+          "Die Startseite ist für viele Besucher der erste Kontakt mit einem Unternehmen. In diesem Moment entsteht noch keine vollständige Bewertung, aber ein klares Gefühl dafür, ob die Website verständlich und professionell wirkt.",
+          "Wenn der Einstieg unklar ist, müssen Besucher erst suchen, worum es geht. Das kostet Aufmerksamkeit und schwächt oft schon den nächsten Schritt.",
+        ],
+      },
+      {
+        heading: "Welche Fragen sofort beantwortet werden sollten",
+        body: [
+          "Eine starke Startseite beantwortet schnell die Kernfragen: Was wird angeboten, für wen ist es gedacht und warum sollte man hier weiterlesen oder Kontakt aufnehmen?",
+          "Diese Antworten müssen nicht in langen Texten stehen. Oft reichen ein klarer Einstieg, ein verständlicher Untertitel und eine sinnvolle Reihenfolge der Inhalte.",
+        ],
+        bullets: [
+          "Was ist das konkrete Angebot?",
+          "Welches Problem wird gelöst?",
+          "Für wen ist die Seite gedacht?",
+          "Welcher nächste Schritt ist vorgesehen?",
+        ],
+      },
+      {
+        heading: "Wie eine gute Reihenfolge Besucher führt",
+        body: [
+          "Die Startseite sollte nicht alles gleichzeitig zeigen wollen. Besser ist eine klare Dramaturgie: Einstieg, Leistungen, Vorteile, Beispiele, Vertrauen und Kontakt.",
+          "So versteht der Besucher zuerst das Angebot, kann danach Sicherheit gewinnen und wird erst dann gezielt zur Anfrage geführt. Diese Abfolge wirkt ruhiger und überzeugender als eine Ansammlung gleich wichtiger Blöcke.",
+        ],
+        bullets: [
+          "Hero-Bereich mit klarem Nutzen",
+          "Leistungen kompakt und verständlich erklären",
+          "Vertrauen durch Referenzen oder Einblicke aufbauen",
+          "Kontaktweg sichtbar und passend platzieren",
+        ],
+      },
+      {
+        heading: "Warum zu viele Signale den Einstieg schwächen",
+        body: [
+          "Viele Startseiten verlieren sich in Animationen, langen Begrüßungstexten oder mehreren konkurrierenden Botschaften. Besucher sehen dann zwar viel, verstehen aber wenig.",
+          "Eine reduzierte Struktur bedeutet nicht, dass die Seite leer wirken muss. Sie bedeutet, dass jede Sektion eine klare Aufgabe hat und den nächsten Abschnitt vorbereitet.",
+        ],
+        bullets: [
+          "Nicht mehrere Hauptbotschaften parallel setzen",
+          "Buttons sprachlich klar halten",
+          "Kurze Abschnitte statt Textwände nutzen",
+          "Mobile Darstellung immer mitdenken",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision Startseiten plant",
+        body: [
+          "Digital Vision entwickelt Startseiten aus Sicht der Besucher. Dabei wird zuerst geklärt, welches Ziel die Seite hat und welche Informationen am Anfang wirklich gebraucht werden.",
+          "So entstehen Einstiege, die nicht nur gut aussehen, sondern Leistungen, Vertrauen und Kontakt logisch miteinander verbinden.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Was gehört auf eine gute Startseite?",
+        answer:
+          "Ein klarer Einstieg, die wichtigsten Leistungen, Vertrauenselemente und ein sichtbarer nächster Schritt gehören fast immer dazu.",
+      },
+      {
+        question: "Soll die Startseite alle Details erklären?",
+        answer:
+          "Nein. Sie sollte Orientierung geben und Besucher gezielt zu den passenden Unterseiten oder direkt zur Anfrage führen.",
+      },
+      {
+        question: "Kann Digital Vision bestehende Startseiten überarbeiten?",
+        answer:
+          "Ja. Inhalte, Reihenfolge, CTA-Platzierung und Nutzerführung können so verbessert werden, dass die Startseite klarer funktioniert.",
+      },
+    ],
+  },
+  {
+    slug: "google-unternehmensprofil-und-website-besser-verbinden",
+    title: "Google-Unternehmensprofil und Website besser verbinden",
+    description:
+      "Website und Google-Unternehmensprofil sollten nicht getrennt gedacht werden. Wer beide sauber verbindet, verbessert Auffindbarkeit, Vertrauen und den Weg zur Kontaktaufnahme.",
+    excerpt: "Wie Website und Google-Profil gemeinsam für lokale Sichtbarkeit arbeiten.",
+    category: "SEO",
+    date: "2026-08-20",
+    readingTime: "7 Min. Lesezeit",
+    focusKeyword: "Google-Unternehmensprofil Website",
+    image: "/blog/google-unternehmensprofil-und-website-besser-verbinden.png",
+    imageAlt: "Lokale Website mit Kartenansicht, Google-Unternehmensprofil und verknüpften Kontaktinformationen",
+    featured: true,
+    takeaways: [
+      "Website und Unternehmensprofil sollten dieselben Kerninformationen tragen.",
+      "Lokale Sichtbarkeit steigt, wenn Kontaktwege und Inhalte konsistent sind.",
+      "Besucher profitieren von einem klaren Übergang vom Profil auf die Website.",
+    ],
+    sections: [
+      {
+        heading: "Warum Profil und Website zusammengehören",
+        body: [
+          "Viele lokale Anfragen beginnen nicht direkt auf der Website, sondern über die Google-Suche oder Kartenansicht. Das Unternehmensprofil ist deshalb oft der erste sichtbare Kontaktpunkt.",
+          "Wenn dort andere Informationen stehen als auf der Website oder wichtige Inhalte fehlen, entsteht schnell Unsicherheit. Beides sollte wie ein gemeinsamer Auftritt funktionieren.",
+        ],
+      },
+      {
+        heading: "Welche Informationen übereinstimmen müssen",
+        body: [
+          "Name, Telefonnummer, Adresse, Öffnungszeiten und Leistungsbeschreibung sollten auf Profil und Website konsistent sein. Schon kleine Abweichungen wirken unordentlich und können Vertrauen kosten.",
+          "Genauso wichtig ist der Übergang: Wer aus dem Unternehmensprofil auf die Website klickt, sollte dort die erwarteten Informationen schnell wiederfinden.",
+        ],
+        bullets: [
+          "Kontaktinformationen einheitlich halten",
+          "Leistungen in ähnlicher Sprache beschreiben",
+          "Standort- und Regionalbezug sichtbar machen",
+          "Passende Landingpages für lokale Suchanfragen anbieten",
+        ],
+      },
+      {
+        heading: "Wie die Website das Profil sinnvoll ergänzt",
+        body: [
+          "Das Unternehmensprofil kann Aufmerksamkeit und erste Orientierung liefern. Die Website sollte dann Tiefe geben: Leistungen erklären, Vertrauen aufbauen, Fragen beantworten und einen klaren Kontaktweg anbieten.",
+          "Besucher wechseln also nicht nur von einer Plattform zur anderen, sondern von einer Kurzansicht in eine vollständige Entscheidungshilfe.",
+        ],
+        bullets: [
+          "Leistungsseiten mit lokalem Bezug aufbauen",
+          "Bilder, Referenzen und Einblicke ergänzen",
+          "Kontakt oder Anfrage ohne Umwege anbieten",
+          "FAQ und Abläufe verständlich darstellen",
+        ],
+      },
+      {
+        heading: "Warum lokale Signale mehr als nur Adresse sind",
+        body: [
+          "Lokale Sichtbarkeit entsteht nicht allein durch die richtige Adresse. Auch klare Ortsbezüge in Texten, passende Inhalte für das Einzugsgebiet und nachvollziehbare Kontaktmöglichkeiten spielen eine Rolle.",
+          "Je stimmiger Profil und Website zusammenarbeiten, desto leichter kann Google den Auftritt einordnen und desto klarer wirkt er für Besucher.",
+        ],
+        bullets: [
+          "Orte und Regionen passend benennen",
+          "Standortbezogene Inhalte nicht künstlich aufblasen",
+          "Routen, Kontaktzeiten und Erreichbarkeit klar darstellen",
+          "Aktualität regelmäßig prüfen",
+        ],
+      },
+      {
+        heading: "Wie Digital Vision lokale Auftritte verbindet",
+        body: [
+          "Digital Vision betrachtet Website, Inhalte und Sichtbarkeit als zusammenhängendes System. Dabei wird geprüft, welche Informationen Besucher zuerst sehen und wo Reibung zwischen Profil, Website und Kontaktweg entsteht.",
+          "So wird aus lokaler Präsenz nicht nur ein Eintrag, sondern ein durchgängiger digitaler Auftritt mit klarer Nutzerführung.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Ist ein Google-Unternehmensprofil auch mit guter Website wichtig?",
+        answer:
+          "Ja. Gerade lokal ist das Profil oft der erste Berührungspunkt und ergänzt die Website sinnvoll in Suche und Kartenansicht.",
+      },
+      {
+        question: "Welche Seite sollte im Profil verlinkt sein?",
+        answer:
+          "Im Idealfall die Seite, die am besten zum Suchinteresse passt, oft die Startseite oder eine lokal passende Leistungsseite.",
+      },
+      {
+        question: "Kann Digital Vision Profil und Website aufeinander abstimmen?",
+        answer:
+          "Ja. Inhalte, Struktur, lokale Signale und Kontaktwege können so abgestimmt werden, dass der gesamte Auftritt konsistenter wirkt.",
+      },
+    ],
+  },
+  {
     slug: "website-ladezeiten-verbessern-schneller-zur-anfrage",
     title: "Website-Ladezeiten verbessern: Schneller zur Anfrage führen",
     description:

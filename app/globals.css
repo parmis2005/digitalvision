@@ -5495,9 +5495,9 @@ h3 {
   z-index: 0;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 22% 24%, rgba(155, 228, 255, 0.24), transparent 42%),
-    radial-gradient(circle at 82% 18%, rgba(255, 199, 116, 0.2), transparent 40%),
-    radial-gradient(circle at 68% 88%, rgba(184, 107, 255, 0.18), transparent 46%);
+    radial-gradient(circle at 22% 24%, rgba(155, 228, 255, 0.32), transparent 42%),
+    radial-gradient(circle at 82% 18%, rgba(255, 199, 116, 0.3), transparent 40%),
+    radial-gradient(circle at 68% 88%, rgba(184, 107, 255, 0.28), transparent 46%);
   filter: blur(38px);
   pointer-events: none;
 }
@@ -5580,7 +5580,8 @@ h3 {
   border: 1px solid rgba(171, 210, 255, 0.18);
   border-radius: 20px;
   background:
-    radial-gradient(circle at 88% -6%, rgba(255, 199, 116, 0.14), transparent 34%),
+    radial-gradient(circle at 88% -6%, rgba(255, 199, 116, 0.16), transparent 34%),
+    radial-gradient(circle at 4% 104%, rgba(184, 107, 255, 0.14), transparent 36%),
     linear-gradient(180deg, rgba(35, 42, 70, 0.8), rgba(16, 22, 44, 0.82)),
     rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px) saturate(150%);
@@ -5628,15 +5629,15 @@ h3 {
 .contact-step-node.active,
 .contact-step-node.completed,
 .contact-step-node.current {
-  background: linear-gradient(90deg, rgba(103, 221, 255, 0.92), rgba(114, 221, 255, 0.7));
+  background: var(--nav-text-gradient);
 }
 
 .contact-step-node.active::after,
 .contact-step-node.current::after,
 .contact-step-node.completed::after {
-  border-color: rgba(120, 226, 255, 0.36);
-  background: var(--cyan);
-  box-shadow: 0 0 0 6px rgba(103, 221, 255, 0.12);
+  border-color: rgba(198, 124, 255, 0.36);
+  background: var(--nav-text-gradient);
+  box-shadow: 0 0 0 6px rgba(155, 228, 255, 0.12);
 }
 
 .contact-step-panel {
@@ -5906,7 +5907,7 @@ h3 {
 
 .contact-form .contact-topic-card.selected {
   border-color: rgba(126, 227, 255, 0.44);
-  background: rgba(155, 228, 255, 0.1);
+  background: linear-gradient(135deg, rgba(155, 228, 255, 0.16), rgba(184, 107, 255, 0.09));
   box-shadow:
     0 0 0 1px rgba(126, 227, 255, 0.14),
     inset 0 0 0 1px rgba(126, 227, 255, 0.06);
@@ -5966,7 +5967,7 @@ h3 {
 }
 
 .contact-form .contact-service-card.selected {
-  background: rgba(155, 228, 255, 0.1);
+  background: linear-gradient(135deg, rgba(155, 228, 255, 0.16), rgba(184, 107, 255, 0.09));
   border-color: rgba(126, 227, 255, 0.52);
   box-shadow:
     0 0 0 1px rgba(126, 227, 255, 0.18),
@@ -5990,7 +5991,7 @@ h3 {
 
 .contact-form .contact-service-card.selected .contact-service-card-check {
   border-color: rgba(126, 227, 255, 0.34);
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  background: linear-gradient(135deg, #9be4ff 0%, #c6a2ff 55%, #ffd58a 100%);
 }
 
 .contact-form .contact-service-card-copy {
@@ -6074,7 +6075,7 @@ h3 {
 
 .contact-form .contact-service-option.selected {
   border-color: rgba(126, 227, 255, 0.42);
-  background: rgba(155, 228, 255, 0.1);
+  background: linear-gradient(135deg, rgba(155, 228, 255, 0.16), rgba(184, 107, 255, 0.09));
   box-shadow:
     0 0 0 1px rgba(126, 227, 255, 0.14),
     inset 0 0 0 1px rgba(126, 227, 255, 0.04);
@@ -6094,7 +6095,7 @@ h3 {
 
 .contact-form .contact-service-option.selected .contact-service-option-check {
   border-color: rgba(126, 227, 255, 0.34);
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  background: linear-gradient(135deg, #9be4ff 0%, #c6a2ff 55%, #ffd58a 100%);
 }
 
 .contact-service-option-copy {
@@ -6451,7 +6452,7 @@ h3 {
 
 .contact-form .contact-calendar-day.selected {
   border-color: rgba(126, 227, 255, 0.5);
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  background: linear-gradient(135deg, #9be4ff 0%, #c6a2ff 55%, #ffd58a 100%);
   color: #081023;
   box-shadow: 0 10px 26px rgba(109, 215, 255, 0.2);
 }
@@ -6505,7 +6506,7 @@ h3 {
 
 .contact-form .contact-advisor-button.selected {
   border-color: rgba(126, 227, 255, 0.46);
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  background: linear-gradient(135deg, #9be4ff 0%, #c6a2ff 55%, #ffd58a 100%);
   color: #081023;
   box-shadow: 0 10px 26px rgba(109, 215, 255, 0.18);
 }
@@ -6546,7 +6547,7 @@ h3 {
 
 .contact-form .contact-time-button.selected {
   border-color: rgba(126, 227, 255, 0.46);
-  background: linear-gradient(135deg, #84e0ff 0%, #72d8ff 100%);
+  background: linear-gradient(135deg, #9be4ff 0%, #c6a2ff 55%, #ffd58a 100%);
   color: #081023;
   box-shadow: 0 10px 26px rgba(109, 215, 255, 0.18);
 }

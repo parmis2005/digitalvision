@@ -177,6 +177,10 @@ export default function Home() {
             <span className="hero-particle hero-particle-four" />
           </div>
         </div>
+        <a className="scroll-cue" href="#leistungen" aria-label="Nach unten scrollen">
+          <span className="scroll-cue-text">Scrollen</span>
+          <span className="scroll-cue-line" aria-hidden="true" />
+        </a>
       </section>
 
       <ProductShowcase />

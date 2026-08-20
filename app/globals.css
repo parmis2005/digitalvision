@@ -680,6 +680,64 @@ textarea {
   z-index: 1;
 }
 
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(14px, 2.6vw, 28px);
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  transform: translateX(-50%);
+  color: rgba(155, 228, 255, 0.85);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.scroll-cue:hover {
+  color: rgba(155, 228, 255, 1);
+}
+
+.scroll-cue-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.scroll-cue-line {
+  position: relative;
+  width: 1px;
+  height: 46px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.scroll-cue-line::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(155, 228, 255, 0.95), rgba(155, 228, 255, 0.35));
+  animation: scroll-cue-run 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-run {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-line::before {
+    animation: none;
+    transform: translateY(0);
+  }
+}
+
 .hero-panel {
   display: grid;
   gap: 16px;
@@ -9148,6 +9206,10 @@ h3 {
     min-height: 520px;
     opacity: 0.98;
     transform: translate(-50%, -50%);
+  }
+
+  .scroll-cue {
+    display: none;
   }
 
   .hero-visual-stage {

@@ -9,7 +9,6 @@ import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
 import { DigitalVisionLogo } from "./digitalvision-logo";
 import { MobileNav } from "./mobile-nav";
-import { PackageCard } from "./package-card";
 import { ProductShowcase } from "./product-showcase";
 import { Reveal } from "./reveal";
 import { ServiceCard } from "./service-card";
@@ -238,11 +237,11 @@ export default function Home() {
             Unternehmen.
           </p>
           <div className="vision-points">
-            {visionPoints.map((point, index) => (
-              <Reveal as="div" className="vision-point" delay={index * 90} key={point}>
+            {visionPoints.map((point) => (
+              <div className="vision-point" key={point}>
                 <Check size={18} aria-hidden="true" />
                 <span>{point}</span>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -317,8 +316,16 @@ export default function Home() {
           <h2>Wähle den passenden Startpunkt.</h2>
         </div>
         <div className="package-grid">
-          {packages.map((item, index) => (
-            <PackageCard featured={item.featured} delay={index * 90} key={item.name}>
+          {packages.map((item) => (
+            <article
+              className={[
+                "package-card",
+                "featured",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              key={item.name}
+            >
               <h3>{item.name}</h3>
               <p className="price">{item.price}</p>
               {item.detailLines ? (
@@ -340,7 +347,7 @@ export default function Home() {
                 Anfragen
                 <ArrowRight size={17} aria-hidden="true" />
               </a>
-            </PackageCard>
+            </article>
           ))}
         </div>
       </section>

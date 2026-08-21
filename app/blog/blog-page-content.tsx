@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, PenLine } from "lucide-react";
 import { AmbientScene } from "../ambient-scene";
 import { blogSerif } from "../blog-font";
-import { DigitalVisionLogo } from "../digitalvision-logo";
+import { SiteHeader } from "../site-header";
 import {
   BLOG_POSTS_PER_PAGE,
   getBlogPageCount,
@@ -43,21 +43,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <header className="blog-header">
-        <Link className="brand" href="/" aria-label="Digital Vision Startseite">
-          <DigitalVisionLogo size="sm" showTagline={false} />
-        </Link>
-        <nav className="blog-header-nav" aria-label="Blog Navigation">
-          <Link href="/#leistungen">Leistungen</Link>
-          <Link href="/#prozess">Prozess</Link>
-          <Link href="/#preise">Pakete</Link>
-          <Link href="/#kontakt">Kontakt</Link>
-        </nav>
-        <Link className="header-cta" href="/#kontakt">
-          Projekt starten
-          <ArrowRight size={17} aria-hidden="true" />
-        </Link>
-      </header>
+      <SiteHeader />
 
       <section className="blog-hero">
         <div className="blog-hero-copy">

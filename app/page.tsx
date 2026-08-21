@@ -15,10 +15,10 @@ import {
 import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
 import { DigitalVisionLogo } from "./digitalvision-logo";
-import { MobileNav } from "./mobile-nav";
 import { ProductShowcase } from "./product-showcase";
 import { Reveal } from "./reveal";
 import { ServiceCard } from "./service-card";
+import { SiteHeader } from "./site-header";
 
 const services = [
   {
@@ -236,24 +236,7 @@ export default function Home() {
   return (
     <main className="home-page">
       <AmbientScene density="home" />
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Digital Vision Startseite">
-          <DigitalVisionLogo size="sm" showTagline={false} />
-        </a>
-        <nav className="desktop-nav" aria-label="Hauptnavigation">
-          <a href="#leistungen">Leistungen</a>
-          <a href="#prozess">Prozess</a>
-          <a href="#preise">Pakete</a>
-          <a href="#faq">FAQ</a>
-          <a href="/blog">Blog</a>
-          <a href="#kontakt">Kontakt</a>
-        </nav>
-        <a className="header-cta" href="#kontakt">
-          Projekt starten
-          <ArrowRight size={17} aria-hidden="true" />
-        </a>
-        <MobileNav />
-      </header>
+      <SiteHeader />
 
       <section id="top" className="hero">
         <div className="hero-copy">

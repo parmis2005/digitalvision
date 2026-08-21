@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 const navLinks = [
-  { href: "#leistungen", label: "Leistungen" },
-  { href: "#prozess", label: "Prozess" },
-  { href: "#preise", label: "Pakete" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#leistungen", label: "Leistungen" },
+  { href: "/#prozess", label: "Prozess" },
+  { href: "/#preise", label: "Pakete" },
+  { href: "/#faq", label: "FAQ" },
   { href: "/blog", label: "Blog" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "/#kontakt", label: "Kontakt" },
 ];
 
 export function MobileNav() {
@@ -44,7 +44,7 @@ export function MobileNav() {
             </a>
           ))}
         </nav>
-        <a className="mobile-nav-cta" href="#kontakt" onClick={() => setOpen(false)}>
+        <a className="mobile-nav-cta" href="/#kontakt" onClick={() => setOpen(false)}>
           Projekt starten
           <ArrowRight size={17} aria-hidden="true" />
         </a>

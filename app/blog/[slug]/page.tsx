@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
 import { AmbientScene } from "../../ambient-scene";
 import { blogSerif } from "../../blog-font";
-import { DigitalVisionLogo } from "../../digitalvision-logo";
+import { SiteHeader } from "../../site-header";
 import {
   type BlogPost,
   blogPosts,
@@ -163,20 +163,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <header className="blog-header">
-        <Link className="brand" href="/" aria-label="Digital Vision Startseite">
-          <DigitalVisionLogo size="sm" showTagline={false} />
-        </Link>
-        <nav className="blog-header-nav" aria-label="Blog Navigation">
-          <Link href="/blog">Blog</Link>
-          <Link href="/#leistungen">Leistungen</Link>
-          <Link href="/#kontakt">Kontakt</Link>
-        </nav>
-        <Link className="header-cta" href="/#kontakt">
-          Projekt starten
-          <ArrowRight size={17} aria-hidden="true" />
-        </Link>
-      </header>
+      <SiteHeader />
 
       <article className="blog-article-shell">
         <Link className="blog-back-link" href="/blog">

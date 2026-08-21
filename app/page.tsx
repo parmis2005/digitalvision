@@ -342,7 +342,11 @@ export default function Home() {
         </div>
         <div className="vision-copy">
           <p className="eyebrow">Warum Digital Vision</p>
-          <h2>Wir bauen digitale Systeme, die Technik, Wirkung und Klarheit verbinden.</h2>
+          <h2>
+            Wir bauen digitale Systeme, die Technik,{" "}
+            <br className="vision-heading-break" />
+            Wirkung und Klarheit verbinden.
+          </h2>
           <p>
             Gute digitale Systeme sehen nicht nur modern aus. Sie führen,
             erklären, ordnen und schaffen Vertrauen in jedem Kontakt mit deinem
@@ -527,9 +531,8 @@ export default function Home() {
           <p className="eyebrow">Projekt anfragen</p>
           <h2>Bereit für mehr Sichtbarkeit und bessere Systeme?</h2>
           <p>
-            Schreib uns kurz, ob du SEO, eine neue Website oder ein
-            Verwaltungssystem brauchst. Wir melden uns mit einer klaren
-            Einschätzung zu Umfang, Zeitplan und nächstem Schritt.
+            Schreib uns kurz, was du brauchst. Wir melden uns mit einer klaren
+            Einschätzung und dem nächsten Schritt.
           </p>
         </div>
         <div className="contact-form-frame">

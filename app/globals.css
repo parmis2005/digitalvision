@@ -5024,8 +5024,8 @@ h3 {
 
 .vision-copy h2 {
   max-width: 780px;
-  font-size: clamp(1.65rem, 2.55vw, 2.65rem);
-  line-height: 1.02;
+  font-size: clamp(1.4rem, 2vw, 2.1rem);
+  line-height: 1.08;
 }
 
 .vision-copy p {
@@ -9758,6 +9758,10 @@ h3 {
   .vision-copy h2 {
     font-size: clamp(1.65rem, 6.8vw, 2.25rem);
     line-height: 1.04;
+  }
+
+  .vision-heading-break {
+    display: none;
   }
 
   .section,

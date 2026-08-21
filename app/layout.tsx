@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TabTitleNudge } from "./tab-title-nudge";
 
 const baseUrl = "https://www.digitalvision.site";
 const siteTitle = "Digital Vision | Webseiten, die verkaufen";
@@ -72,6 +73,7 @@ export default function RootLayout({
     <html lang="de">
       <body>
         {children}
+        <TabTitleNudge />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

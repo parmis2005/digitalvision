@@ -7192,6 +7192,351 @@ h3 {
   color: #fca5a5;
 }
 
+.mailbox-reactions-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 760px;
+  padding: 92px clamp(18px, 4vw, 56px) 72px;
+  border-top: 1px solid rgba(155, 228, 255, 0.14);
+  border-bottom: 1px solid rgba(155, 228, 255, 0.12);
+  background:
+    radial-gradient(circle at 7% 72%, rgba(155, 228, 255, 0.92) 0 2px, rgba(155, 228, 255, 0.28) 3px, transparent 11px),
+    radial-gradient(circle at 19% 18%, rgba(155, 228, 255, 0.78) 0 2px, rgba(155, 228, 255, 0.2) 3px, transparent 10px),
+    radial-gradient(circle at 43% 78%, rgba(155, 228, 255, 0.82) 0 2px, rgba(155, 228, 255, 0.22) 3px, transparent 10px),
+    radial-gradient(circle at 72% 16%, rgba(255, 199, 116, 0.72) 0 2px, rgba(255, 199, 116, 0.18) 3px, transparent 10px),
+    radial-gradient(circle at 91% 76%, rgba(155, 228, 255, 0.74) 0 2px, rgba(155, 228, 255, 0.18) 3px, transparent 10px),
+    radial-gradient(circle at 8% 18%, rgba(155, 228, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 78% 66%, rgba(255, 123, 86, 0.1), transparent 28%),
+    radial-gradient(circle at 84% 40%, rgba(155, 228, 255, 0.08), transparent 26%),
+    linear-gradient(135deg, rgba(7, 11, 34, 0.98), rgba(17, 24, 58, 0.9), rgba(46, 16, 40, 0.86));
+  color: #ffffff;
+}
+
+.mailbox-reactions-section::before {
+  position: absolute;
+  inset: auto -14% -32% auto;
+  z-index: -2;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(255, 199, 116, 0.18);
+  border-radius: 50%;
+  content: "";
+  transform: translate3d(0, calc(var(--parallax-shift-soft) * -0.25), 0);
+}
+
+.mailbox-reactions-section::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.mailbox-reactions-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  max-width: 1120px;
+  margin: 0 auto 18px;
+  text-align: center;
+}
+
+.mailbox-reactions-copy h2 {
+  max-width: 980px;
+  color: #ffffff;
+  font-size: 3.2rem;
+  line-height: 1.02;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.mailbox-reactions-copy p:not(.eyebrow) {
+  max-width: 780px;
+  color: rgba(221, 232, 249, 0.74);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.mailbox-reactions-eyebrow {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mailbox-reactions-stars {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  color: #9be4ff;
+  filter: drop-shadow(0 0 10px rgba(155, 228, 255, 0.28));
+}
+
+.mailbox-reactions-stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1480px);
+  height: 470px;
+  margin: -18px auto 0;
+}
+
+.mailbox-reaction-card {
+  --reaction-lift: 0px;
+  --reaction-rotate: 0deg;
+  --reaction-scale: 1;
+  position: absolute;
+  display: grid;
+  gap: 14px;
+  width: 320px;
+  min-height: 210px;
+  padding: 22px;
+  border: 1px solid rgba(155, 228, 255, 0.2);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(155, 228, 255, 0.12), transparent 36%),
+    radial-gradient(circle at 86% 88%, rgba(255, 199, 116, 0.1), transparent 38%),
+    linear-gradient(145deg, rgba(12, 26, 55, 0.96), rgba(9, 16, 38, 0.98)),
+    #081225;
+  color: #f8fbff;
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.34),
+    0 0 42px rgba(155, 228, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(var(--reaction-lift)) rotate(var(--reaction-rotate)) scale(var(--reaction-scale));
+  transform-origin: center;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+  will-change: transform;
+}
+
+.mailbox-reaction-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(155, 228, 255, 0.09), transparent 36%),
+    repeating-linear-gradient(45deg, rgba(155, 228, 255, 0.028) 0 1px, transparent 1px 11px);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.mailbox-reaction-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mailbox-reaction-card p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 680;
+  line-height: 1.42;
+}
+
+.mailbox-reaction-label,
+.mailbox-reaction-meta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.mailbox-reaction-label {
+  min-height: 28px;
+  padding: 0 10px;
+  background: rgba(155, 228, 255, 0.14);
+  color: #9be4ff;
+}
+
+.mailbox-reaction-meta {
+  align-self: end;
+  min-height: 26px;
+  padding: 0 9px;
+  color: rgba(221, 232, 249, 0.7);
+  background: rgba(155, 228, 255, 0.08);
+}
+
+.mailbox-reaction-card:nth-child(1) {
+  left: 4%;
+  top: 34px;
+  z-index: 5;
+  width: 360px;
+  min-height: 278px;
+  --reaction-rotate: -4deg;
+}
+
+.mailbox-reaction-card:nth-child(2) {
+  left: 18%;
+  top: 148px;
+  z-index: 3;
+  --reaction-rotate: 5deg;
+}
+
+.mailbox-reaction-card:nth-child(3) {
+  left: 34%;
+  top: 56px;
+  z-index: 4;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(155, 228, 255, 0.16), transparent 36%),
+    radial-gradient(circle at 86% 88%, rgba(255, 199, 116, 0.14), transparent 38%),
+    linear-gradient(145deg, rgba(12, 38, 65, 0.98), rgba(7, 24, 49, 0.98)),
+    #071831;
+  --reaction-rotate: -3deg;
+}
+
+.mailbox-reaction-card:nth-child(4) {
+  left: 48%;
+  top: 18px;
+  z-index: 6;
+  width: 370px;
+  --reaction-rotate: 3deg;
+}
+
+.mailbox-reaction-card:nth-child(5) {
+  left: 62%;
+  top: 132px;
+  z-index: 5;
+  width: 350px;
+  --reaction-rotate: -4deg;
+}
+
+.mailbox-reaction-card:nth-child(6) {
+  right: 4%;
+  top: 62px;
+  z-index: 4;
+  width: 330px;
+  --reaction-rotate: 5deg;
+}
+
+.mailbox-reaction-card:nth-child(7) {
+  left: 14%;
+  top: 286px;
+  z-index: 6;
+  width: 340px;
+  min-height: 160px;
+  --reaction-rotate: -3deg;
+}
+
+.mailbox-reaction-card:nth-child(8) {
+  left: 39%;
+  top: 264px;
+  z-index: 7;
+  width: 330px;
+  min-height: 168px;
+  --reaction-rotate: 2deg;
+}
+
+.mailbox-reaction-card:nth-child(9) {
+  right: 14%;
+  top: 288px;
+  z-index: 6;
+  width: 370px;
+  min-height: 160px;
+  --reaction-rotate: 3deg;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mailbox-reaction-card:hover {
+    --reaction-lift: -12px;
+    --reaction-scale: 1.035;
+    z-index: 20;
+    border-color: rgba(155, 228, 255, 0.46);
+    box-shadow:
+      0 34px 90px rgba(0, 0, 0, 0.42),
+      0 0 58px rgba(155, 228, 255, 0.18),
+      0 0 34px rgba(255, 199, 116, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .mailbox-reaction-card:hover::before {
+    opacity: 0.92;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mailbox-reactions-section {
+    min-height: 700px;
+  }
+
+  .mailbox-reactions-copy h2 {
+    font-size: 2.45rem;
+  }
+
+  .mailbox-reaction-card {
+    width: 292px;
+  }
+
+  .mailbox-reaction-card:nth-child(1) {
+    left: 0;
+  }
+
+  .mailbox-reaction-card:nth-child(6) {
+    right: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .mailbox-reactions-section {
+    min-height: auto;
+    padding: 66px 16px 58px;
+  }
+
+  .mailbox-reactions-copy {
+    align-items: start;
+    justify-items: start;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  .mailbox-reactions-copy h2 {
+    font-size: 1.85rem;
+    line-height: 1.04;
+    white-space: normal;
+  }
+
+  .mailbox-reactions-copy p:not(.eyebrow) {
+    font-size: 0.96rem;
+  }
+
+  .mailbox-reactions-stage {
+    display: flex;
+    gap: 14px;
+    height: auto;
+    margin-top: 0;
+    overflow-x: auto;
+    padding: 6px 2px 22px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .mailbox-reactions-stage::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mailbox-reaction-card,
+  .mailbox-reaction-card:nth-child(n) {
+    position: relative;
+    inset: auto;
+    flex: 0 0 270px;
+    width: 270px;
+    min-height: 230px;
+    opacity: 1;
+    scroll-snap-align: start;
+    transform: none;
+  }
+}
+
 .site-footer {
   display: grid;
   gap: 14px;

@@ -8,6 +8,7 @@ import {
   Plus,
   Search,
   Smartphone,
+  Star,
   Timer,
   Zap,
 } from "lucide-react";
@@ -145,6 +146,54 @@ const faqItems = [
     question: "Bekomme ich auch Unterstützung nach dem Launch?",
     answer:
       "Ja, laufende Pflege und Support sind in unseren Website-Paketen inklusive – deine Seite bleibt technisch aktuell und sicher.",
+  },
+];
+
+const clientReactions = [
+  {
+    label: "Website",
+    text: "Die neue Website wirkt endlich professionell. Genau so hatte ich mir den Auftritt vorgestellt.",
+    meta: "nach dem Launch",
+  },
+  {
+    label: "SEO",
+    text: "Die Struktur ist viel klarer geworden. Besucher finden jetzt schneller die richtigen Leistungen.",
+    meta: "nach der Optimierung",
+  },
+  {
+    label: "System",
+    text: "Das Dashboard spart uns im Alltag richtig Zeit. Wir haben Anfragen und Aufgaben endlich im Blick.",
+    meta: "nach der Übergabe",
+  },
+  {
+    label: "Design",
+    text: "Sieht nicht nur gut aus, sondern funktioniert auch sauber auf dem Handy. Das macht direkt einen besseren Eindruck.",
+    meta: "mobile Ansicht",
+  },
+  {
+    label: "Ablauf",
+    text: "Die Kommunikation war klar und unkompliziert. Änderungen wurden schnell umgesetzt.",
+    meta: "Projektfeedback",
+  },
+  {
+    label: "Anfragen",
+    text: "Das Formular ist verständlich und führt genau durch die richtigen Fragen. So kommen bessere Anfragen rein.",
+    meta: "Kontaktbereich",
+  },
+  {
+    label: "Pflege",
+    text: "Inhalte selbst ändern zu können, macht die Website im Alltag deutlich leichter.",
+    meta: "Admin-Bereich",
+  },
+  {
+    label: "Beratung",
+    text: "Schon nach dem ersten Gespräch war klar, was sinnvoll ist und welcher Schritt als nächstes kommt.",
+    meta: "Projektstart",
+  },
+  {
+    label: "Launch",
+    text: "Alles war sauber vorbereitet: Texte, Technik, Google-Grundlagen und die Übergabe.",
+    meta: "Projektabschluss",
   },
 ];
 
@@ -545,6 +594,34 @@ export default function Home() {
           <span className="ambient-particle contact-frame-dot contact-frame-dot-5" aria-hidden="true" />
           <span className="ambient-particle contact-frame-dot contact-frame-dot-6" aria-hidden="true" />
           <ContactForm />
+        </div>
+      </section>
+
+      <section className="mailbox-reactions-section" aria-labelledby="mailbox-reactions-title">
+        <div className="mailbox-reactions-copy">
+          <p className="eyebrow mailbox-reactions-eyebrow">
+            <span>Kundenfeedback</span>
+            <span className="mailbox-reactions-stars" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} size={15} strokeWidth={2.4} fill="currentColor" />
+              ))}
+            </span>
+          </p>
+          <h2 id="mailbox-reactions-title">
+            Reaktionen, direkt aus dem Projekt.
+          </h2>
+          <p>
+            Kurze Rückmeldungen zu Websites, SEO und Systemen nach der Umsetzung.
+          </p>
+        </div>
+        <div className="mailbox-reactions-stage" aria-label="Projektreaktionen">
+          {clientReactions.map((reaction) => (
+            <article className="mailbox-reaction-card" key={`${reaction.label}-${reaction.meta}`}>
+              <span className="mailbox-reaction-label">{reaction.label}</span>
+              <p>{reaction.text}</p>
+              <span className="mailbox-reaction-meta">{reaction.meta}</span>
+            </article>
+          ))}
         </div>
       </section>
 

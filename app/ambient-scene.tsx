@@ -6,7 +6,7 @@ type AmbientSceneProps = {
   density?: "default" | "home";
 };
 
-const homeParticles = Array.from({ length: 18 }, (_, index) => index + 9);
+const homeParticles = Array.from({ length: 22 }, (_, index) => index + 9);
 
 export function AmbientScene({ density = "default" }: AmbientSceneProps) {
   useEffect(() => {

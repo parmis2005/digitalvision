@@ -1,9 +1,15 @@
 import {
   ArrowRight,
   Check,
+  Compass,
   LayoutDashboard,
+  Minus,
   MonitorSmartphone,
+  Plus,
   Search,
+  Smartphone,
+  Timer,
+  Zap,
 } from "lucide-react";
 import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
@@ -54,6 +60,94 @@ const visionPoints = [
   "Sichtbarkeit, Vertrauen und Struktur aus einem System",
 ];
 
+const problems = [
+  {
+    icon: Timer,
+    stat: "50 ms",
+    title: "Erster Eindruck",
+    text: "So schnell entscheiden Besucher unbewusst, ob eine Website vertrauenswürdig wirkt oder nicht.",
+  },
+  {
+    icon: Zap,
+    stat: "3 Sek.",
+    title: "Ladezeit",
+    text: "Länger warten die wenigsten. Danach ist die Seite für viele Besucher schon wieder verlassen.",
+  },
+  {
+    icon: Smartphone,
+    stat: "60 %+",
+    title: "Mobile Zugriffe",
+    text: "Der Großteil des Traffics kommt vom Smartphone. Ohne Optimierung gehen Anfragen einfach verloren.",
+  },
+  {
+    icon: Compass,
+    stat: "Unklar",
+    title: "Struktur & Wege",
+    text: "Erkennen Besucher den nächsten Schritt nicht sofort, springen sie ab, statt eine Anfrage zu stellen.",
+  },
+];
+
+const comparisonRows = [
+  {
+    label: "Ansprechpartner",
+    other: "Wechselnde Kontakte, lange Antwortzeiten",
+    us: "Ein fester Ansprechpartner für dein Projekt",
+  },
+  {
+    label: "Kosten",
+    other: "Unklare Angebote, versteckte Zusatzkosten",
+    us: "Transparente Pakete ab dem ersten Gespräch",
+  },
+  {
+    label: "Leistungen",
+    other: "Nur Design oder nur SEO getrennt gedacht",
+    us: "Design, SEO und Verwaltung aus einer Hand",
+  },
+  {
+    label: "Einstieg",
+    other: "Unverbindliche Angebote dauern",
+    us: "Kostenlose Ersteinschätzung ohne Verpflichtung",
+  },
+  {
+    label: "Nach dem Launch",
+    other: "Website wird sich selbst überlassen",
+    us: "Laufende Pflege & Support inklusive",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Wie läuft die Zusammenarbeit ab?",
+    answer:
+      "Nach der kostenlosen Ersteinschätzung klären wir Ziele und Struktur, planen SEO-Basis und Systemlogik, entwickeln Website und Verwaltungssystem und optimieren zum Schluss die Google-Grundlagen. Du bekommst zu jedem Schritt eine klare Rückmeldung.",
+  },
+  {
+    question: "Was kostet eine Website bei euch?",
+    answer:
+      "Unsere Website-Pakete starten ab 300 € monatlich, SEO Growth ab 200 € monatlich. Verwaltungssysteme sind individuell und werden nach Aufwand kalkuliert. Details findest du in der Pakete-Übersicht oben.",
+  },
+  {
+    question: "Wie lange dauert ein Projekt?",
+    answer:
+      "Das hängt vom Umfang ab – eine einfache Website braucht weniger Zeit als ein Verwaltungssystem mit vielen Funktionen. Nach dem Erstgespräch bekommst du einen klaren Zeitplan für dein Projekt.",
+  },
+  {
+    question: "Ist das Erstgespräch wirklich kostenlos?",
+    answer:
+      "Ja. Die Ersteinschätzung ist kostenlos und unverbindlich. Du bekommst einen klaren Fahrplan, ohne dass du dich zu etwas verpflichtest.",
+  },
+  {
+    question: "Was muss ich selbst bereitstellen?",
+    answer:
+      "Am liebsten Texte, Bilder und Markenmaterial, falls vorhanden. Fehlt etwas, unterstützen wir dich bei Struktur und Inhalten, damit das Projekt trotzdem zügig vorangeht.",
+  },
+  {
+    question: "Bekomme ich auch Unterstützung nach dem Launch?",
+    answer:
+      "Ja, laufende Pflege und Support sind in unseren Website-Paketen inklusive – deine Seite bleibt technisch aktuell und sicher.",
+  },
+];
+
 type PackageItem = {
   name: string;
   price: string;
@@ -101,6 +195,7 @@ export default function Home() {
           <a href="#leistungen">Leistungen</a>
           <a href="#prozess">Prozess</a>
           <a href="#preise">Pakete</a>
+          <a href="#faq">FAQ</a>
           <a href="/blog">Blog</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
@@ -181,6 +276,23 @@ export default function Home() {
           <span className="scroll-cue-text">Scrollen</span>
           <span className="scroll-cue-line" aria-hidden="true" />
         </a>
+      </section>
+
+      <section className="section problem-section">
+        <div className="section-heading section-heading-centered">
+          <p className="eyebrow">Herausforderung</p>
+          <h2>Der erste Eindruck entscheidet online in Sekunden.</h2>
+        </div>
+        <div className="problem-grid">
+          {problems.map((problem, index) => (
+            <Reveal as="article" className="problem-card" delay={index * 90} key={problem.title}>
+              <problem.icon size={22} aria-hidden="true" />
+              <p className="problem-stat">{problem.stat}</p>
+              <h3>{problem.title}</h3>
+              <p>{problem.text}</p>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <ProductShowcase />
@@ -310,6 +422,35 @@ export default function Home() {
         <span className="section-flow-line-main" />
       </div>
 
+      <section className="section comparison-section">
+        <div className="section-heading section-heading-centered">
+          <p className="eyebrow">Der Unterschied</p>
+          <h2>Zwei Wege. Ein klarer Fahrplan.</h2>
+        </div>
+        <div className="comparison-table" role="table" aria-label="Vergleich typischer Anbieter mit Digital Vision">
+          <div className="comparison-row comparison-row-head" role="row">
+            <span role="columnheader" aria-hidden="true" />
+            <span role="columnheader">Typischer Anbieter</span>
+            <span role="columnheader" className="comparison-col-us">Digital Vision</span>
+          </div>
+          {comparisonRows.map((row) => (
+            <div className="comparison-row" role="row" key={row.label}>
+              <span className="comparison-label" role="rowheader">
+                {row.label}
+              </span>
+              <span className="comparison-other" role="cell">
+                <Minus size={15} aria-hidden="true" />
+                {row.other}
+              </span>
+              <span className="comparison-us" role="cell">
+                <Check size={15} aria-hidden="true" />
+                {row.us}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="preise" className="section packages-section">
         <div className="section-heading">
           <p className="eyebrow">Pakete</p>
@@ -348,6 +489,35 @@ export default function Home() {
                 <ArrowRight size={17} aria-hidden="true" />
               </a>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="section-divider" aria-hidden="true">
+        <span className="section-divider-line" />
+        <span className="section-divider-beacon">
+          <span className="section-divider-ring" />
+          <span className="section-divider-ring section-divider-ring-delay" />
+          <span className="section-divider-core" />
+        </span>
+        <span className="section-divider-line" />
+      </div>
+
+      <section id="faq" className="section faq-section">
+        <div className="section-heading section-heading-centered">
+          <p className="eyebrow">FAQ</p>
+          <h2>Fragen? Antworten.</h2>
+        </div>
+        <div className="faq-list">
+          {faqItems.map((item) => (
+            <details className="faq-item" key={item.question}>
+              <summary>
+                <span>{item.question}</span>
+                <Plus className="faq-icon-plus" size={18} aria-hidden="true" />
+                <Minus className="faq-icon-minus" size={18} aria-hidden="true" />
+              </summary>
+              <p>{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>

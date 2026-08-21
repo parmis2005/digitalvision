@@ -34,6 +34,22 @@ export type ProductItem = {
 
 export const products: ProductItem[] = [
   {
+    slug: "maison-lumiere",
+    type: "Restaurant Website",
+    title: "Maison Lumière",
+    detail: "Elegante Restaurant-Website für Fine Dining, Speisekarte und Reservierungen",
+    variant: "restaurant",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Restaurant-Website mit hochwertiger Atmosphäre, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für Fine Dining, Ambiente und direkte Reservierung",
+      "Klare Bereiche für Über uns, Speisekarte, Galerie, Bewertungen, Standort und Kontakt",
+      "Geeignet für Restaurants, Bistros, Bars, Cafés und gehobene Gastronomie",
+    ],
+    previewUrl: "/restaurant-preview/index.html",
+  },
+  {
     slug: "beauty-haus",
     type: "Kosmetik Website",
     title: "Kosmetik Studio",
@@ -284,22 +300,6 @@ export const products: ProductItem[] = [
       "Geeignet für Nagelstudios, Nailart-Angebote und moderne Beauty-Ateliers",
     ],
     previewUrl: "/nagelstudio-sinja-preview/index.html",
-  },
-  {
-    slug: "maison-lumiere",
-    type: "Restaurant Website",
-    title: "Maison Lumière",
-    detail: "Elegante Restaurant-Website für Fine Dining, Speisekarte und Reservierungen",
-    variant: "restaurant",
-    category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Restaurant-Website mit hochwertiger Atmosphäre, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus.",
-    highlights: [
-      "Atmosphärischer Hero-Bereich für Fine Dining, Ambiente und direkte Reservierung",
-      "Klare Bereiche für Über uns, Speisekarte, Galerie, Bewertungen, Standort und Kontakt",
-      "Geeignet für Restaurants, Bistros, Bars, Cafés und gehobene Gastronomie",
-    ],
-    previewUrl: "/restaurant-preview/index.html",
   },
 ];
 

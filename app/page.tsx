@@ -234,7 +234,7 @@ const packages: PackageItem[] = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <AmbientScene density="home" />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Digital Vision Startseite">
@@ -598,6 +598,14 @@ export default function Home() {
       </section>
 
       <section className="mailbox-reactions-section" aria-labelledby="mailbox-reactions-title">
+        <div className="mailbox-reactions-particles" aria-hidden="true">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <span
+              className={`ambient-particle mailbox-reactions-particle mailbox-reactions-particle-${index + 1}`}
+              key={index}
+            />
+          ))}
+        </div>
         <div className="mailbox-reactions-copy">
           <p className="eyebrow mailbox-reactions-eyebrow">
             <span>Kundenfeedback</span>
@@ -610,9 +618,6 @@ export default function Home() {
           <h2 id="mailbox-reactions-title">
             Reaktionen, direkt aus dem Projekt.
           </h2>
-          <p>
-            Kurze Rückmeldungen zu Websites, SEO und Systemen nach der Umsetzung.
-          </p>
         </div>
         <div className="mailbox-reactions-stage" aria-label="Projektreaktionen">
           {clientReactions.map((reaction) => (

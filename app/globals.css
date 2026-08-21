@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
   overflow-x: hidden;
   overscroll-behavior-x: none;
 }
@@ -72,6 +73,10 @@ body::after {
 main {
   position: relative;
   z-index: 1;
+}
+
+.home-page {
+  padding-top: 84px;
 }
 
 .seo-info-page,
@@ -423,9 +428,11 @@ textarea {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
+  right: 0;
+  left: 0;
   top: 0;
-  z-index: 20;
+  z-index: 28;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -433,9 +440,13 @@ textarea {
   min-height: 84px;
   padding: 16px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(1, 4, 13, 0.45);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background:
+    linear-gradient(135deg, rgba(2, 8, 22, 0.9), rgba(9, 15, 39, 0.78), rgba(23, 12, 38, 0.72));
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
 }
 
 .brand,
@@ -595,17 +606,23 @@ textarea {
 
 .header-cta {
   justify-self: end;
-  gap: 8px;
-  min-height: 52px;
-  padding: 0 24px;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 16px;
   border: 1px solid rgba(248, 251, 255, 0.92);
+  border-radius: 8px;
   background: var(--light-cta-bg);
   color: #05091d;
-  border-radius: 10px;
+  font-size: 0.9rem;
   font-weight: 850;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 18px 34px rgba(255, 199, 116, 0.14);
+    0 12px 24px rgba(255, 199, 116, 0.12);
+}
+
+.header-cta svg {
+  width: 15px;
+  height: 15px;
 }
 
 .header-cta:hover,
@@ -5697,10 +5714,15 @@ h3 {
 
 .problem-card p.problem-stat {
   margin: 14px 0 2px;
-  color: var(--gold);
+  background: linear-gradient(90deg, #ffe8a8 0%, #ffc774 46%, #ffad5b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   font-size: 1.9rem;
   font-weight: 900;
   line-height: 1;
+  text-shadow: 0 0 24px rgba(255, 199, 116, 0.24);
+  -webkit-text-fill-color: transparent;
 }
 
 .problem-card h3 {
@@ -7201,28 +7223,11 @@ h3 {
   border-top: 1px solid rgba(155, 228, 255, 0.14);
   border-bottom: 1px solid rgba(155, 228, 255, 0.12);
   background:
-    radial-gradient(circle at 7% 72%, rgba(155, 228, 255, 0.92) 0 2px, rgba(155, 228, 255, 0.28) 3px, transparent 11px),
-    radial-gradient(circle at 19% 18%, rgba(155, 228, 255, 0.78) 0 2px, rgba(155, 228, 255, 0.2) 3px, transparent 10px),
-    radial-gradient(circle at 43% 78%, rgba(155, 228, 255, 0.82) 0 2px, rgba(155, 228, 255, 0.22) 3px, transparent 10px),
-    radial-gradient(circle at 72% 16%, rgba(255, 199, 116, 0.72) 0 2px, rgba(255, 199, 116, 0.18) 3px, transparent 10px),
-    radial-gradient(circle at 91% 76%, rgba(155, 228, 255, 0.74) 0 2px, rgba(155, 228, 255, 0.18) 3px, transparent 10px),
     radial-gradient(circle at 8% 18%, rgba(155, 228, 255, 0.16), transparent 30%),
     radial-gradient(circle at 78% 66%, rgba(255, 123, 86, 0.1), transparent 28%),
     radial-gradient(circle at 84% 40%, rgba(155, 228, 255, 0.08), transparent 26%),
     linear-gradient(135deg, rgba(7, 11, 34, 0.98), rgba(17, 24, 58, 0.9), rgba(46, 16, 40, 0.86));
   color: #ffffff;
-}
-
-.mailbox-reactions-section::before {
-  position: absolute;
-  inset: auto -14% -32% auto;
-  z-index: -2;
-  width: 420px;
-  height: 420px;
-  border: 1px solid rgba(255, 199, 116, 0.18);
-  border-radius: 50%;
-  content: "";
-  transform: translate3d(0, calc(var(--parallax-shift-soft) * -0.25), 0);
 }
 
 .mailbox-reactions-section::after {
@@ -7234,6 +7239,151 @@ h3 {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
+}
+
+.mailbox-reactions-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mailbox-reactions-particle {
+  background: rgba(142, 221, 255, 0.94);
+  box-shadow:
+    0 0 10px rgba(142, 221, 255, 0.76),
+    0 0 22px rgba(82, 186, 255, 0.28);
+}
+
+.mailbox-reactions-particle-1 {
+  left: 6%;
+  top: 10%;
+  width: 6px;
+  height: 6px;
+  --ambient-x: 8px;
+  --ambient-y: -14px;
+  animation-delay: -0.9s;
+  animation-duration: 9.5s;
+}
+
+.mailbox-reactions-particle-2 {
+  left: 16%;
+  top: 24%;
+  --ambient-x: -10px;
+  --ambient-y: 12px;
+  animation-delay: -3.2s;
+  animation-duration: 11s;
+}
+
+.mailbox-reactions-particle-3 {
+  left: 34%;
+  top: 8%;
+  width: 6px;
+  height: 6px;
+  --ambient-x: 12px;
+  --ambient-y: 10px;
+  animation-delay: -5.1s;
+  animation-duration: 10.6s;
+}
+
+.mailbox-reactions-particle-4 {
+  left: 44%;
+  top: 31%;
+  width: 7px;
+  height: 7px;
+  --ambient-x: -12px;
+  --ambient-y: -11px;
+  animation-delay: -1.8s;
+  animation-duration: 9.8s;
+}
+
+.mailbox-reactions-particle-5 {
+  left: 47%;
+  top: 55%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: 10px;
+  --ambient-y: -16px;
+  animation-delay: -6.2s;
+  animation-duration: 12s;
+}
+
+.mailbox-reactions-particle-6 {
+  left: 69%;
+  top: 25%;
+  width: 7px;
+  height: 7px;
+  --ambient-x: -11px;
+  --ambient-y: 13px;
+  animation-delay: -4.4s;
+  animation-duration: 10.4s;
+}
+
+.mailbox-reactions-particle-7 {
+  left: 77%;
+  top: 63%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: 14px;
+  --ambient-y: -10px;
+  animation-delay: -2.7s;
+  animation-duration: 11.6s;
+}
+
+.mailbox-reactions-particle-8 {
+  left: 83%;
+  top: 82%;
+  width: 7px;
+  height: 7px;
+  --ambient-x: -8px;
+  --ambient-y: -15px;
+  animation-delay: -7.1s;
+  animation-duration: 12.4s;
+}
+
+.mailbox-reactions-particle-9 {
+  left: 7%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  --ambient-x: 15px;
+  --ambient-y: 8px;
+  animation-delay: -5.8s;
+  animation-duration: 10.8s;
+}
+
+.mailbox-reactions-particle-10 {
+  left: 4%;
+  top: 82%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: 10px;
+  --ambient-y: -14px;
+  animation-delay: -3.9s;
+  animation-duration: 11.8s;
+}
+
+.mailbox-reactions-particle-11 {
+  left: 32%;
+  top: 93%;
+  width: 6px;
+  height: 6px;
+  --ambient-x: -10px;
+  --ambient-y: -12px;
+  animation-delay: -1.4s;
+  animation-duration: 12.6s;
+}
+
+.mailbox-reactions-particle-12 {
+  left: 91%;
+  top: 39%;
+  width: 4px;
+  height: 4px;
+  --ambient-x: -12px;
+  --ambient-y: 10px;
+  animation-delay: -8s;
+  animation-duration: 13s;
 }
 
 .mailbox-reactions-copy {
@@ -7500,8 +7650,10 @@ h3 {
   }
 
   .mailbox-reactions-copy h2 {
+    justify-self: center;
     font-size: 1.85rem;
     line-height: 1.04;
+    text-align: center;
     white-space: normal;
   }
 
@@ -9374,6 +9526,14 @@ h3 {
 }
 
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  .home-page {
+    padding-top: 68px;
+  }
+
   .package-card .package-detail-list .package-detail-note {
     white-space: normal;
   }

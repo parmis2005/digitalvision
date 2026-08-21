@@ -996,14 +996,11 @@ h1 {
 }
 
 .hero-line:first-child {
-  background: linear-gradient(92deg, #f8fbff 0%, #d8f7ff 54%, #a9c4ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff;
 }
 
 .hero-line-muted {
-  color: rgba(248, 251, 255, 0.9);
+  color: #ffffff;
 }
 
 h2 {
@@ -1054,9 +1051,15 @@ h3 {
 
 .hero-actions .primary-button,
 .hero-actions .secondary-button {
-  min-height: 50px;
-  padding-inline: 22px;
-  font-size: 0.96rem;
+  min-height: 44px;
+  padding-inline: 18px;
+  font-size: 0.9rem;
+}
+
+.hero-actions .primary-button svg,
+.hero-actions .secondary-button svg {
+  width: 16px;
+  height: 16px;
 }
 
 .hero-actions .primary-button {

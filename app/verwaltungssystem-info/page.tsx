@@ -280,7 +280,7 @@ export default function VerwaltungssystemInfoPage() {
       <section id="angebot" className={cx("section", "dark-band", "left-heading-section", "offer-section")}>
         <SectionHeading
           eyebrow="Unser Angebot"
-          title={"Wir formen Abläufe zu klaren\nDatenmodellen und nutzbaren\nWorkflows."}
+          title={"Wir formen Abläufe zu klaren\nDatenmodellen und nutzbaren Workflows."}
           text="Wir übersetzen wiederkehrende Arbeit in Datenmodelle, Ansichten und Workflows, die im Team tatsächlich nutzbar sind."
         />
         <div className={cx("service-grid", "four")}>

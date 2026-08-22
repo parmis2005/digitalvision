@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   Check,
+  ChevronUp,
   Compass,
   LayoutDashboard,
   Minus,
@@ -248,8 +249,6 @@ export default function Home() {
                   <span />
                   <span />
                 </span>
-                <span className="hero-console-label">Digitaler Systemkern</span>
-                <span className="hero-console-status">Startklar</span>
               </div>
               <div className="hero-console-main">
                 <div className="hero-console-content">
@@ -311,6 +310,10 @@ export default function Home() {
           <span className="scroll-cue-line" aria-hidden="true" />
         </a>
       </section>
+
+      <a className="floating-back-to-top" href="#top" aria-label="Zurück nach oben">
+        <ChevronUp size={18} aria-hidden="true" />
+      </a>
 
       <section className="section problem-section">
         <div className="section-heading section-heading-centered">
@@ -382,9 +385,9 @@ export default function Home() {
             Wirkung und Klarheit verbinden.
           </h2>
           <p>
-            Gute digitale Systeme sehen nicht nur modern aus. Sie führen,
-            erklären, ordnen und schaffen Vertrauen in jedem Kontakt mit deinem
-            Unternehmen.
+            Gute digitale Systeme sehen nicht nur modern aus.
+            <br />
+            Sie schaffen Klarheit, Ordnung und Vertrauen.
           </p>
           <div className="vision-points">
             {visionPoints.map((point) => (

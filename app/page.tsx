@@ -616,23 +616,15 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-top">
-          <div className="footer-branding">
-            <DigitalVisionLogo size="md" showTagline={false} />
-          </div>
-          <a className="footer-back-to-top" href="#top">
-            <Search size={16} aria-hidden="true" />
-            Nach oben
-          </a>
+        <div className="footer-branding">
+          <DigitalVisionLogo size="sm" showTagline={false} />
         </div>
-        <nav className="footer-links-nav" aria-label="Leistungen">
-          <a href="/seo-info">SEO & Google-Ranking</a>
-          <a href="/webseite-info">Webseiten-Erstellung</a>
-          <a href="/verwaltungssystem-info">Verwaltungssysteme</a>
-        </nav>
         <nav className="footer-legal-nav" aria-label="Rechtliche Hinweise">
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>
+          <a className="footer-back-to-top" href="#top">
+            Nach oben
+          </a>
         </nav>
       </footer>
     </main>

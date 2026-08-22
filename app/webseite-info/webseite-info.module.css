@@ -1301,6 +1301,7 @@
   .hero-proof-grid {
     width: 100%;
     max-width: 358px;
+    margin-inline: auto;
   }
   .hero-statement h1,
   .hero-statement p {

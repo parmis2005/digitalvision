@@ -220,9 +220,12 @@ export default function VerwaltungssystemInfoPage() {
       <section id="top" className={styles.hero}>
         <div className={styles["hero-copy"]}>
           <div className={styles["hero-statement"]}>
-            <Link className="digital-vision-info-back-link" href="/">
+            <Link
+              className="digital-vision-info-back-link"
+              href="/"
+              aria-label="Zurück zu Digital Vision"
+            >
               <ArrowLeft size={18} aria-hidden="true" />
-              Zurück zu Digital Vision
             </Link>
             <h1>
               <span>Verwaltungssysteme klar verstehen.</span>

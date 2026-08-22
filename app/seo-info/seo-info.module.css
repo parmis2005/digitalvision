@@ -1315,6 +1315,7 @@
   .hero-focus-panel {
     width: 100%;
     max-width: 358px;
+    margin-inline: auto;
   }
   .focus-topbar {
     justify-content: flex-start;

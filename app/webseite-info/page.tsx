@@ -185,7 +185,10 @@ export default function WebseiteInfoPage() {
               Angebot ansehen
               <ArrowRight size={18} />
             </a>
-            <a className={`${styles["secondary-button"]} digital-vision-light-cta`} href="#kontakt">Projekt anfragen</a>
+            <a className={`${styles["secondary-button"]} digital-vision-light-cta`} href="/#kontakt">
+              Kontakt Anfrage
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
           </div>
 
           <p className={styles["hero-note"]}>Seitenplan. Designsystem. Inhalte. Launch-Check.</p>
@@ -406,8 +409,8 @@ export default function WebseiteInfoPage() {
             </div>
           ))}
           <a className={styles["secondary-button"]} href="/#kontakt">
-            Kostenlose Anfrage
-            <ArrowRight size={18} />
+            Kontakt Anfrage
+            <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
       </section>

@@ -493,6 +493,9 @@
   border: 1px solid #9be4ff3d;
   box-shadow: inset 0 0 0 1px #ffffff0a;
 }
+.secondary-button svg {
+  color: var(--cyan);
+}
 .hero-actions .primary-button,
 .hero-actions .secondary-button {
   min-height: 50px;

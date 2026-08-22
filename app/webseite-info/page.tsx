@@ -250,7 +250,7 @@ export default function WebseiteInfoPage() {
               Angebot ansehen
               <ArrowRight size={18} />
             </a>
-            <a className={styles["secondary-button"]} href="#kontakt">Projekt anfragen</a>
+            <a className={`${styles["secondary-button"]} digital-vision-light-cta`} href="#kontakt">Projekt anfragen</a>
           </div>
 
           <p className={styles["hero-note"]}>Konzept. Design. Umsetzung. Betreuung.</p>

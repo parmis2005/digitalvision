@@ -846,12 +846,16 @@
   margin-inline: auto;
 }
 .center-heading-section .section-heading {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
   justify-content: center;
   text-align: center;
-  margin-inline: auto;
+  margin: 0 auto 44px;
 }
 .center-heading-section .section-heading h2,
 .center-heading-section .section-heading p {
+  max-width: 900px;
   margin-inline: auto;
 }
 .practice-heading-section .section-heading {
@@ -1167,7 +1171,8 @@
 .contact-choice svg {
   color: #7ae0a1;
 }
-.contact-card .primary-button {
+.contact-card .primary-button,
+.contact-card .secondary-button {
   width: 100%;
   margin-top: 8px;
 }

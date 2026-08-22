@@ -318,7 +318,7 @@ export default function SeoInfoPage() {
         </div>
       </section>
 
-      <section id="faktoren" className={cx("section", "left-heading-section")}>
+      <section id="faktoren" className={cx("section", "left-heading-section", "center-heading-section")}>
         <SectionHeading
           eyebrow="Ranking-Signale"
           title="Die Faktoren hinter guten Google-Positionen."
@@ -378,8 +378,8 @@ export default function SeoInfoPage() {
               <span>{item}</span>
             </div>
           ))}
-          <a className={styles["primary-button"]} href="#grundlagen">
-            Zum Anfang
+          <a className={styles["secondary-button"]} href="/#kontakt">
+            Kostenlose Anfrage
             <ArrowRight size={18} />
           </a>
         </div>

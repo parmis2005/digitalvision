@@ -405,8 +405,8 @@ export default function WebseiteInfoPage() {
               <span>{item}</span>
             </div>
           ))}
-          <a className={styles["primary-button"]} href="#grundlagen">
-            Zum Anfang
+          <a className={styles["secondary-button"]} href="/#kontakt">
+            Kostenlose Anfrage
             <ArrowRight size={18} />
           </a>
         </div>

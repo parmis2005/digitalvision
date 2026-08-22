@@ -787,9 +787,28 @@
 .offer-section .section-heading h2 {
   max-width: 1040px;
   margin-inline: auto;
+  font-size: clamp(2rem, 3vw, 2.65rem);
 }
 .offer-section .section-heading p {
   margin-inline: auto;
+}
+.center-heading-section .section-heading {
+  display: block;
+  width: 100%;
+  max-width: 1500px;
+  text-align: center;
+  margin: 0 auto 44px;
+}
+.center-heading-section .section-heading h2,
+.center-heading-section .section-heading p {
+  max-width: 1500px;
+  margin-inline: auto;
+}
+@media (min-width: 1180px) {
+  .center-heading-section .section-heading h2,
+  .center-heading-section .section-heading p {
+    white-space: nowrap;
+  }
 }
 .practice-heading-section .section-heading {
   grid-template-columns: minmax(0, 1120px);
@@ -1104,7 +1123,8 @@
 .contact-choice svg {
   color: #7ae0a1;
 }
-.contact-card .primary-button {
+.contact-card .primary-button,
+.contact-card .secondary-button {
   width: 100%;
   margin-top: 8px;
 }

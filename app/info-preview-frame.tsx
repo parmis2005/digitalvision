@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 type InfoPreviewFrameProps = {
   className: string;
@@ -17,9 +17,36 @@ type PreviewWindow = Window & {
   __digitalVisionInfoBackFrame?: number;
   __digitalVisionInfoBackObserver?: MutationObserver;
   __digitalVisionInfoBackRetry?: number;
+  frameElement?: HTMLIFrameElement | null;
 };
 
+function resizeFrameToContent(document: Document) {
+  const previewWindow = document.defaultView as PreviewWindow | null;
+  const frame = previewWindow?.frameElement;
+
+  if (!frame) {
+    return;
+  }
+
+  const height = document.documentElement.scrollHeight;
+
+  if (height > 0) {
+    frame.style.height = `${height}px`;
+  }
+}
+
 const backLinkStyles = `
+  :root {
+    --digital-vision-light-cta:
+      radial-gradient(circle at 62% 18%, rgba(174, 240, 255, 0.9), transparent 34%),
+      linear-gradient(135deg, #fbfdff 0%, #d8f6ff 48%, #ffd58a 100%);
+  }
+
+  .site-header,
+  .site-footer {
+    display: none !important;
+  }
+
   .digital-vision-info-back-link {
     display: inline-flex;
     align-items: center;
@@ -55,9 +82,7 @@ const backLinkStyles = `
 
   .digital-vision-light-cta {
     border-color: rgba(248, 251, 255, 0.92) !important;
-    background:
-      radial-gradient(circle at 62% 18%, rgba(174, 240, 255, 0.9), transparent 34%),
-      linear-gradient(135deg, #fbfdff 0%, #d8f6ff 48%, #ffd58a 100%) !important;
+    background: var(--digital-vision-light-cta) !important;
     color: #05091d !important;
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.1),
@@ -99,6 +124,7 @@ function addBackLink(document: Document, { hideHeroEyebrow = false }: InfoPrevie
   }
 
   highlightProjectRequestCtas(document);
+  resizeFrameToContent(document);
 
   const heroStatement = document.querySelector(".hero-statement");
 
@@ -214,13 +240,39 @@ export function InfoPreviewFrame({
   src,
   title,
 }: InfoPreviewFrameProps) {
+  const frameRef = useRef<HTMLIFrameElement | null>(null);
+
+  const applyPreviewTheme = useCallback(
+    (frame: HTMLIFrameElement | null) => {
+      const previewDocument = frame?.contentDocument;
+
+      if (previewDocument?.readyState === "complete" || previewDocument?.readyState === "interactive") {
+        installBackLink(previewDocument, { hideHeroEyebrow });
+      }
+    },
+    [hideHeroEyebrow],
+  );
+
   const handleLoad = useCallback((event: React.SyntheticEvent<HTMLIFrameElement>) => {
-    const previewDocument = event.currentTarget.contentDocument;
+    applyPreviewTheme(event.currentTarget);
+  }, [applyPreviewTheme]);
 
-    if (previewDocument) {
-      installBackLink(previewDocument, { hideHeroEyebrow });
-    }
-  }, [hideHeroEyebrow]);
+  useEffect(() => {
+    applyPreviewTheme(frameRef.current);
+  }, [applyPreviewTheme, src]);
 
-  return <iframe className={className} src={src} title={title} onLoad={handleLoad} />;
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const previewDocument = frameRef.current?.contentDocument;
+
+      if (previewDocument) {
+        resizeFrameToContent(previewDocument);
+      }
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
+  return <iframe ref={frameRef} className={className} src={src} title={title} onLoad={handleLoad} />;
 }

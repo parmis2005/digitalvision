@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InfoPreviewFrame } from "../info-preview-frame";
+import { SiteHeader } from "../site-header";
 
 const title = "SEO & Google-Ranking";
 const description =
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function SeoInfoPage() {
   return (
     <main className="seo-info-page">
+      <SiteHeader />
       <InfoPreviewFrame
         className="seo-info-frame"
         src="/seo-info-preview/index.html"

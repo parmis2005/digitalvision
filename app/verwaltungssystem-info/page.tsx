@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InfoPreviewFrame } from "../info-preview-frame";
+import { SiteHeader } from "../site-header";
 
 const title = "Verwaltungssysteme";
 const description =
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function VerwaltungssystemInfoPage() {
   return (
     <main className="verwaltungssystem-info-page">
+      <SiteHeader />
       <InfoPreviewFrame
         className="verwaltungssystem-info-frame"
         src="/verwaltungssystem-info-preview/index.html"

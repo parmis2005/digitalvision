@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InfoPreviewFrame } from "../info-preview-frame";
+import { SiteHeader } from "../site-header";
 
 const title = "Webseiten-Erstellung";
 const description =
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function WebseiteInfoPage() {
   return (
     <main className="webseite-info-page">
+      <SiteHeader />
       <InfoPreviewFrame
         className="webseite-info-frame"
         hideHeroEyebrow

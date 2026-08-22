@@ -82,8 +82,8 @@ main {
 .seo-info-page,
 .webseite-info-page,
 .verwaltungssystem-info-page {
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
+  padding-top: 84px;
   background: #020611;
 }
 
@@ -92,7 +92,7 @@ main {
 .verwaltungssystem-info-frame {
   display: block;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
   border: 0;
   background: #020611;
 }
@@ -9530,7 +9530,10 @@ h3 {
     padding-top: 0;
   }
 
-  .blog-page {
+  .blog-page,
+  .seo-info-page,
+  .webseite-info-page,
+  .verwaltungssystem-info-page {
     padding-top: 68px;
   }
 

@@ -290,18 +290,20 @@ export default function Home() {
         </div>
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-visual-stage">
-            <div className="hero-grid-glow" />
-            <div className="hero-core" />
-            <div className="hero-ring hero-ring-one" />
-            <div className="hero-ring hero-ring-two" />
-            <div className="hero-ring hero-ring-three" />
-            <div className="hero-arc hero-arc-one" />
-            <div className="hero-arc hero-arc-two" />
-            <div className="hero-arc hero-arc-three" />
-            <span className="hero-particle hero-particle-one" />
-            <span className="hero-particle hero-particle-two" />
-            <span className="hero-particle hero-particle-three" />
-            <span className="hero-particle hero-particle-four" />
+            <video
+              className="hero-visual-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/videos/pinload-2-hero-poster.jpg"
+            >
+              <source
+                src="/videos/PinLoad%202.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
         </div>
         <a className="scroll-cue" href="#leistungen" aria-label="Nach unten scrollen">

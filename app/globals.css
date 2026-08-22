@@ -5716,12 +5716,12 @@ h3 {
 }
 
 .problem-card p.problem-stat {
-  margin: 14px 0 2px;
+  margin: 12px 0 2px;
   background: linear-gradient(90deg, #ffe8a8 0%, #ffc774 46%, #ffad5b 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   font-weight: 900;
   line-height: 1;
   text-shadow: 0 0 24px rgba(255, 199, 116, 0.24);

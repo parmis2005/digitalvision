@@ -222,7 +222,7 @@ export default function VerwaltungssystemInfoPage() {
           <div className={styles["hero-statement"]}>
             <Link
               className="digital-vision-info-back-link"
-              href="/"
+              href="/#leistungen"
               aria-label="Zurück zu Digital Vision"
             >
               <ArrowLeft size={18} aria-hidden="true" />

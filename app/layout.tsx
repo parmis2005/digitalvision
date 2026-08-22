@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FloatingBackToTop } from "./floating-back-to-top";
 import "./globals.css";
 import { TabTitleNudge } from "./tab-title-nudge";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="de">
       <body>
         {children}
+        <FloatingBackToTop />
         <TabTitleNudge />
         <script
           type="application/ld+json"

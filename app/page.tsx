@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   Check,
-  ChevronUp,
   Compass,
   LayoutDashboard,
   Minus,
@@ -320,10 +319,6 @@ export default function Home() {
           <span className="scroll-cue-line" aria-hidden="true" />
         </a>
       </section>
-
-      <a className="floating-back-to-top" href="#top" aria-label="Zurück nach oben">
-        <ChevronUp size={18} aria-hidden="true" />
-      </a>
 
       <section className="section problem-section">
         <div className="section-heading section-heading-centered">

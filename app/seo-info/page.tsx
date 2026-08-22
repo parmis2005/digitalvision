@@ -209,6 +209,8 @@ export default function SeoInfoPage() {
   return (
     <main className="seo-info-page">
       <SiteHeader />
+      <div className={styles.page}>
+      <div className={styles.content}>
       <div className={styles["ambient-grid"]} aria-hidden="true" />
 
       <section id="top" className={styles.hero}>
@@ -449,7 +451,7 @@ export default function SeoInfoPage() {
       <section className={cx("section", "left-heading-section", "practice-heading-section")}>
         <SectionHeading
           eyebrow="SEO in der Praxis"
-          title={"Ein System aus Analyse, Struktur und messbarer Umsetzung."}
+          title={"Ein System aus Analyse, Struktur und messbarer Umsetzung."}
           text="Professionelle SEO funktioniert nicht als Einmalmaßnahme. Wir bauen einen wiederholbaren Prozess auf, der Analyse, Umsetzung und Auswertung verbindet."
         />
         <div className={cx("service-grid", "four")}>
@@ -466,7 +468,7 @@ export default function SeoInfoPage() {
       <section className={cx("section", "dark-band", "left-heading-section", "error-heading-section")}>
         <SectionHeading
           eyebrow="Häufige Fehler"
-          title={"Was gute Rankings unnötig ausbremst."}
+          title={"Was gute Rankings unnötig ausbremst."}
           text="Viele SEO-Probleme entstehen nicht durch fehlende Tools, sondern durch unklare Prioritäten. Deshalb beginnt unsere Arbeit mit einer sauberen Einordnung der wichtigsten Hebel."
         />
         <div className={cx("service-grid", "four")}>
@@ -552,6 +554,8 @@ export default function SeoInfoPage() {
           </a>
         </div>
       </section>
+      </div>
+      </div>
     </main>
   );
 }

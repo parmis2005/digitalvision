@@ -315,7 +315,7 @@ export default function VerwaltungssystemInfoPage() {
         </div>
       </section>
 
-      <section id="faktoren" className={cx("section", "left-heading-section")}>
+      <section id="faktoren" className={cx("section", "center-heading-section")}>
         <SectionHeading
           eyebrow="System-Faktoren"
           title="Was ein gutes Verwaltungssystem ausmacht."

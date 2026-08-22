@@ -1170,6 +1170,18 @@
 .offer-section .section-heading p {
   margin-inline: auto;
 }
+.center-heading-section .section-heading {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
+  text-align: center;
+  margin: 0 auto 44px;
+}
+.center-heading-section .section-heading h2,
+.center-heading-section .section-heading p {
+  max-width: 900px;
+  margin-inline: auto;
+}
 .practice-heading-section .section-heading {
   grid-template-columns: minmax(0, 1120px);
 }

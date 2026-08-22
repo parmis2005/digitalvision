@@ -5,23 +5,15 @@ import {
   ArrowRight,
   BarChart2,
   Check,
-  Clock,
   Coins,
   Globe,
   Layers,
-  Link2,
-  Lock,
-  Megaphone,
   PenLine,
   Plus,
-  RefreshCw,
-  Search,
   ShieldCheck,
   Smartphone,
   Star,
   Target,
-  TrendingUp,
-  Trophy,
   Zap,
 } from "lucide-react";
 import { SiteHeader } from "../site-header";
@@ -58,24 +50,24 @@ const FACTORS = [
   {
     Icon: PenLine,
     title: "Klares Design",
-    text: "Gutes Webdesign sieht nicht nur modern aus. Es ordnet Informationen, schafft Vertrauen und führt Besucher ohne Umwege zur passenden Aktion.",
+    text: "Gutes Webdesign setzt Hierarchie, Abstände, Kontraste und Bildsprache so ein, dass Besucher sofort Orientierung haben.",
   },
   {
     Icon: Layers,
     title: "Saubere Struktur",
-    text: "Eine Website braucht logische Seiten, klare Navigation und Inhalte, die schnell verstanden werden. So finden Nutzer schneller, wonach sie suchen.",
+    text: "Navigation, Abschnitte und Handlungsaufforderungen werden so aufgebaut, dass der nächste Schritt jederzeit sichtbar bleibt.",
   },
   {
     Icon: Zap,
     title: "Technische Qualität",
-    text: "Ladezeit, mobile Darstellung, Sicherheit, Wartbarkeit und saubere Umsetzung entscheiden darüber, ob eine Website im Alltag wirklich funktioniert.",
+    text: "Responsives Layout, optimierte Medien, stabile Formulare und saubere Komponenten sorgen für eine verlässliche Nutzung.",
   },
 ];
 
 const BASICS = [
   { Icon: Globe, title: "Immer erreichbar", text: "Eine Website ist dein digitaler Standort und beantwortet wichtige Fragen rund um die Uhr." },
-  { Icon: ShieldCheck, title: "Mehr Vertrauen", text: "Professionelles Design, klare Inhalte und echte Nachweise machen dein Angebot glaubwürdiger." },
-  { Icon: Target, title: "Mehr Anfragen", text: "Gute Seiten führen Besucher gezielt zu Kontakt, Buchung, Kauf oder Beratung." },
+  { Icon: ShieldCheck, title: "Schnelle Orientierung", text: "Besucher erkennen Leistungen, Ablauf und Kontaktwege ohne lange Suche." },
+  { Icon: Target, title: "Klare Handlungen", text: "Buttons, Formulare und Kontaktpunkte führen gezielt zur passenden Anfrage." },
   { Icon: Coins, title: "Langfristiger Wert", text: "Eine gute Website kann über Jahre informieren, verkaufen und weitere Kanäle stützen." },
 ];
 
@@ -87,8 +79,8 @@ const OFFER = [
   },
   {
     Icon: Layers,
-    title: "Webdesign & Struktur",
-    text: "Wir entwickeln Seitenaufbau, Navigation und visuelle Führung so, dass Besucher schnell verstehen, warum sie bei dir richtig sind.",
+    title: "Nutzerführung & Layout",
+    text: "Wir gestalten Seitenaufbau, Blickführung und Kontaktpunkte so, dass Besucher ohne Umwege weiterkommen.",
   },
   {
     Icon: PenLine,
@@ -97,77 +89,16 @@ const OFFER = [
   },
   {
     Icon: BarChart2,
-    title: "Launch & Betreuung",
-    text: "Wir bringen die Website online, prüfen Technik und begleiten Weiterentwicklung, damit sie aktuell, schnell und nutzbar bleibt.",
+    title: "Launch & Pflegeplan",
+    text: "Wir veröffentlichen die Website, prüfen Formulare, Performance und Inhalte und planen sinnvolle Pflegepunkte.",
   },
-];
-
-const SECONDARY_FACTORS = [
-  { Icon: Smartphone, label: "Responsive Design" },
-  { Icon: Lock, label: "Datenschutz & Sicherheit" },
-  { Icon: Clock, label: "Schnelle Ladezeit" },
-  { Icon: Target, label: "Klare Ziele" },
-  { Icon: Link2, label: "Sinnvolle Verlinkung" },
-  { Icon: RefreshCw, label: "Regelmäßige Pflege" },
-];
-
-const ONPAGE = [
-  { n: "01", title: "Ziel & Zielgruppe", text: "Vor dem Design muss klar sein, wen die Website erreichen soll und welche Handlung am Ende wichtig ist." },
-  { n: "02", title: "Seitenstruktur", text: "Startseite, Leistungsseiten, Über uns, Referenzen, Kontakt und rechtliche Seiten brauchen eine nachvollziehbare Ordnung." },
-  { n: "03", title: "Inhalte & Botschaft", text: "Texte, Bilder und Abschnitte müssen erklären, welchen Nutzen dein Angebot hat und warum Besucher dir vertrauen können." },
-  { n: "04", title: "Kontaktwege", text: "Formulare, Telefonnummern, Buttons und Buchungswege sollten sichtbar, einfach und auf allen Geräten bedienbar sein." },
-  { n: "05", title: "Vertrauen & Rechtliches", text: "Impressum, Datenschutz, Bewertungen, Referenzen, Zertifikate und echte Einblicke reduzieren Unsicherheit." },
-];
-
-const OFFPAGE = [
-  { Icon: Megaphone, title: "Marketing-Anbindung", text: "Eine Website wirkt stärker, wenn Social Media, Anzeigen, E-Mail, Printmaterialien und Online-Suche auf klare Seiten führen." },
-  { Icon: Star, title: "Bewertungen & Nachweise", text: "Referenzen, Kundenstimmen und echte Projektergebnisse helfen Besuchern, dein Angebot schneller einzuordnen." },
-  { Icon: RefreshCw, title: "Pflege nach dem Launch", text: "Aktuelle Inhalte, Sicherheitsupdates, neue Angebote und regelmäßige Prüfung halten die Website langfristig wertvoll." },
-];
-
-const PRACTICE = [
-  { Icon: Globe, title: "Firmenwebseite", text: "Ein professioneller Unternehmensauftritt erklärt Leistungen, Team, Standort, Kontakt und Vertrauen auf einen Blick." },
-  { Icon: Target, title: "Landingpage", text: "Eine Landingpage konzentriert sich auf ein Angebot, eine Zielgruppe und eine klare Anfrage oder Buchung." },
-  { Icon: Trophy, title: "Portfolio & Referenzen", text: "Projekte, Ergebnisse und Arbeitsweise werden sichtbar, damit Besucher deine Qualität schneller beurteilen können." },
-  { Icon: TrendingUp, title: "Redesign", text: "Ein Redesign verbessert Struktur, Technik, Darstellung und Wirkung, ohne bereits aufgebaute Inhalte zu verlieren." },
-];
-
-const ERRORS = [
-  { Icon: Search, title: "Ziel unklar lassen", text: "Wenn nicht klar ist, was Besucher tun sollen, wirkt die Website schnell wie eine digitale Broschüre ohne Richtung." },
-  { Icon: PenLine, title: "Texte nur füllen", text: "Zu allgemeine Inhalte erklären weder den Nutzen noch den Unterschied zu anderen Anbietern." },
-  { Icon: Smartphone, title: "Mobile Nutzung vergessen", text: "Viele Besucher kommen vom Smartphone. Wenn Buttons, Texte oder Formulare dort schlecht funktionieren, gehen Anfragen verloren." },
-  { Icon: Clock, title: "Pflege unterschätzen", text: "Veraltete Inhalte, langsame Seiten oder technische Fehler lassen eine Website schnell unprofessionell wirken." },
 ];
 
 const PROCESS = [
-  { n: "01", title: "Verstehen", text: "Wir klären Angebot, Zielgruppe, Wettbewerb, Inhalte und gewünschte Anfragen, bevor Gestaltung beginnt." },
-  { n: "02", title: "Konzept", text: "Wir planen Seitenstruktur, Nutzerführung, Inhalte, visuelle Richtung und technische Anforderungen." },
-  { n: "03", title: "Umsetzung", text: "Wir gestalten und entwickeln die Website responsiv, schnell, sauber und passend zum jeweiligen Angebot." },
-  { n: "04", title: "Launch & Pflege", text: "Wir testen, veröffentlichen, messen und entwickeln die Website weiter, wenn neue Inhalte oder Ziele entstehen." },
-];
-
-const TOOLS = [
-  {
-    Icon: Layers,
-    name: "CMS",
-    tag: "Pflege",
-    text: "Ein Content-Management-System macht Inhalte wie Texte, Bilder, Leistungen oder Referenzen leichter bearbeitbar.",
-    detail: "Ein CMS ist sinnvoll, wenn Inhalte regelmäßig angepasst werden sollen. Bei sehr stabilen Seiten kann eine schlankere technische Lösung besser sein.",
-  },
-  {
-    Icon: BarChart2,
-    name: "Analytics",
-    tag: "Messung",
-    text: "Messdaten zeigen, welche Seiten besucht werden, wo Nutzer abspringen und welche Kontaktwege funktionieren.",
-    detail: "Datenschutzkonform eingerichtet helfen Analytics-Daten dabei, Inhalte, Buttons und Seitenstruktur gezielt zu verbessern.",
-  },
-  {
-    Icon: Zap,
-    name: "Performance Check",
-    tag: "Qualität",
-    text: "Tests für Ladezeit, mobile Nutzbarkeit und technische Stabilität zeigen, ob die Website sauber ausgeliefert wird.",
-    detail: "Performance-Prüfungen helfen, große Bilder, blockierende Scripte, Layoutprobleme und andere technische Bremsen zu finden.",
-  },
+  { n: "01", title: "Inhalte sammeln", text: "Wir klären Leistungen, Nachweise, Bilder, Kontaktwege und alles, was Besucher wissen müssen." },
+  { n: "02", title: "Seitenplan", text: "Wir legen fest, welche Unterseiten, Abschnitte und Aktionen der Webauftritt braucht." },
+  { n: "03", title: "Interface-Aufbau", text: "Wir bauen Layouts, Komponenten und mobile Ansichten passend zur Marke." },
+  { n: "04", title: "Veröffentlichung", text: "Wir testen Mobilansicht, Formulare, Ladezeit und rechtliche Pflichtseiten vor dem Start." },
 ];
 
 const FAQ = [
@@ -227,8 +158,9 @@ export default function WebseiteInfoPage() {
               <span>Webseiten klar verstehen.</span>
             </h1>
             <p>
-              Ein professioneller Webauftritt zeigt sofort, wer du bist, was du anbietest
-              und warum Besucher den nächsten Schritt mit dir gehen sollten.
+              Dein Webauftritt zeigt, wer du bist und was du anbietest.
+              <br />
+              Er zeigt, warum Besucher den nächsten Schritt mit dir gehen&nbsp;sollten.
             </p>
           </div>
 
@@ -256,7 +188,7 @@ export default function WebseiteInfoPage() {
             <a className={`${styles["secondary-button"]} digital-vision-light-cta`} href="#kontakt">Projekt anfragen</a>
           </div>
 
-          <p className={styles["hero-note"]}>Konzept. Design. Umsetzung. Betreuung.</p>
+          <p className={styles["hero-note"]}>Seitenplan. Designsystem. Inhalte. Launch-Check.</p>
         </div>
 
         <div className={styles["hero-visual"]} aria-hidden="true">
@@ -378,8 +310,8 @@ export default function WebseiteInfoPage() {
       <section id="angebot" className={cx("section", "dark-band", "left-heading-section", "offer-section")}>
         <SectionHeading
           eyebrow="Unser Angebot"
-          title="Wir erstellen Webseiten, die informieren, Vertrauen aufbauen und Anfragen erleichtern."
-          text="Wir bieten Webseiten an, weil ein professioneller Webauftritt für viele Kunden der erste echte Kontakt mit einem Unternehmen ist. Die Seite soll nicht nur gut aussehen, sondern erklären, überzeugen und im Alltag funktionieren."
+          title="Webseiten, die klar informieren und Anfragen erleichtern."
+          text="Wir verbinden Inhalt, Design und Technik zu einem klaren Weg zur Anfrage."
         />
         <div className={cx("service-grid", "four")}>
           {OFFER.map(({ Icon, title, text }) => (
@@ -395,10 +327,9 @@ export default function WebseiteInfoPage() {
       <section id="grundlagen" className={cx("section", "split-section")}>
         <div className={styles["split-copy"]}>
           <Eyebrow>Was ist eine gute Website?</Eyebrow>
-          <h2>Ein digitaler Ort, der dein Angebot verständlich macht.</h2>
+          <h2>Dein Angebot klar erklärt.</h2>
           <p>
-            Eine Website verbindet Information, Vertrauen, Technik und klare Wege zur Kontaktaufnahme.
-            Sie hilft Besuchern, dein Angebot einzuordnen und ohne Hürden den nächsten Schritt zu gehen.
+            Eine gute Website beantwortet die wichtigsten Fragen direkt: Was bietest du an, für wen ist es geeignet und wie nimmt man Kontakt auf?
           </p>
         </div>
         <div className={styles["feature-list"]}>
@@ -414,11 +345,11 @@ export default function WebseiteInfoPage() {
         </div>
       </section>
 
-      <section id="bausteine" className={cx("section", "left-heading-section")}>
+      <section id="bausteine" className={cx("section", "left-heading-section", "center-heading-section")}>
         <SectionHeading
           eyebrow="Wichtige Bausteine"
           title="Die Faktoren hinter einem starken Webauftritt."
-          text="Eine Website funktioniert dann gut, wenn Gestaltung, Inhalt und Technik zusammenpassen. Wir ordnen diese Bereiche so, dass Besucher schnell verstehen, was du anbietest und warum sie Kontakt aufnehmen sollten."
+          text="Entscheidend sind visuelle Führung, verständliche Inhalte und ein reibungsloser Weg zur Anfrage."
         />
         <div className={styles["service-grid"]}>
           {FACTORS.map(({ Icon, title, text }) => (
@@ -429,92 +360,10 @@ export default function WebseiteInfoPage() {
             </article>
           ))}
         </div>
-        <div className={styles["signal-list"]}>
-          {SECONDARY_FACTORS.map(({ Icon, label }) => (
-            <div className={styles["signal-item"]} key={label}>
-              <Icon size={17} />
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="optimierung" className={cx("section", "split-section", "optimization-section", "left-heading-section")}>
-        <div className={cx("split-copy", "sticky-copy")}>
-          <Eyebrow>Aufbau einer Website</Eyebrow>
-          <h2>Was auf einer Website klar geregelt sein sollte.</h2>
-          <p>
-            Gute Webseiten entstehen aus konkreten Entscheidungen: Welche Inhalte sind wichtig?
-            Welche Reihenfolge führt Besucher weiter? Welche Kontaktwege sollen sichtbar sein?
-            Diese Grundlagen machen den Unterschied zwischen schöner Fläche und nutzbarem Webauftritt.
-          </p>
-        </div>
-        <div className={styles["timeline-list"]}>
-          {ONPAGE.map((item) => (
-            <article className={styles["timeline-item"]} key={item.n}>
-              <span>{item.n}</span>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={cx("section", "dark-band", "left-heading-section")}>
-        <SectionHeading
-          eyebrow="Nach dem Launch"
-          title="Eine Website wird stärker, wenn sie gepflegt und eingebunden wird."
-          text="Der Launch ist nicht das Ende. Eine gute Website wird mit echten Nachweisen, neuen Inhalten, Marketing-Kanälen und technischer Pflege weiter verbessert."
-        />
-        <div className={styles["service-grid"]}>
-          {OFFPAGE.map(({ Icon, title, text }) => (
-            <article className={styles["service-card"]} key={title}>
-              <Icon size={27} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={cx("section", "left-heading-section", "practice-heading-section")}>
-        <SectionHeading
-          eyebrow="Webseiten in der Praxis"
-          title={"Der richtige Webauftritt hängt vom Ziel ab."}
-          text="Nicht jedes Projekt braucht denselben Umfang. Entscheidend ist, ob die Website informieren, verkaufen, Vertrauen aufbauen, Bewerbungen gewinnen oder ein einzelnes Angebot fokussieren soll."
-        />
-        <div className={cx("service-grid", "four")}>
-          {PRACTICE.map(({ Icon, title, text }) => (
-            <article className={cx("service-card", "compact-card")} key={title}>
-              <Icon size={25} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={cx("section", "dark-band", "left-heading-section", "error-heading-section")}>
-        <SectionHeading
-          eyebrow="Häufige Fehler"
-          title={"Was Webseiten unnötig schwach macht."}
-          text="Viele Probleme entstehen, weil Design, Inhalt und Ziel nicht sauber verbunden werden. Deshalb startet unsere Arbeit mit Struktur und klaren Prioritäten."
-        />
-        <div className={cx("service-grid", "four")}>
-          {ERRORS.map(({ Icon, title, text }) => (
-            <article className={cx("service-card", "compact-card")} key={title}>
-              <Icon size={25} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section id="prozess" className={cx("section", "process-section")}>
-        <SectionHeading eyebrow="Prozess" title="Unser Ablauf bis zur fertigen Website." compact />
+        <SectionHeading eyebrow="Prozess" title="Vom Seitenplan zur launchbereiten Website." compact />
         <div className={styles["process-grid"]}>
           {PROCESS.map((step) => (
             <article className={styles["process-step"]} key={step.n}>
@@ -526,33 +375,10 @@ export default function WebseiteInfoPage() {
         </div>
       </section>
 
-      <section id="tools" className={cx("section", "packages-section")}>
-        <SectionHeading eyebrow="Tools" title="Werkzeuge, die Pflege und Verbesserung einfacher machen." compact />
-        <div className={styles["package-grid"]}>
-          {TOOLS.map(({ Icon, name, tag, text, detail }) => (
-            <article className={styles["package-card"]} key={name}>
-              <Icon size={25} />
-              <h3>{name}</h3>
-              <p className={styles.price}>{tag}</p>
-              <p>{text}</p>
-              <details className={styles["tool-details"]}>
-                <summary>
-                  Details
-                  <Plus size={15} />
-                </summary>
-                <div className={styles["tool-detail-popup"]}>
-                  <p>{detail}</p>
-                </div>
-              </details>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section id="faq" className={cx("section", "faq-section")}>
-        <SectionHeading eyebrow="FAQ" title="Antworten auf wichtige Fragen zu Webseiten." compact />
+        <SectionHeading eyebrow="FAQ" title="Antworten zu Umfang, Launch und Website-Pflege." compact />
         <div className={styles["faq-list"]}>
-          {FAQ.map((item) => (
+          {FAQ.slice(0, 4).map((item) => (
             <details className={styles["faq-item"]} key={item.q}>
               <summary>
                 <span>{item.q}</span>
@@ -569,8 +395,7 @@ export default function WebseiteInfoPage() {
           <Eyebrow>Projekt anfragen</Eyebrow>
           <h2>Bereit für eine Website, die dein Angebot klar erklärt?</h2>
           <p>
-            Wenn du eine Website brauchst, die professionell wirkt, strukturiert informiert und Anfragen erleichtert,
-            starten wir mit Ziel, Aufbau und den wichtigsten Inhalten.
+            Wenn deine Website klarer wirken soll, starten wir mit Seitenplan, Inhaltsstruktur, Designrichtung und Kontaktwegen.
           </p>
         </div>
         <div className={styles["contact-card"]}>

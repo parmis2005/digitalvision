@@ -1696,6 +1696,12 @@ h3 {
   height: 100%;
 }
 
+.hotel-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .wellness-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2570,6 +2576,155 @@ h3 {
 
 .restaurant-card-copy span {
   color: rgba(245, 225, 199, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.hotel-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hotel-card-cta {
+  color: rgba(247, 226, 181, 0.9);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hotel-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.hotel-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.hotel-card-branding p {
+  margin-bottom: 0;
+  color: #fff8ea;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 0.94;
+}
+
+.hotel-card-branding span {
+  color: rgba(247, 226, 181, 0.8);
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hotel-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(24, 16, 13, 0.74), rgba(24, 16, 13, 0.16)),
+    url("/luxushotel-preview/images/hero-poster.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 241, 214, 0.16);
+}
+
+.hotel-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 28%, rgba(244, 196, 112, 0.24), transparent 24%),
+    linear-gradient(180deg, transparent, rgba(24, 16, 13, 0.26));
+  content: "";
+}
+
+.hotel-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff8ea;
+  text-shadow: 0 8px 24px rgba(17, 11, 8, 0.42);
+}
+
+.hotel-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 248, 235, 0.86);
+  color: #876133;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.hotel-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.95;
+}
+
+.hotel-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  align-content: end;
+  width: 102px;
+  height: 62px;
+  padding: 10px;
+  border: 1px solid rgba(255, 248, 235, 0.48);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(96, 58, 30, 0.2)),
+    url("/luxushotel-preview/images/penthouse-poster.jpg") center/cover no-repeat;
+  box-shadow: 0 10px 24px rgba(17, 11, 8, 0.24);
+  color: #fff8ea;
+  text-shadow: 0 8px 18px rgba(17, 11, 8, 0.42);
+}
+
+.hotel-card-accent span {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.hotel-card-accent small {
+  font-size: 0.44rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hotel-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.hotel-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff8ea;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.hotel-card-copy span {
+  color: rgba(247, 226, 181, 0.82);
   font-size: 0.64rem;
   line-height: 1.35;
 }
@@ -4277,6 +4432,14 @@ h3 {
   color: #fff6e9;
 }
 
+.showcase-card.hotel .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(247, 226, 181, 0.2), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(112, 73, 42, 0.22), transparent 20%),
+    linear-gradient(160deg, #17100d 0%, #74502e 46%, #e6c37e 100%);
+  color: #fff8ea;
+}
+
 .showcase-card.wellness .showcase-preview {
   background:
     radial-gradient(circle at 82% 24%, rgba(231, 155, 101, 0.12), transparent 18%),
@@ -4616,6 +4779,25 @@ h3 {
 .product-preview-large.restaurant .product-preview-iframe {
   width: 180%;
   height: 1180px;
+  transform: scale(0.556);
+}
+
+.product-preview-large.hotel .product-preview-shell {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(247, 226, 181, 0.2), transparent 20%),
+    radial-gradient(circle at 16% 82%, rgba(112, 73, 42, 0.2), transparent 22%),
+    linear-gradient(135deg, #17100d, #74502e 54%, #e6c37e);
+  color: #fff8ea;
+}
+
+.product-preview-large.hotel .product-preview-viewport,
+.product-preview-large.hotel .product-preview-iframe {
+  background: #f7f0e2;
+}
+
+.product-preview-large.hotel .product-preview-iframe {
+  width: 180%;
+  height: 1220px;
   transform: scale(0.556);
 }
 

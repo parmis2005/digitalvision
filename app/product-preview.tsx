@@ -11,6 +11,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
   const isCoffee = product.slug === "bean-bark";
   const isRestaurant = product.slug === "maison-lumiere";
+  const isHotel = product.slug === "aurum-grand-hotel";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isMedical = product.slug === "arztpraxis-weber";
@@ -264,6 +265,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="restaurant-card-copy">
               <h3>Maison Lumière</h3>
               <span>Speisekarte · Galerie · Reservierung · Standort</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isHotel) {
+    if (size === "card") {
+      return (
+        <div className="hotel-preview-card-view">
+          <div className="hotel-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="hotel-card-cta">Reservieren</span>
+          </div>
+          <div className="hotel-card-shell">
+            <div className="hotel-card-branding">
+              <p>AURUM Grand Hotel</p>
+              <span>München · Suiten · Spa</span>
+            </div>
+            <div className="hotel-card-stage">
+              <div className="hotel-card-overlay">
+                <span className="hotel-card-kicker">5 Sterne Aufenthalt</span>
+                <strong>Zeitlose Eleganz im Herzen Münchens.</strong>
+              </div>
+              <div className="hotel-card-accent">
+                <span>98</span>
+                <small>Zimmer & Suiten</small>
+              </div>
+            </div>
+            <div className="hotel-card-copy">
+              <h3>AURUM Grand Hotel</h3>
+              <span>Suiten · Restaurant · Spa · Reservierung</span>
             </div>
           </div>
         </div>

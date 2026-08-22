@@ -15,6 +15,7 @@ export type ProductItem = {
     | "premium-auto"
     | "coffee"
     | "restaurant"
+    | "hotel"
     | "wellness"
     | "thermal"
     | "medical"
@@ -63,6 +64,22 @@ export const products: ProductItem[] = [
       "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
     previewUrl: "https://kosmetik-test.vercel.app/",
+  },
+  {
+    slug: "aurum-grand-hotel",
+    type: "Luxushotel Website",
+    title: "AURUM Grand Hotel",
+    detail: "Premium-Hotel-Website für Suiten, Restaurant, Spa und Reservierungen",
+    variant: "hotel",
+    category: "Webseiten",
+    intro:
+      "Beispiel für eine moderne Luxushotel-Website mit hochwertiger Bildsprache, klaren Zimmern, Restaurant, Spa, Galerie und direktem Reservierungsfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für Hotel, Suiten und Premium-Aufenthalte",
+      "Klare Bereiche für Zimmer, Restaurant, Spa, Galerie, Kontakt und Reservierungen",
+      "Geeignet für Hotels, Boutique-Hotels, Resorts und gehobene Hospitality-Konzepte",
+    ],
+    previewUrl: "/luxushotel-preview/index.html",
   },
   {
     slug: "autohaus-nordglanz",

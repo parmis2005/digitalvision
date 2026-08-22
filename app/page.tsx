@@ -256,15 +256,25 @@ export default function Home() {
                     <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
                   </div>
                   <div className="hero-statement">
-                    <p className="eyebrow">Webdesign · SEO · Systeme</p>
+                    <p className="eyebrow">
+                      <span className="hero-eyebrow-word">Webdesign</span>
+                      <span className="hero-eyebrow-separator" aria-hidden="true">
+                        ·
+                      </span>
+                      <span className="hero-eyebrow-word">SEO</span>
+                      <span className="hero-eyebrow-separator" aria-hidden="true">
+                        ·
+                      </span>
+                      <span className="hero-eyebrow-word">Systeme</span>
+                    </p>
                     <h1>
                       <span className="hero-line">Klarer auftreten.</span>
                       <span className="hero-line hero-line-muted">Besser gefunden werden.</span>
                     </h1>
                     <p className="hero-text">
-                      Websites mit Struktur.
+                      <span className="hero-text-line">Websites mit Struktur.</span>
                       <br />
-                      Sichtbar und einfach verwaltbar.
+                      <span className="hero-text-line">Sichtbar und einfach verwaltbar.</span>
                     </p>
                   </div>
                 </div>
@@ -384,11 +394,6 @@ export default function Home() {
             <br className="vision-heading-break" />
             Wirkung und Klarheit verbinden.
           </h2>
-          <p>
-            Gute digitale Systeme sehen nicht nur modern aus.
-            <br />
-            Sie schaffen Klarheit, Ordnung und Vertrauen.
-          </p>
           <div className="vision-points">
             {visionPoints.map((point) => (
               <div className="vision-point" key={point}>

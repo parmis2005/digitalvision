@@ -76,7 +76,7 @@ html[data-preview-passive="true"] [tabindex] {
     white-space: pre;
     box-shadow: 0 14px 30px rgba(2, 22, 38, 0.18);
     backdrop-filter: blur(12px);
-    content: "4.9 Google Bewertung\\A★★★★★";
+    content: "4.9 Google Bewertung";
   }
 
   html[data-preview-passive="true"] #home .relative.max-w-7xl > .grid > div:first-child {

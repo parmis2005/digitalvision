@@ -7,18 +7,37 @@ type ProductLiveFrameProps = {
   title: string;
 };
 
+const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
+
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const mutationObserverRef = useRef<MutationObserver | null>(null);
+  const observedDocumentRef = useRef<Document | null>(null);
+  const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const [height, setHeight] = useState("100dvh");
 
   const prepareFrame = useCallback(() => {
     const iframe = iframeRef.current;
-    const frameWindow = iframe?.contentWindow;
-    const frameDocument = iframe?.contentDocument;
+
+    if (!iframe) {
+      return;
+    }
+
+    let frameWindow: Window | null = null;
+    let frameDocument: Document | null = null;
+
+    try {
+      frameWindow = iframe.contentWindow;
+      frameDocument = iframe.contentDocument;
+    } catch {
+      setHeight(CROSS_ORIGIN_PREVIEW_HEIGHT);
+      return;
+    }
+
     const documentElement = frameDocument?.documentElement;
     const body = frameDocument?.body;
 
-    if (!iframe || !frameWindow || !frameDocument || !documentElement || !body) {
+    if (!frameWindow || !frameDocument || !documentElement || !body) {
       return;
     }
 
@@ -36,12 +55,58 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           overflow: hidden !important;
         }
 
-        #top {
+        section#top,
+        section#hero,
+        section#home,
+        [data-hero],
+        .hero,
+        .hero-section,
+        .site-hero,
+        section[class*="hero"],
+        section[class*="Hero"] {
+          min-height: var(--embedded-viewport-height) !important;
+        }
+
+        section#top,
+        section#hero,
+        section#home,
+        section[class*="h-screen"],
+        section[class*="h-svh"],
+        section[class*="h-dvh"],
+        section[class*="h-[100vh]"],
+        section[class*="h-[100svh]"],
+        section[class*="h-[100dvh]"],
+        section[class*="min-h-screen"],
+        section[class*="min-h-svh"],
+        section[class*="min-h-dvh"],
+        section[class*="min-h-[640px]"] {
           height: var(--embedded-viewport-height) !important;
-          min-height: min(640px, var(--embedded-viewport-height)) !important;
+          min-height: var(--embedded-viewport-height) !important;
         }
       `;
       frameDocument.head.appendChild(style);
+    }
+
+    if (observedDocumentRef.current !== frameDocument) {
+      resizeObserverRef.current?.disconnect();
+      mutationObserverRef.current?.disconnect();
+
+      const scheduleMeasure = () => {
+        window.requestAnimationFrame(prepareFrame);
+      };
+
+      resizeObserverRef.current = new ResizeObserver(scheduleMeasure);
+      resizeObserverRef.current.observe(documentElement);
+      resizeObserverRef.current.observe(body);
+
+      mutationObserverRef.current = new MutationObserver(scheduleMeasure);
+      mutationObserverRef.current.observe(body, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+
+      observedDocumentRef.current = frameDocument;
     }
 
     const nextHeight = Math.max(
@@ -52,7 +117,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       viewportHeight,
     );
 
-    setHeight(`${nextHeight}px`);
+    setHeight((currentHeight) => {
+      const heightValue = `${nextHeight}px`;
+      return currentHeight === heightValue ? currentHeight : heightValue;
+    });
   }, []);
 
   useEffect(() => {
@@ -77,6 +145,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       iframe.removeEventListener("load", handleLoad);
       window.removeEventListener("resize", prepareFrame);
       window.clearInterval(interval);
+      resizeObserverRef.current?.disconnect();
+      mutationObserverRef.current?.disconnect();
+      observedDocumentRef.current = null;
     };
   }, [prepareFrame]);
 

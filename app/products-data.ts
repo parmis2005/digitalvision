@@ -63,7 +63,7 @@ export const products: ProductItem[] = [
       "Eleganter Aufbau für Behandlungen, Vertrauen und Buchungsanfragen",
       "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
-    previewUrl: "https://kosmetik-test.vercel.app/",
+    previewUrl: "/beauty-haus-preview/index.html",
   },
   {
     slug: "aurum-grand-hotel",

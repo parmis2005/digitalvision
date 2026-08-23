@@ -1457,6 +1457,7 @@ h3 {
 }
 
 .product-showcase {
+  scroll-margin-top: 24px;
   padding: 26px 0 34px;
   border-block: 1px solid rgba(255, 255, 255, 0.12);
   background:

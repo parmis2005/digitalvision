@@ -98,6 +98,12 @@ export default async function ProductPage({ params }: PageProps) {
       },
     ],
   };
+  const livePreviewUrl =
+    product.category === "Webseiten" ? product.previewUrl : undefined;
+  const liveIntroText =
+    product.slug === "maison-lumiere"
+      ? "Eine moderne Restaurant-Website mit atmosphärischem Einstieg, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus. So entsteht ein Auftritt, der Gäste emotional abholt und sie ohne Umwege zur Reservierung führt."
+      : `${product.intro} So entsteht ein Auftritt, der Vertrauen aufbaut und Besucher ohne Umwege zur Anfrage führt.`;
 
   return (
     <main className="product-page">
@@ -110,50 +116,35 @@ export default async function ProductPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <header className="product-page-header">
-        <Link className="product-back-link" href="/" aria-label="Zur Startseite">
+        <Link className="product-back-link" href="/#webseiten" aria-label="Zur Webseiten-Leiste">
           <House size={18} aria-hidden="true" />
         </Link>
       </header>
 
-      {product.slug === "maison-lumiere" && product.previewUrl ? (
+      {livePreviewUrl ? (
         <>
           <section className="product-live-intro">
             <div className="product-live-intro-copy">
               <p className="eyebrow">{product.category}</p>
               <h1>{product.title}</h1>
-              <p>
-                Eine moderne Restaurant-Website mit atmosphärischem Einstieg,
-                klarer Speisekarte, Galerie, Bewertungen und direktem
-                Reservierungsfokus. So entsteht ein Auftritt, der Gäste
-                emotional abholt und sie ohne Umwege zur Reservierung führt.
-              </p>
+              <p>{liveIntroText}</p>
             </div>
             <article className="product-live-note-card">
               <p className="eyebrow">Vorteile</p>
               <div className="product-live-note-list">
-                <div>
-                  <ArrowRight size={18} aria-hidden="true" />
-                  <span>Reservierung und Speisekarte sind direkt auffindbar.</span>
-                </div>
-                <div>
-                  <ArrowRight size={18} aria-hidden="true" />
-                  <span>Starke Bilder vermitteln Ambiente und Qualität.</span>
-                </div>
-                <div>
-                  <ArrowRight size={18} aria-hidden="true" />
-                  <span>Bewertungen schaffen Vertrauen vor der Anfrage.</span>
-                </div>
-                <div>
-                  <ArrowRight size={18} aria-hidden="true" />
-                  <span>Kontakt und Standort bleiben schnell erreichbar.</span>
-                </div>
+                {product.highlights.map((highlight) => (
+                  <div key={highlight}>
+                    <ArrowRight size={18} aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
               </div>
             </article>
           </section>
 
-          <section className="product-live-site" aria-label="Maison Lumière Website">
+          <section className="product-live-site" aria-label={`${product.title} Website`}>
             <ProductLiveFrame
-              src={product.previewUrl}
+              src={livePreviewUrl}
               title={`${product.title} Website`}
             />
           </section>

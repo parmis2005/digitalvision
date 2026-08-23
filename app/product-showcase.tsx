@@ -120,7 +120,7 @@ export function ProductShowcase() {
   };
 
   return (
-    <section className="product-showcase" aria-label="Beispiele für digitale Produkte">
+    <section id="webseiten" className="product-showcase" aria-label="Beispiele für digitale Produkte">
       <div className="showcase-header">
         <div>
           <p className="showcase-label">Beispiele</p>

@@ -252,7 +252,7 @@ export default function Home() {
               <div className="hero-console-main">
                 <div className="hero-console-content">
                   <div className="hero-branding">
-                    <DigitalVisionLogo size="lg" showMark={false} showTagline={false} />
+                    <DigitalVisionLogo size="md" showMark={false} showTagline={false} />
                   </div>
                   <div className="hero-statement">
                     <p className="eyebrow">

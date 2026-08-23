@@ -10,6 +10,7 @@ export function ProductShowcase() {
   const railRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef(0);
   const pausedRef = useRef(false);
+  const railVisibleRef = useRef(false);
   const resumeTimerRef = useRef<number | null>(null);
   const showcaseProducts = repeatedProducts;
 
@@ -58,10 +59,27 @@ export function ProductShowcase() {
 
     const alignFrame = window.requestAnimationFrame(alignHashTarget);
     const alignTimer = window.setTimeout(alignHashTarget, 120);
+    let visibilityObserver: IntersectionObserver | null = null;
 
     if (!alignHashTarget()) {
       rail.scrollLeft = 0;
       scrollPositionRef.current = 0;
+    }
+
+    if ("IntersectionObserver" in window) {
+      visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          railVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.12;
+          scrollPositionRef.current = rail.scrollLeft;
+        },
+        {
+          root: null,
+          threshold: [0, 0.12, 0.32],
+        },
+      );
+      visibilityObserver.observe(rail);
+    } else {
+      railVisibleRef.current = true;
     }
 
     let frame = 0;
@@ -79,7 +97,7 @@ export function ProductShowcase() {
     };
 
     const step = () => {
-      if (!pausedRef.current) {
+      if (railVisibleRef.current && !pausedRef.current) {
         const loopPoint = rail.scrollWidth / 2;
 
         if (loopPoint > rail.clientWidth) {
@@ -101,6 +119,7 @@ export function ProductShowcase() {
       window.cancelAnimationFrame(alignFrame);
       window.clearTimeout(alignTimer);
       window.cancelAnimationFrame(frame);
+      visibilityObserver?.disconnect();
       if (resumeTimerRef.current !== null) {
         window.clearTimeout(resumeTimerRef.current);
       }

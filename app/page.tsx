@@ -267,13 +267,13 @@ export default function Home() {
                       <span className="hero-eyebrow-word">Systeme</span>
                     </p>
                     <h1>
-                      <span className="hero-line">Klarer auftreten.</span>
-                      <span className="hero-line hero-line-muted">Besser gefunden werden.</span>
+                      <span className="hero-line">Klarer auftreten</span>
+                      <span className="hero-line hero-line-muted">Besser gefunden werden</span>
                     </h1>
                     <p className="hero-text">
-                      <span className="hero-text-line">Websites mit Struktur.</span>
+                      <span className="hero-text-line">Websites mit Struktur</span>
                       <br />
-                      <span className="hero-text-line">Sichtbar und einfach verwaltbar.</span>
+                      <span className="hero-text-line">Sichtbar und einfach verwaltbar</span>
                     </p>
                   </div>
                 </div>

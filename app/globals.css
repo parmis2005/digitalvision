@@ -776,7 +776,8 @@ textarea {
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(440px, 0.95fr);
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
   gap: clamp(28px, 5vw, 72px);
   min-height: 100svh;
@@ -789,8 +790,8 @@ textarea {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(2, 7, 18, 0.72) 0%, rgba(2, 7, 18, 0.5) 42%, rgba(2, 7, 18, 0.16) 72%, rgba(2, 7, 18, 0.34) 100%),
-    linear-gradient(180deg, rgba(2, 7, 18, 0.54) 0%, rgba(2, 7, 18, 0.08) 42%, rgba(2, 7, 18, 0.6) 100%);
+    radial-gradient(ellipse 70% 60% at 50% 42%, transparent 0%, rgba(2, 7, 18, 0.4) 78%, rgba(2, 7, 18, 0.62) 100%),
+    linear-gradient(180deg, rgba(2, 7, 18, 0.5) 0%, rgba(2, 7, 18, 0.06) 34%, rgba(2, 7, 18, 0.15) 60%, rgba(2, 7, 18, 0.62) 100%);
   content: "";
   pointer-events: none;
 }
@@ -798,16 +799,17 @@ textarea {
 .hero-copy {
   position: relative;
   display: grid;
-  justify-items: start;
-  max-width: 820px;
-  text-align: left;
+  justify-items: center;
+  max-width: 900px;
+  text-align: center;
+  margin-inline: auto;
   z-index: 2;
 }
 
 .scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: clamp(14px, 2.6vw, 28px);
+  bottom: clamp(4px, 1.2vw, 14px);
   z-index: 2;
   display: grid;
   justify-items: center;
@@ -908,9 +910,11 @@ textarea {
   position: relative;
   isolation: isolate;
   display: grid;
+  justify-items: center;
   gap: 18px;
   width: 100%;
-  max-width: 660px;
+  max-width: 720px;
+  margin-inline: auto;
 }
 
 .hero-panel::before {
@@ -1025,8 +1029,6 @@ textarea {
   display: grid;
   justify-items: center;
   width: 100%;
-  max-width: 340px;
-  padding-left: clamp(16px, 1.8vw, 22px);
   margin-bottom: 4px;
 }
 
@@ -1062,11 +1064,13 @@ textarea {
   justify-content: center;
   min-width: 108px;
   padding: 9px 16px;
-  border: 1px solid rgba(155, 228, 255, 0.26);
+  border: 1.5px solid rgba(155, 228, 255, 0.7);
   border-radius: 999px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 16px 1px rgba(155, 228, 255, 0.4);
   background-image: var(--nav-text-gradient), linear-gradient(rgba(8, 16, 36, 0.42), rgba(8, 16, 36, 0.42));
   background-clip: text, padding-box;
   -webkit-background-clip: text, padding-box;
@@ -1075,11 +1079,17 @@ textarea {
 }
 
 .hero-eyebrow-word:nth-child(3) {
-  border-color: rgba(184, 107, 255, 0.28);
+  border-color: rgba(184, 107, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 16px 1px rgba(184, 107, 255, 0.42);
 }
 
 .hero-eyebrow-word:nth-child(5) {
-  border-color: rgba(255, 199, 116, 0.3);
+  border-color: rgba(142, 176, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 16px 1px rgba(142, 176, 255, 0.42);
 }
 
 .hero-eyebrow-separator {
@@ -1089,11 +1099,13 @@ textarea {
 .hero-statement {
   position: relative;
   display: grid;
+  justify-items: center;
   gap: clamp(14px, 1.4vw, 20px);
-  padding-left: clamp(16px, 1.8vw, 22px);
+  padding-left: 0;
 }
 
 .hero-statement::after {
+  display: none;
   position: absolute;
   top: 2px;
   left: -3px;
@@ -1125,6 +1137,7 @@ textarea {
 }
 
 .hero-statement::before {
+  display: none;
   position: absolute;
   inset: 6px auto 8px 0;
   width: 2px;
@@ -1165,6 +1178,11 @@ textarea {
   font-weight: 850;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.faq-section .eyebrow {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
 }
 
 h1,
@@ -6320,12 +6338,13 @@ h3 {
 
 .price {
   margin-bottom: 22px;
-  background: var(--nav-text-gradient);
+  background: linear-gradient(90deg, #ffe8a8 0%, #ffc774 46%, #ffad5b 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-size: 1.7rem;
   font-weight: 900;
+  text-shadow: 0 0 24px rgba(255, 199, 116, 0.24);
   -webkit-text-fill-color: transparent;
 }
 
@@ -6373,7 +6392,17 @@ h3 {
   gap: 8px;
   width: fit-content;
   margin-top: auto;
+  background: linear-gradient(90deg, #ffe8a8 0%, #ffc774 46%, #ffad5b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-weight: 850;
+}
+
+.package-card a svg {
+  color: #ffc774;
+  stroke: #ffc774;
 }
 
 .problem-grid {
@@ -10774,7 +10803,12 @@ h3 {
   }
 
   .scroll-cue {
-    display: none;
+    bottom: 10px;
+    gap: 8px;
+  }
+
+  .scroll-cue-line {
+    height: 30px;
   }
 
   .floating-back-to-top {

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, House } from "lucide-react";
 import { products } from "../../products-data";
+import { ProductLiveFrame } from "../../product-live-frame";
 import { ProductPreview } from "../../product-preview";
 
 const baseUrl = "https://www.digitalvision.site";
@@ -109,56 +110,99 @@ export default async function ProductPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <header className="product-page-header">
-        <Link className="product-back-link" href="/">
-          <ArrowLeft size={16} aria-hidden="true" />
-          Zur Startseite
+        <Link className="product-back-link" href="/" aria-label="Zur Startseite">
+          <House size={18} aria-hidden="true" />
         </Link>
-        <span className="product-page-brand">Digital Vision</span>
       </header>
 
-      <section className="product-hero">
-        <div className="product-hero-copy">
-          <p className="eyebrow">{product.category}</p>
-          <h1>{product.title}</h1>
-          <p className="product-intro">{product.intro}</p>
-          <div className="product-hero-actions">
-            <a className="primary-button light-cta" href="/#kontakt">
-              Projekt anfragen
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            {categoryInfoHref[product.category] ? (
-              <Link
-                className="secondary-button"
-                href={categoryInfoHref[product.category]}
-              >
-                Mehr zu {product.category}
-              </Link>
-            ) : null}
-          </div>
-        </div>
-        {product.previewUrl ? (
-          <div className={`product-preview-large ${product.variant}`}>
-            <div className="product-preview-shell product-preview-shell-embed">
-              <div className="product-preview-viewport">
-                <iframe
-                  className="product-preview-iframe"
-                  src={product.previewUrl}
-                  title={`${product.title} Vorschau`}
-                  loading="lazy"
-                />
+      {product.slug === "maison-lumiere" && product.previewUrl ? (
+        <>
+          <section className="product-live-intro">
+            <div className="product-live-intro-copy">
+              <p className="eyebrow">{product.category}</p>
+              <h1>{product.title}</h1>
+              <p>
+                Eine moderne Restaurant-Website mit atmosphärischem Einstieg,
+                klarer Speisekarte, Galerie, Bewertungen und direktem
+                Reservierungsfokus. So entsteht ein Auftritt, der Gäste
+                emotional abholt und sie ohne Umwege zur Reservierung führt.
+              </p>
+            </div>
+            <article className="product-live-note-card">
+              <p className="eyebrow">Vorteile</p>
+              <div className="product-live-note-list">
+                <div>
+                  <ArrowRight size={18} aria-hidden="true" />
+                  <span>Reservierung und Speisekarte sind direkt auffindbar.</span>
+                </div>
+                <div>
+                  <ArrowRight size={18} aria-hidden="true" />
+                  <span>Starke Bilder vermitteln Ambiente und Qualität.</span>
+                </div>
+                <div>
+                  <ArrowRight size={18} aria-hidden="true" />
+                  <span>Bewertungen schaffen Vertrauen vor der Anfrage.</span>
+                </div>
+                <div>
+                  <ArrowRight size={18} aria-hidden="true" />
+                  <span>Kontakt und Standort bleiben schnell erreichbar.</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section className="product-live-site" aria-label="Maison Lumière Website">
+            <ProductLiveFrame
+              src={product.previewUrl}
+              title={`${product.title} Website`}
+            />
+          </section>
+        </>
+      ) : (
+        <>
+          <section className="product-hero">
+            <div className="product-hero-copy">
+              <p className="eyebrow">{product.category}</p>
+              <h1>{product.title}</h1>
+              <p className="product-intro">{product.intro}</p>
+              <div className="product-hero-actions">
+                <a className="primary-button light-cta" href="/#kontakt">
+                  Projekt anfragen
+                  <ArrowRight size={18} aria-hidden="true" />
+                </a>
+                {categoryInfoHref[product.category] ? (
+                  <Link
+                    className="secondary-button"
+                    href={categoryInfoHref[product.category]}
+                  >
+                    Mehr zu {product.category}
+                  </Link>
+                ) : null}
               </div>
             </div>
-          </div>
-        ) : (
-          <div className={`product-preview-large ${product.variant}`} aria-hidden="true">
-            <div className="product-preview-shell">
-              <ProductPreview product={product} size="page" />
-            </div>
-          </div>
-        )}
-      </section>
+            {product.previewUrl ? (
+              <div className={`product-preview-large ${product.variant}`}>
+                <div className="product-preview-shell product-preview-shell-embed">
+                  <div className="product-preview-viewport">
+                    <iframe
+                      className="product-preview-iframe"
+                      src={product.previewUrl}
+                      title={`${product.title} Vorschau`}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className={`product-preview-large ${product.variant}`} aria-hidden="true">
+                <div className="product-preview-shell">
+                  <ProductPreview product={product} size="page" />
+                </div>
+              </div>
+            )}
+          </section>
 
-      {product.slug === "beauty-haus" ? (
+          {product.slug === "beauty-haus" ? (
         <section className="product-details">
           <div className="product-detail-card">
             <p className="eyebrow">Projektcharakter</p>
@@ -638,6 +682,8 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+          )}
+        </>
       )}
     </main>
   );

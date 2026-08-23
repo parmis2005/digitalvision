@@ -157,7 +157,7 @@ export function ProductShowcase() {
               </div>
               <div className="showcase-meta">
                 <strong>{product.title}</strong>
-                <span>{product.detail}</span>
+                <span>{product.type}</span>
               </div>
             </Link>
           ))}

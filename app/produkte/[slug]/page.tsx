@@ -104,6 +104,8 @@ export default async function ProductPage({ params }: PageProps) {
     product.slug === "maison-lumiere"
       ? "Eine moderne Restaurant-Website mit atmosphärischem Einstieg, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus. So entsteht ein Auftritt, der Gäste emotional abholt und sie ohne Umwege zur Reservierung führt."
       : `${product.intro} So entsteht ein Auftritt, der Vertrauen aufbaut und Besucher ohne Umwege zur Anfrage führt.`;
+  const backHref =
+    product.category === "Webseiten" ? `/#webseite-${product.slug}` : "/#webseiten";
 
   return (
     <main className="product-page">
@@ -116,7 +118,7 @@ export default async function ProductPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <header className="product-page-header">
-        <Link className="product-back-link" href="/#webseiten" aria-label="Zur Webseiten-Leiste">
+        <Link className="product-back-link" href={backHref} aria-label="Zur passenden Webseiten-Vorschau">
           <House size={18} aria-hidden="true" />
         </Link>
       </header>

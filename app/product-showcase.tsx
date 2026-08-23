@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { repeatedProducts } from "./products-data";
+import { products, repeatedProducts } from "./products-data";
 import { ProductPreview } from "./product-preview";
 
 export function ProductShowcase() {
@@ -19,8 +19,50 @@ export function ProductShowcase() {
       return;
     }
 
-    rail.scrollLeft = 0;
-    scrollPositionRef.current = 0;
+    const alignHashTarget = () => {
+      const targetId = window.location.hash.startsWith("#webseite-")
+        ? window.location.hash.slice(1)
+        : "";
+      const target = targetId ? document.getElementById(targetId) : null;
+
+      if (!(target instanceof HTMLElement) || !rail.contains(target)) {
+        return false;
+      }
+
+      const section = document.getElementById("webseiten");
+      if (section) {
+        const targetTop = window.scrollY + section.getBoundingClientRect().top - 24;
+        document.documentElement.scrollTop = Math.max(0, targetTop);
+        document.body.scrollTop = Math.max(0, targetTop);
+      }
+
+      const railRect = rail.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const nextLeft =
+        rail.scrollLeft +
+        targetRect.left -
+        railRect.left -
+        (rail.clientWidth - targetRect.width) / 2;
+
+      rail.scrollTo({
+        left: Math.max(0, nextLeft),
+        behavior: "auto",
+      });
+
+      scrollPositionRef.current = rail.scrollLeft;
+      pausedRef.current = true;
+      scheduleResume(2600);
+
+      return true;
+    };
+
+    const alignFrame = window.requestAnimationFrame(alignHashTarget);
+    const alignTimer = window.setTimeout(alignHashTarget, 120);
+
+    if (!alignHashTarget()) {
+      rail.scrollLeft = 0;
+      scrollPositionRef.current = 0;
+    }
 
     let frame = 0;
 
@@ -50,10 +92,14 @@ export function ProductShowcase() {
     };
 
     rail.addEventListener("scroll", syncScrollPosition, { passive: true });
+    window.addEventListener("hashchange", alignHashTarget);
     frame = window.requestAnimationFrame(step);
 
     return () => {
       rail.removeEventListener("scroll", syncScrollPosition);
+      window.removeEventListener("hashchange", alignHashTarget);
+      window.cancelAnimationFrame(alignFrame);
+      window.clearTimeout(alignTimer);
       window.cancelAnimationFrame(frame);
       if (resumeTimerRef.current !== null) {
         window.clearTimeout(resumeTimerRef.current);
@@ -150,6 +196,7 @@ export function ProductShowcase() {
             <Link
               className={`showcase-card ${product.variant}`}
               href={`/produkte/${product.slug}`}
+              id={index < products.length ? `webseite-${product.slug}` : undefined}
               key={`${product.title}-${index}`}
             >
               <div className="showcase-preview">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from "react";
 
 type ProductLiveFrameProps = {
   src: string;
@@ -11,19 +12,184 @@ type FrameWindowWithBridge = Window & {
   Element: typeof Element;
   HTMLAnchorElement: typeof HTMLAnchorElement;
   HTMLFormElement: typeof HTMLFormElement;
+  HTMLElement: typeof HTMLElement;
   frameElement: HTMLIFrameElement | null;
 };
 
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
+const INTERACTIVE_SELECTOR =
+  'a[href], button, input, select, textarea, label, summary, [role="button"], [tabindex]';
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const hitLayerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number; moved: boolean } | null>(null);
+  const lastForwardedTouchRef = useRef(0);
   const mutationObserverRef = useRef<MutationObserver | null>(null);
   const observedDocumentRef = useRef<Document | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const [height, setHeight] = useState("100dvh");
+
+  const getFrameElementAtPoint = useCallback((clientX: number, clientY: number) => {
+    const iframe = iframeRef.current;
+
+    if (!iframe) {
+      return null;
+    }
+
+    let frameWindow: Window | null = null;
+    let frameDocument: Document | null = null;
+
+    try {
+      frameWindow = iframe.contentWindow;
+      frameDocument = iframe.contentDocument;
+    } catch {
+      return null;
+    }
+
+    if (!frameWindow || !frameDocument) {
+      return null;
+    }
+
+    const frameRect = iframe.getBoundingClientRect();
+    const frameX = clientX - frameRect.left;
+    const frameY = clientY - frameRect.top;
+
+    if (frameX < 0 || frameY < 0 || frameX > frameRect.width || frameY > frameRect.height) {
+      return null;
+    }
+
+    const frameElement = frameDocument.elementFromPoint(frameX, frameY);
+
+    if (!frameElement) {
+      return null;
+    }
+
+    return {
+      element: frameElement,
+      frameWindow: frameWindow as FrameWindowWithBridge,
+    };
+  }, []);
+
+  const forwardFrameClick = useCallback(
+    (clientX: number, clientY: number) => {
+      const frameTarget = getFrameElementAtPoint(clientX, clientY);
+
+      if (!frameTarget) {
+        return false;
+      }
+
+      const { element, frameWindow } = frameTarget;
+
+      if (!(element instanceof frameWindow.Element)) {
+        return false;
+      }
+
+      const clickable = element.closest(INTERACTIVE_SELECTOR) ?? element;
+
+      if (clickable instanceof frameWindow.HTMLElement) {
+        clickable.focus({ preventScroll: true });
+        clickable.click();
+        return true;
+      }
+
+      return false;
+    },
+    [getFrameElementAtPoint],
+  );
+
+  const handleHitLayerClick = useCallback(
+    (event: ReactMouseEvent<HTMLDivElement>) => {
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0 ||
+        Date.now() - lastForwardedTouchRef.current < 700
+      ) {
+        return;
+      }
+
+      forwardFrameClick(event.clientX, event.clientY);
+    },
+    [forwardFrameClick],
+  );
+
+  const handleHitLayerTouchStart = useCallback((event: ReactTouchEvent<HTMLDivElement>) => {
+    if (event.touches.length !== 1) {
+      touchStartRef.current = null;
+      return;
+    }
+
+    const touch = event.touches[0];
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+      moved: false,
+    };
+  }, []);
+
+  const handleHitLayerTouchMove = useCallback((event: ReactTouchEvent<HTMLDivElement>) => {
+    const touchStart = touchStartRef.current;
+
+    if (!touchStart || event.touches.length !== 1) {
+      return;
+    }
+
+    const touch = event.touches[0];
+    const deltaX = Math.abs(touch.clientX - touchStart.x);
+    const deltaY = Math.abs(touch.clientY - touchStart.y);
+
+    if (deltaX > 10 || deltaY > 10) {
+      touchStart.moved = true;
+    }
+  }, []);
+
+  const handleHitLayerTouchEnd = useCallback(
+    (event: ReactTouchEvent<HTMLDivElement>) => {
+      const touchStart = touchStartRef.current;
+      touchStartRef.current = null;
+
+      if (!touchStart || touchStart.moved || event.changedTouches.length !== 1) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+
+      if (forwardFrameClick(touch.clientX, touch.clientY)) {
+        lastForwardedTouchRef.current = Date.now();
+      }
+    },
+    [forwardFrameClick],
+  );
+
+  const handleHitLayerMouseMove = useCallback(
+    (event: ReactMouseEvent<HTMLDivElement>) => {
+      const hitLayer = hitLayerRef.current;
+
+      if (!hitLayer) {
+        return;
+      }
+
+      const frameTarget = getFrameElementAtPoint(event.clientX, event.clientY);
+
+      if (!frameTarget) {
+        hitLayer.style.cursor = "default";
+        return;
+      }
+
+      const { element, frameWindow } = frameTarget;
+      hitLayer.style.cursor =
+        element instanceof frameWindow.Element && element.closest(INTERACTIVE_SELECTOR)
+          ? "pointer"
+          : "default";
+    },
+    [getFrameElementAtPoint],
+  );
 
   const prepareFrame = useCallback(() => {
     const iframe = iframeRef.current;
@@ -440,13 +606,32 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   }, [prepareFrame]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      className="product-live-iframe"
-      src={src}
-      title={title}
-      scrolling="no"
-      style={{ height }}
-    />
+    <div className="product-live-frame-shell" style={{ height }}>
+      <iframe
+        ref={iframeRef}
+        className="product-live-iframe"
+        src={src}
+        title={title}
+        scrolling="no"
+      />
+      <div
+        ref={hitLayerRef}
+        className="product-live-hit-layer"
+        aria-hidden="true"
+        onClick={handleHitLayerClick}
+        onMouseMove={handleHitLayerMouseMove}
+        onMouseLeave={() => {
+          if (hitLayerRef.current) {
+            hitLayerRef.current.style.cursor = "default";
+          }
+        }}
+        onTouchStart={handleHitLayerTouchStart}
+        onTouchMove={handleHitLayerTouchMove}
+        onTouchEnd={handleHitLayerTouchEnd}
+        onTouchCancel={() => {
+          touchStartRef.current = null;
+        }}
+      />
+    </div>
   );
 }

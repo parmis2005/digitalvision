@@ -33,7 +33,7 @@ export type ProductItem = {
   previewUrl?: string;
 };
 
-export const products: ProductItem[] = [
+const productItems: ProductItem[] = [
   {
     slug: "maison-lumiere",
     type: "Restaurant Website",
@@ -318,6 +318,28 @@ export const products: ProductItem[] = [
     ],
     previewUrl: "/nagelstudio-sinja-preview/index.html",
   },
+];
+
+const preferredWebsiteOrder = [
+  "beauty-haus",
+  "maison-lumiere",
+  "aurum-grand-hotel",
+  "vulkaneifeltherme",
+  "nagelstudio-sinja",
+  "autohaus-falkenstein",
+  "salzgrotte-aura",
+  "fussoase-eppendorf",
+  "alphaschutz-versicherung",
+  "haarwerk-studio",
+];
+
+const orderedProducts = preferredWebsiteOrder
+  .map((slug) => productItems.find((product) => product.slug === slug))
+  .filter((product): product is ProductItem => Boolean(product));
+
+export const products: ProductItem[] = [
+  ...orderedProducts,
+  ...productItems.filter((product) => !preferredWebsiteOrder.includes(product.slug)),
 ];
 
 export const repeatedProducts = [...products, ...products];

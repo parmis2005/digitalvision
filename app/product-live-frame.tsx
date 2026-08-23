@@ -198,6 +198,31 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         normalizePreviewUrl(frameWindow.location.href) ??
         new URL(frameWindow.location.href);
 
+      const getParentDocument = () => bridgedFrameWindow.parent.document;
+
+      const getParentScroller = () => {
+        const parentDocument = getParentDocument();
+        return parentDocument.scrollingElement ?? parentDocument.documentElement;
+      };
+
+      const setParentScroll = (top: number, left?: number) => {
+        const scroller = getParentScroller();
+        const parentDocument = getParentDocument();
+        scroller.scrollTop = Math.max(0, top);
+
+        if (typeof left === "number") {
+          scroller.scrollLeft = Math.max(0, left);
+        }
+
+        parentDocument.body.scrollTop = scroller.scrollTop;
+        parentDocument.body.scrollLeft = scroller.scrollLeft;
+      };
+
+      const moveParentScroll = (deltaX: number, deltaY: number) => {
+        const scroller = getParentScroller();
+        setParentScroll(scroller.scrollTop + deltaY, scroller.scrollLeft + deltaX);
+      };
+
       const scrollParentToFrameTarget = (hash: string) => {
         const frameElement = bridgedFrameWindow.frameElement;
 
@@ -220,10 +245,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           (target ? target.getBoundingClientRect().top : 0) -
           24;
 
-        window.scrollTo({
-          top: Math.max(0, frameTop),
-          behavior: "smooth",
-        });
+        const targetTop = Math.max(0, frameTop);
+        setParentScroll(targetTop);
 
         return true;
       };
@@ -323,11 +346,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           return;
         }
 
-        window.scrollBy({
-          left: event.deltaX,
-          top: event.deltaY,
-          behavior: "auto",
-        });
+        moveParentScroll(event.deltaX, event.deltaY);
         event.preventDefault();
       };
 
@@ -343,10 +362,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
 
         const nextTouchY = event.touches[0].clientY;
-        window.scrollBy({
-          top: lastTouchY - nextTouchY,
-          behavior: "auto",
-        });
+        moveParentScroll(0, lastTouchY - nextTouchY);
         lastTouchY = nextTouchY;
         event.preventDefault();
       };
@@ -363,11 +379,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       frameWindow.addEventListener("touchend", resetTouch, { passive: true });
       frameWindow.addEventListener("touchcancel", resetTouch, { passive: true });
 
-      if (frameWindow.location.hash) {
-        window.setTimeout(() => {
-          scrollParentToFrameTarget(frameWindow.location.hash);
-        }, 120);
-      }
     }
 
     if (observedDocumentRef.current !== frameDocument) {
@@ -408,8 +419,17 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
   useEffect(() => {
     const iframe = iframeRef.current;
+    const root = document.documentElement;
+    const body = document.body;
+    const previousRootScrollBehavior = root.style.scrollBehavior;
+    const previousBodyScrollBehavior = body.style.scrollBehavior;
+
+    root.style.scrollBehavior = "auto";
+    body.style.scrollBehavior = "auto";
 
     if (!iframe) {
+      root.style.scrollBehavior = previousRootScrollBehavior;
+      body.style.scrollBehavior = previousBodyScrollBehavior;
       return;
     }
 
@@ -436,6 +456,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
       observedDocumentRef.current = null;
+      root.style.scrollBehavior = previousRootScrollBehavior;
+      body.style.scrollBehavior = previousBodyScrollBehavior;
     };
   }, [prepareFrame]);
 

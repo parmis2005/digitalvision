@@ -11,6 +11,8 @@ export function ProductShowcase() {
   const scrollPositionRef = useRef(0);
   const pausedRef = useRef(false);
   const railVisibleRef = useRef(false);
+  const railAutoReadyRef = useRef(false);
+  const autoStartTimerRef = useRef<number | null>(null);
   const resumeTimerRef = useRef<number | null>(null);
   const showcaseProducts = repeatedProducts;
 
@@ -69,8 +71,29 @@ export function ProductShowcase() {
     if ("IntersectionObserver" in window) {
       visibilityObserver = new IntersectionObserver(
         ([entry]) => {
-          railVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.12;
+          const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.12;
+          railVisibleRef.current = isVisible;
           scrollPositionRef.current = rail.scrollLeft;
+
+          if (isVisible && !railAutoReadyRef.current && autoStartTimerRef.current === null) {
+            const hasWebsiteHash = window.location.hash.startsWith("#webseite-");
+
+            if (!hasWebsiteHash) {
+              rail.scrollLeft = 0;
+              scrollPositionRef.current = 0;
+            }
+
+            autoStartTimerRef.current = window.setTimeout(() => {
+              scrollPositionRef.current = rail.scrollLeft;
+              railAutoReadyRef.current = true;
+              autoStartTimerRef.current = null;
+            }, 1800);
+          }
+
+          if (!isVisible && !railAutoReadyRef.current && autoStartTimerRef.current !== null) {
+            window.clearTimeout(autoStartTimerRef.current);
+            autoStartTimerRef.current = null;
+          }
         },
         {
           root: null,
@@ -80,6 +103,7 @@ export function ProductShowcase() {
       visibilityObserver.observe(rail);
     } else {
       railVisibleRef.current = true;
+      railAutoReadyRef.current = true;
     }
 
     let frame = 0;
@@ -97,7 +121,7 @@ export function ProductShowcase() {
     };
 
     const step = () => {
-      if (railVisibleRef.current && !pausedRef.current) {
+      if (railVisibleRef.current && railAutoReadyRef.current && !pausedRef.current) {
         const loopPoint = rail.scrollWidth / 2;
 
         if (loopPoint > rail.clientWidth) {
@@ -122,6 +146,9 @@ export function ProductShowcase() {
       visibilityObserver?.disconnect();
       if (resumeTimerRef.current !== null) {
         window.clearTimeout(resumeTimerRef.current);
+      }
+      if (autoStartTimerRef.current !== null) {
+        window.clearTimeout(autoStartTimerRef.current);
       }
     };
   }, []);

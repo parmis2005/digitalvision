@@ -5,7 +5,7 @@ html[data-velora-preview-passive="true"] select,
 html[data-velora-preview-passive="true"] textarea,
 html[data-velora-preview-passive="true"] [role="button"],
 html[data-velora-preview-passive="true"] [tabindex] {
-  cursor: default !important;
+  cursor: pointer !important;
 }
 
 html[data-velora-preview-passive="true"] header .absolute.top-full {

@@ -22,12 +22,45 @@ const previewPrefixes = [
 ];
 
 const previewAssetPattern =
-  /\.(?:avif|css|gif|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
+  /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 function isPreviewPath(pathname: string) {
   return previewPrefixes.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
+}
+
+function getPreviewHtmlPath(pathname: string) {
+  const previewPrefix = previewPrefixes.find(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+
+  if (!previewPrefix) {
+    return null;
+  }
+
+  let normalizedPathname = pathname;
+  const doubledPreviewPrefix = `${previewPrefix}${previewPrefix}`;
+
+  if (
+    normalizedPathname === doubledPreviewPrefix ||
+    normalizedPathname.startsWith(`${doubledPreviewPrefix}/`)
+  ) {
+    normalizedPathname = normalizedPathname.slice(previewPrefix.length);
+  }
+
+  if (normalizedPathname === previewPrefix || normalizedPathname === `${previewPrefix}/`) {
+    return `${previewPrefix}/index.html`;
+  }
+
+  if (
+    previewPrefix === "/velora-fashion-preview/site" &&
+    /^\/velora-fashion-preview\/site\/produkte\/[^/]+$/.test(normalizedPathname)
+  ) {
+    return "/velora-fashion-preview/site/produkte.html";
+  }
+
+  return `${normalizedPathname.replace(/\/$/, "")}.html`;
 }
 
 export function middleware(request: NextRequest) {
@@ -49,7 +82,15 @@ export function middleware(request: NextRequest) {
     return new NextResponse(null, { status: 204 });
   }
 
-  return new NextResponse(null, { status: 204 });
+  const htmlPath = getPreviewHtmlPath(pathname);
+
+  if (htmlPath) {
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = htmlPath;
+    return NextResponse.rewrite(rewriteUrl);
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {

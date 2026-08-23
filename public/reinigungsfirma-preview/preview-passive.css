@@ -5,7 +5,7 @@ html[data-preview-passive="true"] select,
 html[data-preview-passive="true"] textarea,
 html[data-preview-passive="true"] [role="button"],
 html[data-preview-passive="true"] [tabindex] {
-  cursor: default !important;
+  cursor: pointer !important;
 }
 
 @media (min-width: 1024px) {

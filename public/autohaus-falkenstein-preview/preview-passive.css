@@ -4,5 +4,5 @@ html[data-preview-passive="true"] input,
 html[data-preview-passive="true"] select,
 html[data-preview-passive="true"] textarea,
 html[data-preview-passive="true"] [role="button"] {
-  cursor: default !important;
+  cursor: pointer !important;
 }

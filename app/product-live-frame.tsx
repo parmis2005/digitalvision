@@ -7,7 +7,16 @@ type ProductLiveFrameProps = {
   title: string;
 };
 
+type FrameWindowWithBridge = Window & {
+  Element: typeof Element;
+  HTMLAnchorElement: typeof HTMLAnchorElement;
+  HTMLFormElement: typeof HTMLFormElement;
+  frameElement: HTMLIFrameElement | null;
+};
+
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
+const PREVIEW_ASSET_PATTERN =
+  /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -41,6 +50,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       return;
     }
 
+    const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
     const viewportHeight = window.innerHeight;
     documentElement.style.setProperty("--embedded-viewport-height", `${viewportHeight}px`);
     documentElement.style.height = "auto";
@@ -112,6 +122,254 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       frameDocument.head.appendChild(style);
     }
 
+    if (documentElement.dataset.productLiveFrameBridge !== "true") {
+      documentElement.dataset.productLiveFrameBridge = "true";
+
+      const scriptElement = frameDocument.querySelector<HTMLScriptElement>(
+        'script[src$="/preview-passive.js"]',
+      );
+      const previewRoot = scriptElement
+        ? new URL(scriptElement.src, frameWindow.location.href).pathname.replace(
+            /\/preview-passive\.js$/,
+            "",
+          )
+        : new URL(frameWindow.location.href).pathname
+            .replace(/\/index\.html$/, "")
+            .replace(/\/[^/]+\.html$/, "");
+
+      const normalizePreviewUrl = (rawUrl: string) => {
+        let url: URL;
+
+        try {
+          url = new URL(rawUrl, frameWindow.location.href);
+        } catch {
+          return null;
+        }
+
+        if (
+          url.protocol === "mailto:" ||
+          url.protocol === "tel:" ||
+          url.origin !== frameWindow.location.origin
+        ) {
+          return null;
+        }
+
+        const doubledPreviewRoot = `${previewRoot}${previewRoot}`;
+
+        if (
+          url.pathname === doubledPreviewRoot ||
+          url.pathname.startsWith(`${doubledPreviewRoot}/`)
+        ) {
+          url.pathname = url.pathname.slice(previewRoot.length);
+        }
+
+        if (url.pathname === "/") {
+          url.pathname = `${previewRoot}/index.html`;
+        } else if (
+          url.pathname === previewRoot ||
+          url.pathname === `${previewRoot}/`
+        ) {
+          url.pathname = `${previewRoot}/index.html`;
+        } else if (url.pathname.startsWith(`${previewRoot}/`)) {
+          if (
+            previewRoot === "/velora-fashion-preview/site" &&
+            /^\/velora-fashion-preview\/site\/produkte\/[^/]+$/.test(url.pathname)
+          ) {
+            url.pathname = `${previewRoot}/produkte.html`;
+          } else if (!PREVIEW_ASSET_PATTERN.test(url.pathname)) {
+            url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
+          }
+        } else if (!PREVIEW_ASSET_PATTERN.test(url.pathname)) {
+          url.pathname = `${previewRoot}${url.pathname}`;
+
+          if (url.pathname === `${previewRoot}/`) {
+            url.pathname = `${previewRoot}/index.html`;
+          } else if (!url.pathname.endsWith(".html")) {
+            url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
+          }
+        } else {
+          return null;
+        }
+
+        return url;
+      };
+
+      const getCurrentPreviewUrl = () =>
+        normalizePreviewUrl(frameWindow.location.href) ??
+        new URL(frameWindow.location.href);
+
+      const scrollParentToFrameTarget = (hash: string) => {
+        const frameElement = bridgedFrameWindow.frameElement;
+
+        if (!frameElement) {
+          return false;
+        }
+
+        let target: HTMLElement | null = null;
+
+        if (hash && hash !== "#") {
+          const targetId = decodeURIComponent(hash.slice(1));
+          target =
+            frameDocument.getElementById(targetId) ??
+            (frameDocument.querySelector(`[name="${CSS.escape(targetId)}"]`) as HTMLElement | null);
+        }
+
+        const frameTop =
+          window.scrollY +
+          frameElement.getBoundingClientRect().top +
+          (target ? target.getBoundingClientRect().top : 0) -
+          24;
+
+        window.scrollTo({
+          top: Math.max(0, frameTop),
+          behavior: "smooth",
+        });
+
+        return true;
+      };
+
+      const handleFrameClick = (event: MouseEvent) => {
+        if (
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        ) {
+          return;
+        }
+
+        const target = event.target;
+
+        if (!(target instanceof bridgedFrameWindow.Element)) {
+          return;
+        }
+
+        const link = target.closest("a[href]");
+
+        if (
+          !(link instanceof bridgedFrameWindow.HTMLAnchorElement) ||
+          link.target === "_blank" ||
+          link.hasAttribute("download")
+        ) {
+          return;
+        }
+
+        const rawHref = link.getAttribute("href");
+
+        if (!rawHref) {
+          return;
+        }
+
+        const previewUrl = normalizePreviewUrl(rawHref);
+
+        if (!previewUrl) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        const currentUrl = getCurrentPreviewUrl();
+        const isSamePage =
+          previewUrl.pathname === currentUrl.pathname &&
+          previewUrl.search === currentUrl.search;
+
+        if (previewUrl.hash && isSamePage) {
+          frameWindow.history.pushState(null, "", previewUrl.hash);
+          scrollParentToFrameTarget(previewUrl.hash);
+          return;
+        }
+
+        frameWindow.location.href = previewUrl.href;
+      };
+
+      const handleFrameSubmit = (event: SubmitEvent) => {
+        const form = event.target;
+
+        if (!(form instanceof bridgedFrameWindow.HTMLFormElement)) {
+          return;
+        }
+
+        const previewUrl = normalizePreviewUrl(
+          form.getAttribute("action") || frameWindow.location.href,
+        );
+
+        if (!previewUrl) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        const currentUrl = getCurrentPreviewUrl();
+        const isSamePage =
+          previewUrl.pathname === currentUrl.pathname &&
+          previewUrl.search === currentUrl.search;
+
+        if (previewUrl.hash && isSamePage) {
+          scrollParentToFrameTarget(previewUrl.hash);
+          return;
+        }
+
+        frameWindow.location.href = previewUrl.href;
+      };
+
+      const handleFrameWheel = (event: WheelEvent) => {
+        if (event.ctrlKey) {
+          return;
+        }
+
+        window.scrollBy({
+          left: event.deltaX,
+          top: event.deltaY,
+          behavior: "auto",
+        });
+        event.preventDefault();
+      };
+
+      let lastTouchY: number | null = null;
+
+      const handleTouchStart = (event: TouchEvent) => {
+        lastTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        if (lastTouchY === null || event.touches.length !== 1) {
+          return;
+        }
+
+        const nextTouchY = event.touches[0].clientY;
+        window.scrollBy({
+          top: lastTouchY - nextTouchY,
+          behavior: "auto",
+        });
+        lastTouchY = nextTouchY;
+        event.preventDefault();
+      };
+
+      const resetTouch = () => {
+        lastTouchY = null;
+      };
+
+      frameDocument.addEventListener("click", handleFrameClick, true);
+      frameDocument.addEventListener("submit", handleFrameSubmit, true);
+      frameWindow.addEventListener("wheel", handleFrameWheel, { passive: false });
+      frameWindow.addEventListener("touchstart", handleTouchStart, { passive: true });
+      frameWindow.addEventListener("touchmove", handleTouchMove, { passive: false });
+      frameWindow.addEventListener("touchend", resetTouch, { passive: true });
+      frameWindow.addEventListener("touchcancel", resetTouch, { passive: true });
+
+      if (frameWindow.location.hash) {
+        window.setTimeout(() => {
+          scrollParentToFrameTarget(frameWindow.location.hash);
+        }, 120);
+      }
+    }
+
     if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
@@ -164,11 +422,16 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     iframe.addEventListener("load", handleLoad);
     window.addEventListener("resize", prepareFrame);
 
+    prepareFrame();
+    const initialFrame = window.requestAnimationFrame(prepareFrame);
+    const initialTimer = window.setTimeout(prepareFrame, 120);
     const interval = window.setInterval(prepareFrame, 1800);
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
       window.removeEventListener("resize", prepareFrame);
+      window.cancelAnimationFrame(initialFrame);
+      window.clearTimeout(initialTimer);
       window.clearInterval(interval);
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();

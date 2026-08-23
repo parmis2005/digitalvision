@@ -9,5 +9,5 @@ input,
 select,
 textarea,
 [role="button"] {
-  cursor: default !important;
+  cursor: pointer !important;
 }

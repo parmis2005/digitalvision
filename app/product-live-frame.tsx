@@ -74,9 +74,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         html[class~="h-full"],
         body[class~="h-full"],
         html[class~="min-h-full"],
-        body[class~="min-h-full"],
-        [class~="h-full"],
-        [class~="min-h-full"] {
+        body[class~="min-h-full"] {
           height: auto !important;
           min-height: 0 !important;
         }
@@ -121,6 +119,34 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       `;
       frameDocument.head.appendChild(style);
     }
+
+    const setInlineStyle = (element: HTMLElement, property: string, value: string) => {
+      if (element.style.getPropertyValue(property) !== value) {
+        element.style.setProperty(property, value);
+      }
+    };
+
+    frameDocument
+      .querySelectorAll<HTMLIFrameElement>('iframe[src*="google.com/maps"]')
+      .forEach((mapFrame) => {
+        const mapClassName = mapFrame.getAttribute("class") ?? "";
+        const mapMinHeight = "clamp(320px, 25vw, 420px)";
+
+        setInlineStyle(mapFrame, "display", "block");
+        setInlineStyle(mapFrame, "width", "100%");
+        setInlineStyle(mapFrame, "min-height", "320px");
+        setInlineStyle(mapFrame, "border", "0");
+
+        if (mapClassName.includes("h-full")) {
+          setInlineStyle(mapFrame, "height", "100%");
+        } else if (!mapFrame.getAttribute("height")) {
+          setInlineStyle(mapFrame, "height", mapMinHeight);
+        }
+
+        if (mapFrame.parentElement) {
+          setInlineStyle(mapFrame.parentElement, "min-height", mapMinHeight);
+        }
+      });
 
     if (documentElement.dataset.productLiveFrameBridge !== "true") {
       documentElement.dataset.productLiveFrameBridge = "true";

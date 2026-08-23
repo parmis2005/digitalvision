@@ -240,7 +240,7 @@ textarea {
   inset: 0;
   background-image:
     linear-gradient(180deg, rgba(12, 18, 34, 0.08) 0%, rgba(12, 18, 34, 0.42) 50%, rgba(12, 18, 34, 0.62) 100%),
-    url("https://upload.wikimedia.org/wikipedia/commons/5/54/EuroMotorcars_Bethesda_MD_2021-12-12_09-44-18_1.jpg");
+    url("./assets/cars/bmw-3-series.png");
   background-size: cover;
   background-position: center 35%;
   transform: scale(1.02);

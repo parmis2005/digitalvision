@@ -43,7 +43,11 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     const viewportHeight = window.innerHeight;
     documentElement.style.setProperty("--embedded-viewport-height", `${viewportHeight}px`);
+    documentElement.style.height = "auto";
+    documentElement.style.minHeight = "0";
     documentElement.style.overflow = "hidden";
+    body.style.height = "auto";
+    body.style.minHeight = "0";
     body.style.overflow = "hidden";
 
     if (!frameDocument.getElementById("product-live-frame-style")) {
@@ -52,7 +56,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       style.textContent = `
         html,
         body {
+          height: auto !important;
+          min-height: 0 !important;
           overflow: hidden !important;
+        }
+
+        html[class~="h-full"],
+        body[class~="h-full"],
+        html[class~="min-h-full"],
+        body[class~="min-h-full"],
+        [class~="h-full"],
+        [class~="min-h-full"] {
+          height: auto !important;
+          min-height: 0 !important;
         }
 
         section#top,
@@ -60,8 +76,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         section#home,
         [data-hero],
         .hero,
+        .hero-stage,
         .hero-section,
         .site-hero,
+        [class*="hero-stage"],
+        [class*="HeroStage"],
+        [class~="min-h-screen"],
+        [class*="min-h-screen"],
+        [class*="min-h-svh"],
+        [class*="min-h-dvh"],
+        [class*="min-h-[100vh]"],
+        [class*="min-h-[100svh]"],
+        [class*="min-h-[100dvh]"],
+        [class*="min-h-["][class*="vh"],
         section[class*="hero"],
         section[class*="Hero"] {
           min-height: var(--embedded-viewport-height) !important;
@@ -70,16 +97,14 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         section#top,
         section#hero,
         section#home,
-        section[class*="h-screen"],
-        section[class*="h-svh"],
-        section[class*="h-dvh"],
-        section[class*="h-[100vh]"],
-        section[class*="h-[100svh]"],
-        section[class*="h-[100dvh]"],
-        section[class*="min-h-screen"],
-        section[class*="min-h-svh"],
-        section[class*="min-h-dvh"],
-        section[class*="min-h-[640px]"] {
+        [class~="h-screen"],
+        [class*="h-screen"],
+        [class*="h-svh"],
+        [class*="h-dvh"],
+        [class*="h-[100vh]"],
+        [class*="h-[100svh]"],
+        [class*="h-[100dvh]"],
+        [class*="h-["][class*="vh"] {
           height: var(--embedded-viewport-height) !important;
           min-height: var(--embedded-viewport-height) !important;
         }

@@ -93,9 +93,9 @@ main {
   justify-content: center;
   justify-self: start;
   align-self: start;
-  width: 74px;
-  height: 74px;
-  margin: 0 0 22px;
+  width: 42px;
+  height: 42px;
+  margin: 0 0 18px;
   color: #9beeff;
   background:
     radial-gradient(circle at 50% 42%, rgba(13, 35, 62, 0.78), rgba(3, 10, 26, 0.96) 70%),
@@ -120,8 +120,8 @@ main {
 }
 
 .digital-vision-info-back-link svg {
-  width: 29px;
-  height: 29px;
+  width: 18px;
+  height: 18px;
   flex: none;
   stroke-width: 2.15;
   color: #9beeff;
@@ -161,14 +161,13 @@ main {
 
 @media (max-width: 640px) {
   .digital-vision-info-back-link {
-    width: 62px;
-    height: 62px;
-    margin-bottom: 18px;
+    width: 42px;
+    height: 42px;
   }
 
   .digital-vision-info-back-link svg {
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
   }
 }
 

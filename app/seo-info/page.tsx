@@ -153,7 +153,7 @@ export default function SeoInfoPage() {
               href="/#leistungen"
               aria-label="Zurück zu Digital Vision"
             >
-              <House size={28} aria-hidden="true" />
+              <House size={18} aria-hidden="true" />
             </Link>
             <h1>
               <span>SEO klar verstehen.</span>

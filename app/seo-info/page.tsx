@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowRight,
   BarChart2,
   Check,
   Coins,
+  House,
   Layers,
   Link2,
   PenLine,
@@ -153,7 +153,7 @@ export default function SeoInfoPage() {
               href="/#leistungen"
               aria-label="Zurück zu Digital Vision"
             >
-              <ArrowLeft size={18} aria-hidden="true" />
+              <House size={28} aria-hidden="true" />
             </Link>
             <h1>
               <span>SEO klar verstehen.</span>

@@ -100,10 +100,7 @@ export default async function ProductPage({ params }: PageProps) {
   };
   const livePreviewUrl =
     product.category === "Webseiten" ? product.previewUrl : undefined;
-  const liveIntroText =
-    product.slug === "maison-lumiere"
-      ? "Eine moderne Restaurant-Website mit atmosphärischem Einstieg, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus. So entsteht ein Auftritt, der Gäste emotional abholt und sie ohne Umwege zur Reservierung führt."
-      : `${product.intro} So entsteht ein Auftritt, der Vertrauen aufbaut und Besucher ohne Umwege zur Anfrage führt.`;
+  const liveIntroText = product.intro;
   const backHref =
     product.category === "Webseiten" ? `/#webseite-${product.slug}` : "/#webseiten";
 

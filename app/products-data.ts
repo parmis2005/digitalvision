@@ -41,8 +41,7 @@ const productItems: ProductItem[] = [
     detail: "Elegante Restaurant-Website für Fine Dining, Speisekarte und Reservierungen",
     variant: "restaurant",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Restaurant-Website mit hochwertiger Atmosphäre, klarer Speisekarte, Galerie, Bewertungen und direktem Reservierungsfokus.",
+    intro: "Restaurant-Website mit Atmosphäre, Speisekarte, Galerie und Reservierung.",
     highlights: [
       "Atmosphärischer Hero-Bereich für Fine Dining, Ambiente und direkte Reservierung",
       "Klare Bereiche für Über uns, Speisekarte, Galerie, Bewertungen, Standort und Kontakt",
@@ -57,7 +56,7 @@ const productItems: ProductItem[] = [
     detail: "Elegante Website für Kosmetik, Behandlungen und moderne Beauty Services",
     variant: "earth",
     category: "Webseiten",
-    intro: "Beispiel für eine moderne Kosmetik-Website mit hochwertiger Wirkung, klarer Nutzerführung und starker visueller Präsenz.",
+    intro: "Kosmetik-Website mit hochwertigem Look und klarer Anfrageführung.",
     highlights: [
       "Starke Bildsprache für Kosmetik- und Beauty-Marken",
       "Eleganter Aufbau für Behandlungen, Vertrauen und Buchungsanfragen",
@@ -72,8 +71,7 @@ const productItems: ProductItem[] = [
     detail: "Premium-Hotel-Website für Suiten, Restaurant, Spa und Reservierungen",
     variant: "hotel",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Luxushotel-Website mit hochwertiger Bildsprache, klaren Zimmern, Restaurant, Spa, Galerie und direktem Reservierungsfokus.",
+    intro: "Hotel-Website mit Suiten, Spa, Galerie und Reservierung.",
     highlights: [
       "Atmosphärischer Hero-Bereich für Hotel, Suiten und Premium-Aufenthalte",
       "Klare Bereiche für Zimmer, Restaurant, Spa, Galerie, Kontakt und Reservierungen",
@@ -88,7 +86,7 @@ const productItems: ProductItem[] = [
     detail: "Moderne Autohaus-Website für Fahrzeuge, Suche und vertrauensstarken Verkauf",
     variant: "auto",
     category: "Webseiten",
-    intro: "Beispiel für eine Autohaus-Website mit Fahrzeugsuche, starker Hero-Fläche und klarer Nutzerführung für Anfragen und Bestand.",
+    intro: "Autohaus-Website mit Fahrzeugsuche, Bestand und Anfragefokus.",
     highlights: [
       "Starker Hero-Bereich mit Fahrzeugsuche und direktem Einstieg",
       "Moderne Präsentation für Jahreswagen, Gebrauchtwagen und Business-Fahrzeuge",
@@ -103,8 +101,7 @@ const productItems: ProductItem[] = [
     detail: "Ruhige Salzgrotte-Website für Halotherapie, Preise und Termine",
     variant: "salt",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Salzgrotte-Website mit ruhiger Wellness-Wirkung, klarer Angebotsstruktur und direktem Terminbuchungsfokus.",
+    intro: "Salzgrotte-Website mit ruhiger Wirkung, Preisen und Terminbuchung.",
     highlights: [
       "Atmosphärischer Hero-Bereich für Salzluft, Ruhe und Wohlbefinden",
       "Klare Bereiche für Anwendungen, Wirkung, Preise, Öffnungszeiten und Kontakt",
@@ -119,7 +116,7 @@ const productItems: ProductItem[] = [
     detail: "Warme Coffee-Shop-Website für Specialty Coffee, Menü und Standorte",
     variant: "coffee",
     category: "Webseiten",
-    intro: "Beispiel für eine moderne Coffee-Shop-Website mit warmer Markenwirkung, klarer Menüführung und einladender Atmosphäre.",
+    intro: "Coffee-Shop-Website mit Menü, Story und warmer Markenwirkung.",
     highlights: [
       "Warmer Premium-Look für Café, Coffee Shop und Hospitality-Marken",
       "Klarer Aufbau für Menü, Story, Nachhaltigkeit und Standorte",
@@ -134,8 +131,7 @@ const productItems: ProductItem[] = [
     detail: "Femininer Fashion-Shop mit Kleidern, Blusen und Tailoring-Fokus",
     variant: "fashion",
     category: "Webseiten",
-    intro:
-      "Beispiel für einen modernen Damenmode-Shop mit editorialer Bildsprache, sanfter Farbwelt und klarer Produktführung.",
+    intro: "Fashion-Shop mit Editorial-Look, Kategorien und Produktführung.",
     highlights: [
       "Editoriale Startseite mit Hero, Kategorien und Produkt-Sets",
       "Klarer Fokus auf Kleider, Blusen, Tailoring und Sale",
@@ -150,7 +146,7 @@ const productItems: ProductItem[] = [
     detail: "Ruhige Wellness-Website für Spa, Recovery, Massage und Private Sessions",
     variant: "wellness",
     category: "Webseiten",
-    intro: "Beispiel für eine moderne Wellnessstudio-Website mit starker Bildsprache, Buchungskalender und hochwertiger Recovery-Atmosphäre.",
+    intro: "Wellness-Website mit starker Bildsprache und Buchungsfokus.",
     highlights: [
       "Premium-Look für Wellness, Spa, Recovery und Private Sessions",
       "Klarer Buchungsaufbau mit Verfügbarkeit, Filtern und Erlebnis-Modulen",
@@ -165,8 +161,7 @@ const productItems: ProductItem[] = [
     detail: "Moderne Praxis-Website für Hausarztmedizin, Leistungen, Team und Kontakt",
     variant: "medical",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Arztpraxis-Website mit klarer Patientenführung, vertrauensvoller Bildsprache und direktem Kontaktaufbau.",
+    intro: "Praxis-Website mit Leistungen, Team, Standort und Kontakt.",
     highlights: [
       "Vertrauensvoller Praxis-Auftritt mit Hero, Leistungen und Team-Bereich",
       "Klare Struktur für Terminwunsch, Telefonnummer, Standort und Kontakt",
@@ -181,8 +176,7 @@ const productItems: ProductItem[] = [
     detail: "Atmosphärische Thermen-Website für Thermalbad, Sauna, Wellness und Tickets",
     variant: "thermal",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Thermalbad-Website mit Video-Hero, Wellness-Wirkung, klaren Bereichen für Sauna, Preise, Öffnungszeiten und Ticketfokus.",
+    intro: "Thermen-Website mit Video-Einstieg, Sauna, Preisen und Tickets.",
     highlights: [
       "Starker Video-Hero für Thermalbad, Mineralquelle, Sauna und Wellness",
       "Klare Struktur für Badewelt, Saunen, Anwendungen, Gastronomie, Preise und Kontakt",
@@ -197,8 +191,7 @@ const productItems: ProductItem[] = [
     detail: "Moderne Website für Gebäudereinigung, Leistungen, Standorte und Angebote",
     variant: "cleaning",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Reinigungsfirma-Website mit klarer Leistungsstruktur, vertrauensvoller Bildsprache und direktem Angebotsfokus.",
+    intro: "Reinigungs-Website mit Leistungen, Vertrauen und Angebotsfokus.",
     highlights: [
       "Starker Hero-Bereich für Gebäudereinigung, Erfahrung und Vertrauen",
       "Klare Leistungsbereiche für Büroreinigung, Glasreinigung und Desinfektion",
@@ -213,8 +206,7 @@ const productItems: ProductItem[] = [
     detail: "Elegante Fußpflege-Website für Behandlungen, Preise und Termine",
     variant: "footcare",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Fußpflege-Website mit ruhiger Beauty-Wirkung, klaren Leistungen, Preisen und direktem Terminbuchungsfokus.",
+    intro: "Fußpflege-Website mit Leistungen, Preisen und Terminbuchung.",
     highlights: [
       "Atmosphärischer Hero-Bereich für Fußpflege, Podologie und Wohlgefühl",
       "Klare Bereiche für Leistungen, Preise, Galerie, Bewertungen und Kontakt",
@@ -229,8 +221,7 @@ const productItems: ProductItem[] = [
     detail: "Premium-Website für Sportwagen, Fahrzeugbestand, Service und Probefahrten",
     variant: "premium-auto",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Autohaus-Website mit starkem Video-Hero, Premium-Fahrzeugbestand, Service-Bereichen und direktem Probefahrtfokus.",
+    intro: "Premium-Autohaus mit Video-Hero, Bestand und Probefahrtfokus.",
     highlights: [
       "Starker Hero-Bereich für Premium-Fahrzeuge, Emotion und direkte Fahrzeugauswahl",
       "Klare Struktur für Bestand, Fahrzeugdetails, Finanzierung, Service und Kontakt",
@@ -245,8 +236,7 @@ const productItems: ProductItem[] = [
     detail: "Premium-Website für Versicherungsberatung, Schutzkonzepte und Kontakt",
     variant: "insurance",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Versicherungsberater-Website mit seriöser Markenwirkung, klarer Leistungsstruktur und direktem Beratungsfokus.",
+    intro: "Versicherungs-Website mit Leistungen, Prozess und Beratungsfokus.",
     highlights: [
       "Starker Hero-Bereich für Vertrauen, Beratung und Absicherung",
       "Klare Struktur für Leistungen, Prozess, Bewertungen und Kontakt",
@@ -261,8 +251,7 @@ const productItems: ProductItem[] = [
     detail: "Elegante Nagelstudio-Website für Maniküre, Pediküre, Nailart und Termine",
     variant: "nails",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Nagelstudio-Website mit hochwertiger Beauty-Wirkung, klarer Leistungsstruktur und direktem Terminfokus.",
+    intro: "Nagelstudio-Website mit Leistungen, Galerie und Terminfokus.",
     highlights: [
       "Eleganter Hero-Bereich mit Video, Bewertungen und direktem Termin-Einstieg",
       "Klare Bereiche für Maniküre, Pediküre, Gel-Modellage, Nailart und Galerie",
@@ -277,8 +266,7 @@ const productItems: ProductItem[] = [
     detail: "Moderne Krankenhaus-Website für Fachbereiche, Notaufnahme, Team und Termine",
     variant: "hospital",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Krankenhaus-Website mit klarer Patientenführung, 24/7-Notaufnahme, Fachbereichen und direkter Terminvereinbarung.",
+    intro: "Klinik-Website mit Fachbereichen, Notfallhinweis und Terminen.",
     highlights: [
       "Starker Hero-Bereich mit Notfall-Hinweis, Termin-Einstieg und Klinikprofil",
       "Klare Struktur für Fachbereiche, Ärzteteam, Patientenstimmen und Kontakt",
@@ -293,8 +281,7 @@ const productItems: ProductItem[] = [
     detail: "Moderne Friseur-Website für Schnitte, Coloration, Galerie und Termine",
     variant: "hair",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Friseur-Website mit hochwertiger Salon-Atmosphäre, Video-Hero, klaren Leistungen und direkter Terminbuchung.",
+    intro: "Friseur-Website mit Salon-Atmosphäre, Leistungen und Buchung.",
     highlights: [
       "Starker Video-Hero für Salon-Atmosphäre, Beratung und moderne Looks",
       "Klare Bereiche für Galerie, Leistungen, Preise, Portfolio und Bewertungen",
@@ -309,8 +296,7 @@ const productItems: ProductItem[] = [
     detail: "Kreative Nagelstudio-Website für Modellage, Nailart, Preise und Termine",
     variant: "sinja-nails",
     category: "Webseiten",
-    intro:
-      "Beispiel für eine moderne Nagelstudio-Website mit kreativer Nailart-Wirkung, klaren Leistungen, Preisen und direktem Kontaktfokus.",
+    intro: "Nagelstudio-Website mit Nailart, Preisen und Kontaktfokus.",
     highlights: [
       "Auffälliger Hero-Bereich für Modellage, Nailart und direkte Terminführung",
       "Klare Bereiche für Leistungen, Preise, Galerie, Reels, Studio und Kontakt",

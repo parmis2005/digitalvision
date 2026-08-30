@@ -4848,6 +4848,14 @@ h3 {
   overflow-anchor: none;
 }
 
+.product-live-iframe-contained {
+  max-width: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 .product-hero-actions {
   display: flex;
   flex-wrap: wrap;

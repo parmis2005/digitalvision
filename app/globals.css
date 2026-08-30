@@ -4846,13 +4846,6 @@ h3 {
   border: 0;
   background: #0f0d0b;
   overflow-anchor: none;
-}
-
-.product-live-iframe-contained {
-  max-width: 100%;
-  overflow: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
 }
 

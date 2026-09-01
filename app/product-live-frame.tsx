@@ -26,45 +26,14 @@ const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
 const MEASURE_THROTTLE = 250;
 const RESIZE_DEBOUNCE = 200;
-// Must stay identical to the coarse-pointer block in globals.css, otherwise a
-// tablet gets one mode's layout and the other mode's behaviour.
-const CONTAINED_MEDIA_QUERY = "(hover: none) and (pointer: coarse) and (max-width: 820px)";
 const TAP_MOVE_TOLERANCE = 10;
 const TAP_MAX_DURATION = 700;
+// The frame carries the whole site, so its own viewport is the whole document
+// and native lazy loading never defers anything. Media is deferred by hand
+// against THIS page's viewport instead, in viewport multiples.
+const MEDIA_LOAD_MARGIN = 1.5;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
-
-const CONTAINED_STYLE_TEXT = `
-        html {
-          overflow-x: hidden;
-          min-height: 100%;
-          overscroll-behavior-y: contain;
-          scroll-behavior: auto !important;
-          touch-action: auto !important;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        body {
-          min-height: 100%;
-          overflow-x: clip;
-          scroll-behavior: auto !important;
-          touch-action: auto !important;
-        }
-
-        iframe[src*="google.com/maps"],
-        iframe[src*="openstreetmap.org"],
-        iframe[src*="mapbox.com"],
-        .leaflet-container {
-          pointer-events: none !important;
-          touch-action: pan-y !important;
-        }
-
-        .bg-fixed,
-        [style*="background-attachment: fixed"],
-        [style*="background-attachment:fixed"] {
-          background-attachment: scroll !important;
-        }
-      `;
 
 const FRAME_STYLE_TEXT = `
         html,
@@ -129,7 +98,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const mutationObserverRef = useRef<MutationObserver | null>(null);
   const observedDocumentRef = useRef<Document | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
-  const mediaObserverRef = useRef<IntersectionObserver | null>(null);
   const measureFrameRef = useRef<number | null>(null);
   const lastMeasureRef = useRef(0);
   const viewportRef = useRef<{ width: number; height: number } | null>(null);
@@ -138,46 +106,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const heightLockedRef = useRef(false);
   const pendingNavigationRef = useRef(false);
   const shieldRef = useRef<HTMLDivElement>(null);
+  const frameDocTopRef = useRef(0);
+  const syncMediaFrameRef = useRef<number | null>(null);
   const frameLoadedRef = useRef(false);
-  const containedRef = useRef(false);
-  const [contained, setContained] = useState(false);
   const [height, setHeight] = useState(`${INITIAL_PREVIEW_HEIGHT}px`);
-
-  // On touch devices the frame is one viewport tall and scrolls its own
-  // document. Stretching it to the full site height instead makes the frame's
-  // viewport thousands of pixels tall, so the browser treats every section as
-  // visible and paints and decodes the entire site at once, which is what
-  // makes scrolling stutter on a phone.
-  useEffect(() => {
-    const coarsePointer = window.matchMedia(CONTAINED_MEDIA_QUERY);
-    const pointerListener = coarsePointer as unknown as {
-      addEventListener?: (type: "change", listener: () => void) => void;
-      removeEventListener?: (type: "change", listener: () => void) => void;
-      addListener: (listener: () => void) => void;
-      removeListener: (listener: () => void) => void;
-    };
-
-    const syncMode = () => {
-      containedRef.current = coarsePointer.matches;
-      setContained(coarsePointer.matches);
-    };
-
-    syncMode();
-
-    if (pointerListener.addEventListener) {
-      pointerListener.addEventListener("change", syncMode);
-    } else {
-      pointerListener.addListener(syncMode);
-    }
-
-    return () => {
-      if (pointerListener.removeEventListener) {
-        pointerListener.removeEventListener("change", syncMode);
-      } else {
-        pointerListener.removeListener(syncMode);
-      }
-    };
-  }, []);
 
   const getFrameDocument = useCallback(() => {
     const iframe = iframeRef.current;
@@ -204,7 +136,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   // Read-only pass. It never writes into the frame, so it can be triggered by
   // the observers without feeding itself new mutations.
   const measureFrame = useCallback(() => {
-    if (heightLockedRef.current || containedRef.current) {
+    if (heightLockedRef.current) {
       return;
     }
 
@@ -268,6 +200,76 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }, delay);
   }, [measureFrame]);
 
+
+  // With the frame as tall as the whole site, everything inside it counts as
+  // on screen, so the browser would fetch every image and buffer every video up
+  // front. Park anything far below the visitor and bring it back as they reach
+  // it, measured against THIS page's viewport.
+  const syncFrameMedia = useCallback(() => {
+    const iframe = iframeRef.current;
+    const frame = getFrameDocument();
+
+    if (!iframe || !frame) {
+      return;
+    }
+
+    const viewportHeight = window.innerHeight;
+    const margin = viewportHeight * MEDIA_LOAD_MARGIN;
+    const frameTop = frameDocTopRef.current - window.scrollY;
+
+    frame.frameDocument
+      .querySelectorAll<HTMLElement>("img[data-live-top], video[data-live-top]")
+      .forEach((element) => {
+        const offset = Number(element.dataset.liveTop ?? "0");
+        const top = frameTop + offset;
+        const near = top < viewportHeight + margin && top > -margin - element.offsetHeight;
+
+        if (element instanceof HTMLVideoElement) {
+          if (near) {
+            if (element.dataset.liveAutoplay === "true" && element.paused) {
+              void element.play().catch(() => undefined);
+            }
+          } else if (!element.paused) {
+            element.pause();
+          }
+
+          return;
+        }
+
+        if (!near || element.dataset.liveDeferred !== "true") {
+          return;
+        }
+
+        const stashedSrc = element.dataset.liveSrc;
+        const stashedSrcset = element.dataset.liveSrcset;
+
+        delete element.dataset.liveDeferred;
+        delete element.dataset.liveSrc;
+        delete element.dataset.liveSrcset;
+
+        if (stashedSrcset) {
+          element.setAttribute("srcset", stashedSrcset);
+        }
+
+        if (stashedSrc) {
+          element.setAttribute("src", stashedSrc);
+        }
+
+        element.style.removeProperty("min-height");
+      });
+  }, [getFrameDocument]);
+
+  const scheduleSyncMedia = useCallback(() => {
+    if (syncMediaFrameRef.current !== null) {
+      return;
+    }
+
+    syncMediaFrameRef.current = window.requestAnimationFrame(() => {
+      syncMediaFrameRef.current = null;
+      syncFrameMedia();
+    });
+  }, [syncFrameMedia]);
+
   const prepareFrame = useCallback(() => {
     const frame = getFrameDocument();
 
@@ -298,27 +300,14 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     const viewportHeight = viewportRef.current?.height ?? nextViewport.height;
 
-    const isContained = containedRef.current;
-
-    if (isContained) {
-      // The frame is a normal-sized window here, so the preview's own layout
-      // works unchanged: vh units resolve correctly and offscreen sections stay
-      // offscreen. Only undo anything a previous desktop-mode pass applied.
-      setInlineStyle(documentElement, "height", "");
-      setInlineStyle(documentElement, "min-height", "");
-      setInlineStyle(documentElement, "overflow", "");
-      setInlineStyle(body, "height", "");
-      setInlineStyle(body, "min-height", "");
-      setInlineStyle(body, "overflow", "");
-    } else {
-      setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
-      setInlineStyle(documentElement, "height", "auto");
-      setInlineStyle(documentElement, "min-height", "0");
-      setInlineStyle(documentElement, "overflow", "hidden");
-      setInlineStyle(body, "height", "auto");
-      setInlineStyle(body, "min-height", "0");
-      setInlineStyle(body, "overflow", "hidden");
-    }
+    setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
+    setInlineStyle(documentElement, "height", "auto");
+    setInlineStyle(documentElement, "min-height", "0");
+    setInlineStyle(documentElement, "overflow", "hidden");
+    setInlineStyle(body, "height", "auto");
+    setInlineStyle(body, "min-height", "0");
+    setInlineStyle(body, "overflow", "hidden");
+  
 
     const style =
       frameDocument.getElementById("product-live-frame-style") ??
@@ -326,7 +315,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     style.id = "product-live-frame-style";
 
-    const styleText = isContained ? CONTAINED_STYLE_TEXT : FRAME_STYLE_TEXT;
+    const styleText = FRAME_STYLE_TEXT;
 
     if (style.textContent !== styleText) {
       style.textContent = styleText;
@@ -358,37 +347,72 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
       });
 
-    mediaObserverRef.current?.disconnect();
-    mediaObserverRef.current = null;
+    
 
-    if (isContained && "IntersectionObserver" in frameWindow) {
-      const mediaObserver = new bridgedFrameWindow.IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target as HTMLVideoElement;
 
-            if (entry.isIntersecting && entry.intersectionRatio > 0) {
-              video.preload = "metadata";
-              void video.play().catch(() => undefined);
-            } else {
-              video.pause();
-              video.preload = "none";
-            }
-          });
-        },
-        {
-          root: null,
-          rootMargin: "50% 0px",
-          threshold: [0, 0.01],
-        },
-      );
+    // Record where each image and video sits inside the frame once, so the
+    // scroll handler never has to measure layout again, and park the ones that
+    // are far below the visitor.
+    const frameElementForMedia = iframeRef.current;
 
-      frameDocument.querySelectorAll<HTMLVideoElement>("video[autoplay]").forEach((video) => {
-        mediaObserver.observe(video);
-      });
-
-      mediaObserverRef.current = mediaObserver;
+    if (frameElementForMedia) {
+      frameDocTopRef.current =
+        frameElementForMedia.getBoundingClientRect().top + window.scrollY;
     }
+
+    const firstScreen = window.innerHeight * MEDIA_LOAD_MARGIN;
+
+    frameDocument.querySelectorAll<HTMLImageElement>("img").forEach((image) => {
+      if (image.dataset.liveTop !== undefined) {
+        return;
+      }
+
+      const rect = image.getBoundingClientRect();
+      image.dataset.liveTop = String(Math.round(rect.top));
+
+      if (rect.top <= firstScreen) {
+        return;
+      }
+
+      const src = image.getAttribute("src");
+      const srcset = image.getAttribute("srcset");
+
+      if (!src && !srcset) {
+        return;
+      }
+
+      if (rect.height > 0) {
+        image.style.setProperty("min-height", `${Math.round(rect.height)}px`);
+      }
+
+      image.dataset.liveDeferred = "true";
+
+      if (src) {
+        image.dataset.liveSrc = src;
+        image.removeAttribute("src");
+      }
+
+      if (srcset) {
+        image.dataset.liveSrcset = srcset;
+        image.removeAttribute("srcset");
+      }
+    });
+
+    frameDocument.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
+      if (video.dataset.liveTop !== undefined) {
+        return;
+      }
+
+      const rect = video.getBoundingClientRect();
+      video.dataset.liveTop = String(Math.round(rect.top));
+      video.dataset.liveAutoplay = video.autoplay ? "true" : "false";
+      video.preload = "none";
+
+      if (rect.top > firstScreen) {
+        video.autoplay = false;
+        video.pause();
+      }
+    });
 
     if (documentElement.dataset.productLiveFrameBridge !== "true") {
       documentElement.dataset.productLiveFrameBridge = "true";
@@ -466,35 +490,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         normalizePreviewUrl(frameWindow.location.href) ??
         new URL(frameWindow.location.href);
 
-      const scrollToHashTarget = (hash: string) => {
-        if (containedRef.current) {
-          if (!hash || hash === "#") {
-            frameWindow.scrollTo({ top: 0, behavior: "auto" });
-            return true;
-          }
-
-          const targetId = decodeURIComponent(hash.slice(1));
-          const target =
-            frameDocument.getElementById(targetId) ??
-            (frameDocument.querySelector(
-              `[name="${CSS.escape(targetId)}"]`,
-            ) as HTMLElement | null);
-
-          if (!target) {
-            return false;
-          }
-
-          frameWindow.scrollTo({
-            top: Math.max(0, frameWindow.scrollY + target.getBoundingClientRect().top - 16),
-            behavior: "auto",
-          });
-
-          return true;
-        }
-
-        return scrollParentToFrameTarget(hash);
-      };
-
       const scrollParentToFrameTarget = (hash: string) => {
         const frameElement = bridgedFrameWindow.frameElement;
 
@@ -571,7 +566,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
         if (previewUrl.hash && isSamePage) {
           frameWindow.history.pushState(null, "", previewUrl.hash);
-          scrollToHashTarget(previewUrl.hash);
+          scrollParentToFrameTarget(previewUrl.hash);
           return;
         }
 
@@ -602,7 +597,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           previewUrl.search === currentUrl.search;
 
         if (previewUrl.hash && isSamePage) {
-          scrollToHashTarget(previewUrl.hash);
+          scrollParentToFrameTarget(previewUrl.hash);
           return;
         }
 
@@ -615,14 +610,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     }
 
-    if (isContained) {
-      // A contained preview owns its scroll and never needs its document
-      // measured. Keeping observers active here only schedules no-op work while
-      // images, menus and animations update during a touch gesture.
-      resizeObserverRef.current?.disconnect();
-      mutationObserverRef.current?.disconnect();
-      observedDocumentRef.current = null;
-    } else if (observedDocumentRef.current !== frameDocument) {
+    if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
 
@@ -639,7 +627,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     measureFrame();
-  }, [getFrameDocument, measureFrame, scheduleMeasure]);
+    syncFrameMedia();
+  }, [getFrameDocument, measureFrame, scheduleMeasure, syncFrameMedia]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -678,20 +667,18 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
 
-        if (!containedRef.current) {
-          window.scrollTo({
-            top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
-            behavior: "auto",
-          });
-        }
+        window.scrollTo({
+          top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
+          behavior: "auto",
+        });
+      
       }
 
       prepareFrame();
 
-      if (!containedRef.current) {
-        schedulePrepare(350);
-        schedulePrepare(1200);
-      }
+      schedulePrepare(350);
+      schedulePrepare(1200);
+    
     };
 
     // Mobile browsers fire resize whenever the URL bar slides away, i.e. during
@@ -721,20 +708,26 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     };
 
     iframe.addEventListener("load", handleLoad);
+    window.addEventListener("scroll", scheduleSyncMedia, { passive: true });
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleResize);
 
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
 
-    if (!containedRef.current) {
-      schedulePrepare(120);
-      schedulePrepare(3000);
-    }
+    schedulePrepare(120);
+    schedulePrepare(3000);
+  
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
+      window.removeEventListener("scroll", scheduleSyncMedia);
       window.removeEventListener("resize", handleResize);
+
+      if (syncMediaFrameRef.current !== null) {
+        window.cancelAnimationFrame(syncMediaFrameRef.current);
+        syncMediaFrameRef.current = null;
+      }
       window.removeEventListener("orientationchange", handleResize);
       window.cancelAnimationFrame(initialFrame);
 
@@ -755,7 +748,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
-  }, [contained, prepareFrame, scheduleMeasure]);
+  }, [prepareFrame, scheduleMeasure, scheduleSyncMedia]);
 
   // iOS Safari keeps a scroll gesture that starts over an iframe inside that
   // frame, so the embedding page never moves. The shield is a plain element of
@@ -844,11 +837,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
-        style={contained ? undefined : { height }}
+        style={{ height }}
       />
-      {contained ? null : (
-        <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
-      )}
+      <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
     </div>
   );
 }

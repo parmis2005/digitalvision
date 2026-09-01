@@ -4869,30 +4869,19 @@ h3 {
  * of this document makes a swipe an ordinary page scroll again. Taps are
  * forwarded into the frame from ProductLiveFrame, so the preview stays usable.
  */
-@media (hover: none) and (pointer: coarse) and (max-width: 820px) {
+@media (hover: none) and (pointer: coarse) {
   /*
-   * Keep the page itself scrolling normally so the heading, intro copy and the
-   * Vorteile card stay on screen, and give the preview one screen of its own to
-   * scroll in. A frame stretched to the whole site height would make the
-   * browser paint and decode the entire embedded site at once, which is what
-   * used to stutter on a phone.
+   * The page is one continuous document: intro on top, the preview flowing on
+   * below it. A swipe that starts over the preview must move THIS page, so the
+   * shield - a plain element of this document - covers the frame and takes the
+   * gesture. Taps are forwarded into the preview from ProductLiveFrame.
    */
-  .product-live-page .product-live-site {
-    height: 100dvh;
-  }
-
-  .product-live-page .product-live-frame-wrap {
-    height: 100%;
-  }
-
-  .product-live-page .product-live-iframe {
-    height: 100% !important;
-    min-height: 0;
-    touch-action: auto;
-  }
-
   .product-live-touch-shield {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
   }
 }
 

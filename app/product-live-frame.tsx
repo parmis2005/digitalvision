@@ -17,6 +17,10 @@ type FrameWindowWithBridge = Window & {
 };
 
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
+// Every preview measures well past this once loaded. Reserving it up front
+// keeps the page scrollable while the preview is still on its way, instead of
+// leaving the visitor swiping at a page that has nowhere to go yet.
+const INITIAL_PREVIEW_HEIGHT = 3000;
 const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
 const MEASURE_THROTTLE = 250;
@@ -92,12 +96,13 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const measureFrameRef = useRef<number | null>(null);
   const lastMeasureRef = useRef(0);
   const viewportRef = useRef<{ width: number; height: number } | null>(null);
-  const appliedHeightRef = useRef(0);
+  const appliedHeightRef = useRef(INITIAL_PREVIEW_HEIGHT);
   const growthStepsRef = useRef(0);
   const heightLockedRef = useRef(false);
   const pendingNavigationRef = useRef(false);
   const shieldRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState("100dvh");
+  const frameLoadedRef = useRef(false);
+  const [height, setHeight] = useState(`${INITIAL_PREVIEW_HEIGHT}px`);
 
   const getFrameDocument = useCallback(() => {
     const iframe = iframeRef.current;
@@ -135,12 +140,15 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     const { documentElement, body } = frame.frameDocument;
+    const floor = frameLoadedRef.current
+      ? (viewportRef.current?.height ?? window.innerHeight)
+      : INITIAL_PREVIEW_HEIGHT;
     const nextHeight = Math.max(
       documentElement.scrollHeight,
       documentElement.offsetHeight,
       body.scrollHeight,
       body.offsetHeight,
-      viewportRef.current?.height ?? window.innerHeight,
+      floor,
     );
     const appliedHeight = appliedHeightRef.current;
 
@@ -496,6 +504,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     const handleLoad = () => {
       observedDocumentRef.current = null;
+      frameLoadedRef.current = true;
       appliedHeightRef.current = 0;
       growthStepsRef.current = 0;
       heightLockedRef.current = false;
@@ -662,7 +671,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         scrolling="no"
-        loading="lazy"
         style={{ height }}
       />
       <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />

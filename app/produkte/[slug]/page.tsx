@@ -105,7 +105,7 @@ export default async function ProductPage({ params }: PageProps) {
     product.category === "Webseiten" ? `/#webseite-${product.slug}` : "/#webseiten";
 
   return (
-    <main className="product-page">
+    <main className={`product-page${livePreviewUrl ? " product-live-page" : ""}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}

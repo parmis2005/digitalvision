@@ -12,6 +12,7 @@ type FrameWindowWithBridge = Window & {
   HTMLAnchorElement: typeof HTMLAnchorElement;
   HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
+  IntersectionObserver: typeof IntersectionObserver;
   MouseEvent: typeof MouseEvent;
   frameElement: HTMLIFrameElement | null;
 };
@@ -25,17 +26,43 @@ const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
 const MEASURE_THROTTLE = 250;
 const RESIZE_DEBOUNCE = 200;
+// Must stay identical to the coarse-pointer block in globals.css, otherwise a
+// tablet gets one mode's layout and the other mode's behaviour.
+const CONTAINED_MEDIA_QUERY = "(hover: none) and (pointer: coarse) and (max-width: 820px)";
 const TAP_MOVE_TOLERANCE = 10;
 const TAP_MAX_DURATION = 700;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 const CONTAINED_STYLE_TEXT = `
-        html,
-        body {
-          overflow-x: hidden !important;
-          overscroll-behavior: auto !important;
+        html {
+          overflow-x: hidden;
+          min-height: 100%;
+          overscroll-behavior-y: contain;
           scroll-behavior: auto !important;
+          touch-action: auto !important;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        body {
+          min-height: 100%;
+          overflow-x: clip;
+          scroll-behavior: auto !important;
+          touch-action: auto !important;
+        }
+
+        iframe[src*="google.com/maps"],
+        iframe[src*="openstreetmap.org"],
+        iframe[src*="mapbox.com"],
+        .leaflet-container {
+          pointer-events: none !important;
+          touch-action: pan-y !important;
+        }
+
+        .bg-fixed,
+        [style*="background-attachment: fixed"],
+        [style*="background-attachment:fixed"] {
+          background-attachment: scroll !important;
         }
       `;
 
@@ -102,6 +129,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const mutationObserverRef = useRef<MutationObserver | null>(null);
   const observedDocumentRef = useRef<Document | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const mediaObserverRef = useRef<IntersectionObserver | null>(null);
   const measureFrameRef = useRef<number | null>(null);
   const lastMeasureRef = useRef(0);
   const viewportRef = useRef<{ width: number; height: number } | null>(null);
@@ -121,7 +149,13 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   // visible and paints and decodes the entire site at once, which is what
   // makes scrolling stutter on a phone.
   useEffect(() => {
-    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const coarsePointer = window.matchMedia(CONTAINED_MEDIA_QUERY);
+    const pointerListener = coarsePointer as unknown as {
+      addEventListener?: (type: "change", listener: () => void) => void;
+      removeEventListener?: (type: "change", listener: () => void) => void;
+      addListener: (listener: () => void) => void;
+      removeListener: (listener: () => void) => void;
+    };
 
     const syncMode = () => {
       containedRef.current = coarsePointer.matches;
@@ -129,10 +163,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     };
 
     syncMode();
-    coarsePointer.addEventListener("change", syncMode);
+
+    if (pointerListener.addEventListener) {
+      pointerListener.addEventListener("change", syncMode);
+    } else {
+      pointerListener.addListener(syncMode);
+    }
 
     return () => {
-      coarsePointer.removeEventListener("change", syncMode);
+      if (pointerListener.removeEventListener) {
+        pointerListener.removeEventListener("change", syncMode);
+      } else {
+        pointerListener.removeListener(syncMode);
+      }
     };
   }, []);
 
@@ -315,6 +358,38 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
       });
 
+    mediaObserverRef.current?.disconnect();
+    mediaObserverRef.current = null;
+
+    if (isContained && "IntersectionObserver" in frameWindow) {
+      const mediaObserver = new bridgedFrameWindow.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target as HTMLVideoElement;
+
+            if (entry.isIntersecting && entry.intersectionRatio > 0) {
+              video.preload = "metadata";
+              void video.play().catch(() => undefined);
+            } else {
+              video.pause();
+              video.preload = "none";
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "50% 0px",
+          threshold: [0, 0.01],
+        },
+      );
+
+      frameDocument.querySelectorAll<HTMLVideoElement>("video[autoplay]").forEach((video) => {
+        mediaObserver.observe(video);
+      });
+
+      mediaObserverRef.current = mediaObserver;
+    }
+
     if (documentElement.dataset.productLiveFrameBridge !== "true") {
       documentElement.dataset.productLiveFrameBridge = "true";
 
@@ -477,7 +552,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
         const rawHref = link.getAttribute("href");
 
-        if (!rawHref) {
+        if (!rawHref || rawHref === "#") {
           return;
         }
 
@@ -488,8 +563,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
 
         event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
 
         const currentUrl = getCurrentPreviewUrl();
         const isSamePage =
@@ -522,8 +595,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
 
         event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
 
         const currentUrl = getCurrentPreviewUrl();
         const isSamePage =
@@ -544,7 +615,14 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     }
 
-    if (observedDocumentRef.current !== frameDocument) {
+    if (isContained) {
+      // A contained preview owns its scroll and never needs its document
+      // measured. Keeping observers active here only schedules no-op work while
+      // images, menus and animations update during a touch gesture.
+      resizeObserverRef.current?.disconnect();
+      mutationObserverRef.current?.disconnect();
+      observedDocumentRef.current = null;
+    } else if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
 
@@ -569,6 +647,16 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const body = document.body;
     const previousRootScrollBehavior = root.style.scrollBehavior;
     const previousBodyScrollBehavior = body.style.scrollBehavior;
+    const delayedPrepareTimers: number[] = [];
+
+    const clearDelayedPrepares = () => {
+      delayedPrepareTimers.forEach((timer) => window.clearTimeout(timer));
+      delayedPrepareTimers.length = 0;
+    };
+
+    const schedulePrepare = (delay: number) => {
+      delayedPrepareTimers.push(window.setTimeout(prepareFrame, delay));
+    };
 
     root.style.scrollBehavior = "auto";
     body.style.scrollBehavior = "auto";
@@ -580,6 +668,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     const handleLoad = () => {
+      clearDelayedPrepares();
       observedDocumentRef.current = null;
       frameLoadedRef.current = true;
       appliedHeightRef.current = 0;
@@ -589,19 +678,20 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
 
-        if (containedRef.current) {
-          return;
+        if (!containedRef.current) {
+          window.scrollTo({
+            top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
+            behavior: "auto",
+          });
         }
-
-        window.scrollTo({
-          top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
-          behavior: "auto",
-        });
       }
 
       prepareFrame();
-      window.setTimeout(prepareFrame, 350);
-      window.setTimeout(prepareFrame, 1200);
+
+      if (!containedRef.current) {
+        schedulePrepare(350);
+        schedulePrepare(1200);
+      }
     };
 
     // Mobile browsers fire resize whenever the URL bar slides away, i.e. during
@@ -636,8 +726,11 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
-    const initialTimer = window.setTimeout(prepareFrame, 120);
-    const settleTimer = window.setTimeout(prepareFrame, 3000);
+
+    if (!containedRef.current) {
+      schedulePrepare(120);
+      schedulePrepare(3000);
+    }
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
@@ -650,8 +743,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         measureFrameRef.current = null;
       }
 
-      window.clearTimeout(initialTimer);
-      window.clearTimeout(settleTimer);
+      clearDelayedPrepares();
 
       if (resizeTimer !== null) {
         window.clearTimeout(resizeTimer);
@@ -752,7 +844,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
-        scrolling={contained ? "yes" : "no"}
         style={contained ? undefined : { height }}
       />
       {contained ? null : (

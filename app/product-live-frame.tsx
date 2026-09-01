@@ -15,63 +15,20 @@ type FrameWindowWithBridge = Window & {
 };
 
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
+const HEIGHT_EPSILON = 8;
+const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
-export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const mutationObserverRef = useRef<MutationObserver | null>(null);
-  const observedDocumentRef = useRef<Document | null>(null);
-  const resizeObserverRef = useRef<ResizeObserver | null>(null);
-  const [height, setHeight] = useState("100dvh");
-
-  const prepareFrame = useCallback(() => {
-    const iframe = iframeRef.current;
-
-    if (!iframe) {
-      return;
-    }
-
-    let frameWindow: Window | null = null;
-    let frameDocument: Document | null = null;
-
-    try {
-      frameWindow = iframe.contentWindow;
-      frameDocument = iframe.contentDocument;
-    } catch {
-      setHeight(CROSS_ORIGIN_PREVIEW_HEIGHT);
-      return;
-    }
-
-    const documentElement = frameDocument?.documentElement;
-    const body = frameDocument?.body;
-
-    if (!frameWindow || !frameDocument || !documentElement || !body) {
-      return;
-    }
-
-    const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
-    const viewportHeight = window.innerHeight;
-    documentElement.style.setProperty("--embedded-viewport-height", `${viewportHeight}px`);
-    documentElement.style.height = "auto";
-    documentElement.style.minHeight = "0";
-    documentElement.style.overflow = "hidden";
-    body.style.height = "auto";
-    body.style.minHeight = "0";
-    body.style.overflow = "hidden";
-
-    const style =
-      frameDocument.getElementById("product-live-frame-style") ??
-      frameDocument.createElement("style");
-
-    style.id = "product-live-frame-style";
-    style.textContent = `
+const FRAME_STYLE_TEXT = `
         html,
         body {
           height: auto !important;
           min-height: 0 !important;
           overflow: hidden !important;
           scroll-behavior: auto !important;
+          overscroll-behavior: auto !important;
+          touch-action: auto !important;
         }
 
         html[class~="h-full"],
@@ -121,15 +78,149 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         }
       `;
 
-    if (!style.parentElement) {
-      frameDocument.head.appendChild(style);
+export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const mutationObserverRef = useRef<MutationObserver | null>(null);
+  const observedDocumentRef = useRef<Document | null>(null);
+  const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const measureFrameRef = useRef<number | null>(null);
+  const viewportRef = useRef<{ width: number; height: number } | null>(null);
+  const appliedHeightRef = useRef(0);
+  const growthStepsRef = useRef(0);
+  const heightLockedRef = useRef(false);
+  const pendingNavigationRef = useRef(false);
+  const [height, setHeight] = useState("100dvh");
+
+  const getFrameDocument = useCallback(() => {
+    const iframe = iframeRef.current;
+
+    if (!iframe) {
+      return null;
     }
+
+    try {
+      const frameWindow = iframe.contentWindow;
+      const frameDocument = iframe.contentDocument;
+
+      if (!frameWindow || !frameDocument?.documentElement || !frameDocument.body) {
+        return null;
+      }
+
+      return { frameWindow, frameDocument };
+    } catch {
+      setHeight(CROSS_ORIGIN_PREVIEW_HEIGHT);
+      return null;
+    }
+  }, []);
+
+  // Read-only pass. It never writes into the frame, so it can be triggered by
+  // the observers without feeding itself new mutations.
+  const measureFrame = useCallback(() => {
+    if (heightLockedRef.current) {
+      return;
+    }
+
+    const frame = getFrameDocument();
+
+    if (!frame) {
+      return;
+    }
+
+    const { documentElement, body } = frame.frameDocument;
+    const nextHeight = Math.max(
+      documentElement.scrollHeight,
+      documentElement.offsetHeight,
+      body.scrollHeight,
+      body.offsetHeight,
+      viewportRef.current?.height ?? window.innerHeight,
+    );
+    const appliedHeight = appliedHeightRef.current;
+
+    if (Math.abs(nextHeight - appliedHeight) < HEIGHT_EPSILON) {
+      growthStepsRef.current = 0;
+      return;
+    }
+
+    // Previews with raw `vh` sizing grow whenever the iframe grows. Bail out
+    // after far more steps than normal lazy loading needs, so such a preview
+    // cannot pull the page into an endless resize loop.
+    if (nextHeight > appliedHeight) {
+      growthStepsRef.current += 1;
+
+      if (growthStepsRef.current > MAX_CONSECUTIVE_GROWTH_STEPS) {
+        heightLockedRef.current = true;
+        return;
+      }
+    } else {
+      growthStepsRef.current = 0;
+    }
+
+    appliedHeightRef.current = nextHeight;
+    setHeight(`${nextHeight}px`);
+  }, [getFrameDocument]);
+
+  const scheduleMeasure = useCallback(() => {
+    if (measureFrameRef.current !== null) {
+      return;
+    }
+
+    measureFrameRef.current = window.requestAnimationFrame(() => {
+      measureFrameRef.current = null;
+      measureFrame();
+    });
+  }, [measureFrame]);
+
+  const prepareFrame = useCallback(() => {
+    const frame = getFrameDocument();
+
+    if (!frame) {
+      return;
+    }
+
+    const { frameWindow, frameDocument } = frame;
+    const documentElement = frameDocument.documentElement;
+    const body = frameDocument.body;
+    const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
 
     const setInlineStyle = (element: HTMLElement, property: string, value: string) => {
       if (element.style.getPropertyValue(property) !== value) {
         element.style.setProperty(property, value);
       }
     };
+
+    // Mobile browsers change `innerHeight` whenever the URL bar collapses. Only
+    // refresh the embedded viewport height when the layout really changed,
+    // otherwise every scroll gesture would resize the hero sections.
+    const currentViewport = viewportRef.current;
+    const nextViewport = { width: window.innerWidth, height: window.innerHeight };
+
+    if (!currentViewport || currentViewport.width !== nextViewport.width) {
+      viewportRef.current = nextViewport;
+    }
+
+    const viewportHeight = viewportRef.current?.height ?? nextViewport.height;
+
+    setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
+    setInlineStyle(documentElement, "height", "auto");
+    setInlineStyle(documentElement, "min-height", "0");
+    setInlineStyle(documentElement, "overflow", "hidden");
+    setInlineStyle(body, "height", "auto");
+    setInlineStyle(body, "min-height", "0");
+    setInlineStyle(body, "overflow", "hidden");
+
+    const style =
+      frameDocument.getElementById("product-live-frame-style") ??
+      frameDocument.createElement("style");
+
+    style.id = "product-live-frame-style";
+
+    if (style.textContent !== FRAME_STYLE_TEXT) {
+      style.textContent = FRAME_STYLE_TEXT;
+    }
+
+    if (!style.parentElement) {
+      frameDocument.head.appendChild(style);
+    }
 
     frameDocument
       .querySelectorAll<HTMLIFrameElement>('iframe[src*="google.com/maps"]')
@@ -229,34 +320,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         normalizePreviewUrl(frameWindow.location.href) ??
         new URL(frameWindow.location.href);
 
-      const getParentDocument = () => bridgedFrameWindow.parent.document;
-
-      const getParentScroller = () => {
-        const parentDocument = getParentDocument();
-        return parentDocument.scrollingElement ?? parentDocument.documentElement;
-      };
-
-      const setParentScroll = (top: number, left?: number) => {
-        const scroller = getParentScroller();
-        const nextTop = Math.max(0, top);
-        const nextLeft = Math.max(0, left ?? scroller.scrollLeft);
-        const parentDocument = getParentDocument();
-        bridgedFrameWindow.parent.scrollTo({
-          left: nextLeft,
-          top: nextTop,
-          behavior: "auto",
-        });
-        scroller.scrollTop = nextTop;
-        scroller.scrollLeft = nextLeft;
-        parentDocument.body.scrollTop = nextTop;
-        parentDocument.body.scrollLeft = nextLeft;
-      };
-
-      const moveParentScroll = (deltaX: number, deltaY: number) => {
-        const scroller = getParentScroller();
-        setParentScroll(scroller.scrollTop + deltaY, scroller.scrollLeft + deltaX);
-      };
-
       const scrollParentToFrameTarget = (hash: string) => {
         const frameElement = bridgedFrameWindow.frameElement;
 
@@ -279,8 +342,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           (target ? target.getBoundingClientRect().top : 0) -
           24;
 
-        const targetTop = Math.max(0, frameTop);
-        setParentScroll(targetTop);
+        window.scrollTo({ top: Math.max(0, frameTop), behavior: "auto" });
 
         return true;
       };
@@ -340,6 +402,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           return;
         }
 
+        pendingNavigationRef.current = true;
         frameWindow.location.href = previewUrl.href;
       };
 
@@ -372,88 +435,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           return;
         }
 
+        pendingNavigationRef.current = true;
         frameWindow.location.href = previewUrl.href;
-      };
-
-      const handleFrameWheel = (event: WheelEvent) => {
-        if (event.defaultPrevented) {
-          return;
-        }
-
-        if (event.ctrlKey) {
-          return;
-        }
-
-        moveParentScroll(event.deltaX, event.deltaY);
-        event.preventDefault();
-      };
-
-      let lastTouchY: number | null = null;
-
-      const handleTouchStart = (event: TouchEvent) => {
-        lastTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
-      };
-
-      const handleTouchMove = (event: TouchEvent) => {
-        if (event.defaultPrevented) {
-          return;
-        }
-
-        if (lastTouchY === null || event.touches.length !== 1) {
-          return;
-        }
-
-        const nextTouchY = event.touches[0].clientY;
-        const deltaY = lastTouchY - nextTouchY;
-
-        moveParentScroll(0, deltaY);
-        lastTouchY = nextTouchY;
-        event.preventDefault();
-      };
-
-      const resetTouch = () => {
-        lastTouchY = null;
       };
 
       frameDocument.addEventListener("click", handleFrameClick, true);
       frameDocument.addEventListener("submit", handleFrameSubmit, true);
-      frameDocument.addEventListener("wheel", handleFrameWheel, {
-        capture: true,
-        passive: false,
-      });
-      frameDocument.addEventListener("touchstart", handleTouchStart, {
-        capture: true,
-        passive: true,
-      });
-      frameDocument.addEventListener("touchmove", handleTouchMove, {
-        capture: true,
-        passive: false,
-      });
-      frameDocument.addEventListener("touchend", resetTouch, {
-        capture: true,
-        passive: true,
-      });
-      frameDocument.addEventListener("touchcancel", resetTouch, {
-        capture: true,
-        passive: true,
-      });
-      frameWindow.addEventListener("wheel", handleFrameWheel, { passive: false });
-      frameWindow.addEventListener("touchstart", handleTouchStart, { passive: true });
-      frameWindow.addEventListener("touchmove", handleTouchMove, { passive: false });
-      frameWindow.addEventListener("touchend", resetTouch, { passive: true });
-      frameWindow.addEventListener("touchcancel", resetTouch, { passive: true });
-
     }
+
     if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
 
-      const scheduleMeasure = () => {
-        window.requestAnimationFrame(prepareFrame);
-      };
-
       resizeObserverRef.current = new ResizeObserver(scheduleMeasure);
-      resizeObserverRef.current.observe(documentElement);
       resizeObserverRef.current.observe(body);
 
       mutationObserverRef.current = new MutationObserver(scheduleMeasure);
@@ -466,19 +460,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       observedDocumentRef.current = frameDocument;
     }
 
-    const nextHeight = Math.max(
-      documentElement.scrollHeight,
-      documentElement.offsetHeight,
-      body.scrollHeight,
-      body.offsetHeight,
-      viewportHeight,
-    );
-
-    setHeight((currentHeight) => {
-      const heightValue = `${nextHeight}px`;
-      return currentHeight === heightValue ? currentHeight : heightValue;
-    });
-  }, []);
+    measureFrame();
+  }, [getFrameDocument, measureFrame, scheduleMeasure]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -497,23 +480,50 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     const handleLoad = () => {
+      observedDocumentRef.current = null;
+      appliedHeightRef.current = 0;
+      growthStepsRef.current = 0;
+      heightLockedRef.current = false;
+
+      if (pendingNavigationRef.current) {
+        pendingNavigationRef.current = false;
+        window.scrollTo({
+          top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
+          behavior: "auto",
+        });
+      }
+
       prepareFrame();
       window.setTimeout(prepareFrame, 350);
       window.setTimeout(prepareFrame, 1200);
     };
 
+    const handleResize = () => {
+      heightLockedRef.current = false;
+      growthStepsRef.current = 0;
+      prepareFrame();
+    };
+
     iframe.addEventListener("load", handleLoad);
-    window.addEventListener("resize", prepareFrame);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
 
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
     const initialTimer = window.setTimeout(prepareFrame, 120);
-    const interval = window.setInterval(prepareFrame, 1800);
+    const interval = window.setInterval(prepareFrame, 2500);
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
-      window.removeEventListener("resize", prepareFrame);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
       window.cancelAnimationFrame(initialFrame);
+
+      if (measureFrameRef.current !== null) {
+        window.cancelAnimationFrame(measureFrameRef.current);
+        measureFrameRef.current = null;
+      }
+
       window.clearTimeout(initialTimer);
       window.clearInterval(interval);
       resizeObserverRef.current?.disconnect();
@@ -522,7 +532,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
-  }, [prepareFrame]);
+  }, [prepareFrame, scheduleMeasure]);
 
   return (
     <iframe

@@ -10,13 +10,17 @@ type ProductLiveFrameProps = {
 type FrameWindowWithBridge = Window & {
   Element: typeof Element;
   HTMLAnchorElement: typeof HTMLAnchorElement;
+  HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
+  MouseEvent: typeof MouseEvent;
   frameElement: HTMLIFrameElement | null;
 };
 
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
 const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
+const TAP_MOVE_TOLERANCE = 10;
+const TAP_MAX_DURATION = 700;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
@@ -533,6 +537,95 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
   }, [prepareFrame, scheduleMeasure]);
+
+  // On touch devices the frame is `pointer-events: none` so swipes scroll this
+  // page instead of dying inside the frame. Taps still have to reach the
+  // preview, so forward them by hand once a gesture turns out not to be a drag.
+  useEffect(() => {
+    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)");
+
+    if (!coarsePointer.matches) {
+      return;
+    }
+
+    let touchStart: { x: number; y: number; time: number } | null = null;
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.touches.length !== 1) {
+        touchStart = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY, time: Date.now() };
+    };
+
+    const handleTouchEnd = (event: TouchEvent) => {
+      const start = touchStart;
+      touchStart = null;
+
+      if (!start || event.changedTouches.length !== 1) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+
+      if (
+        Math.abs(touch.clientX - start.x) > TAP_MOVE_TOLERANCE ||
+        Math.abs(touch.clientY - start.y) > TAP_MOVE_TOLERANCE ||
+        Date.now() - start.time > TAP_MAX_DURATION
+      ) {
+        return;
+      }
+
+      const iframe = iframeRef.current;
+      const frame = getFrameDocument();
+
+      if (!iframe || !frame) {
+        return;
+      }
+
+      const rect = iframe.getBoundingClientRect();
+
+      if (
+        touch.clientX < rect.left ||
+        touch.clientX > rect.right ||
+        touch.clientY < rect.top ||
+        touch.clientY > rect.bottom
+      ) {
+        return;
+      }
+
+      const bridgedFrameWindow = frame.frameWindow as FrameWindowWithBridge;
+      const frameX = touch.clientX - rect.left;
+      const frameY = touch.clientY - rect.top;
+      const target = frame.frameDocument.elementFromPoint(frameX, frameY);
+
+      if (!(target instanceof bridgedFrameWindow.HTMLElement)) {
+        return;
+      }
+
+      target.dispatchEvent(
+        new bridgedFrameWindow.MouseEvent("click", {
+          bubbles: true,
+          cancelable: true,
+          view: bridgedFrameWindow,
+          clientX: frameX,
+          clientY: frameY,
+        }),
+      );
+    };
+
+    document.addEventListener("touchstart", handleTouchStart, { passive: true });
+    document.addEventListener("touchend", handleTouchEnd, { passive: true });
+    document.addEventListener("touchcancel", handleTouchStart, { passive: true });
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchend", handleTouchEnd);
+      document.removeEventListener("touchcancel", handleTouchStart);
+    };
+  }, [getFrameDocument]);
 
   return (
     <iframe

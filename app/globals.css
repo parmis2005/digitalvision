@@ -4855,6 +4855,18 @@ h3 {
   overflow-anchor: none;
 }
 
+/*
+ * Touch devices never hand a scroll gesture that starts inside the preview
+ * back to this page, so the frame would swallow every swipe. Taking the frame
+ * out of hit testing lets the gesture land on the page itself, which scrolls
+ * natively. Taps are forwarded into the frame from ProductLiveFrame.
+ */
+@media (hover: none) and (pointer: coarse) {
+  .product-live-iframe {
+    pointer-events: none;
+  }
+}
+
 .product-hero-actions {
   display: flex;
   flex-wrap: wrap;

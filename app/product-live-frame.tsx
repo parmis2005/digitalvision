@@ -19,6 +19,8 @@ type FrameWindowWithBridge = Window & {
 const CROSS_ORIGIN_PREVIEW_HEIGHT = "3600px";
 const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
+const MEASURE_THROTTLE = 250;
+const RESIZE_DEBOUNCE = 200;
 const TAP_MOVE_TOLERANCE = 10;
 const TAP_MAX_DURATION = 700;
 const PREVIEW_ASSET_PATTERN =
@@ -88,6 +90,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const observedDocumentRef = useRef<Document | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const measureFrameRef = useRef<number | null>(null);
+  const lastMeasureRef = useRef(0);
   const viewportRef = useRef<{ width: number; height: number } | null>(null);
   const appliedHeightRef = useRef(0);
   const growthStepsRef = useRef(0);
@@ -169,10 +172,17 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       return;
     }
 
-    measureFrameRef.current = window.requestAnimationFrame(() => {
+    // Reading scrollHeight forces a layout of a document that is thousands of
+    // pixels tall, so do it a few times a second at most rather than on every
+    // animation frame.
+    const sinceLast = Date.now() - lastMeasureRef.current;
+    const delay = Math.max(0, MEASURE_THROTTLE - sinceLast);
+
+    measureFrameRef.current = window.setTimeout(() => {
       measureFrameRef.current = null;
+      lastMeasureRef.current = Date.now();
       measureFrame();
-    });
+    }, delay);
   }, [measureFrame]);
 
   const prepareFrame = useCallback(() => {
@@ -458,7 +468,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       mutationObserverRef.current = new MutationObserver(scheduleMeasure);
       mutationObserverRef.current.observe(body, {
-        attributes: true,
         childList: true,
         subtree: true,
       });
@@ -504,10 +513,30 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       window.setTimeout(prepareFrame, 1200);
     };
 
+    // Mobile browsers fire resize whenever the URL bar slides away, i.e. during
+    // scrolling. Re-running the full prepare pass there walks the whole preview
+    // document and forces a layout mid-gesture, which is what makes scrolling
+    // stutter on a phone. Only a real width change needs that work.
+    let lastWidth = window.innerWidth;
+    let resizeTimer: number | null = null;
+
     const handleResize = () => {
-      heightLockedRef.current = false;
-      growthStepsRef.current = 0;
-      prepareFrame();
+      if (window.innerWidth === lastWidth) {
+        return;
+      }
+
+      lastWidth = window.innerWidth;
+
+      if (resizeTimer !== null) {
+        window.clearTimeout(resizeTimer);
+      }
+
+      resizeTimer = window.setTimeout(() => {
+        resizeTimer = null;
+        heightLockedRef.current = false;
+        growthStepsRef.current = 0;
+        prepareFrame();
+      }, RESIZE_DEBOUNCE);
     };
 
     iframe.addEventListener("load", handleLoad);
@@ -517,7 +546,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
     const initialTimer = window.setTimeout(prepareFrame, 120);
-    const interval = window.setInterval(prepareFrame, 2500);
+    const settleTimer = window.setTimeout(prepareFrame, 3000);
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
@@ -526,12 +555,16 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       window.cancelAnimationFrame(initialFrame);
 
       if (measureFrameRef.current !== null) {
-        window.cancelAnimationFrame(measureFrameRef.current);
+        window.clearTimeout(measureFrameRef.current);
         measureFrameRef.current = null;
       }
 
       window.clearTimeout(initialTimer);
-      window.clearInterval(interval);
+      window.clearTimeout(settleTimer);
+
+      if (resizeTimer !== null) {
+        window.clearTimeout(resizeTimer);
+      }
 
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
@@ -629,6 +662,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         scrolling="no"
+        loading="lazy"
         style={{ height }}
       />
       <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />

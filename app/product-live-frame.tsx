@@ -93,6 +93,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const growthStepsRef = useRef(0);
   const heightLockedRef = useRef(false);
   const pendingNavigationRef = useRef(false);
+  const shieldRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState("100dvh");
 
   const getFrameDocument = useCallback(() => {
@@ -445,6 +446,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       frameDocument.addEventListener("click", handleFrameClick, true);
       frameDocument.addEventListener("submit", handleFrameSubmit, true);
+
     }
 
     if (observedDocumentRef.current !== frameDocument) {
@@ -530,6 +532,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       window.clearTimeout(initialTimer);
       window.clearInterval(interval);
+
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
       observedDocumentRef.current = null;
@@ -538,13 +541,14 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     };
   }, [prepareFrame, scheduleMeasure]);
 
-  // On touch devices the frame is `pointer-events: none` so swipes scroll this
-  // page instead of dying inside the frame. Taps still have to reach the
-  // preview, so forward them by hand once a gesture turns out not to be a drag.
+  // iOS Safari keeps a scroll gesture that starts over an iframe inside that
+  // frame, so the embedding page never moves. The shield is a plain element of
+  // THIS document covering the frame, so a swipe is an ordinary page scroll
+  // with native momentum. Taps are forwarded into the frame by hand.
   useEffect(() => {
-    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const shield = shieldRef.current;
 
-    if (!coarsePointer.matches) {
+    if (!shield) {
       return;
     }
 
@@ -586,16 +590,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       }
 
       const rect = iframe.getBoundingClientRect();
-
-      if (
-        touch.clientX < rect.left ||
-        touch.clientX > rect.right ||
-        touch.clientY < rect.top ||
-        touch.clientY > rect.bottom
-      ) {
-        return;
-      }
-
       const bridgedFrameWindow = frame.frameWindow as FrameWindowWithBridge;
       const frameX = touch.clientX - rect.left;
       const frameY = touch.clientY - rect.top;
@@ -616,25 +610,28 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       );
     };
 
-    document.addEventListener("touchstart", handleTouchStart, { passive: true });
-    document.addEventListener("touchend", handleTouchEnd, { passive: true });
-    document.addEventListener("touchcancel", handleTouchStart, { passive: true });
+    shield.addEventListener("touchstart", handleTouchStart, { passive: true });
+    shield.addEventListener("touchend", handleTouchEnd, { passive: true });
+    shield.addEventListener("touchcancel", handleTouchStart, { passive: true });
 
     return () => {
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchend", handleTouchEnd);
-      document.removeEventListener("touchcancel", handleTouchStart);
+      shield.removeEventListener("touchstart", handleTouchStart);
+      shield.removeEventListener("touchend", handleTouchEnd);
+      shield.removeEventListener("touchcancel", handleTouchStart);
     };
   }, [getFrameDocument]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      className="product-live-iframe"
-      src={src}
-      title={title}
-      scrolling="no"
-      style={{ height }}
-    />
+    <div className="product-live-frame-wrap">
+      <iframe
+        ref={iframeRef}
+        className="product-live-iframe"
+        src={src}
+        title={title}
+        scrolling="no"
+        style={{ height }}
+      />
+      <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
+    </div>
   );
 }

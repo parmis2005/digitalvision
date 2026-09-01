@@ -4845,6 +4845,10 @@ h3 {
   overflow-anchor: none;
 }
 
+.product-live-frame-wrap {
+  position: relative;
+}
+
 .product-live-iframe {
   display: block;
   width: 100%;
@@ -4855,15 +4859,23 @@ h3 {
   overflow-anchor: none;
 }
 
+.product-live-touch-shield {
+  display: none;
+}
+
 /*
- * Touch devices never hand a scroll gesture that starts inside the preview
- * back to this page, so the frame would swallow every swipe. Taking the frame
- * out of hit testing lets the gesture land on the page itself, which scrolls
- * natively. Taps are forwarded into the frame from ProductLiveFrame.
+ * iOS Safari keeps a scroll gesture that starts over an iframe inside that
+ * frame, so the page behind it never moves. Covering the frame with an element
+ * of this document makes a swipe an ordinary page scroll again. Taps are
+ * forwarded into the frame from ProductLiveFrame, so the preview stays usable.
  */
 @media (hover: none) and (pointer: coarse) {
-  .product-live-iframe {
-    pointer-events: none;
+  .product-live-touch-shield {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
   }
 }
 

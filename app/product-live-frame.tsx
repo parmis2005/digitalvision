@@ -225,12 +225,41 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         const near = top < viewportHeight + margin && top > -margin - element.offsetHeight;
 
         if (element instanceof HTMLVideoElement) {
-          if (near) {
-            if (element.dataset.liveAutoplay === "true" && element.paused) {
-              void element.play().catch(() => undefined);
+          if (!near) {
+            if (!element.paused) {
+              element.pause();
             }
-          } else if (!element.paused) {
-            element.pause();
+
+            return;
+          }
+
+          if (element.dataset.liveDeferred === "true") {
+            const stashed = element.dataset.liveSrc;
+            const stashedSources = element.dataset.liveSources;
+
+            delete element.dataset.liveDeferred;
+            delete element.dataset.liveSrc;
+            delete element.dataset.liveSources;
+
+            if (stashedSources) {
+              const values = stashedSources.split("|");
+              element.querySelectorAll("source").forEach((child, index) => {
+                if (values[index]) {
+                  child.setAttribute("src", values[index]);
+                }
+              });
+            }
+
+            if (stashed) {
+              element.setAttribute("src", stashed);
+            }
+
+            element.preload = "metadata";
+            element.load();
+          }
+
+          if (element.dataset.liveAutoplay === "true" && element.paused) {
+            void element.play().catch(() => undefined);
           }
 
           return;
@@ -405,12 +434,38 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       const rect = video.getBoundingClientRect();
       video.dataset.liveTop = String(Math.round(rect.top));
-      video.dataset.liveAutoplay = video.autoplay ? "true" : "false";
+      video.dataset.liveAutoplay =
+        video.autoplay || video.dataset.autoplay === "true" ? "true" : "false";
       video.preload = "none";
 
-      if (rect.top > firstScreen) {
+      if (rect.top <= firstScreen) {
+        return;
+      }
+
+      // These previews start their videos from their own scripts rather than an
+      // autoplay attribute, so pausing is not enough - the fetch has already
+      // begun. Park the source the same way images are parked.
+      const source = video.getAttribute("src");
+
+      if (source) {
+        video.dataset.liveSrc = source;
+        video.removeAttribute("src");
+      }
+
+      const childSources = Array.from(video.querySelectorAll("source"))
+        .map((child) => child.getAttribute("src") ?? "")
+        .join("|");
+
+      if (childSources) {
+        video.dataset.liveSources = childSources;
+        video.querySelectorAll("source").forEach((child) => child.removeAttribute("src"));
+      }
+
+      if (source || childSources) {
+        video.dataset.liveDeferred = "true";
         video.autoplay = false;
         video.pause();
+        video.load();
       }
     });
 

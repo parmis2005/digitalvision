@@ -623,6 +623,7 @@ textarea {
   background: linear-gradient(90deg, #f5fbff 0%, #c6f0ff 28%, #8fe3ff 56%, #c67cff 100%);
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow: 0 0 18px rgba(155, 228, 255, 0.18);
 }
 
@@ -1072,6 +1073,12 @@ textarea {
 .hero-branding .dv-logo-name {
   font-size: clamp(1.15rem, 1.5vw, 1.5rem);
   letter-spacing: 0.22em;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.42),
+    0 0 24px rgba(255, 255, 255, 0.18);
   filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.55));
 }
 

@@ -4870,12 +4870,28 @@ h3 {
  * forwarded into the frame from ProductLiveFrame, so the preview stays usable.
  */
 @media (hover: none) and (pointer: coarse) {
+  /*
+   * Give the frame a real viewport instead of stretching it to the whole site.
+   * At full site height the browser counts every section as visible and paints
+   * and decodes all of it at once, which is what makes scrolling stutter on a
+   * phone. One screen tall, the preview scrolls its own document natively and
+   * only renders what is actually on screen.
+   */
+  .product-live-site {
+    height: 100dvh;
+  }
+
+  .product-live-frame-wrap {
+    height: 100%;
+  }
+
+  .product-live-iframe {
+    height: 100% !important;
+    min-height: 0;
+  }
+
   .product-live-touch-shield {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: transparent;
+    display: none;
   }
 }
 

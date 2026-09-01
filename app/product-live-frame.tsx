@@ -30,6 +30,15 @@ const TAP_MAX_DURATION = 700;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
+const CONTAINED_STYLE_TEXT = `
+        html,
+        body {
+          overflow-x: hidden !important;
+          overscroll-behavior: auto !important;
+          scroll-behavior: auto !important;
+        }
+      `;
+
 const FRAME_STYLE_TEXT = `
         html,
         body {
@@ -102,7 +111,30 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const pendingNavigationRef = useRef(false);
   const shieldRef = useRef<HTMLDivElement>(null);
   const frameLoadedRef = useRef(false);
+  const containedRef = useRef(false);
+  const [contained, setContained] = useState(false);
   const [height, setHeight] = useState(`${INITIAL_PREVIEW_HEIGHT}px`);
+
+  // On touch devices the frame is one viewport tall and scrolls its own
+  // document. Stretching it to the full site height instead makes the frame's
+  // viewport thousands of pixels tall, so the browser treats every section as
+  // visible and paints and decodes the entire site at once, which is what
+  // makes scrolling stutter on a phone.
+  useEffect(() => {
+    const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)");
+
+    const syncMode = () => {
+      containedRef.current = coarsePointer.matches;
+      setContained(coarsePointer.matches);
+    };
+
+    syncMode();
+    coarsePointer.addEventListener("change", syncMode);
+
+    return () => {
+      coarsePointer.removeEventListener("change", syncMode);
+    };
+  }, []);
 
   const getFrameDocument = useCallback(() => {
     const iframe = iframeRef.current;
@@ -129,7 +161,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   // Read-only pass. It never writes into the frame, so it can be triggered by
   // the observers without feeding itself new mutations.
   const measureFrame = useCallback(() => {
-    if (heightLockedRef.current) {
+    if (heightLockedRef.current || containedRef.current) {
       return;
     }
 
@@ -223,13 +255,27 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     const viewportHeight = viewportRef.current?.height ?? nextViewport.height;
 
-    setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
-    setInlineStyle(documentElement, "height", "auto");
-    setInlineStyle(documentElement, "min-height", "0");
-    setInlineStyle(documentElement, "overflow", "hidden");
-    setInlineStyle(body, "height", "auto");
-    setInlineStyle(body, "min-height", "0");
-    setInlineStyle(body, "overflow", "hidden");
+    const isContained = containedRef.current;
+
+    if (isContained) {
+      // The frame is a normal-sized window here, so the preview's own layout
+      // works unchanged: vh units resolve correctly and offscreen sections stay
+      // offscreen. Only undo anything a previous desktop-mode pass applied.
+      setInlineStyle(documentElement, "height", "");
+      setInlineStyle(documentElement, "min-height", "");
+      setInlineStyle(documentElement, "overflow", "");
+      setInlineStyle(body, "height", "");
+      setInlineStyle(body, "min-height", "");
+      setInlineStyle(body, "overflow", "");
+    } else {
+      setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
+      setInlineStyle(documentElement, "height", "auto");
+      setInlineStyle(documentElement, "min-height", "0");
+      setInlineStyle(documentElement, "overflow", "hidden");
+      setInlineStyle(body, "height", "auto");
+      setInlineStyle(body, "min-height", "0");
+      setInlineStyle(body, "overflow", "hidden");
+    }
 
     const style =
       frameDocument.getElementById("product-live-frame-style") ??
@@ -237,8 +283,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     style.id = "product-live-frame-style";
 
-    if (style.textContent !== FRAME_STYLE_TEXT) {
-      style.textContent = FRAME_STYLE_TEXT;
+    const styleText = isContained ? CONTAINED_STYLE_TEXT : FRAME_STYLE_TEXT;
+
+    if (style.textContent !== styleText) {
+      style.textContent = styleText;
     }
 
     if (!style.parentElement) {
@@ -343,6 +391,35 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         normalizePreviewUrl(frameWindow.location.href) ??
         new URL(frameWindow.location.href);
 
+      const scrollToHashTarget = (hash: string) => {
+        if (containedRef.current) {
+          if (!hash || hash === "#") {
+            frameWindow.scrollTo({ top: 0, behavior: "auto" });
+            return true;
+          }
+
+          const targetId = decodeURIComponent(hash.slice(1));
+          const target =
+            frameDocument.getElementById(targetId) ??
+            (frameDocument.querySelector(
+              `[name="${CSS.escape(targetId)}"]`,
+            ) as HTMLElement | null);
+
+          if (!target) {
+            return false;
+          }
+
+          frameWindow.scrollTo({
+            top: Math.max(0, frameWindow.scrollY + target.getBoundingClientRect().top - 16),
+            behavior: "auto",
+          });
+
+          return true;
+        }
+
+        return scrollParentToFrameTarget(hash);
+      };
+
       const scrollParentToFrameTarget = (hash: string) => {
         const frameElement = bridgedFrameWindow.frameElement;
 
@@ -421,7 +498,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
         if (previewUrl.hash && isSamePage) {
           frameWindow.history.pushState(null, "", previewUrl.hash);
-          scrollParentToFrameTarget(previewUrl.hash);
+          scrollToHashTarget(previewUrl.hash);
           return;
         }
 
@@ -454,7 +531,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           previewUrl.search === currentUrl.search;
 
         if (previewUrl.hash && isSamePage) {
-          scrollParentToFrameTarget(previewUrl.hash);
+          scrollToHashTarget(previewUrl.hash);
           return;
         }
 
@@ -511,6 +588,11 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
+
+        if (containedRef.current) {
+          return;
+        }
+
         window.scrollTo({
           top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
           behavior: "auto",
@@ -581,7 +663,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
-  }, [prepareFrame, scheduleMeasure]);
+  }, [contained, prepareFrame, scheduleMeasure]);
 
   // iOS Safari keeps a scroll gesture that starts over an iframe inside that
   // frame, so the embedding page never moves. The shield is a plain element of
@@ -670,10 +752,12 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
-        scrolling="no"
-        style={{ height }}
+        scrolling={contained ? "yes" : "no"}
+        style={contained ? undefined : { height }}
       />
-      <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
+      {contained ? null : (
+        <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
+      )}
     </div>
   );
 }

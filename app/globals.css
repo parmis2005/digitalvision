@@ -4856,13 +4856,26 @@ h3 {
 .product-live-iframe {
   display: block;
   width: 100%;
-  height: 80vh;
-  min-height: 600px;
+  height: 100%;
   border: none;
   background: #0f0d0b;
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+.product-live-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.product-live-page main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .product-live-page ~ .floating-back-to-top {

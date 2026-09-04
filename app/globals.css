@@ -4847,7 +4847,6 @@ h3 {
 
 .product-live-frame-wrap {
   position: relative;
-  height: clamp(620px, 82svh, 900px);
   min-height: 0;
   overflow: hidden;
 }
@@ -4855,15 +4854,24 @@ h3 {
 .product-live-iframe {
   display: block;
   width: 100%;
-  min-height: 0;
-  height: 100% !important;
+  min-height: 100svh;
   border: 0;
   background: #0f0d0b;
-  overflow: auto;
+  overflow: hidden;
   overflow-anchor: none;
   overscroll-behavior: contain;
+}
+
+.product-live-scroll-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
   touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
+}
+
+.product-live-page ~ .floating-back-to-top {
+  display: none;
 }
 
 .product-hero-actions {
@@ -11095,11 +11103,7 @@ h3 {
   }
 
   .product-live-page .product-live-frame-wrap {
-    height: clamp(520px, 78svh, 720px);
-  }
-
-  .product-live-page .product-live-iframe {
-    touch-action: pan-y;
+    overflow: hidden;
   }
 
   .split-copy h2 {

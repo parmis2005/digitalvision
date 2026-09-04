@@ -71,18 +71,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const body = frameDocument.body;
     const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
 
-    documentElement.style.setProperty("height", "auto");
-    documentElement.style.setProperty("min-height", "100%");
-    documentElement.style.setProperty("overflow-x", "hidden");
-    documentElement.style.setProperty("overflow-y", "auto");
-    documentElement.style.setProperty("touch-action", "auto");
-    documentElement.style.setProperty("-webkit-overflow-scrolling", "touch");
+    documentElement.style.setProperty("height", "auto", "important");
+    documentElement.style.setProperty("min-height", "100%", "important");
+    documentElement.style.setProperty("overflow-x", "hidden", "important");
+    documentElement.style.setProperty("overflow-y", "scroll", "important");
+    documentElement.style.setProperty("touch-action", "auto", "important");
+    documentElement.style.setProperty("-webkit-overflow-scrolling", "touch", "important");
+    documentElement.style.setProperty("scroll-behavior", "auto", "important");
 
-    body.style.setProperty("height", "auto");
-    body.style.setProperty("min-height", "100%");
-    body.style.setProperty("overflow-x", "hidden");
-    body.style.setProperty("overflow-y", "auto");
-    body.style.setProperty("touch-action", "auto");
+    body.style.setProperty("height", "auto", "important");
+    body.style.setProperty("min-height", "100%", "important");
+    body.style.setProperty("overflow-x", "hidden", "important");
+    body.style.setProperty("overflow-y", "visible", "important");
+    body.style.setProperty("touch-action", "auto", "important");
 
     const style =
       frameDocument.getElementById("product-live-frame-style") ??
@@ -257,8 +258,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         loading="eager"
-        sandbox="allow-same-origin allow-scripts allow-pointer-lock"
-        scrolling="auto"
+        sandbox="allow-same-origin allow-scripts"
+        scrolling="yes"
+        style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
       />
     </div>
   );

@@ -4856,17 +4856,12 @@ h3 {
 .product-live-iframe {
   display: block;
   width: 100%;
-  height: min(900px, 82svh);
-  min-height: 680px;
+  height: clamp(680px, 82svh, 900px);
   border: 0;
   background: #0f0d0b;
-  overflow: auto;
-  overflow-anchor: auto;
-  overscroll-behavior-y: auto;
-  touch-action: pan-y;
+  overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  pointer-events: auto;
-  will-change: scroll-position;
+  touch-action: auto;
 }
 
 .product-live-page ~ .floating-back-to-top {

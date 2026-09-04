@@ -15,6 +15,14 @@ export function AmbientScene({ density = "default" }: AmbientSceneProps) {
     const update = () => {
       frame = 0;
       const root = document.documentElement;
+
+      // Skip parallax updates on product live preview pages (iframe scrolls internally)
+      if (document.body.classList.contains("product-live-page")) {
+        root.style.setProperty("--parallax-shift", "0px");
+        root.style.setProperty("--parallax-shift-soft", "0px");
+        return;
+      }
+
       const scrollY = window.scrollY;
       root.style.setProperty("--parallax-shift", `${Math.min(scrollY * 0.08, 120)}px`);
       root.style.setProperty("--parallax-shift-soft", `${Math.min(scrollY * 0.04, 64)}px`);

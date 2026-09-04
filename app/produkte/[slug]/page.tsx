@@ -5,7 +5,6 @@ import { ArrowRight, Check, House } from "lucide-react";
 import { products } from "../../products-data";
 import { ProductLiveFrame } from "../../product-live-frame";
 import { ProductPreview } from "../../product-preview";
-import { DisableParallax } from "../../disable-parallax";
 
 const baseUrl = "https://www.digitalvision.site";
 
@@ -107,7 +106,6 @@ export default async function ProductPage({ params }: PageProps) {
 
   return (
     <main className={`product-page${livePreviewUrl ? " product-live-page" : ""}`}>
-      {livePreviewUrl && <DisableParallax />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}

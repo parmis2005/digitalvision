@@ -56,9 +56,14 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     if (!style.parentElement) frameDocument.head.appendChild(style);
 
     frameDocument.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
-      video.autoplay = false;
-      video.preload = "metadata";
-      video.pause();
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.autoplay = true;
+      if (!video.preload || video.preload === "none") {
+        video.preload = "auto";
+      }
+      void video.play().catch(() => undefined);
     });
 
     if (documentElement.dataset.productLiveFrameBridge === "true") return;
@@ -220,6 +225,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
+        allow="autoplay; fullscreen"
         loading="eager"
         sandbox="allow-same-origin allow-scripts"
         scrolling="yes"

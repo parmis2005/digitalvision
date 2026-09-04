@@ -1,293 +1,98 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-type ProductLiveFrameProps = {
-  src: string;
-  title: string;
-};
+type ProductLiveFrameProps = { src: string; title: string };
 
 type FrameWindowWithBridge = Window & {
   Element: typeof Element;
   HTMLAnchorElement: typeof HTMLAnchorElement;
-  HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
-  frameElement: HTMLIFrameElement | null;
 };
 
-const INITIAL_PREVIEW_HEIGHT = 1600;
-const CROSS_ORIGIN_PREVIEW_HEIGHT = 9000;
-const MIN_PREVIEW_HEIGHT = 720;
-const HEIGHT_EPSILON = 8;
-const MEASURE_THROTTLE = 240;
-const RESIZE_DEBOUNCE = 200;
-const MEASURE_DELAYS = [600, 2200] as const;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 const FRAME_STYLE_TEXT = `
-        html,
-        body {
-          height: auto !important;
-          min-height: 0 !important;
-          overflow: hidden !important;
-          scroll-behavior: auto !important;
-          overscroll-behavior: auto !important;
-          touch-action: auto !important;
-        }
+  html,
+  body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
 
-        html[class~="h-full"],
-        body[class~="h-full"],
-        html[class~="min-h-full"],
-        body[class~="min-h-full"] {
-          height: auto !important;
-          min-height: 0 !important;
-        }
+  iframe[src*="google.com/maps"],
+  iframe[src*="openstreetmap.org"],
+  iframe[src*="mapbox.com"],
+  .leaflet-container {
+    pointer-events: none !important;
+    touch-action: pan-y !important;
+  }
 
-        section#top,
-        section#hero,
-        section#home,
-        [data-hero],
-        .hero,
-        .hero-stage,
-        .hero-section,
-        .site-hero,
-        [class*="hero-stage"],
-        [class*="HeroStage"],
-        [class~="min-h-screen"],
-        [class*="min-h-screen"],
-        [class*="min-h-svh"],
-        [class*="min-h-dvh"],
-        [class*="min-h-[100vh]"],
-        [class*="min-h-[100svh]"],
-        [class*="min-h-[100dvh]"],
-        [class*="min-h-["][class*="vh"],
-        section[class*="hero"],
-        section[class*="Hero"] {
-          min-height: var(--embedded-viewport-height) !important;
-        }
+  .bg-fixed,
+  [style*="background-attachment: fixed"],
+  [style*="background-attachment:fixed"] {
+    background-attachment: scroll !important;
+  }
 
-        section#top,
-        section#hero,
-        section#home,
-        [class~="h-screen"],
-        [class*="h-screen"],
-        [class*="h-svh"],
-        [class*="h-dvh"],
-        [class*="h-[100vh]"],
-        [class*="h-[100svh]"],
-        [class*="h-[100dvh]"],
-        [class*="h-["][class*="vh"] {
-          height: var(--embedded-viewport-height) !important;
-          min-height: var(--embedded-viewport-height) !important;
-        }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
 
-        iframe[src*="google.com/maps"],
-        iframe[src*="openstreetmap.org"],
-        iframe[src*="mapbox.com"],
-        .leaflet-container {
-          pointer-events: none !important;
-          touch-action: pan-y !important;
-        }
-
-        .bg-fixed,
-        [style*="background-attachment: fixed"],
-        [style*="background-attachment:fixed"] {
-          background-attachment: scroll !important;
-        }
-
-        *,
-        *::before,
-        *::after {
-          scroll-behavior: auto !important;
-        }
-
-        html[data-product-live-frame-bridge="true"] *,
-        html[data-product-live-frame-bridge="true"] *::before,
-        html[data-product-live-frame-bridge="true"] *::after {
-          animation-delay: 0s !important;
-          animation-duration: 0.001ms !important;
-          animation-iteration-count: 1 !important;
-          transition-delay: 0s !important;
-          transition-duration: 0.001ms !important;
-        }
-      `;
+  html[data-product-live-frame-bridge="true"] *,
+  html[data-product-live-frame-bridge="true"] *::before,
+  html[data-product-live-frame-bridge="true"] *::after {
+    animation-delay: 0s !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+  }
+`;
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const observedDocumentRef = useRef<Document | null>(null);
-  const resizeObserverRef = useRef<ResizeObserver | null>(null);
-  const measureFrameRef = useRef<number | null>(null);
-  const lastMeasureRef = useRef(0);
-  const viewportRef = useRef<{ width: number; height: number } | null>(null);
-  const appliedHeightRef = useRef(INITIAL_PREVIEW_HEIGHT);
   const pendingNavigationRef = useRef(false);
-  const [height, setHeight] = useState(`${INITIAL_PREVIEW_HEIGHT}px`);
-
-  const getFrameDocument = useCallback(() => {
-    const iframe = iframeRef.current;
-
-    if (!iframe) {
-      return null;
-    }
-
-    try {
-      const frameWindow = iframe.contentWindow;
-      const frameDocument = iframe.contentDocument;
-
-      if (!frameWindow || !frameDocument?.documentElement || !frameDocument.body) {
-        return null;
-      }
-
-      return { frameWindow, frameDocument };
-    } catch {
-      if (appliedHeightRef.current !== CROSS_ORIGIN_PREVIEW_HEIGHT) {
-        appliedHeightRef.current = CROSS_ORIGIN_PREVIEW_HEIGHT;
-        setHeight(`${CROSS_ORIGIN_PREVIEW_HEIGHT}px`);
-      }
-
-      return null;
-    }
-  }, []);
-
-  const getStableViewportHeight = useCallback(() => {
-    const nextViewport = { width: window.innerWidth, height: window.innerHeight };
-    const currentViewport = viewportRef.current;
-
-    if (!currentViewport || currentViewport.width !== nextViewport.width) {
-      viewportRef.current = nextViewport;
-    }
-
-    return viewportRef.current?.height ?? nextViewport.height;
-  }, []);
-
-  const measureFrame = useCallback(() => {
-    const iframe = iframeRef.current;
-    const frame = getFrameDocument();
-
-    if (!iframe || !frame) {
-      return;
-    }
-
-    const { documentElement, body } = frame.frameDocument;
-    const stableViewportHeight = getStableViewportHeight();
-    const previousInlineHeight = iframe.style.height;
-
-    iframe.style.height = `${stableViewportHeight}px`;
-
-    const measuredHeight = (() => {
-      try {
-        return Math.ceil(
-          Math.max(
-            documentElement.scrollHeight,
-            documentElement.offsetHeight,
-            body.scrollHeight,
-            body.offsetHeight,
-            body.getBoundingClientRect().height,
-            stableViewportHeight,
-            MIN_PREVIEW_HEIGHT,
-          ),
-        );
-      } finally {
-        iframe.style.height = previousInlineHeight;
-      }
-    })();
-
-    const nextHeight = measuredHeight;
-
-    if (Math.abs(nextHeight - appliedHeightRef.current) < HEIGHT_EPSILON) {
-      return;
-    }
-
-    appliedHeightRef.current = nextHeight;
-    setHeight(`${nextHeight}px`);
-  }, [getFrameDocument, getStableViewportHeight]);
-
-  const scheduleMeasure = useCallback(() => {
-    if (measureFrameRef.current !== null) {
-      return;
-    }
-
-    const sinceLast = Date.now() - lastMeasureRef.current;
-    const delay = Math.max(0, MEASURE_THROTTLE - sinceLast);
-
-    measureFrameRef.current = window.setTimeout(() => {
-      measureFrameRef.current = null;
-      lastMeasureRef.current = Date.now();
-      measureFrame();
-    }, delay);
-  }, [measureFrame]);
 
   const prepareFrame = useCallback(() => {
-    const frame = getFrameDocument();
+    const iframe = iframeRef.current;
 
-    if (!frame) {
+    if (!iframe) return;
+
+    let frameWindow: Window;
+    let frameDocument: Document;
+
+    try {
+      if (!iframe.contentWindow || !iframe.contentDocument?.body) return;
+      frameWindow = iframe.contentWindow;
+      frameDocument = iframe.contentDocument;
+    } catch {
       return;
     }
 
-    const { frameWindow, frameDocument } = frame;
     const documentElement = frameDocument.documentElement;
     const body = frameDocument.body;
     const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
 
-    const setInlineStyle = (element: HTMLElement, property: string, value: string) => {
-      if (element.style.getPropertyValue(property) !== value) {
-        element.style.setProperty(property, value);
-      }
-    };
-
-    setInlineStyle(
-      documentElement,
-      "--embedded-viewport-height",
-      `${getStableViewportHeight()}px`,
-    );
-    setInlineStyle(documentElement, "height", "auto");
-    setInlineStyle(documentElement, "min-height", "0");
-    setInlineStyle(documentElement, "overflow", "hidden");
-    setInlineStyle(body, "height", "auto");
-    setInlineStyle(body, "min-height", "0");
-    setInlineStyle(body, "overflow", "hidden");
+    for (const element of [documentElement, body]) {
+      element.style.setProperty("height", "auto");
+      element.style.setProperty("min-height", "100%");
+      element.style.setProperty("overflow-x", "hidden");
+      element.style.setProperty("overflow-y", "auto");
+      element.style.setProperty("touch-action", "pan-y");
+    }
 
     const style =
       frameDocument.getElementById("product-live-frame-style") ??
       frameDocument.createElement("style");
-
     style.id = "product-live-frame-style";
-
-    if (style.textContent !== FRAME_STYLE_TEXT) {
-      style.textContent = FRAME_STYLE_TEXT;
-    }
-
-    if (!style.parentElement) {
-      frameDocument.head.appendChild(style);
-    }
-
-    frameDocument
-      .querySelectorAll<HTMLIFrameElement>('iframe[src*="google.com/maps"]')
-      .forEach((mapFrame) => {
-        const mapClassName = mapFrame.getAttribute("class") ?? "";
-        const mapMinHeight = "clamp(320px, 25vw, 420px)";
-
-        setInlineStyle(mapFrame, "display", "block");
-        setInlineStyle(mapFrame, "width", "100%");
-        setInlineStyle(mapFrame, "min-height", "320px");
-        setInlineStyle(mapFrame, "border", "0");
-
-        if (mapClassName.includes("h-full")) {
-          setInlineStyle(mapFrame, "height", "100%");
-        } else if (!mapFrame.getAttribute("height")) {
-          setInlineStyle(mapFrame, "height", mapMinHeight);
-        }
-
-        if (mapFrame.parentElement) {
-          setInlineStyle(mapFrame.parentElement, "min-height", mapMinHeight);
-        }
-      });
+    style.textContent = FRAME_STYLE_TEXT;
+    if (!style.parentElement) frameDocument.head.appendChild(style);
 
     frameDocument.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
       video.autoplay = false;
@@ -295,307 +100,157 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       video.pause();
     });
 
-    if (documentElement.dataset.productLiveFrameBridge !== "true") {
-      documentElement.dataset.productLiveFrameBridge = "true";
+    if (documentElement.dataset.productLiveFrameBridge === "true") return;
+    documentElement.dataset.productLiveFrameBridge = "true";
 
-      const scriptElement = frameDocument.querySelector<HTMLScriptElement>(
-        'script[src$="/preview-passive.js"]',
-      );
-      const previewRoot = scriptElement
-        ? new URL(scriptElement.src, frameWindow.location.href).pathname.replace(
-            /\/preview-passive\.js$/,
-            "",
-          )
-        : new URL(frameWindow.location.href).pathname
-            .replace(/\/index\.html$/, "")
-            .replace(/\/[^/]+\.html$/, "");
+    const scriptElement = frameDocument.querySelector<HTMLScriptElement>(
+      'script[src$="/preview-passive.js"]',
+    );
+    const previewRoot = scriptElement
+      ? new URL(scriptElement.src, frameWindow.location.href).pathname.replace(
+          /\/preview-passive\.js$/,
+          "",
+        )
+      : new URL(frameWindow.location.href).pathname
+          .replace(/\/index\.html$/, "")
+          .replace(/\/[^/]+\.html$/, "");
 
-      const normalizePreviewUrl = (rawUrl: string) => {
-        let url: URL;
+    const normalizePreviewUrl = (rawUrl: string) => {
+      let url: URL;
+      try {
+        url = new URL(rawUrl, frameWindow.location.href);
+      } catch {
+        return null;
+      }
 
-        try {
-          url = new URL(rawUrl, frameWindow.location.href);
-        } catch {
-          return null;
-        }
+      if (
+        url.protocol === "mailto:" ||
+        url.protocol === "tel:" ||
+        url.origin !== frameWindow.location.origin
+      ) return null;
 
+      const doubledPreviewRoot = `${previewRoot}${previewRoot}`;
+      if (
+        url.pathname === doubledPreviewRoot ||
+        url.pathname.startsWith(`${doubledPreviewRoot}/`)
+      ) url.pathname = url.pathname.slice(previewRoot.length);
+
+      if (url.pathname === "/") {
+        url.pathname = `${previewRoot}/index.html`;
+      } else if (url.pathname === previewRoot || url.pathname === `${previewRoot}/`) {
+        url.pathname = `${previewRoot}/index.html`;
+      } else if (url.pathname.startsWith(`${previewRoot}/`)) {
         if (
-          url.protocol === "mailto:" ||
-          url.protocol === "tel:" ||
-          url.origin !== frameWindow.location.origin
+          previewRoot === "/velora-fashion-preview/site" &&
+          /^\/velora-fashion-preview\/site\/produkte\/[^/]+$/.test(url.pathname)
         ) {
-          return null;
-        }
-
-        const doubledPreviewRoot = `${previewRoot}${previewRoot}`;
-
-        if (
-          url.pathname === doubledPreviewRoot ||
-          url.pathname.startsWith(`${doubledPreviewRoot}/`)
-        ) {
-          url.pathname = url.pathname.slice(previewRoot.length);
-        }
-
-        if (url.pathname === "/") {
-          url.pathname = `${previewRoot}/index.html`;
-        } else if (
-          url.pathname === previewRoot ||
-          url.pathname === `${previewRoot}/`
-        ) {
-          url.pathname = `${previewRoot}/index.html`;
-        } else if (url.pathname.startsWith(`${previewRoot}/`)) {
-          if (
-            previewRoot === "/velora-fashion-preview/site" &&
-            /^\/velora-fashion-preview\/site\/produkte\/[^/]+$/.test(url.pathname)
-          ) {
-            url.pathname = `${previewRoot}/produkte.html`;
-          } else if (!PREVIEW_ASSET_PATTERN.test(url.pathname)) {
-            url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
-          }
+          url.pathname = `${previewRoot}/produkte.html`;
         } else if (!PREVIEW_ASSET_PATTERN.test(url.pathname)) {
-          url.pathname = `${previewRoot}${url.pathname}`;
-
-          if (url.pathname === `${previewRoot}/`) {
-            url.pathname = `${previewRoot}/index.html`;
-          } else if (!url.pathname.endsWith(".html")) {
-            url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
-          }
-        } else {
-          return null;
+          url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
         }
-
-        return url;
-      };
-
-      const getCurrentPreviewUrl = () =>
-        normalizePreviewUrl(frameWindow.location.href) ??
-        new URL(frameWindow.location.href);
-
-      const scrollParentToFrameTarget = (hash: string) => {
-        const frameElement = bridgedFrameWindow.frameElement;
-
-        if (!frameElement) {
-          return false;
+      } else if (!PREVIEW_ASSET_PATTERN.test(url.pathname)) {
+        url.pathname = `${previewRoot}${url.pathname}`;
+        if (url.pathname === `${previewRoot}/`) {
+          url.pathname = `${previewRoot}/index.html`;
+        } else if (!url.pathname.endsWith(".html")) {
+          url.pathname = `${url.pathname.replace(/\/$/, "")}.html`;
         }
+      } else {
+        return null;
+      }
 
-        let target: HTMLElement | null = null;
+      return url;
+    };
 
-        if (hash && hash !== "#") {
-          const targetId = decodeURIComponent(hash.slice(1));
-          target =
-            frameDocument.getElementById(targetId) ??
-            (frameDocument.querySelector(`[name="${CSS.escape(targetId)}"]`) as HTMLElement | null);
-        }
+    const scrollToFrameTarget = (hash: string) => {
+      if (!hash || hash === "#") {
+        frameWindow.scrollTo({ top: 0, behavior: "auto" });
+        return;
+      }
 
-        const frameTop =
-          window.scrollY +
-          frameElement.getBoundingClientRect().top +
-          (target ? target.getBoundingClientRect().top : 0) -
-          24;
+      const targetId = decodeURIComponent(hash.slice(1));
+      const target =
+        frameDocument.getElementById(targetId) ??
+        (frameDocument.querySelector(`[name="${CSS.escape(targetId)}"]`) as HTMLElement | null);
+      target?.scrollIntoView({ behavior: "auto", block: "start" });
+    };
 
-        window.scrollTo({ top: Math.max(0, frameTop), behavior: "auto" });
+    const handleFrameClick = (event: MouseEvent) => {
+      if (
+        event.defaultPrevented || event.metaKey || event.ctrlKey ||
+        event.shiftKey || event.altKey || event.button !== 0
+      ) return;
 
-        return true;
-      };
+      const target = event.target;
+      if (!(target instanceof bridgedFrameWindow.Element)) return;
+      const link = target.closest("a[href]");
+      if (
+        !(link instanceof bridgedFrameWindow.HTMLAnchorElement) ||
+        link.target === "_blank" || link.hasAttribute("download")
+      ) return;
 
-      const handleFrameClick = (event: MouseEvent) => {
-        if (
-          event.defaultPrevented ||
-          event.metaKey ||
-          event.ctrlKey ||
-          event.shiftKey ||
-          event.altKey ||
-          event.button !== 0
-        ) {
-          return;
-        }
+      const rawHref = link.getAttribute("href");
+      if (!rawHref || rawHref === "#") return;
+      const previewUrl = normalizePreviewUrl(rawHref);
+      if (!previewUrl) return;
 
-        const target = event.target;
+      event.preventDefault();
+      const currentUrl = normalizePreviewUrl(frameWindow.location.href);
+      const isSamePage =
+        previewUrl.pathname === currentUrl?.pathname &&
+        previewUrl.search === currentUrl.search;
 
-        if (!(target instanceof bridgedFrameWindow.Element)) {
-          return;
-        }
+      if (previewUrl.hash && isSamePage) {
+        frameWindow.history.pushState(null, "", previewUrl.hash);
+        scrollToFrameTarget(previewUrl.hash);
+        return;
+      }
 
-        const link = target.closest("a[href]");
+      pendingNavigationRef.current = true;
+      frameWindow.location.href = previewUrl.href;
+    };
 
-        if (
-          !(link instanceof bridgedFrameWindow.HTMLAnchorElement) ||
-          link.target === "_blank" ||
-          link.hasAttribute("download")
-        ) {
-          return;
-        }
+    const handleFrameSubmit = (event: SubmitEvent) => {
+      const form = event.target;
+      if (!(form instanceof bridgedFrameWindow.HTMLFormElement)) return;
+      const previewUrl = normalizePreviewUrl(
+        form.getAttribute("action") || frameWindow.location.href,
+      );
+      if (!previewUrl) return;
 
-        const rawHref = link.getAttribute("href");
+      event.preventDefault();
+      pendingNavigationRef.current = true;
+      frameWindow.location.href = previewUrl.href;
+    };
 
-        if (!rawHref || rawHref === "#") {
-          return;
-        }
-
-        const previewUrl = normalizePreviewUrl(rawHref);
-
-        if (!previewUrl) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const currentUrl = getCurrentPreviewUrl();
-        const isSamePage =
-          previewUrl.pathname === currentUrl.pathname &&
-          previewUrl.search === currentUrl.search;
-
-        if (previewUrl.hash && isSamePage) {
-          frameWindow.history.pushState(null, "", previewUrl.hash);
-          scrollParentToFrameTarget(previewUrl.hash);
-          return;
-        }
-
-        pendingNavigationRef.current = true;
-        frameWindow.location.href = previewUrl.href;
-      };
-
-      const handleFrameSubmit = (event: SubmitEvent) => {
-        const form = event.target;
-
-        if (!(form instanceof bridgedFrameWindow.HTMLFormElement)) {
-          return;
-        }
-
-        const previewUrl = normalizePreviewUrl(
-          form.getAttribute("action") || frameWindow.location.href,
-        );
-
-        if (!previewUrl) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const currentUrl = getCurrentPreviewUrl();
-        const isSamePage =
-          previewUrl.pathname === currentUrl.pathname &&
-          previewUrl.search === currentUrl.search;
-
-        if (previewUrl.hash && isSamePage) {
-          scrollParentToFrameTarget(previewUrl.hash);
-          return;
-        }
-
-        pendingNavigationRef.current = true;
-        frameWindow.location.href = previewUrl.href;
-      };
-
-      frameDocument.addEventListener("click", handleFrameClick, true);
-      frameDocument.addEventListener("submit", handleFrameSubmit, true);
-    }
-
-    if (observedDocumentRef.current !== frameDocument) {
-      resizeObserverRef.current?.disconnect();
-      resizeObserverRef.current = new ResizeObserver(scheduleMeasure);
-      resizeObserverRef.current.observe(body);
-      resizeObserverRef.current.observe(documentElement);
-
-      observedDocumentRef.current = frameDocument;
-
-      frameDocument.fonts?.ready.then(scheduleMeasure).catch(() => undefined);
-    }
-
-    measureFrame();
-  }, [getFrameDocument, getStableViewportHeight, measureFrame, scheduleMeasure]);
+    frameDocument.addEventListener("click", handleFrameClick, true);
+    frameDocument.addEventListener("submit", handleFrameSubmit, true);
+  }, []);
 
   useEffect(() => {
     const iframe = iframeRef.current;
-    const root = document.documentElement;
-    const body = document.body;
-    const previousRootScrollBehavior = root.style.scrollBehavior;
-    const previousBodyScrollBehavior = body.style.scrollBehavior;
-    const delayedMeasureTimers: number[] = [];
-
-    const clearDelayedMeasures = () => {
-      delayedMeasureTimers.forEach((timer) => window.clearTimeout(timer));
-      delayedMeasureTimers.length = 0;
-    };
-
-    const scheduleDelayedMeasure = (delay: number) => {
-      delayedMeasureTimers.push(window.setTimeout(scheduleMeasure, delay));
-    };
-
-    root.style.scrollBehavior = "auto";
-    body.style.scrollBehavior = "auto";
-
-    if (!iframe) {
-      root.style.scrollBehavior = previousRootScrollBehavior;
-      body.style.scrollBehavior = previousBodyScrollBehavior;
-      return;
-    }
+    if (!iframe) return;
 
     const handleLoad = () => {
-      clearDelayedMeasures();
-      observedDocumentRef.current = null;
       prepareFrame();
-
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
         iframe.scrollIntoView({ behavior: "auto", block: "start" });
       }
-
-      MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
-    };
-
-    let lastWidth = window.innerWidth;
-    let resizeTimer: number | null = null;
-
-    const handleResize = () => {
-      if (window.innerWidth === lastWidth) {
-        return;
-      }
-
-      lastWidth = window.innerWidth;
-
-      if (resizeTimer !== null) {
-        window.clearTimeout(resizeTimer);
-      }
-
-      resizeTimer = window.setTimeout(() => {
-        resizeTimer = null;
-        viewportRef.current = null;
-        prepareFrame();
-      }, RESIZE_DEBOUNCE);
     };
 
     iframe.addEventListener("load", handleLoad);
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("orientationchange", handleResize);
-
-    const frameReady = iframe.contentDocument?.readyState === "complete";
-
-    if (frameReady) {
-      prepareFrame();
-      MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
+    try {
+      if (
+        iframe.contentDocument?.readyState === "complete" &&
+        iframe.contentWindow?.location.href !== "about:blank"
+      ) handleLoad();
+    } catch {
+      // Cross-origin previews remain usable with native iframe scrolling.
     }
 
-    return () => {
-      iframe.removeEventListener("load", handleLoad);
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("orientationchange", handleResize);
-      if (measureFrameRef.current !== null) {
-        window.clearTimeout(measureFrameRef.current);
-        measureFrameRef.current = null;
-      }
-
-      clearDelayedMeasures();
-
-      if (resizeTimer !== null) {
-        window.clearTimeout(resizeTimer);
-      }
-
-      resizeObserverRef.current?.disconnect();
-      observedDocumentRef.current = null;
-      root.style.scrollBehavior = previousRootScrollBehavior;
-      body.style.scrollBehavior = previousBodyScrollBehavior;
-    };
-  }, [prepareFrame, scheduleMeasure]);
+    return () => iframe.removeEventListener("load", handleLoad);
+  }, [prepareFrame]);
 
   return (
     <div className="product-live-frame-wrap">
@@ -604,11 +259,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
-        tabIndex={-1}
         loading="eager"
         sandbox="allow-same-origin"
-        scrolling="no"
-        style={{ height }}
+        scrolling="yes"
       />
     </div>
   );

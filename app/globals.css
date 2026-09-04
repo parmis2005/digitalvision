@@ -4849,22 +4849,22 @@ h3 {
 .product-live-frame-wrap {
   position: relative;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   touch-action: pan-y;
 }
 
 .product-live-iframe {
   display: block;
   width: 100%;
-  min-height: 100svh;
+  height: min(900px, 82svh);
+  min-height: 680px;
   border: 0;
   background: #0f0d0b;
-  overflow: hidden;
+  overflow: auto;
   overflow-anchor: none;
-  overscroll-behavior: contain;
+  overscroll-behavior-y: auto;
   touch-action: pan-y;
-  pointer-events: none;
-  user-select: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-live-page ~ .floating-back-to-top {
@@ -11092,7 +11092,12 @@ h3 {
   }
 
   .product-live-page .product-live-frame-wrap {
-    overflow: hidden;
+    overflow: visible;
+  }
+
+  .product-live-page .product-live-iframe {
+    height: 78svh;
+    min-height: 560px;
   }
 
   .split-copy h2 {

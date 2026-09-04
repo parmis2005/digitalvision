@@ -24,9 +24,9 @@ const INITIAL_PREVIEW_HEIGHT = 1600;
 const CROSS_ORIGIN_PREVIEW_HEIGHT = 9000;
 const MIN_PREVIEW_HEIGHT = 720;
 const HEIGHT_EPSILON = 8;
-const MEASURE_THROTTLE = 180;
+const MEASURE_THROTTLE = 240;
 const RESIZE_DEBOUNCE = 200;
-const MEASURE_DELAYS = [120, 350, 1200, 3000] as const;
+const MEASURE_DELAYS = [600, 2200] as const;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
@@ -120,7 +120,6 @@ const FRAME_STYLE_TEXT = `
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const mutationObserverRef = useRef<MutationObserver | null>(null);
   const observedDocumentRef = useRef<Document | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const measureFrameRef = useRef<number | null>(null);
@@ -493,17 +492,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
-      mutationObserverRef.current?.disconnect();
-
       resizeObserverRef.current = new ResizeObserver(scheduleMeasure);
       resizeObserverRef.current.observe(body);
       resizeObserverRef.current.observe(documentElement);
-
-      mutationObserverRef.current = new MutationObserver(scheduleMeasure);
-      mutationObserverRef.current.observe(body, {
-        childList: true,
-        subtree: true,
-      });
 
       observedDocumentRef.current = frameDocument;
 
@@ -577,16 +568,17 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleResize);
 
-    prepareFrame();
-    const initialFrame = window.requestAnimationFrame(prepareFrame);
-    MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
+    const frameReady = iframe.contentDocument?.readyState === "complete";
+
+    if (frameReady) {
+      prepareFrame();
+      MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
+    }
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", handleResize);
-      window.cancelAnimationFrame(initialFrame);
-
       if (measureFrameRef.current !== null) {
         window.clearTimeout(measureFrameRef.current);
         measureFrameRef.current = null;
@@ -599,7 +591,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       }
 
       resizeObserverRef.current?.disconnect();
-      mutationObserverRef.current?.disconnect();
       observedDocumentRef.current = null;
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
@@ -614,7 +605,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         tabIndex={-1}
-        loading="lazy"
+        loading="eager"
         sandbox="allow-same-origin"
         scrolling="no"
         style={{ height }}

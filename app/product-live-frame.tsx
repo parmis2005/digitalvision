@@ -14,37 +14,9 @@ const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 const FRAME_STYLE_TEXT = `
-  html,
-  body {
-    height: auto !important;
-    min-height: 100% !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-y: auto !important;
-    touch-action: pan-y !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  .bg-fixed,
-  [style*="background-attachment: fixed"],
-  [style*="background-attachment:fixed"] {
-    background-attachment: scroll !important;
-  }
-
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-  }
-
-  html[data-product-live-frame-bridge="true"] *,
-  html[data-product-live-frame-bridge="true"] *::before,
-  html[data-product-live-frame-bridge="true"] *::after {
-    animation-delay: 0s !important;
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-delay: 0s !important;
-    transition-duration: 0.001ms !important;
-  }
+  html { height: auto !important; overflow-y: scroll !important; }
+  body { height: auto !important; overflow-y: visible !important; }
+  .bg-fixed { background-attachment: scroll !important; }
 `;
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
@@ -71,19 +43,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const body = frameDocument.body;
     const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
 
-    documentElement.style.setProperty("height", "auto", "important");
-    documentElement.style.setProperty("min-height", "100%", "important");
-    documentElement.style.setProperty("overflow-x", "hidden", "important");
-    documentElement.style.setProperty("overflow-y", "scroll", "important");
-    documentElement.style.setProperty("touch-action", "auto", "important");
-    documentElement.style.setProperty("-webkit-overflow-scrolling", "touch", "important");
-    documentElement.style.setProperty("scroll-behavior", "auto", "important");
-
-    body.style.setProperty("height", "auto", "important");
-    body.style.setProperty("min-height", "100%", "important");
-    body.style.setProperty("overflow-x", "hidden", "important");
-    body.style.setProperty("overflow-y", "visible", "important");
-    body.style.setProperty("touch-action", "auto", "important");
+    documentElement.style.height = "auto";
+    documentElement.style.overflowY = "scroll";
+    body.style.height = "auto";
+    body.style.overflowY = "visible";
 
     const style =
       frameDocument.getElementById("product-live-frame-style") ??

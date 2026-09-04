@@ -26,7 +26,7 @@ const MIN_PREVIEW_HEIGHT = 720;
 const HEIGHT_EPSILON = 8;
 const MEASURE_THROTTLE = 180;
 const RESIZE_DEBOUNCE = 200;
-const PREPARE_DELAYS = [120, 350, 1200, 3000] as const;
+const MEASURE_DELAYS = [120, 350, 1200, 3000] as const;
 const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
@@ -100,6 +100,22 @@ const FRAME_STYLE_TEXT = `
         [style*="background-attachment:fixed"] {
           background-attachment: scroll !important;
         }
+
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+        }
+
+        html[data-product-live-frame-bridge="true"] *,
+        html[data-product-live-frame-bridge="true"] *::before,
+        html[data-product-live-frame-bridge="true"] *::after {
+          animation-delay: 0s !important;
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-delay: 0s !important;
+          transition-duration: 0.001ms !important;
+        }
       `;
 
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
@@ -152,24 +168,38 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   }, []);
 
   const measureFrame = useCallback(() => {
+    const iframe = iframeRef.current;
     const frame = getFrameDocument();
 
-    if (!frame) {
+    if (!iframe || !frame) {
       return;
     }
 
     const { documentElement, body } = frame.frameDocument;
-    const measuredHeight = Math.ceil(
-      Math.max(
-        documentElement.scrollHeight,
-        documentElement.offsetHeight,
-        body.scrollHeight,
-        body.offsetHeight,
-        getStableViewportHeight(),
-        MIN_PREVIEW_HEIGHT,
-      ),
-    );
-    const nextHeight = Math.max(measuredHeight, appliedHeightRef.current);
+    const stableViewportHeight = getStableViewportHeight();
+    const previousInlineHeight = iframe.style.height;
+
+    iframe.style.height = `${stableViewportHeight}px`;
+
+    const measuredHeight = (() => {
+      try {
+        return Math.ceil(
+          Math.max(
+            documentElement.scrollHeight,
+            documentElement.offsetHeight,
+            body.scrollHeight,
+            body.offsetHeight,
+            body.getBoundingClientRect().height,
+            stableViewportHeight,
+            MIN_PREVIEW_HEIGHT,
+          ),
+        );
+      } finally {
+        iframe.style.height = previousInlineHeight;
+      }
+    })();
+
+    const nextHeight = measuredHeight;
 
     if (Math.abs(nextHeight - appliedHeightRef.current) < HEIGHT_EPSILON) {
       return;
@@ -259,6 +289,12 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           setInlineStyle(mapFrame.parentElement, "min-height", mapMinHeight);
         }
       });
+
+    frameDocument.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
+      video.autoplay = false;
+      video.preload = "metadata";
+      video.pause();
+    });
 
     if (documentElement.dataset.productLiveFrameBridge !== "true") {
       documentElement.dataset.productLiveFrameBridge = "true";
@@ -483,15 +519,15 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const body = document.body;
     const previousRootScrollBehavior = root.style.scrollBehavior;
     const previousBodyScrollBehavior = body.style.scrollBehavior;
-    const delayedPrepareTimers: number[] = [];
+    const delayedMeasureTimers: number[] = [];
 
-    const clearDelayedPrepares = () => {
-      delayedPrepareTimers.forEach((timer) => window.clearTimeout(timer));
-      delayedPrepareTimers.length = 0;
+    const clearDelayedMeasures = () => {
+      delayedMeasureTimers.forEach((timer) => window.clearTimeout(timer));
+      delayedMeasureTimers.length = 0;
     };
 
-    const schedulePrepare = (delay: number) => {
-      delayedPrepareTimers.push(window.setTimeout(prepareFrame, delay));
+    const scheduleDelayedMeasure = (delay: number) => {
+      delayedMeasureTimers.push(window.setTimeout(scheduleMeasure, delay));
     };
 
     root.style.scrollBehavior = "auto";
@@ -504,7 +540,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     const handleLoad = () => {
-      clearDelayedPrepares();
+      clearDelayedMeasures();
       observedDocumentRef.current = null;
       prepareFrame();
 
@@ -513,7 +549,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         iframe.scrollIntoView({ behavior: "auto", block: "start" });
       }
 
-      PREPARE_DELAYS.forEach(schedulePrepare);
+      MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
     };
 
     let lastWidth = window.innerWidth;
@@ -543,7 +579,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
-    PREPARE_DELAYS.forEach(schedulePrepare);
+    MEASURE_DELAYS.forEach(scheduleDelayedMeasure);
 
     return () => {
       iframe.removeEventListener("load", handleLoad);
@@ -556,7 +592,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         measureFrameRef.current = null;
       }
 
-      clearDelayedPrepares();
+      clearDelayedMeasures();
 
       if (resizeTimer !== null) {
         window.clearTimeout(resizeTimer);
@@ -568,7 +604,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
-  }, [prepareFrame]);
+  }, [prepareFrame, scheduleMeasure]);
 
   return (
     <div className="product-live-frame-wrap">
@@ -578,6 +614,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         tabIndex={-1}
+        loading="lazy"
+        sandbox="allow-same-origin"
+        scrolling="no"
         style={{ height }}
       />
     </div>

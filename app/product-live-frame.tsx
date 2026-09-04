@@ -12,7 +12,6 @@ type FrameWindowWithBridge = Window & {
   HTMLAnchorElement: typeof HTMLAnchorElement;
   HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
-  MouseEvent: typeof MouseEvent;
   frameElement: HTMLIFrameElement | null;
 };
 
@@ -25,8 +24,6 @@ const HEIGHT_EPSILON = 8;
 const MAX_CONSECUTIVE_GROWTH_STEPS = 60;
 const MEASURE_THROTTLE = 250;
 const RESIZE_DEBOUNCE = 200;
-const TAP_MOVE_TOLERANCE = 10;
-const TAP_MAX_DURATION = 700;
 // The frame carries the whole site, so its own viewport is the whole document
 // and native lazy loading never defers anything. Media is deferred by hand
 // against THIS page's viewport instead, in viewport multiples.
@@ -140,7 +137,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const growthStepsRef = useRef(0);
   const heightLockedRef = useRef(false);
   const pendingNavigationRef = useRef(false);
-  const shieldRef = useRef<HTMLDivElement>(null);
   const frameDocTopRef = useRef(0);
   const syncMediaFrameRef = useRef<number | null>(null);
   const frameLoadedRef = useRef(false);
@@ -902,86 +898,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     };
   }, [contained, prepareFrame, scheduleMeasure, scheduleSyncMedia]);
 
-  // iOS Safari keeps a scroll gesture that starts over an iframe inside that
-  // frame, so the embedding page never moves. The shield is a plain element of
-  // THIS document covering the frame, so a swipe is an ordinary page scroll
-  // with native momentum. Taps are forwarded into the frame by hand.
-  useEffect(() => {
-    const shield = shieldRef.current;
-
-    if (!shield) {
-      return;
-    }
-
-    let touchStart: { x: number; y: number; time: number } | null = null;
-
-    const handleTouchStart = (event: TouchEvent) => {
-      if (event.touches.length !== 1) {
-        touchStart = null;
-        return;
-      }
-
-      const touch = event.touches[0];
-      touchStart = { x: touch.clientX, y: touch.clientY, time: Date.now() };
-    };
-
-    const handleTouchEnd = (event: TouchEvent) => {
-      const start = touchStart;
-      touchStart = null;
-
-      if (!start || event.changedTouches.length !== 1) {
-        return;
-      }
-
-      const touch = event.changedTouches[0];
-
-      if (
-        Math.abs(touch.clientX - start.x) > TAP_MOVE_TOLERANCE ||
-        Math.abs(touch.clientY - start.y) > TAP_MOVE_TOLERANCE ||
-        Date.now() - start.time > TAP_MAX_DURATION
-      ) {
-        return;
-      }
-
-      const iframe = iframeRef.current;
-      const frame = getFrameDocument();
-
-      if (!iframe || !frame) {
-        return;
-      }
-
-      const rect = iframe.getBoundingClientRect();
-      const bridgedFrameWindow = frame.frameWindow as FrameWindowWithBridge;
-      const frameX = touch.clientX - rect.left;
-      const frameY = touch.clientY - rect.top;
-      const target = frame.frameDocument.elementFromPoint(frameX, frameY);
-
-      if (!(target instanceof bridgedFrameWindow.HTMLElement)) {
-        return;
-      }
-
-      target.dispatchEvent(
-        new bridgedFrameWindow.MouseEvent("click", {
-          bubbles: true,
-          cancelable: true,
-          view: bridgedFrameWindow,
-          clientX: frameX,
-          clientY: frameY,
-        }),
-      );
-    };
-
-    shield.addEventListener("touchstart", handleTouchStart, { passive: true });
-    shield.addEventListener("touchend", handleTouchEnd, { passive: true });
-    shield.addEventListener("touchcancel", handleTouchStart, { passive: true });
-
-    return () => {
-      shield.removeEventListener("touchstart", handleTouchStart);
-      shield.removeEventListener("touchend", handleTouchEnd);
-      shield.removeEventListener("touchcancel", handleTouchStart);
-    };
-  }, [getFrameDocument]);
-
   return (
     <div className="product-live-frame-wrap">
       <iframe
@@ -991,7 +907,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         title={title}
         style={{ height: contained ? "100%" : height }}
       />
-      <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
     </div>
   );
 }

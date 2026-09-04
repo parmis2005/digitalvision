@@ -4859,32 +4859,6 @@ h3 {
   overflow-anchor: none;
 }
 
-.product-live-touch-shield {
-  display: none;
-}
-
-/*
- * iOS Safari keeps a scroll gesture that starts over an iframe inside that
- * frame, so the page behind it never moves. Covering the frame with an element
- * of this document makes a swipe an ordinary page scroll again. Taps are
- * forwarded into the frame from ProductLiveFrame, so the preview stays usable.
- */
-@media (hover: none) and (pointer: coarse) {
-  /*
-   * The page is one continuous document: intro on top, the preview flowing on
-   * below it. A swipe that starts over the preview must move THIS page, so the
-   * shield - a plain element of this document - covers the frame and takes the
-   * gesture. Taps are forwarded into the preview from ProductLiveFrame.
-   */
-  .product-live-touch-shield {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: transparent;
-  }
-}
-
 .product-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -11025,28 +10999,8 @@ h3 {
     padding: 18px 18px 72px;
   }
 
-  .product-live-page.product-page {
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    width: 100%;
-    min-height: 0;
-    padding: 0;
-    overflow: hidden;
-    background: #050b18;
-  }
-
   .product-page-header {
     margin-bottom: 12px;
-  }
-
-  .product-live-page .product-page-header {
-    position: fixed;
-    top: max(12px, env(safe-area-inset-top));
-    left: max(12px, env(safe-area-inset-left));
-    z-index: 5;
-    margin: 0;
-    pointer-events: none;
   }
 
   .product-back-link {
@@ -11054,24 +11008,9 @@ h3 {
     height: 36px;
   }
 
-  .product-live-page .product-back-link {
-    width: 46px;
-    height: 46px;
-    border-color: rgba(155, 228, 255, 0.34);
-    background: rgba(9, 18, 36, 0.82);
-    box-shadow: 0 16px 34px rgba(1, 5, 16, 0.34);
-    pointer-events: auto;
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-  }
-
   .product-live-intro {
     gap: 16px;
     padding: 16px 0 14px;
-  }
-
-  .product-live-page .product-live-intro {
-    display: none;
   }
 
   .product-live-intro-copy h1 {
@@ -11144,34 +11083,24 @@ h3 {
     height: 980px;
   }
 
+  .product-live-page .product-live-site {
+    margin-top: 10px;
+  }
+
   .product-live-page .product-live-frame-wrap {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    height: clamp(460px, 76svh, 680px);
     min-height: 0;
-    margin: 0;
-    border: 0;
-    border-radius: 0;
     overflow: hidden;
-    background: #050b18;
   }
 
   .product-live-page .product-live-iframe {
     width: 100%;
     height: 100% !important;
     min-height: 0;
-    border: 0;
-    border-radius: 0;
     overflow: auto;
     overscroll-behavior: contain;
-    touch-action: auto;
+    touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .product-live-page .product-live-touch-shield,
-  .product-live-page ~ .floating-back-to-top {
-    display: none;
   }
 
   .split-copy h2 {

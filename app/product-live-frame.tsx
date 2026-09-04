@@ -22,7 +22,7 @@ type FrameWindowWithBridge = Window & {
   frameElement: HTMLIFrameElement | null;
 };
 
-const INITIAL_PREVIEW_HEIGHT = 9000;
+const INITIAL_PREVIEW_HEIGHT = 1600;
 const CROSS_ORIGIN_PREVIEW_HEIGHT = 9000;
 const MIN_PREVIEW_HEIGHT = 720;
 const HEIGHT_EPSILON = 8;
@@ -161,7 +161,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     }
 
     const { documentElement, body } = frame.frameDocument;
-    const nextHeight = Math.ceil(
+    const measuredHeight = Math.ceil(
       Math.max(
         documentElement.scrollHeight,
         documentElement.offsetHeight,
@@ -171,6 +171,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         MIN_PREVIEW_HEIGHT,
       ),
     );
+    const nextHeight = Math.max(measuredHeight, appliedHeightRef.current);
 
     if (Math.abs(nextHeight - appliedHeightRef.current) < HEIGHT_EPSILON) {
       return;

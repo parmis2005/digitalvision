@@ -215,39 +215,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       frameWindow.location.href = previewUrl.href;
     };
 
-    // iOS does not reliably continue a vertical gesture once it enters an
-    // iframe. Handle the gesture in the preview document itself so the whole
-    // website preview responds immediately to the same finger movement.
-    let previousTouchY: number | null = null;
-
-    const handleTouchStart = (event: TouchEvent) => {
-      previousTouchY = event.touches[0]?.clientY ?? null;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      const touchY = event.touches[0]?.clientY;
-
-      if (touchY === undefined || previousTouchY === null) return;
-
-      const distance = previousTouchY - touchY;
-      previousTouchY = touchY;
-
-      if (Math.abs(distance) < 1) return;
-
-      frameWindow.scrollBy({ top: distance, behavior: "auto" });
-      event.preventDefault();
-    };
-
-    const handleTouchEnd = () => {
-      previousTouchY = null;
-    };
-
     frameDocument.addEventListener("click", handleFrameClick, true);
     frameDocument.addEventListener("submit", handleFrameSubmit, true);
-    frameDocument.addEventListener("touchstart", handleTouchStart, { passive: true });
-    frameDocument.addEventListener("touchmove", handleTouchMove, { passive: false });
-    frameDocument.addEventListener("touchend", handleTouchEnd, { passive: true });
-    frameDocument.addEventListener("touchcancel", handleTouchEnd, { passive: true });
   }, []);
 
   useEffect(() => {

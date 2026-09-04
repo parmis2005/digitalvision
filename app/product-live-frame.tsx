@@ -26,14 +26,6 @@ const FRAME_STYLE_TEXT = `
     -webkit-overflow-scrolling: touch !important;
   }
 
-  iframe[src*="google.com/maps"],
-  iframe[src*="openstreetmap.org"],
-  iframe[src*="mapbox.com"],
-  .leaflet-container {
-    pointer-events: none !important;
-    touch-action: pan-y !important;
-  }
-
   .bg-fixed,
   [style*="background-attachment: fixed"],
   [style*="background-attachment:fixed"] {

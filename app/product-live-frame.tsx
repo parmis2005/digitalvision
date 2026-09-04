@@ -252,7 +252,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         src={src}
         title={title}
         loading="eager"
-        sandbox="allow-same-origin"
+        sandbox="allow-same-origin allow-scripts"
         scrolling="yes"
       />
     </div>

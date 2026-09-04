@@ -14,8 +14,8 @@ const PREVIEW_ASSET_PATTERN =
   /\.(?:avif|css|gif|html?|ico|jpe?g|js|json|map|mp4|otf|png|svg|ttf|webm|webp|woff2?)$/i;
 
 const FRAME_STYLE_TEXT = `
-  html { height: auto !important; overflow-y: scroll !important; }
-  body { height: auto !important; overflow-y: visible !important; }
+  html { height: auto !important; width: 100% !important; overflow-y: auto !important; }
+  body { height: auto !important; width: 100% !important; overflow-y: visible !important; margin: 0 !important; }
   .bg-fixed { background-attachment: scroll !important; }
 `;
 

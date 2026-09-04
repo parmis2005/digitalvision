@@ -4720,6 +4720,11 @@ h3 {
   position: relative;
 }
 
+.product-live-page.product-page {
+  padding: 0;
+  min-height: auto;
+}
+
 .product-page-header {
   display: none;
 }
@@ -4920,8 +4925,9 @@ h3 {
   padding: 0;
 }
 
+.product-live-page .floating-back-to-top,
 .product-live-page ~ .floating-back-to-top {
-  display: none;
+  display: none !important;
 }
 
 .product-hero-actions {

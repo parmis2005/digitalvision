@@ -114,40 +114,17 @@ export default async function ProductPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <header className="product-page-header">
-        <Link className="product-back-link" href={backHref} aria-label="Zur passenden Webseiten-Vorschau">
-          <House size={18} aria-hidden="true" />
-        </Link>
-      </header>
+      <Link className="product-home-button" href={backHref} aria-label="Zur passenden Webseiten-Vorschau">
+        <House size={18} aria-hidden="true" />
+      </Link>
 
       {livePreviewUrl ? (
-        <>
-          <section className="product-live-intro">
-            <div className="product-live-intro-copy">
-              <p className="eyebrow">{product.category}</p>
-              <h1>{product.title}</h1>
-              <p>{liveIntroText}</p>
-            </div>
-            <article className="product-live-note-card">
-              <p className="eyebrow">Vorteile</p>
-              <div className="product-live-note-list">
-                {product.highlights.map((highlight) => (
-                  <div key={highlight}>
-                    <ArrowRight size={18} aria-hidden="true" />
-                    <span>{highlight}</span>
-                  </div>
-                ))}
-              </div>
-            </article>
-          </section>
-
-          <section className="product-live-site" aria-label={`${product.title} Website`}>
-            <ProductLiveFrame
-              src={livePreviewUrl}
-              title={`${product.title} Website`}
-            />
-          </section>
-        </>
+        <section className="product-live-site" aria-label={`${product.title} Website`}>
+          <ProductLiveFrame
+            src={livePreviewUrl}
+            title={`${product.title} Website`}
+          />
+        </section>
       ) : (
         <>
           <section className="product-hero">

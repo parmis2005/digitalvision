@@ -6,3 +6,12 @@ textarea,
 [role="button"] {
   cursor: pointer !important;
 }
+
+section:first-of-type .relative.z-10 .opacity-0 {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+section:first-of-type .relative.z-10 .scale-x-0 {
+  transform: scaleX(1) !important;
+}

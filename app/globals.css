@@ -4847,16 +4847,23 @@ h3 {
 
 .product-live-frame-wrap {
   position: relative;
+  height: clamp(620px, 82svh, 900px);
+  min-height: 0;
+  overflow: hidden;
 }
 
 .product-live-iframe {
   display: block;
   width: 100%;
-  min-height: 100dvh;
-  height: 100dvh;
+  min-height: 0;
+  height: 100% !important;
   border: 0;
   background: #0f0d0b;
+  overflow: auto;
   overflow-anchor: none;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-hero-actions {
@@ -11088,19 +11095,11 @@ h3 {
   }
 
   .product-live-page .product-live-frame-wrap {
-    height: clamp(460px, 76svh, 680px);
-    min-height: 0;
-    overflow: hidden;
+    height: clamp(520px, 78svh, 720px);
   }
 
   .product-live-page .product-live-iframe {
-    width: 100%;
-    height: 100% !important;
-    min-height: 0;
-    overflow: auto;
-    overscroll-behavior: contain;
     touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
   }
 
   .split-copy h2 {

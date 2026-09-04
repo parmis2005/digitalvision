@@ -11168,12 +11168,14 @@ h3 {
   }
 
   .product-live-page .product-live-frame-wrap {
-    overflow: visible;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .product-live-page .product-live-iframe {
-    height: 78svh;
-    min-height: 560px;
+    height: 100%;
+    min-height: 0;
   }
 
   .split-copy h2 {

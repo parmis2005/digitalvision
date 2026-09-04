@@ -4861,10 +4861,12 @@ h3 {
   border: 0;
   background: #0f0d0b;
   overflow: auto;
-  overflow-anchor: none;
+  overflow-anchor: auto;
   overscroll-behavior-y: auto;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
+  pointer-events: auto;
+  will-change: scroll-position;
 }
 
 .product-live-page ~ .floating-back-to-top {

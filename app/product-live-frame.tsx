@@ -12,7 +12,6 @@ type FrameWindowWithBridge = Window & {
   HTMLAnchorElement: typeof HTMLAnchorElement;
   HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
-  IntersectionObserver: typeof IntersectionObserver;
   MouseEvent: typeof MouseEvent;
   frameElement: HTMLIFrameElement | null;
 };
@@ -93,6 +92,42 @@ const FRAME_STYLE_TEXT = `
         }
       `;
 
+const CONTAINED_STYLE_TEXT = `
+        html {
+          height: auto !important;
+          min-height: 100% !important;
+          overflow-x: hidden !important;
+          overflow-y: auto !important;
+          scroll-behavior: auto !important;
+          overscroll-behavior: auto !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+
+        body {
+          height: auto !important;
+          min-height: 100% !important;
+          overflow-x: clip !important;
+          scroll-behavior: auto !important;
+          overscroll-behavior: auto !important;
+          touch-action: pan-y !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+
+        iframe[src*="google.com/maps"],
+        iframe[src*="openstreetmap.org"],
+        iframe[src*="mapbox.com"],
+        .leaflet-container {
+          pointer-events: none !important;
+          touch-action: pan-y !important;
+        }
+
+        .bg-fixed,
+        [style*="background-attachment: fixed"],
+        [style*="background-attachment:fixed"] {
+          background-attachment: scroll !important;
+        }
+      `;
+
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const mutationObserverRef = useRef<MutationObserver | null>(null);
@@ -109,7 +144,9 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const frameDocTopRef = useRef(0);
   const syncMediaFrameRef = useRef<number | null>(null);
   const frameLoadedRef = useRef(false);
+  const containedRef = useRef(false);
   const [height, setHeight] = useState(`${INITIAL_PREVIEW_HEIGHT}px`);
+  const [contained, setContained] = useState(false);
 
   const getFrameDocument = useCallback(() => {
     const iframe = iframeRef.current;
@@ -136,6 +173,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   // Read-only pass. It never writes into the frame, so it can be triggered by
   // the observers without feeding itself new mutations.
   const measureFrame = useCallback(() => {
+    if (contained) {
+      return;
+    }
+
     if (heightLockedRef.current) {
       return;
     }
@@ -206,6 +247,10 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   // front. Park anything far below the visitor and bring it back as they reach
   // it, measured against THIS page's viewport.
   const syncFrameMedia = useCallback(() => {
+    if (contained) {
+      return;
+    }
+
     const iframe = iframeRef.current;
     const frame = getFrameDocument();
 
@@ -310,6 +355,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const documentElement = frameDocument.documentElement;
     const body = frameDocument.body;
     const bridgedFrameWindow = frameWindow as FrameWindowWithBridge;
+    containedRef.current = contained;
 
     const setInlineStyle = (element: HTMLElement, property: string, value: string) => {
       if (element.style.getPropertyValue(property) !== value) {
@@ -331,11 +377,11 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     setInlineStyle(documentElement, "--embedded-viewport-height", `${viewportHeight}px`);
     setInlineStyle(documentElement, "height", "auto");
-    setInlineStyle(documentElement, "min-height", "0");
-    setInlineStyle(documentElement, "overflow", "hidden");
+    setInlineStyle(documentElement, "min-height", contained ? "100%" : "0");
+    setInlineStyle(documentElement, "overflow", contained ? "auto" : "hidden");
     setInlineStyle(body, "height", "auto");
-    setInlineStyle(body, "min-height", "0");
-    setInlineStyle(body, "overflow", "hidden");
+    setInlineStyle(body, "min-height", contained ? "100%" : "0");
+    setInlineStyle(body, "overflow", contained ? "auto" : "hidden");
   
 
     const style =
@@ -344,7 +390,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     style.id = "product-live-frame-style";
 
-    const styleText = FRAME_STYLE_TEXT;
+    const styleText = contained ? CONTAINED_STYLE_TEXT : FRAME_STYLE_TEXT;
 
     if (style.textContent !== styleText) {
       style.textContent = styleText;
@@ -548,10 +594,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       const scrollParentToFrameTarget = (hash: string) => {
         const frameElement = bridgedFrameWindow.frameElement;
 
-        if (!frameElement) {
-          return false;
-        }
-
         let target: HTMLElement | null = null;
 
         if (hash && hash !== "#") {
@@ -559,6 +601,20 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           target =
             frameDocument.getElementById(targetId) ??
             (frameDocument.querySelector(`[name="${CSS.escape(targetId)}"]`) as HTMLElement | null);
+        }
+
+        if (containedRef.current) {
+          if (target) {
+            target.scrollIntoView({ behavior: "auto", block: "start" });
+          } else {
+            frameWindow.scrollTo({ top: 0, behavior: "auto" });
+          }
+
+          return true;
+        }
+
+        if (!frameElement) {
+          return false;
         }
 
         const frameTop =
@@ -665,6 +721,13 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     }
 
+    if (contained) {
+      resizeObserverRef.current?.disconnect();
+      mutationObserverRef.current?.disconnect();
+      observedDocumentRef.current = frameDocument;
+      return;
+    }
+
     if (observedDocumentRef.current !== frameDocument) {
       resizeObserverRef.current?.disconnect();
       mutationObserverRef.current?.disconnect();
@@ -683,7 +746,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     measureFrame();
     syncFrameMedia();
-  }, [getFrameDocument, measureFrame, scheduleMeasure, syncFrameMedia]);
+  }, [contained, getFrameDocument, measureFrame, scheduleMeasure, syncFrameMedia]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -711,6 +774,27 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       return;
     }
 
+    const coarsePointerQuery = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const applyContainment = () => {
+      const nextContained = coarsePointerQuery.matches;
+      containedRef.current = nextContained;
+      setContained(nextContained);
+    };
+
+    applyContainment();
+
+    const mediaQueryListener = { handleEvent: applyContainment };
+    const legacyCoarsePointerQuery = coarsePointerQuery as MediaQueryList & {
+      addListener?: (listener: () => void) => void;
+      removeListener?: (listener: () => void) => void;
+    };
+
+    if (coarsePointerQuery.addEventListener) {
+      coarsePointerQuery.addEventListener("change", mediaQueryListener);
+    } else {
+      legacyCoarsePointerQuery.addListener?.(applyContainment);
+    }
+
     const handleLoad = () => {
       clearDelayedPrepares();
       observedDocumentRef.current = null;
@@ -722,17 +806,20 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
 
-        window.scrollTo({
-          top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
-          behavior: "auto",
-        });
-      
+        if (!contained) {
+          window.scrollTo({
+            top: Math.max(0, window.scrollY + iframe.getBoundingClientRect().top - 24),
+            behavior: "auto",
+          });
+        }
       }
 
       prepareFrame();
 
-      schedulePrepare(350);
-      schedulePrepare(1200);
+      if (!contained) {
+        schedulePrepare(350);
+        schedulePrepare(1200);
+      }
     
     };
 
@@ -763,15 +850,19 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     };
 
     iframe.addEventListener("load", handleLoad);
-    window.addEventListener("scroll", scheduleSyncMedia, { passive: true });
+    if (!contained) {
+      window.addEventListener("scroll", scheduleSyncMedia, { passive: true });
+    }
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleResize);
 
     prepareFrame();
     const initialFrame = window.requestAnimationFrame(prepareFrame);
 
-    schedulePrepare(120);
-    schedulePrepare(3000);
+    if (!contained) {
+      schedulePrepare(120);
+      schedulePrepare(3000);
+    }
   
 
     return () => {
@@ -793,6 +884,12 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       clearDelayedPrepares();
 
+      if (coarsePointerQuery.removeEventListener) {
+        coarsePointerQuery.removeEventListener("change", mediaQueryListener);
+      } else {
+        legacyCoarsePointerQuery.removeListener?.(applyContainment);
+      }
+
       if (resizeTimer !== null) {
         window.clearTimeout(resizeTimer);
       }
@@ -803,7 +900,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
       root.style.scrollBehavior = previousRootScrollBehavior;
       body.style.scrollBehavior = previousBodyScrollBehavior;
     };
-  }, [prepareFrame, scheduleMeasure, scheduleSyncMedia]);
+  }, [contained, prepareFrame, scheduleMeasure, scheduleSyncMedia]);
 
   // iOS Safari keeps a scroll gesture that starts over an iframe inside that
   // frame, so the embedding page never moves. The shield is a plain element of
@@ -892,7 +989,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
-        style={{ height }}
+        style={{ height: contained ? "100%" : height }}
       />
       <div className="product-live-touch-shield" ref={shieldRef} aria-hidden="true" />
     </div>

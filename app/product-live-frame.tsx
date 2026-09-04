@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  type MouseEvent as ReactMouseEvent,
   useCallback,
   useEffect,
   useRef,
@@ -18,7 +17,6 @@ type FrameWindowWithBridge = Window & {
   HTMLAnchorElement: typeof HTMLAnchorElement;
   HTMLElement: typeof HTMLElement;
   HTMLFormElement: typeof HTMLFormElement;
-  MouseEvent: typeof MouseEvent;
   frameElement: HTMLIFrameElement | null;
 };
 
@@ -467,7 +465,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
       mutationObserverRef.current = new MutationObserver(scheduleMeasure);
       mutationObserverRef.current.observe(body, {
-        attributes: true,
         childList: true,
         subtree: true,
       });
@@ -479,45 +476,6 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     measureFrame();
   }, [getFrameDocument, getStableViewportHeight, measureFrame, scheduleMeasure]);
-
-  const forwardClickToFrame = useCallback(
-    (event: ReactMouseEvent<HTMLDivElement>) => {
-      const iframe = iframeRef.current;
-      const frame = getFrameDocument();
-
-      if (!iframe || !frame) {
-        return;
-      }
-
-      const rect = iframe.getBoundingClientRect();
-      const frameX = event.clientX - rect.left;
-      const frameY = event.clientY - rect.top;
-
-      if (frameX < 0 || frameY < 0 || frameX > rect.width || frameY > rect.height) {
-        return;
-      }
-
-      const bridgedFrameWindow = frame.frameWindow as FrameWindowWithBridge;
-      const target = frame.frameDocument.elementFromPoint(frameX, frameY);
-
-      if (!(target instanceof bridgedFrameWindow.HTMLElement)) {
-        return;
-      }
-
-      event.preventDefault();
-
-      target.dispatchEvent(
-        new bridgedFrameWindow.MouseEvent("click", {
-          bubbles: true,
-          cancelable: true,
-          view: bridgedFrameWindow,
-          clientX: frameX,
-          clientY: frameY,
-        }),
-      );
-    },
-    [getFrameDocument],
-  );
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -619,12 +577,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         className="product-live-iframe"
         src={src}
         title={title}
+        tabIndex={-1}
         style={{ height }}
-      />
-      <div
-        className="product-live-scroll-shield"
-        aria-hidden="true"
-        onClick={forwardClickToFrame}
       />
     </div>
   );

@@ -4878,9 +4878,9 @@ h3 {
 .product-live-site {
   flex: 1;
   margin-inline: 0;
-  margin-top: auto;
+  margin-top: 0;
   margin-bottom: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 0;
   background: #0f0d0b;
   overflow-anchor: none;
   touch-action: pan-y;
@@ -11161,10 +11161,6 @@ h3 {
   .product-preview-iframe {
     width: 180%;
     height: 980px;
-  }
-
-  .product-live-page .product-live-site {
-    margin-top: 10px;
   }
 
   .product-live-page .product-live-frame-wrap {

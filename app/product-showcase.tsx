@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { products, repeatedProducts } from "./products-data";
 import { ProductPreview } from "./product-preview";
@@ -255,6 +255,13 @@ export function ProductShowcase() {
             </Link>
           ))}
         </div>
+      </div>
+
+      <div className="showcase-request">
+        <a className="showcase-request-button" href="#kontakt">
+          Kostenlose Anfrage
+          <ArrowRight size={16} aria-hidden="true" />
+        </a>
       </div>
     </section>
   );

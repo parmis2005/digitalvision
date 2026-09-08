@@ -239,20 +239,39 @@ export function ProductShowcase() {
       >
         <div className="showcase-track">
           {showcaseProducts.map((product, index) => (
-            <Link
-              className={`showcase-card ${product.variant}`}
-              href={`/produkte/${product.slug}`}
-              id={index < products.length ? `webseite-${product.slug}` : undefined}
-              key={`${product.title}-${index}`}
-            >
-              <div className="showcase-preview">
-                <ProductPreview product={product} />
-              </div>
-              <div className="showcase-meta">
-                <strong>{product.title}</strong>
-                <span>{product.type}</span>
-              </div>
-            </Link>
+            product.externalUrl ? (
+              <a
+                className={`showcase-card ${product.variant}`}
+                href={product.externalUrl}
+                id={index < products.length ? `webseite-${product.slug}` : undefined}
+                key={`${product.title}-${index}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <div className="showcase-preview">
+                  <ProductPreview product={product} />
+                </div>
+                <div className="showcase-meta">
+                  <strong>{product.title}</strong>
+                  <span>{product.type}</span>
+                </div>
+              </a>
+            ) : (
+              <Link
+                className={`showcase-card ${product.variant}`}
+                href={`/produkte/${product.slug}`}
+                id={index < products.length ? `webseite-${product.slug}` : undefined}
+                key={`${product.title}-${index}`}
+              >
+                <div className="showcase-preview">
+                  <ProductPreview product={product} />
+                </div>
+                <div className="showcase-meta">
+                  <strong>{product.title}</strong>
+                  <span>{product.type}</span>
+                </div>
+              </Link>
+            )
           ))}
         </div>
       </div>

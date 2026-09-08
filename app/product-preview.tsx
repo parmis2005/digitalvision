@@ -23,6 +23,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isSinjaNails = product.slug === "nagelstudio-sinja";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
+  const isSimpleSkin = product.slug === "simpleskin-test";
   const isNails = product.slug === "luna-nails";
 
   if (isBeauty) {
@@ -508,6 +509,36 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="hair-card-copy">
               <h3>Haarwerk Studio</h3>
               <span>Schnitt · Coloration · Galerie · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isSimpleSkin) {
+    if (size === "card") {
+      return (
+        <div className="simpleskin-preview-card-view">
+          <div className="simpleskin-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="simpleskin-card-cta">Termin buchen</span>
+          </div>
+          <div className="simpleskin-card-shell">
+            <div className="simpleskin-card-branding">
+              <p>Liora Hautatelier</p>
+              <span>Hautanalyse · Kosmetik · Beratung</span>
+            </div>
+            <div className="simpleskin-card-stage">
+              <div className="simpleskin-card-overlay">
+                <span className="simpleskin-card-kicker">Skin Studio</span>
+                <strong>Deine Kosmetik und Gesundheit von Meisterhand.</strong>
+              </div>
+              <div className="simpleskin-card-accent" />
             </div>
           </div>
         </div>

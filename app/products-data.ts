@@ -26,11 +26,13 @@ export type ProductItem = {
     | "sinja-nails"
     | "cleaning"
     | "insurance"
+    | "skincare"
     | "nails";
   category: string;
   intro: string;
   highlights: string[];
   previewUrl?: string;
+  externalUrl?: string;
 };
 
 const productItems: ProductItem[] = [
@@ -290,6 +292,21 @@ const productItems: ProductItem[] = [
     previewUrl: "/friseur-preview/index.html",
   },
   {
+    slug: "simpleskin-test",
+    type: "Kosmetik Website",
+    title: "Liora Hautatelier",
+    detail: "Dermazeutische Kosmetik-Website für Hautanalyse, Behandlungen und Termine",
+    variant: "skincare",
+    category: "Webseiten",
+    intro: "Kosmetik-Website mit Hautanalyse, Wirkstoffkosmetik und Terminfokus.",
+    highlights: [
+      "Starker Hero-Bereich mit Video, Beratungseinstieg und direkter Terminführung",
+      "Klare Bereiche für Behandlungen, Hautanalyse, Ergebnisse, Produkte und Kontakt",
+      "Geeignet für Kosmetikstudios, Hautateliers und moderne Beauty-Services",
+    ],
+    previewUrl: "/simpleskin-preview/index.html",
+  },
+  {
     slug: "nagelstudio-sinja",
     type: "Nagelstudio Website",
     title: "Nagelstudio by Mira",
@@ -317,6 +334,8 @@ const preferredWebsiteOrder = [
   "fussoase-eppendorf",
   "alphaschutz-versicherung",
   "haarwerk-studio",
+  "simpleskin-test",
+  "autohaus-nordglanz",
 ];
 
 const orderedProducts = preferredWebsiteOrder

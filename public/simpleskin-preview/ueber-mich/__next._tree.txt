@@ -4,8 +4,8 @@
 :HL["/simpleskin-preview/_next/static/media/70e3db2de7f94926-s.p.39pl-v7c3qrze.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/simpleskin-preview/_next/static/media/8e451580e5e95631-s.p.27vw08z6_vw0m.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/simpleskin-preview/_next/static/media/f30fd2e485acf1bc-s.p.35belnv3c2-b-.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/simpleskin-preview/images/fictional-skin-expert-portrait.jpg","image"]
-:HL["/simpleskin-preview/images/zertifikat-kosmetikmeisterin.jpg","image"]
-:HL["/simpleskin-preview/images/zertifikat-gesundheitsberaterin.jpg","image"]
-:HL["/simpleskin-preview/images/zertifikat-innungsbetrieb.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"ueber-mich","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Ao8tgPySRWbN0HSLJphgo"}
+:HL["/images/fictional-skin-expert-portrait.jpg","image"]
+:HL["/images/zertifikat-kosmetikmeisterin.jpg","image"]
+:HL["/images/zertifikat-gesundheitsberaterin.jpg","image"]
+:HL["/images/zertifikat-innungsbetrieb.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"ueber-mich","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"XZgkkvD6y0lQifYXAnJo7"}

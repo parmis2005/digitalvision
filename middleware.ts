@@ -15,6 +15,7 @@ const previewPrefixes = [
   "/reinigungsfirma-preview",
   "/restaurant-preview",
   "/salzgrotte-preview",
+  "/simpleskin-preview",
   "/velora-fashion-preview/site",
   "/versicherung-preview",
   "/vulkaneifeltherme-preview",

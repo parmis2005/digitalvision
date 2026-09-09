@@ -3258,6 +3258,10 @@ h3 {
   gap: 4px;
 }
 
+.showcase-preview .premium-auto-card-copy {
+  display: none;
+}
+
 .premium-auto-card-copy h3 {
   margin-bottom: 0;
   color: #fff8e8;

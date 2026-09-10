@@ -214,9 +214,8 @@ const packages: PackageItem[] = [
     name: "Website",
     price: "ab 300 € monatlich",
     detailLines: [
-      { text: "Anzahlung auf wunsch möglich" },
       { text: "Website, Hosting, Pflege & Support inklusive." },
-      { text: "Nach vollständiger Zahlung nur noch laufende Betreuung ab 100€.", emphasis: true },
+      { text: "Nach vollständiger Bezahlung: Laufende Betreuung ab 100 €/Monat.", emphasis: true },
     ],
   },
   {

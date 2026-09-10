@@ -15,6 +15,7 @@ import {
 import { AmbientScene } from "./ambient-scene";
 import { ContactForm } from "./contact-form";
 import { DigitalVisionLogo } from "./digitalvision-logo";
+import { HeroBackgroundVideo } from "./hero-background-video";
 import { ProductShowcase } from "./product-showcase";
 import { Reveal } from "./reveal";
 import { ServiceCard } from "./service-card";
@@ -297,20 +298,7 @@ export default function Home() {
         </div>
         <div className="hero-visual" aria-hidden="true">
           <div className="hero-visual-stage">
-            <video
-              className="hero-visual-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/videos/pinload-2-hero-poster.jpg"
-            >
-              <source
-                src="/videos/PinLoad%202.mp4"
-                type="video/mp4"
-              />
-            </video>
+            <HeroBackgroundVideo />
           </div>
         </div>
         <a className="scroll-cue" href="#leistungen" aria-label="Nach unten scrollen">

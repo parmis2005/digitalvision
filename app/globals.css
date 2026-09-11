@@ -673,11 +673,8 @@ textarea {
 }
 
 .desktop-nav a {
-  background: var(--nav-text-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .site-footer a:hover {
@@ -777,11 +774,8 @@ textarea {
 
 .mobile-nav-label {
   display: inline-block;
-  background: var(--nav-text-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .mobile-nav-panel nav a:hover {
@@ -5316,6 +5310,38 @@ h3 {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+.product-live-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0d0b;
+  opacity: 1;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-live-loading.is-hidden {
+  opacity: 0;
+}
+
+.product-live-spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2.5px solid rgba(102, 217, 255, 0.22);
+  border-top-color: #66d9ff;
+  animation: product-live-spin 0.8s linear infinite;
+}
+
+@keyframes product-live-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .product-live-page {

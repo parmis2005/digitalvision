@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type ProductLiveFrameProps = { src: string; title: string };
 
@@ -22,6 +22,11 @@ const FRAME_STYLE_TEXT = `
 export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const pendingNavigationRef = useRef(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [src]);
 
   const prepareFrame = useCallback(() => {
     const iframe = iframeRef.current;
@@ -199,6 +204,7 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
 
     const handleLoad = () => {
       prepareFrame();
+      setIsLoaded(true);
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
         iframe.scrollIntoView({ behavior: "auto", block: "start" });
@@ -230,6 +236,12 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         touchAction: "pan-y",
       }}
     >
+      <div
+        className={`product-live-loading${isLoaded ? " is-hidden" : ""}`}
+        aria-hidden="true"
+      >
+        <span className="product-live-spinner" />
+      </div>
       <iframe
         ref={iframeRef}
         className="product-live-iframe"
@@ -248,6 +260,8 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
           overflowY: "scroll",
           overflowX: "hidden",
           WebkitOverflowScrolling: "touch",
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 220ms ease",
         } as React.CSSProperties}
       />
     </div>

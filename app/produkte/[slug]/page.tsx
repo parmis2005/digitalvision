@@ -128,26 +128,6 @@ export default async function ProductPage({ params }: PageProps) {
         touchAction: "pan-y",
       } as const)
     : undefined;
-  const liveHomeButtonStyle = livePreviewUrl
-    ? ({
-        position: "fixed",
-        left: 18,
-        top: 18,
-        zIndex: 20,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: 42,
-        height: 42,
-        border: "1px solid rgba(155, 228, 255, 0.34)",
-        borderRadius: 12,
-        background: "rgba(8, 18, 38, 0.82)",
-        color: "#66d9ff",
-        textDecoration: "none",
-        boxShadow: "0 12px 30px rgba(1, 5, 16, 0.26)",
-      } as const)
-    : undefined;
-
   return (
     <main
       className={`product-page${livePreviewUrl ? " product-live-page" : ""}`}
@@ -165,7 +145,6 @@ export default async function ProductPage({ params }: PageProps) {
         className="product-home-button"
         href={backHref}
         aria-label="Zur passenden Webseiten-Vorschau"
-        style={liveHomeButtonStyle}
       >
         <House size={18} aria-hidden="true" />
       </Link>

@@ -23,6 +23,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isSinjaNails = product.slug === "nagelstudio-sinja";
   const isCleaning = product.slug === "cleanpro-reinigung";
   const isInsurance = product.slug === "alphaschutz-versicherung";
+  const isCraft = product.slug === "meisterhand-handwerksservice";
   const isSimpleSkin = product.slug === "simpleskin-test";
   const isNails = product.slug === "luna-nails";
 
@@ -675,6 +676,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="cleaning-card-copy">
               <h3>CleanPro Reinigung</h3>
               <span>Leistungen · Standorte · Angebote · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isCraft) {
+    if (size === "card") {
+      return (
+        <div className="craft-preview-card-view">
+          <div className="craft-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="craft-card-cta">Anfrage starten</span>
+          </div>
+          <div className="craft-card-shell">
+            <div className="craft-card-branding">
+              <p>MeisterHand</p>
+              <span>Handwerk · Sanierung · Notdienst</span>
+            </div>
+            <div className="craft-card-stage">
+              <div className="craft-card-overlay">
+                <span className="craft-card-kicker">Meisterbetrieb</span>
+                <strong>Handwerk, das hält was es verspricht.</strong>
+              </div>
+              <div className="craft-card-accent">
+                <span>15+</span>
+                <small>Jahre Erfahrung</small>
+              </div>
+            </div>
+            <div className="craft-card-copy">
+              <h3>MeisterHand</h3>
+              <span>Leistungen · Galerie · Referenzen · Kontakt</span>
             </div>
           </div>
         </div>

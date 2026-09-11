@@ -26,6 +26,7 @@ export type ProductItem = {
     | "sinja-nails"
     | "cleaning"
     | "insurance"
+    | "craft"
     | "skincare"
     | "nails";
   category: string;
@@ -202,6 +203,21 @@ const productItems: ProductItem[] = [
     previewUrl: "/reinigungsfirma-preview/index.html",
   },
   {
+    slug: "meisterhand-handwerksservice",
+    type: "Handwerker Website",
+    title: "MeisterHand",
+    detail: "Moderne Handwerker-Website für Leistungen, Referenzen, Team und Anfragen",
+    variant: "craft",
+    category: "Webseiten",
+    intro: "Handwerker-Website mit starkem Hero, Leistungsübersicht und Anfragefokus.",
+    highlights: [
+      "Starker Hero-Bereich für Meisterbetrieb, Festpreisgarantie und schnelle Anfrage",
+      "Klare Bereiche für Leistungen, Galerie, Referenzen, Team und Kontakt",
+      "Geeignet für Handwerksbetriebe, Sanierer, Elektriker, Maler, Schreiner und Fliesenleger",
+    ],
+    previewUrl: "/handwerker-preview/index.html",
+  },
+  {
     slug: "fussoase-eppendorf",
     type: "Fußpflege Website",
     title: "Fußoase Eppendorf",
@@ -335,6 +351,7 @@ const preferredWebsiteOrder = [
   "alphaschutz-versicherung",
   "haarwerk-studio",
   "simpleskin-test",
+  "meisterhand-handwerksservice",
   "autohaus-nordglanz",
 ];
 

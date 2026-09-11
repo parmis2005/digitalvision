@@ -104,8 +104,55 @@ export default async function ProductPage({ params }: PageProps) {
   const backHref =
     product.category === "Webseiten" ? `/#webseite-${product.slug}` : "/#webseiten";
 
+  const livePageStyle = livePreviewUrl
+    ? ({
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        minHeight: "100vh",
+        overflow: "hidden",
+        padding: 0,
+        background: "#0f0d0b",
+      } as const)
+    : undefined;
+  const liveSiteStyle = livePreviewUrl
+    ? ({
+        display: "flex",
+        flex: "1 1 auto",
+        flexDirection: "column",
+        minHeight: 0,
+        margin: 0,
+        borderTop: 0,
+        background: "#0f0d0b",
+        overflowAnchor: "none",
+        touchAction: "pan-y",
+      } as const)
+    : undefined;
+  const liveHomeButtonStyle = livePreviewUrl
+    ? ({
+        position: "fixed",
+        left: 18,
+        top: 18,
+        zIndex: 20,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 42,
+        height: 42,
+        border: "1px solid rgba(155, 228, 255, 0.34)",
+        borderRadius: 12,
+        background: "rgba(8, 18, 38, 0.82)",
+        color: "#66d9ff",
+        textDecoration: "none",
+        boxShadow: "0 12px 30px rgba(1, 5, 16, 0.26)",
+      } as const)
+    : undefined;
+
   return (
-    <main className={`product-page${livePreviewUrl ? " product-live-page" : ""}`}>
+    <main
+      className={`product-page${livePreviewUrl ? " product-live-page" : ""}`}
+      style={livePageStyle}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
@@ -114,12 +161,21 @@ export default async function ProductPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Link className="product-home-button" href={backHref} aria-label="Zur passenden Webseiten-Vorschau">
+      <Link
+        className="product-home-button"
+        href={backHref}
+        aria-label="Zur passenden Webseiten-Vorschau"
+        style={liveHomeButtonStyle}
+      >
         <House size={18} aria-hidden="true" />
       </Link>
 
       {livePreviewUrl ? (
-        <section className="product-live-site" aria-label={`${product.title} Website`}>
+        <section
+          className="product-live-site"
+          aria-label={`${product.title} Website`}
+          style={liveSiteStyle}
+        >
           <ProductLiveFrame
             src={livePreviewUrl}
             title={`${product.title} Website`}

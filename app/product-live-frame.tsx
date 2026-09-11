@@ -219,7 +219,17 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
   }, [prepareFrame]);
 
   return (
-    <div className="product-live-frame-wrap">
+    <div
+      className="product-live-frame-wrap"
+      style={{
+        position: "relative",
+        flex: "1 1 auto",
+        minHeight: "100vh",
+        width: "100%",
+        overflow: "hidden",
+        touchAction: "pan-y",
+      }}
+    >
       <iframe
         ref={iframeRef}
         className="product-live-iframe"
@@ -229,7 +239,16 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
         loading="eager"
         sandbox="allow-same-origin allow-scripts"
         scrolling="yes"
-        style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100vh",
+          border: "none",
+          background: "#0f0d0b",
+          overflowY: "scroll",
+          overflowX: "hidden",
+          WebkitOverflowScrolling: "touch",
+        } as React.CSSProperties}
       />
     </div>
   );

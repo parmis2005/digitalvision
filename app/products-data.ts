@@ -99,21 +99,6 @@ const productItems: ProductItem[] = [
     previewUrl: "/luxushotel-preview/index.html",
   },
   {
-    slug: "autohaus-nordglanz",
-    type: "Autohaus Website",
-    title: "Autohaus Nordglanz",
-    detail: "Moderne Autohaus-Website für Fahrzeuge, Suche und vertrauensstarken Verkauf",
-    variant: "auto",
-    category: "Webseiten",
-    intro: "Autohaus-Website mit Fahrzeugsuche, Bestand und Anfragefokus.",
-    highlights: [
-      "Starker Hero-Bereich mit Fahrzeugsuche und direktem Einstieg",
-      "Moderne Präsentation für Jahreswagen, Gebrauchtwagen und Business-Fahrzeuge",
-      "Geeignet für Autohäuser, Fahrzeughändler und Premium-Bestände",
-    ],
-    previewUrl: "/autohaus-preview/index.html",
-  },
-  {
     slug: "salzgrotte-aura",
     type: "Salzgrotte Website",
     title: "Salzgrotte Aura",
@@ -369,7 +354,6 @@ const preferredWebsiteOrder = [
   "haarwerk-studio",
   "simpleskin-test",
   "meisterhand-handwerksservice",
-  "autohaus-nordglanz",
 ];
 
 const orderedProducts = preferredWebsiteOrder

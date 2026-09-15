@@ -14,18 +14,33 @@ export function HeroBackgroundVideo() {
       return;
     }
 
-    const seekPastIntro = () => {
+    // Some mobile browsers ignore the `muted` JSX attribute on hydration,
+    // which silently blocks autoplay, so set it on the element directly.
+    video.muted = true;
+
+    let introSkipped = false;
+
+    const skipIntroOnce = () => {
+      if (introSkipped) {
+        return;
+      }
+      introSkipped = true;
       if (video.currentTime < INTRO_SKIP_SECONDS) {
         video.currentTime = INTRO_SKIP_SECONDS;
       }
     };
 
-    const handleLoadedMetadata = () => {
-      seekPastIntro();
+    const attemptPlay = () => {
+      video.play().catch(() => {});
     };
 
-    const handleSeeked = () => {
-      video.play().catch(() => {});
+    const handleLoadedMetadata = () => {
+      skipIntroOnce();
+      attemptPlay();
+    };
+
+    const handleCanPlay = () => {
+      attemptPlay();
     };
 
     const handleTimeUpdate = () => {
@@ -35,16 +50,16 @@ export function HeroBackgroundVideo() {
     };
 
     video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("seeked", handleSeeked);
+    video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("timeupdate", handleTimeUpdate);
 
     if (video.readyState >= 1) {
-      seekPastIntro();
+      handleLoadedMetadata();
     }
 
     return () => {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("seeked", handleSeeked);
+      video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, []);
@@ -53,7 +68,9 @@ export function HeroBackgroundVideo() {
     <video
       ref={videoRef}
       className="hero-visual-video"
+      autoPlay
       muted
+      loop
       playsInline
       preload="auto"
       poster="/videos/pinload-2-hero-poster.jpg"

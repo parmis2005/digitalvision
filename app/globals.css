@@ -2570,7 +2570,7 @@ h3 {
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(53, 36, 28, 0.16), rgba(53, 36, 28, 0.34)),
-    url("/coffeeshop-preview/assets/hero-interior.png") center/cover no-repeat;
+    url("/coffeeshop-preview/images/hero-interior.png") center/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(255, 243, 228, 0.08);
 }
 

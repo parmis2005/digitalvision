@@ -3455,33 +3455,36 @@ h3 {
 
 .gs-auto-card-branding {
   display: grid;
-  gap: 4px;
+  gap: 3px;
 }
 
-.gs-auto-card-branding img {
-  display: block;
-  width: 132px;
-  max-width: 72%;
-  height: auto;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
+.gs-auto-card-branding p {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
 }
 
 .gs-auto-card-branding span {
-  color: rgba(245, 247, 251, 0.78);
-  font-size: 0.52rem;
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 0.54rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .gs-auto-card-stage {
   position: relative;
-  min-height: 128px;
+  min-height: 122px;
   overflow: hidden;
   border-radius: 20px;
   background:
-    linear-gradient(90deg, rgba(8, 12, 19, 0.84), rgba(8, 12, 19, 0.16)),
-    url("https://cagteuhomtoqniqpirly.supabase.co/storage/v1/object/public/Gs-Auto/Screenshot%202026-01-07%20at%2010.39.00.png") center 42%/cover no-repeat;
+    linear-gradient(180deg, rgba(8, 12, 19, 0.08), rgba(8, 12, 19, 0.42)),
+    linear-gradient(90deg, rgba(8, 12, 19, 0.82), rgba(8, 12, 19, 0.18)),
+    url("https://cagteuhomtoqniqpirly.supabase.co/storage/v1/object/public/Gs-Auto/Screenshot%202026-01-07%20at%2010.39.00.png") center 46%/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
 }
 
@@ -3500,8 +3503,8 @@ h3 {
   top: 12px;
   z-index: 1;
   display: grid;
-  gap: 7px;
-  max-width: 64%;
+  gap: 6px;
+  max-width: 58%;
   color: #f8fafc;
   text-shadow: 0 10px 26px rgba(0, 0, 0, 0.48);
 }
@@ -3513,7 +3516,7 @@ h3 {
   min-height: 22px;
   padding: 0 9px;
   border-radius: 999px;
-  background: rgba(230, 60, 44, 0.92);
+  background: rgba(239, 68, 68, 0.92);
   color: #fff;
   font-size: 0.46rem;
   font-weight: 900;
@@ -3522,19 +3525,20 @@ h3 {
 }
 
 .gs-auto-card-overlay strong {
-  font-size: 1.06rem;
+  font-size: 1.02rem;
   font-weight: 900;
-  line-height: 0.94;
+  line-height: 0.96;
 }
 
 .gs-auto-card-search {
   position: absolute;
+  left: 10px;
   right: 10px;
   bottom: 10px;
   z-index: 1;
   display: grid;
-  gap: 5px;
-  width: 112px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
 }
 
 .gs-auto-card-search span {
@@ -3546,7 +3550,7 @@ h3 {
   border-radius: 999px;
   background: rgba(248, 250, 252, 0.92);
   color: #111827;
-  font-size: 0.5rem;
+  font-size: 0.52rem;
   font-weight: 850;
   white-space: nowrap;
 }

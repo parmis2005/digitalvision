@@ -214,18 +214,18 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
           </div>
           <div className="gs-auto-card-shell">
             <div className="gs-auto-card-branding">
-              <img src="/gs-automotive-preview/logo.png" alt="" />
-              <span>Jahreswagen · junge Gebrauchtwagen</span>
+              <p>GS Automobile Rheinland</p>
+              <span>Jahreswagen · Gebrauchtwagen</span>
             </div>
             <div className="gs-auto-card-stage">
               <div className="gs-auto-card-overlay">
-                <span className="gs-auto-card-kicker">GS Automobile Rheinland</span>
+                <span className="gs-auto-card-kicker">Autohaus Krefeld</span>
                 <strong>Ihr Auto wartet auf Sie.</strong>
               </div>
               <div className="gs-auto-card-search">
                 <span>BMW</span>
+                <span>SUV</span>
                 <span>Finanzierung</span>
-                <span>Ankauf</span>
               </div>
             </div>
             <div className="gs-auto-card-copy">

@@ -145,21 +145,6 @@ const productItems: ProductItem[] = [
     previewUrl: "/fusspflege-preview/index.html",
   },
   {
-    slug: "bean-bark",
-    type: "Coffee Shop Website",
-    title: "Bean & Bark",
-    detail: "Warme Coffee-Shop-Website für Specialty Coffee, Menü und Standorte",
-    variant: "coffee",
-    category: "Webseiten",
-    intro: "Coffee-Shop-Website mit Menü, Story und warmer Markenwirkung.",
-    highlights: [
-      "Warmer Premium-Look für Café, Coffee Shop und Hospitality-Marken",
-      "Klarer Aufbau für Menü, Story, Nachhaltigkeit und Standorte",
-      "Geeignet für Cafés, Röstereien, Brunch-Spots und urbane Gastro-Konzepte",
-    ],
-    previewUrl: "/coffeeshop-preview/index.html",
-  },
-  {
     slug: "velora-fashion",
     type: "Damenmode Online-Shop",
     title: "VELORA Fashion",
@@ -203,6 +188,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Hausarztpraxen, Facharztpraxen und moderne Gesundheitsangebote",
     ],
     previewUrl: "/arztpraxis-preview/index.html",
+  },
+  {
+    slug: "bean-bark",
+    type: "Coffee Shop Website",
+    title: "Bean & Bark",
+    detail: "Warme Coffee-Shop-Website für Specialty Coffee, Menü und Standorte",
+    variant: "coffee",
+    category: "Webseiten",
+    intro: "Coffee-Shop-Website mit Menü, Story und warmer Markenwirkung.",
+    highlights: [
+      "Warmer Premium-Look für Café, Coffee Shop und Hospitality-Marken",
+      "Klarer Aufbau für Menü, Story, Nachhaltigkeit und Standorte",
+      "Geeignet für Cafés, Röstereien, Brunch-Spots und urbane Gastro-Konzepte",
+    ],
+    previewUrl: "/coffeeshop-preview/index.html",
   },
   {
     slug: "vulkaneifeltherme",

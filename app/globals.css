@@ -1955,6 +1955,12 @@ h3 {
   height: 100%;
 }
 
+.gs-auto-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .coffee-preview-card-view {
   display: grid;
   gap: 10px;
@@ -3422,6 +3428,143 @@ h3 {
 
 .premium-auto-card-copy span {
   color: rgba(234, 214, 170, 0.8);
+  font-size: 0.62rem;
+  line-height: 1.35;
+}
+
+.gs-auto-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gs-auto-card-cta {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gs-auto-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.gs-auto-card-branding {
+  display: grid;
+  gap: 4px;
+}
+
+.gs-auto-card-branding img {
+  display: block;
+  width: 132px;
+  max-width: 72%;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
+}
+
+.gs-auto-card-branding span {
+  color: rgba(245, 247, 251, 0.78);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gs-auto-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(8, 12, 19, 0.84), rgba(8, 12, 19, 0.16)),
+    url("https://cagteuhomtoqniqpirly.supabase.co/storage/v1/object/public/Gs-Auto/Screenshot%202026-01-07%20at%2010.39.00.png") center 42%/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.gs-auto-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 28%, rgba(255, 255, 255, 0.2), transparent 18%),
+    linear-gradient(180deg, transparent 50%, rgba(9, 13, 20, 0.72));
+  content: "";
+}
+
+.gs-auto-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 7px;
+  max-width: 64%;
+  color: #f8fafc;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.48);
+}
+
+.gs-auto-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(230, 60, 44, 0.92);
+  color: #fff;
+  font-size: 0.46rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gs-auto-card-overlay strong {
+  font-size: 1.06rem;
+  font-weight: 900;
+  line-height: 0.94;
+}
+
+.gs-auto-card-search {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  gap: 5px;
+  width: 112px;
+}
+
+.gs-auto-card-search span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.92);
+  color: #111827;
+  font-size: 0.5rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.gs-auto-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.gs-auto-card-copy h3 {
+  margin-bottom: 0;
+  color: #f8fafc;
+  font-size: 1.06rem;
+  line-height: 0.98;
+}
+
+.gs-auto-card-copy span {
+  color: rgba(245, 247, 251, 0.78);
   font-size: 0.62rem;
   line-height: 1.35;
 }
@@ -5124,6 +5267,14 @@ h3 {
     radial-gradient(circle at 20% 88%, rgba(130, 55, 22, 0.18), transparent 22%),
     linear-gradient(160deg, #05080e 0%, #172338 46%, #b78b3e 100%);
   color: #fff8e8;
+}
+
+.showcase-card.gs-auto .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(229, 57, 53, 0.2), transparent 18%),
+    radial-gradient(circle at 18% 82%, rgba(148, 163, 184, 0.18), transparent 20%),
+    linear-gradient(160deg, #0b111c 0%, #28313d 48%, #d7dde5 100%);
+  color: #f8fafc;
 }
 
 .showcase-card.coffee .showcase-preview {

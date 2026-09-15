@@ -13,6 +13,7 @@ export type ProductItem = {
     | "seo"
     | "auto"
     | "premium-auto"
+    | "gs-auto"
     | "coffee"
     | "restaurant"
     | "doener"
@@ -264,6 +265,21 @@ const productItems: ProductItem[] = [
     previewUrl: "/autohaus-falkenstein-preview/index.html",
   },
   {
+    slug: "gs-automotive-excellence",
+    type: "Autohaus Website",
+    title: "GS Automotive Excellence",
+    detail: "Moderne Autohaus-Website für Fahrzeugsuche, Service, Ankauf und Kontakt",
+    variant: "gs-auto",
+    category: "Webseiten",
+    intro: "Autohaus-Website mit großem Hero, Fahrzeugsuche, Servicebereichen und Kontaktfokus.",
+    highlights: [
+      "Starker Autohaus-Hero mit direkter Fahrzeugsuche und klarer Markenwirkung",
+      "Struktur für Fahrzeugbestand, Finanzierung, Garantie, Zulassung und Ankauf",
+      "Geeignet für Autohäuser, Gebrauchtwagenhändler und Automotive-Service-Anbieter",
+    ],
+    previewUrl: "/gs-automotive-preview/index.html",
+  },
+  {
     slug: "luna-nails",
     type: "Nagelstudio Website",
     title: "Luna Nails",
@@ -348,6 +364,7 @@ const preferredWebsiteOrder = [
   "vulkaneifeltherme",
   "nagelstudio-sinja",
   "autohaus-falkenstein",
+  "gs-automotive-excellence",
   "salzgrotte-aura",
   "alphaschutz-versicherung",
   "fussoase-eppendorf",

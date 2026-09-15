@@ -9,6 +9,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
+  const isGsAuto = product.slug === "gs-automotive-excellence";
   const isCoffee = product.slug === "bean-bark";
   const isRestaurant = product.slug === "maison-lumiere";
   const isDoener = product.slug === "ates-feuerdoener";
@@ -192,6 +193,44 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="premium-auto-card-copy">
               <h3>Autohaus Falkenstein</h3>
               <span>Fahrzeuge · Service · Finanzierung · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isGsAuto) {
+    if (size === "card") {
+      return (
+        <div className="gs-auto-preview-card-view">
+          <div className="gs-auto-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="gs-auto-card-cta">Fahrzeugsuche</span>
+          </div>
+          <div className="gs-auto-card-shell">
+            <div className="gs-auto-card-branding">
+              <img src="/gs-automotive-preview/logo.png" alt="" />
+              <span>Jahreswagen · junge Gebrauchtwagen</span>
+            </div>
+            <div className="gs-auto-card-stage">
+              <div className="gs-auto-card-overlay">
+                <span className="gs-auto-card-kicker">GS Automobile Rheinland</span>
+                <strong>Ihr Auto wartet auf Sie.</strong>
+              </div>
+              <div className="gs-auto-card-search">
+                <span>BMW</span>
+                <span>Finanzierung</span>
+                <span>Ankauf</span>
+              </div>
+            </div>
+            <div className="gs-auto-card-copy">
+              <h3>GS Automotive Excellence</h3>
+              <span>Fahrzeuge · Service · Ankauf · Kontakt</span>
             </div>
           </div>
         </div>

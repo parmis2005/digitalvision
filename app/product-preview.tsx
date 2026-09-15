@@ -228,10 +228,6 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <span>Finanzierung</span>
               </div>
             </div>
-            <div className="gs-auto-card-copy">
-              <h3>GS Automotive Excellence</h3>
-              <span>Fahrzeuge · Service · Ankauf · Kontakt</span>
-            </div>
           </div>
         </div>
       );

@@ -202,27 +202,63 @@ export function ProductLiveFrame({ src, title }: ProductLiveFrameProps) {
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    const handleLoad = () => {
+    const reveal = () => {
       prepareFrame();
       setIsLoaded(true);
+    };
+
+    const handleLoad = () => {
+      reveal();
       if (pendingNavigationRef.current) {
         pendingNavigationRef.current = false;
         iframe.scrollIntoView({ behavior: "auto", block: "start" });
       }
     };
 
+    // The native `load` event only fires once every resource referenced by
+    // the embedded page has finished downloading, including large hero
+    // videos. That can take a long time on mobile connections, so reveal
+    // the preview as soon as its DOM is parsed instead of waiting for
+    // every media asset to finish.
+    const checkEarlyReady = () => {
+      try {
+        const doc = iframe.contentDocument;
+        const win = iframe.contentWindow;
+        if (
+          doc &&
+          doc.readyState !== "loading" &&
+          doc.body &&
+          win &&
+          win.location.href !== "about:blank"
+        ) {
+          reveal();
+          return true;
+        }
+      } catch {
+        // Cross-origin previews: nothing to inspect early; rely on `load`.
+      }
+      return false;
+    };
+
     iframe.addEventListener("load", handleLoad);
-    try {
-      if (
-        iframe.contentDocument?.readyState === "complete" &&
-        iframe.contentWindow?.location.href !== "about:blank"
-      ) handleLoad();
-    } catch {
-      // Cross-origin previews remain usable with native iframe scrolling.
+
+    let pollId: number | null = null;
+    if (!checkEarlyReady()) {
+      pollId = window.setInterval(() => {
+        if (checkEarlyReady() && pollId !== null) {
+          window.clearInterval(pollId);
+          pollId = null;
+        }
+      }, 60);
     }
 
-    return () => iframe.removeEventListener("load", handleLoad);
-  }, [prepareFrame]);
+    return () => {
+      iframe.removeEventListener("load", handleLoad);
+      if (pollId !== null) {
+        window.clearInterval(pollId);
+      }
+    };
+  }, [prepareFrame, src]);
 
   return (
     <div

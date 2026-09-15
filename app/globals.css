@@ -1967,6 +1967,12 @@ h3 {
   height: 100%;
 }
 
+.doener-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .hotel-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2853,6 +2859,151 @@ h3 {
 
 .restaurant-card-copy span {
   color: rgba(245, 225, 199, 0.82);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.doener-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.doener-card-cta {
+  color: rgba(255, 222, 184, 0.92);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.doener-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.doener-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.doener-card-branding p {
+  margin-bottom: 0;
+  color: #fff3df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 800;
+  line-height: 0.94;
+}
+
+.doener-card-branding span {
+  color: rgba(255, 222, 184, 0.78);
+  font-size: 0.54rem;
+  font-weight: 780;
+  letter-spacing: 0.08em;
+}
+
+.doener-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(29, 13, 9, 0.86), rgba(29, 13, 9, 0.2)),
+    url("/doener-preview/images/doner-1.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 222, 184, 0.16);
+}
+
+.doener-card-stage::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 76% 28%, rgba(249, 115, 22, 0.34), transparent 26%),
+    linear-gradient(180deg, transparent 42%, rgba(29, 13, 9, 0.5));
+}
+
+.doener-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff3df;
+  text-shadow: 0 8px 24px rgba(29, 13, 9, 0.36);
+}
+
+.doener-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(220, 38, 38, 0.88);
+  color: #fff3df;
+  font-size: 0.48rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.doener-card-overlay strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 0.96;
+}
+
+.doener-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 102px;
+  height: 62px;
+  border: 1px solid rgba(255, 222, 184, 0.5);
+  border-radius: 16px;
+  background: rgba(16, 10, 8, 0.78);
+  box-shadow: 0 10px 24px rgba(29, 13, 9, 0.28);
+}
+
+.doener-card-accent span {
+  color: #f97316;
+  font-size: 1.28rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.doener-card-accent small {
+  color: rgba(255, 222, 184, 0.82);
+  font-size: 0.48rem;
+  font-weight: 780;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.doener-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.doener-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff3df;
+  font-size: 1.08rem;
+  line-height: 0.98;
+}
+
+.doener-card-copy span {
+  color: rgba(255, 222, 184, 0.82);
   font-size: 0.64rem;
   line-height: 1.35;
 }
@@ -4988,6 +5139,14 @@ h3 {
     radial-gradient(circle at 16% 82%, rgba(119, 52, 25, 0.2), transparent 20%),
     linear-gradient(160deg, #17100d 0%, #6d4128 46%, #d6a65b 100%);
   color: #fff6e9;
+}
+
+.showcase-card.doener .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(249, 115, 22, 0.28), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(185, 28, 28, 0.22), transparent 20%),
+    linear-gradient(160deg, #120b08 0%, #7f1d1d 46%, #f97316 100%);
+  color: #fff3df;
 }
 
 .showcase-card.hotel .showcase-preview {

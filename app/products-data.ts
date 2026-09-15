@@ -15,6 +15,7 @@ export type ProductItem = {
     | "premium-auto"
     | "coffee"
     | "restaurant"
+    | "doener"
     | "hotel"
     | "wellness"
     | "thermal"
@@ -66,6 +67,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Kosmetikstudios, Beauty Brands und Premium-Services",
     ],
     previewUrl: "/beauty-haus-preview/index.html",
+  },
+  {
+    slug: "ates-feuerdoener",
+    type: "Döner Restaurant Website",
+    title: "Ateş Feuerdöner",
+    detail: "Feurige Restaurant-Website für Döner, Speisekarte, Standorte und Bestellungen",
+    variant: "doener",
+    category: "Webseiten",
+    intro: "Döner-Restaurant-Website mit Video-Hero, Speisekarte, Reels und Bestellfokus.",
+    highlights: [
+      "Starker Video-Hero für offenes Feuer, frische Zutaten und direkte Bestellung",
+      "Klare Bereiche für Speisekarte, Reels, Standorte, Bewertungen und Franchise",
+      "Geeignet für Dönerläden, Imbisse, Food-Brands und moderne Gastro-Konzepte",
+    ],
+    previewUrl: "/doener-preview/index.html",
   },
   {
     slug: "aurum-grand-hotel",
@@ -342,6 +358,7 @@ const productItems: ProductItem[] = [
 const preferredWebsiteOrder = [
   "beauty-haus",
   "maison-lumiere",
+  "ates-feuerdoener",
   "aurum-grand-hotel",
   "vulkaneifeltherme",
   "nagelstudio-sinja",

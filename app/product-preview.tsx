@@ -11,6 +11,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
   const isCoffee = product.slug === "bean-bark";
   const isRestaurant = product.slug === "maison-lumiere";
+  const isDoener = product.slug === "ates-feuerdoener";
   const isHotel = product.slug === "aurum-grand-hotel";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
@@ -267,6 +268,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="restaurant-card-copy">
               <h3>Maison Lumière</h3>
               <span>Speisekarte · Galerie · Reservierung · Standort</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isDoener) {
+    if (size === "card") {
+      return (
+        <div className="doener-preview-card-view">
+          <div className="doener-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="doener-card-cta">Jetzt bestellen</span>
+          </div>
+          <div className="doener-card-shell">
+            <div className="doener-card-branding">
+              <p>Ateş Feuerdöner</p>
+              <span>Döner · Dürüm · Lahmacun</span>
+            </div>
+            <div className="doener-card-stage">
+              <div className="doener-card-overlay">
+                <span className="doener-card-kicker">Offenes Feuer</span>
+                <strong>Frisch vom Grill, direkt aus Berlin.</strong>
+              </div>
+              <div className="doener-card-accent">
+                <span>4.9</span>
+                <small>1.200 Bewertungen</small>
+              </div>
+            </div>
+            <div className="doener-card-copy">
+              <h3>Ateş Feuerdöner</h3>
+              <span>Speisekarte · Reels · Standorte · Bestellung</span>
             </div>
           </div>
         </div>

@@ -1991,6 +1991,12 @@ h3 {
   height: 100%;
 }
 
+.rose-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .medical-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2413,6 +2419,137 @@ h3 {
 .wellness-card-copy span {
   color: rgba(220, 225, 214, 0.8);
   font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.rose-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rose-card-cta {
+  color: rgba(255, 238, 241, 0.9);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rose-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.rose-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.rose-card-branding p {
+  margin-bottom: 0;
+  color: #fff6f7;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 750;
+  line-height: 0.94;
+}
+
+.rose-card-branding span {
+  color: rgba(255, 232, 236, 0.82);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.rose-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(55, 31, 37, 0.7), rgba(55, 31, 37, 0.2)),
+    url("/kosmetik-rose-preview/images/services/gesichtsbehandlungen-header.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 238, 241, 0.14);
+}
+
+.rose-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.2), transparent 18%),
+    linear-gradient(180deg, transparent 44%, rgba(55, 31, 37, 0.58));
+  content: "";
+}
+
+.rose-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 62%;
+  color: #fff6f7;
+  text-shadow: 0 10px 26px rgba(55, 31, 37, 0.42);
+}
+
+.rose-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 238, 241, 0.88);
+  color: #8a4c59;
+  font-size: 0.46rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.rose-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 0.96;
+}
+
+.rose-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  width: 102px;
+  height: 62px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 246, 248, 0.08), rgba(255, 246, 248, 0.08)),
+    url("/kosmetik-rose-preview/images/services/permanent-make-up.jpg") center/cover no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 10px 24px rgba(55, 31, 37, 0.18);
+}
+
+.rose-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.rose-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff6f7;
+  font-size: 1.04rem;
+  line-height: 0.98;
+}
+
+.rose-card-copy span {
+  color: rgba(255, 232, 236, 0.82);
+  font-size: 0.62rem;
   line-height: 1.35;
 }
 
@@ -5299,6 +5436,14 @@ h3 {
     radial-gradient(circle at 82% 24%, rgba(231, 155, 101, 0.12), transparent 18%),
     linear-gradient(160deg, #556549 0%, #7f8b6d 42%, #c8b79c 100%);
   color: #f4f5ef;
+}
+
+.showcase-card.rose .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 22%, rgba(255, 238, 241, 0.22), transparent 18%),
+    radial-gradient(circle at 18% 84%, rgba(164, 92, 104, 0.2), transparent 20%),
+    linear-gradient(160deg, #3a2028 0%, #8a4c59 46%, #e8bdc4 100%);
+  color: #fff6f7;
 }
 
 .showcase-card.medical .showcase-preview {

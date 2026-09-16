@@ -16,6 +16,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isHotel = product.slug === "aurum-grand-hotel";
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
+  const isRose = product.slug === "kosmetik-atelier-rosenblick";
   const isMedical = product.slug === "arztpraxis-weber";
   const isThermal = product.slug === "vulkaneifeltherme";
   const isHospital = product.slug === "st-elisabeth-klinikum";
@@ -441,6 +442,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="wellness-card-copy">
               <h3>Serenity Studio</h3>
               <span>Spa · Recovery · Massage · Private Sessions</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isRose) {
+    if (size === "card") {
+      return (
+        <div className="rose-preview-card-view">
+          <div className="rose-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="rose-card-cta">Termin buchen</span>
+          </div>
+          <div className="rose-card-shell">
+            <div className="rose-card-branding">
+              <p>Kosmetik Atelier Rosenblick</p>
+              <span>Apparative Kosmetik · Elektroepilation</span>
+            </div>
+            <div className="rose-card-stage">
+              <div className="rose-card-overlay">
+                <span className="rose-card-kicker">Schönheitspflege</span>
+                <strong>Sanfte Pflege mit moderner Studio-Atmosphäre.</strong>
+              </div>
+              <div className="rose-card-accent" />
+            </div>
+            <div className="rose-card-copy">
+              <h3>Kosmetik Atelier Rosenblick</h3>
+              <span>Leistungen · Galerie · Produkte · Termine</span>
             </div>
           </div>
         </div>

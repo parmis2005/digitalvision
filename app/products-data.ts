@@ -19,6 +19,7 @@ export type ProductItem = {
     | "doener"
     | "hotel"
     | "wellness"
+    | "rose"
     | "thermal"
     | "medical"
     | "hospital"
@@ -173,6 +174,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Spa-Studios, Recovery-Lounges und moderne Health-Konzepte",
     ],
     previewUrl: "/wellness-preview/index.html",
+  },
+  {
+    slug: "kosmetik-atelier-rosenblick",
+    type: "Kosmetikstudio Website",
+    title: "Kosmetik Atelier Rosenblick",
+    detail: "Elegante Kosmetik-Website für apparative Schönheitspflege, Produkte und Termine",
+    variant: "rose",
+    category: "Webseiten",
+    intro: "Kosmetikstudio-Website mit Video-Hero, Leistungen, Galerie und Terminbuchung.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich für apparative Kosmetik und Elektroepilation",
+      "Klare Bereiche für Leistungen, Produkte, Galerie, Bewertungen und Terminbuchung",
+      "Geeignet für Kosmetikstudios, Beauty-Ateliers und moderne Hautpflege-Angebote",
+    ],
+    previewUrl: "/kosmetik-rose-preview/index.html",
   },
   {
     slug: "arztpraxis-weber",

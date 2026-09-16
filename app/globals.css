@@ -2477,8 +2477,8 @@ h3 {
   overflow: hidden;
   border-radius: 22px;
   background:
-    linear-gradient(90deg, rgba(55, 31, 37, 0.7), rgba(55, 31, 37, 0.2)),
-    url("/kosmetik-rose-preview/images/services/gesichtsbehandlungen-header.jpg") center/cover no-repeat;
+    linear-gradient(90deg, rgba(55, 31, 37, 0.58), rgba(55, 31, 37, 0.12)),
+    url("/kosmetik-rose-preview/images/services/gesicht-komplett.jpg") center 42%/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(255, 238, 241, 0.14);
 }
 
@@ -2487,7 +2487,7 @@ h3 {
   inset: 0;
   background:
     radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.2), transparent 18%),
-    linear-gradient(180deg, transparent 44%, rgba(55, 31, 37, 0.58));
+    linear-gradient(180deg, transparent 44%, rgba(55, 31, 37, 0.48));
   content: "";
 }
 
@@ -2534,8 +2534,8 @@ h3 {
   height: 62px;
   border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 246, 248, 0.08), rgba(255, 246, 248, 0.08)),
-    url("/kosmetik-rose-preview/images/services/permanent-make-up.jpg") center/cover no-repeat;
+    linear-gradient(180deg, rgba(255, 246, 248, 0.04), rgba(255, 246, 248, 0.04)),
+    url("/kosmetik-rose-preview/images/services/mesotherapie.jpg") center 44%/cover no-repeat;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.3),
     0 10px 24px rgba(55, 31, 37, 0.18);

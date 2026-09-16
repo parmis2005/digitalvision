@@ -20,6 +20,7 @@ export type ProductItem = {
     | "hotel"
     | "wellness"
     | "rose"
+    | "riding"
     | "thermal"
     | "medical"
     | "hospital"
@@ -189,6 +190,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Kosmetikstudios, Beauty-Ateliers und moderne Hautpflege-Angebote",
     ],
     previewUrl: "/kosmetik-rose-preview/index.html",
+  },
+  {
+    slug: "reitschule-sonnenhof",
+    type: "Reitschule Website",
+    title: "Reitschule Sonnenhof",
+    detail: "Warme Reitschule-Website für Kurse, Pferdepension, Trainerteam und Probestunden",
+    variant: "riding",
+    category: "Webseiten",
+    intro: "Reitschule-Website mit Video-Hero, Kursangeboten, Galerie, Trainerteam und Kontaktfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich mit Pferdevideos, Kennzahlen und Probestunden-Fokus",
+      "Klare Bereiche für Kurse, Pferdepension, Trainerteam, Galerie, Bewertungen und Standort",
+      "Geeignet für Reitschulen, Pferdepensionen, Reitvereine und ländliche Erlebnisangebote",
+    ],
+    previewUrl: "/reitschule-preview/index.html",
   },
   {
     slug: "arztpraxis-weber",

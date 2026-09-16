@@ -17,6 +17,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isFashion = product.slug === "velora-fashion";
   const isWellness = product.slug === "serenity-studio";
   const isRose = product.slug === "kosmetik-atelier-rosenblick";
+  const isRiding = product.slug === "reitschule-sonnenhof";
   const isMedical = product.slug === "arztpraxis-weber";
   const isThermal = product.slug === "vulkaneifeltherme";
   const isHospital = product.slug === "st-elisabeth-klinikum";
@@ -476,6 +477,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="rose-card-copy">
               <h3>Kosmetik Atelier Rosenblick</h3>
               <span>Leistungen · Galerie · Produkte · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isRiding) {
+    if (size === "card") {
+      return (
+        <div className="riding-preview-card-view">
+          <div className="riding-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="riding-card-cta">Probestunde</span>
+          </div>
+          <div className="riding-card-shell">
+            <div className="riding-card-branding">
+              <p>Reitschule Sonnenhof</p>
+              <span>Reitkurse · Beritt · Pferdepension</span>
+            </div>
+            <div className="riding-card-stage">
+              <div className="riding-card-overlay">
+                <span className="riding-card-kicker">Reitschule & Pferdepension</span>
+                <strong>Reiten lernen in ruhiger Hofatmosphäre.</strong>
+              </div>
+              <div className="riding-card-accent" />
+            </div>
+            <div className="riding-card-copy">
+              <h3>Reitschule Sonnenhof</h3>
+              <span>Kurse · Pension · Trainer · Kontakt</span>
             </div>
           </div>
         </div>

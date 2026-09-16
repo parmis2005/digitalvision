@@ -139,7 +139,7 @@ function arrowIcon(direction) {
 
 function renderCalendar() {
   const base = new Date(2026, 5 + state.startMonthOffset, 1);
-  const months = [0, 1, 2].map((offset) => new Date(base.getFullYear(), base.getMonth() + offset, 1));
+  const months = [0].map((offset) => new Date(base.getFullYear(), base.getMonth() + offset, 1));
 
   calendarGrid.innerHTML = months
     .map((monthDate, index) => {
@@ -183,10 +183,10 @@ function renderCalendar() {
           <div class="month-head">
             <strong>${monthLabel(monthDate)}</strong>
             <div class="month-nav">
-              <button type="button" class="nav-btn" data-nav="prev" aria-label="Vorherige Monate">
+              <button type="button" class="nav-btn" data-nav="prev" aria-label="Vorheriger Monat">
                 ${arrowIcon("left")}
               </button>
-              <button type="button" class="nav-btn" data-nav="next" aria-label="Nächste Monate">
+              <button type="button" class="nav-btn" data-nav="next" aria-label="Nächster Monat">
                 ${arrowIcon("right")}
               </button>
             </div>
@@ -251,3 +251,36 @@ updateFilters();
 initFilters();
 renderCalendar();
 updateHint();
+
+const siteNav = document.querySelector("#siteNav");
+const navToggle = document.querySelector("#navToggle");
+const navMobile = document.querySelector("#navMobile");
+
+function updateNavScrollState() {
+  if (!siteNav) return;
+  siteNav.classList.toggle("is-solid", window.scrollY > 40);
+}
+
+function closeMobileNav() {
+  siteNav?.classList.remove("is-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+  navToggle?.setAttribute("aria-label", "Menü öffnen");
+  document.body.style.overflow = "";
+}
+
+if (siteNav && navToggle && navMobile) {
+  updateNavScrollState();
+  window.addEventListener("scroll", updateNavScrollState);
+
+  navToggle.addEventListener("click", () => {
+    const willOpen = !siteNav.classList.contains("is-open");
+    siteNav.classList.toggle("is-open", willOpen);
+    navToggle.setAttribute("aria-expanded", String(willOpen));
+    navToggle.setAttribute("aria-label", willOpen ? "Menü schließen" : "Menü öffnen");
+    document.body.style.overflow = willOpen ? "hidden" : "";
+  });
+
+  navMobile.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileNav);
+  });
+}

@@ -4779,7 +4779,7 @@ h3 {
 }
 
 .legal-card-cta {
-  color: rgba(212, 170, 96, 0.92);
+  color: rgba(255, 202, 202, 0.94);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -4807,7 +4807,7 @@ h3 {
 }
 
 .legal-card-branding span {
-  color: rgba(230, 210, 175, 0.82);
+  color: rgba(255, 210, 210, 0.82);
   font-size: 0.54rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -4819,17 +4819,17 @@ h3 {
   overflow: hidden;
   border-radius: 22px;
   background:
-    linear-gradient(90deg, rgba(26, 21, 18, 0.82), rgba(26, 21, 18, 0.18)),
+    linear-gradient(90deg, rgba(31, 12, 16, 0.84), rgba(97, 20, 33, 0.16)),
     url("/rechtsanwalt-preview/images/section/hero-poster.jpg") center/cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(212, 170, 96, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(185, 28, 28, 0.24);
 }
 
 .legal-card-stage::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 82% 24%, rgba(212, 170, 96, 0.24), transparent 18%),
-    linear-gradient(180deg, transparent 42%, rgba(26, 21, 18, 0.66));
+    radial-gradient(circle at 82% 24%, rgba(185, 28, 28, 0.3), transparent 18%),
+    linear-gradient(180deg, transparent 42%, rgba(31, 12, 16, 0.7));
   content: "";
 }
 
@@ -4852,8 +4852,8 @@ h3 {
   min-height: 22px;
   padding: 0 9px;
   border-radius: 999px;
-  background: rgba(243, 225, 191, 0.9);
-  color: #4b3527;
+  background: rgba(255, 225, 225, 0.9);
+  color: #7f1d2d;
   font-size: 0.46rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -4878,12 +4878,12 @@ h3 {
   height: 62px;
   border-radius: 16px;
   background:
-    linear-gradient(135deg, rgba(26, 21, 18, 0.84), rgba(122, 80, 46, 0.78)),
+    linear-gradient(135deg, rgba(56, 12, 18, 0.88), rgba(153, 27, 27, 0.8)),
     url("/rechtsanwalt-preview/images/section/trust-handshake.jpg") center/cover no-repeat;
   color: #fff8ec;
   box-shadow:
     inset 0 0 0 1px rgba(255, 248, 236, 0.24),
-    0 12px 26px rgba(14, 11, 10, 0.28);
+    0 12px 26px rgba(31, 12, 16, 0.32);
 }
 
 .legal-card-accent span {
@@ -4913,7 +4913,7 @@ h3 {
 }
 
 .legal-card-copy span {
-  color: rgba(230, 210, 175, 0.82);
+  color: rgba(255, 210, 210, 0.82);
   font-size: 0.62rem;
   line-height: 1.35;
 }
@@ -5938,10 +5938,10 @@ h3 {
 
 .showcase-card.legal .showcase-preview {
   background:
-    radial-gradient(circle at 82% 20%, rgba(212, 170, 96, 0.2), transparent 18%),
-    radial-gradient(circle at 16% 82%, rgba(122, 80, 46, 0.18), transparent 20%),
-    linear-gradient(160deg, #17110f 0%, #4b3527 48%, #d4aa60 100%);
-  color: #fff8ec;
+    radial-gradient(circle at 82% 20%, rgba(248, 113, 113, 0.22), transparent 18%),
+    radial-gradient(circle at 16% 82%, rgba(127, 29, 45, 0.22), transparent 20%),
+    linear-gradient(160deg, #1f0c10 0%, #7f1d2d 48%, #ef4444 100%);
+  color: #fff7f1;
 }
 
 .showcase-card.skincare .showcase-preview {

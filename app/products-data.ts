@@ -26,6 +26,7 @@ export type ProductItem = {
     | "medical"
     | "hospital"
     | "hair"
+    | "legal"
     | "salt"
     | "footcare"
     | "sinja-nails"
@@ -373,6 +374,21 @@ const productItems: ProductItem[] = [
     previewUrl: "/friseur-preview/index.html",
   },
   {
+    slug: "brandt-roth-rechtsanwaelte",
+    type: "Rechtsanwalt Website",
+    title: "Brandt & Roth Rechtsanwälte",
+    detail: "Seriöse Kanzlei-Website für Rechtsgebiete, Team, Erstberatung und Kontakt",
+    variant: "legal",
+    category: "Webseiten",
+    intro: "Rechtsanwalt-Website mit starkem Hero, Kanzleiprofil, Rechtsgebieten, Team und Kontaktführung.",
+    highlights: [
+      "Premium-Auftritt für Kanzlei, Expertise und direkte Erstberatungs-Anfrage",
+      "Klare Bereiche für Rechtsgebiete, Team, Mandantenstimmen, Kontakt und Standort",
+      "Geeignet für Rechtsanwälte, Kanzleien, Notare und beratende Dienstleister",
+    ],
+    previewUrl: "/rechtsanwalt-preview/index.html",
+  },
+  {
     slug: "simpleskin-test",
     type: "Kosmetik Website",
     title: "Liora Hautatelier",
@@ -417,6 +433,7 @@ const preferredWebsiteOrder = [
   "autohaus-falkenstein",
   "fussoase-eppendorf",
   "haarwerk-studio",
+  "brandt-roth-rechtsanwaelte",
   "simpleskin-test",
   "meisterhand-handwerksservice",
 ];

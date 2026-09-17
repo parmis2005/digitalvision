@@ -23,6 +23,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isThermal = product.slug === "vulkaneifeltherme";
   const isHospital = product.slug === "st-elisabeth-klinikum";
   const isHair = product.slug === "haarwerk-studio";
+  const isLegal = product.slug === "brandt-roth-rechtsanwaelte";
   const isSalt = product.slug === "salzgrotte-aura";
   const isFootcare = product.slug === "fussoase-eppendorf";
   const isSinjaNails = product.slug === "nagelstudio-sinja";
@@ -691,6 +692,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="hair-card-copy">
               <h3>Haarwerk Studio</h3>
               <span>Schnitt · Coloration · Galerie · Termine</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isLegal) {
+    if (size === "card") {
+      return (
+        <div className="legal-preview-card-view">
+          <div className="legal-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="legal-card-cta">Erstberatung</span>
+          </div>
+          <div className="legal-card-shell">
+            <div className="legal-card-branding">
+              <p>Brandt & Roth</p>
+              <span>Rechtsanwälte · Düsseldorf</span>
+            </div>
+            <div className="legal-card-stage">
+              <div className="legal-card-overlay">
+                <span className="legal-card-kicker">Kanzlei seit 1994</span>
+                <strong>Ihr Recht verdient eine klare Verteidigung.</strong>
+              </div>
+              <div className="legal-card-accent">
+                <span>6</span>
+                <small>Rechtsgebiete</small>
+              </div>
+            </div>
+            <div className="legal-card-copy">
+              <h3>Brandt & Roth Rechtsanwälte</h3>
+              <span>Rechtsgebiete · Team · Beratung · Kontakt</span>
             </div>
           </div>
         </div>

@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://voltara-elektro.de/sitemap.xml

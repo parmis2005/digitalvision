@@ -21,6 +21,7 @@ export type ProductItem = {
     | "wellness"
     | "rose"
     | "riding"
+    | "electrician"
     | "thermal"
     | "medical"
     | "hospital"
@@ -205,6 +206,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Reitschulen, Pferdepensionen, Reitvereine und ländliche Erlebnisangebote",
     ],
     previewUrl: "/reitschule-preview/index.html",
+  },
+  {
+    slug: "voltara-elektrotechnik",
+    type: "Elektriker Website",
+    title: "Voltara Elektrotechnik",
+    detail: "Moderne Elektriker-Website für Elektroinstallation, Smart Home, E-Check und Anfragen",
+    variant: "electrician",
+    category: "Webseiten",
+    intro: "Elektriker-Website mit Video-Hero, Leistungsbereichen, Preisen, Referenzen und Kontaktfokus.",
+    highlights: [
+      "Starker Hero-Bereich für Meisterbetrieb, Notdienst und direkte Termin-Anfrage",
+      "Klare Bereiche für Elektroinstallation, Smart Home, Beleuchtung, E-Check, Wallbox und Photovoltaik",
+      "Geeignet für Elektriker, Elektrobetriebe, Gebäudetechnik-Firmen und regionale Handwerksbetriebe",
+    ],
+    previewUrl: "/elektriker-preview/index.html",
   },
   {
     slug: "arztpraxis-weber",

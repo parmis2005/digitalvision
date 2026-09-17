@@ -18,6 +18,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isWellness = product.slug === "serenity-studio";
   const isRose = product.slug === "kosmetik-atelier-rosenblick";
   const isRiding = product.slug === "reitschule-sonnenhof";
+  const isElectrician = product.slug === "voltara-elektrotechnik";
   const isMedical = product.slug === "arztpraxis-weber";
   const isThermal = product.slug === "vulkaneifeltherme";
   const isHospital = product.slug === "st-elisabeth-klinikum";
@@ -511,6 +512,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="riding-card-copy">
               <h3>Reitschule Sonnenhof</h3>
               <span>Kurse · Pension · Trainer · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isElectrician) {
+    if (size === "card") {
+      return (
+        <div className="electrician-preview-card-view">
+          <div className="electrician-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="electrician-card-cta">Termin anfragen</span>
+          </div>
+          <div className="electrician-card-shell">
+            <div className="electrician-card-branding">
+              <p>Voltara Elektrotechnik</p>
+              <span>Installation · Smart Home · Notdienst</span>
+            </div>
+            <div className="electrician-card-stage">
+              <div className="electrician-card-overlay">
+                <span className="electrician-card-kicker">Meisterbetrieb</span>
+                <strong>Sichere Elektrotechnik für Zuhause und Gewerbe.</strong>
+              </div>
+              <div className="electrician-card-accent">
+                <span>24/7</span>
+                <small>Notdienst</small>
+              </div>
+            </div>
+            <div className="electrician-card-copy">
+              <h3>Voltara Elektrotechnik</h3>
+              <span>Leistungen · Preise · Referenzen · Kontakt</span>
             </div>
           </div>
         </div>

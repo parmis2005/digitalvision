@@ -193,21 +193,6 @@ const productItems: ProductItem[] = [
     previewUrl: "/kosmetik-rose-preview/index.html",
   },
   {
-    slug: "reitschule-sonnenhof",
-    type: "Reitschule Website",
-    title: "Reitschule Sonnenhof",
-    detail: "Warme Reitschule-Website für Kurse, Pferdepension, Trainerteam und Probestunden",
-    variant: "riding",
-    category: "Webseiten",
-    intro: "Reitschule-Website mit Video-Hero, Kursangeboten, Galerie, Trainerteam und Kontaktfokus.",
-    highlights: [
-      "Atmosphärischer Hero-Bereich mit Pferdevideos, Kennzahlen und Probestunden-Fokus",
-      "Klare Bereiche für Kurse, Pferdepension, Trainerteam, Galerie, Bewertungen und Standort",
-      "Geeignet für Reitschulen, Pferdepensionen, Reitvereine und ländliche Erlebnisangebote",
-    ],
-    previewUrl: "/reitschule-preview/index.html",
-  },
-  {
     slug: "voltara-elektrotechnik",
     type: "Elektriker Website",
     title: "Voltara Elektrotechnik",
@@ -221,6 +206,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Elektriker, Elektrobetriebe, Gebäudetechnik-Firmen und regionale Handwerksbetriebe",
     ],
     previewUrl: "/elektriker-preview/index.html",
+  },
+  {
+    slug: "reitschule-sonnenhof",
+    type: "Reitschule Website",
+    title: "Reitschule Sonnenhof",
+    detail: "Warme Reitschule-Website für Kurse, Pferdepension, Trainerteam und Probestunden",
+    variant: "riding",
+    category: "Webseiten",
+    intro: "Reitschule-Website mit Video-Hero, Kursangeboten, Galerie, Trainerteam und Kontaktfokus.",
+    highlights: [
+      "Atmosphärischer Hero-Bereich mit Pferdevideos, Kennzahlen und Probestunden-Fokus",
+      "Klare Bereiche für Kurse, Pferdepension, Trainerteam, Galerie, Bewertungen und Standort",
+      "Geeignet für Reitschulen, Pferdepensionen, Reitvereine und ländliche Erlebnisangebote",
+    ],
+    previewUrl: "/reitschule-preview/index.html",
   },
   {
     slug: "arztpraxis-weber",

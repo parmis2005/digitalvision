@@ -7,3 +7,11 @@ html[data-preview-passive="true"] [role="button"],
 html[data-preview-passive="true"] [tabindex] {
   cursor: pointer !important;
 }
+
+/* The static preview can load before Framer Motion hydrates. In that state
+   exported sections keep their initial inline opacity/transform and look absent. */
+[style*="opacity:0"],
+[style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

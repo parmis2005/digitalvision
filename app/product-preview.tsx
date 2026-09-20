@@ -222,6 +222,12 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
               <span>Jahreswagen · Gebrauchtwagen</span>
             </div>
             <div className="gs-auto-card-stage">
+              <img
+                className="gs-auto-card-image"
+                src="/autohaus-preview/assets/cars/bmw-5-series-touring.png"
+                alt=""
+                aria-hidden="true"
+              />
               <div className="gs-auto-card-overlay">
                 <span className="gs-auto-card-kicker">Autohaus Krefeld</span>
                 <strong>Ihr Auto wartet auf Sie.</strong>

@@ -8,6 +8,7 @@ const previewPrefixes = [
   "/coffeeshop-preview",
   "/friseur-preview",
   "/fusspflege-preview",
+  "/gs-automotive-preview",
   "/happynails-preview",
   "/krankenhaus-preview",
   "/luxushotel-preview",
@@ -59,6 +60,10 @@ function getPreviewHtmlPath(pathname: string) {
     /^\/velora-fashion-preview\/site\/produkte\/[^/]+$/.test(normalizedPathname)
   ) {
     return "/velora-fashion-preview/site/produkte.html";
+  }
+
+  if (previewPrefix === "/gs-automotive-preview") {
+    return `${previewPrefix}/index.html`;
   }
 
   return `${normalizedPathname.replace(/\/$/, "")}.html`;

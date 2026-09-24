@@ -1,3 +1,6 @@
+import type { Locale } from "../lib/i18n/config";
+import { productTranslationsEn } from "./products-data.en";
+
 export type ProductItem = {
   slug: string;
   type: string;
@@ -448,3 +451,22 @@ export const products: ProductItem[] = [
 ];
 
 export const repeatedProducts = [...products, ...products];
+
+export function localizeProduct(product: ProductItem, locale: Locale): ProductItem {
+  if (locale === "de") {
+    return product;
+  }
+
+  const translation = productTranslationsEn[product.slug];
+
+  return translation ? { ...product, ...translation } : product;
+}
+
+export function getProducts(locale: Locale = "de") {
+  return products.map((product) => localizeProduct(product, locale));
+}
+
+export function getRepeatedProducts(locale: Locale = "de") {
+  const localized = getProducts(locale);
+  return [...localized, ...localized];
+}

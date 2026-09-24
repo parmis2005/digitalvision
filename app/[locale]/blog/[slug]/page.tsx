@@ -3,29 +3,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
-import { AmbientScene } from "../../ambient-scene";
-import { blogSerif } from "../../blog-font";
-import { SiteHeader } from "../../site-header";
+import {
+  getDictionary,
+  intlLocale,
+  localePath,
+  pageAlternates,
+  resolveLocale,
+} from "../../../../lib/i18n";
+import { AmbientScene } from "../../../ambient-scene";
+import { blogSerif } from "../../../blog-font";
+import { SiteHeader } from "../../../site-header";
 import {
   type BlogPost,
   blogPosts,
   getBlogPost,
   getRelatedPosts,
-} from "../../blog-data";
+} from "../../../blog-data";
 
 const baseUrl = "https://www.digitalvision.site";
 
 type PageProps = {
   params: Promise<{
+    locale: string;
     slug: string;
   }>;
 };
-
-const dateFormatter = new Intl.DateTimeFormat("de-DE", {
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-});
 
 function getSectionId(index: number) {
   return `abschnitt-${index + 1}`;
@@ -62,25 +64,24 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const post = getBlogPost(slug, locale);
 
   if (!post) {
     return {};
   }
 
-  const url = `/blog/${post.slug}`;
+  const path = `/blog/${post.slug}`;
 
   return {
     title: post.title,
     description: post.description,
-    alternates: {
-      canonical: url,
-    },
+    alternates: pageAlternates(locale, path),
     openGraph: {
       title: post.title,
       description: post.description,
-      url,
+      url: localePath(locale, path),
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updatedAt ?? post.date,
@@ -101,19 +102,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const t = getDictionary(locale).blog;
+  const post = getBlogPost(slug, locale);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(post);
+  const dateFormatter = new Intl.DateTimeFormat(intlLocale[locale], {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  const relatedPosts = getRelatedPosts(post, locale);
   const titleLines = getBlogTitleLines(post);
   const titleClassName = getBlogTitleClassName(titleLines.firstLine);
   const articleBody = post.sections
     .flatMap((section) => [section.heading, ...section.body, ...(section.bullets ?? [])])
     .join(" ");
+  const articleUrl = `${baseUrl}${localePath(locale, `/blog/${post.slug}`)}`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -122,6 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     description: post.description,
     datePublished: post.date,
     dateModified: post.updatedAt ?? post.date,
+    inLanguage: locale,
     author: {
       "@type": "Organization",
       name: "Digital Vision",
@@ -133,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       url: baseUrl,
     },
     image: `${baseUrl}${post.image}`,
-    mainEntityOfPage: `${baseUrl}/blog/${post.slug}`,
+    mainEntityOfPage: articleUrl,
     keywords: post.focusKeyword,
     articleSection: post.category,
     articleBody,
@@ -163,12 +173,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <SiteHeader />
+      <SiteHeader locale={locale} />
 
       <article className="blog-article-shell">
-        <Link className="blog-back-link" href="/blog">
+        <Link className="blog-back-link" href={localePath(locale, "/blog")}>
           <ArrowLeft size={16} aria-hidden="true" />
-          Zurück zum Blog
+          {t.article.backToBlog}
         </Link>
 
         <header className="blog-article-hero">
@@ -184,7 +194,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <Clock size={15} aria-hidden="true" />
               {post.readingTime}
             </span>
-            <span>Thema: {post.focusKeyword}</span>
+            <span>
+              {t.article.topic}: {post.focusKeyword}
+            </span>
           </div>
         </header>
 
@@ -200,9 +212,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         </figure>
 
         <div className="blog-article-layout">
-          <aside className="blog-article-sidebar" aria-label="Artikelübersicht">
+          <aside className="blog-article-sidebar" aria-label={t.article.sidebarAria}>
             <div className="blog-sidebar-card">
-              <span className="blog-sidebar-label">In diesem Artikel</span>
+              <span className="blog-sidebar-label">{t.article.inThisArticle}</span>
               <nav>
                 {post.sections.map((section, index) => (
                   <a href={`#${getSectionId(index)}`} key={section.heading}>
@@ -212,19 +224,19 @@ export default async function BlogPostPage({ params }: PageProps) {
               </nav>
             </div>
             <div className="blog-sidebar-card blog-sidebar-cta">
-              <span className="blog-sidebar-label">Digital Vision</span>
-              <strong>Website oder System geplant?</strong>
-              <p>Wir sortieren Struktur, Inhalte und Funktionen vor der Umsetzung.</p>
-              <Link className="light-cta" href="/#kontakt">
-                Projekt anfragen
+              <span className="blog-sidebar-label">{t.article.sidebarBrand}</span>
+              <strong>{t.article.sidebarTitle}</strong>
+              <p>{t.article.sidebarText}</p>
+              <Link className="light-cta" href={localePath(locale, "/#kontakt")}>
+                {t.article.sidebarCta}
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
           </aside>
 
           <div className="blog-article-main">
-            <section className="blog-takeaways" aria-label="Das Wichtigste">
-              <h2>Das Wichtigste kurz gesagt</h2>
+            <section className="blog-takeaways" aria-label={t.article.takeawaysAria}>
+              <h2>{t.article.takeawaysTitle}</h2>
               <div className="blog-takeaway-grid">
                 {post.takeaways.map((takeaway) => (
                   <div className="blog-takeaway" key={takeaway}>
@@ -260,8 +272,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
 
             <section className="blog-faq-section">
-              <p className="eyebrow">FAQ</p>
-              <h2>Häufige Fragen</h2>
+              <p className="eyebrow">{t.article.faqEyebrow}</p>
+              <h2>{t.article.faqTitle}</h2>
               <div className="blog-faq-list">
                 {post.faq.map((entry) => (
                   <div className="blog-faq-item" key={entry.question}>
@@ -277,14 +289,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <section className="blog-section blog-related-section">
         <div className="section-heading">
-          <p className="eyebrow">Weiterlesen</p>
-          <h2>Passende Artikel für dein Projekt.</h2>
+          <p className="eyebrow">{t.article.relatedEyebrow}</p>
+          <h2>{t.article.relatedTitle}</h2>
         </div>
         <div className="blog-related-list">
           {relatedPosts.map((relatedPost) => (
             <Link
               className="blog-list-card blog-related-card"
-              href={`/blog/${relatedPost.slug}`}
+              href={localePath(locale, `/blog/${relatedPost.slug}`)}
               key={relatedPost.slug}
             >
               <span className="blog-list-visual">
@@ -309,7 +321,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="blog-list-title">{relatedPost.title}</span>
                 <span className="blog-list-excerpt">{relatedPost.excerpt}</span>
                 <span className="blog-card-link">
-                  Artikel lesen
+                  {t.article.readArticle}
                   <ArrowRight size={17} aria-hidden="true" />
                 </span>
               </span>

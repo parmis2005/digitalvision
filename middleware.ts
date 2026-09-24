@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { defaultLocale, isLocale, type Locale } from "./lib/i18n/config";
 
 const previewPrefixes = [
   "/arztpraxis-preview",
@@ -69,11 +70,63 @@ function getPreviewHtmlPath(pathname: string) {
   return `${normalizedPathname.replace(/\/$/, "")}.html`;
 }
 
+const localeSkipPattern = /^\/(?:api|_next)(?:\/|$)/;
+
+function hasFileExtension(pathname: string) {
+  const lastSegment = pathname.split("/").pop() ?? "";
+  return /\.[a-z0-9]+$/i.test(lastSegment);
+}
+
+function withLocaleHeader(request: NextRequest, locale: Locale, rewriteTo?: URL) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-locale", locale);
+
+  const init = { request: { headers: requestHeaders } };
+
+  return rewriteTo ? NextResponse.rewrite(rewriteTo, init) : NextResponse.next(init);
+}
+
+function handleLocale(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (localeSkipPattern.test(pathname) || hasFileExtension(pathname)) {
+    return NextResponse.next();
+  }
+
+  const segments = pathname.split("/");
+  const firstSegment = segments[1] ?? "";
+
+  if (isLocale(firstSegment)) {
+    const rest = `/${segments.slice(2).join("/")}`;
+
+    if (firstSegment === defaultLocale) {
+      // Locale-scoped metadata routes (e.g. /de/opengraph-image) must stay reachable.
+      if (/^\/(?:opengraph-image|twitter-image)(?:\/|$)/.test(rest)) {
+        return withLocaleHeader(request, firstSegment);
+      }
+
+      // The default locale lives at the root: /de/blog -> /blog
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = rest === "/" ? "/" : rest.replace(/\/$/, "");
+      return NextResponse.redirect(redirectUrl, 308);
+    }
+
+    return withLocaleHeader(request, firstSegment);
+  }
+
+  // Unprefixed paths are the default locale: /blog -> /de/blog (internal rewrite)
+  const rewriteUrl = request.nextUrl.clone();
+  const normalizedPathname = pathname === "/" ? "" : pathname.replace(/\/$/, "");
+  rewriteUrl.pathname = `/${defaultLocale}${normalizedPathname}`;
+
+  return withLocaleHeader(request, defaultLocale, rewriteUrl);
+}
+
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
   if (!isPreviewPath(pathname)) {
-    return NextResponse.next();
+    return handleLocale(request);
   }
 
   if (pathname.endsWith("/index.html") || pathname.includes("/_next/static/")) {

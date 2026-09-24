@@ -1,3 +1,6 @@
+import type { Locale } from "../lib/i18n/config";
+import { blogPostsEn } from "./blog-data.en";
+
 export type BlogSection = {
   heading: string;
   body: string[];
@@ -2572,12 +2575,16 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+export function getBlogPosts(locale: Locale = "de") {
+  return locale === "en" ? blogPostsEn : blogPosts;
 }
 
-export function getRelatedPosts(post: BlogPost, limit = 3) {
-  return blogPosts
+export function getBlogPost(slug: string, locale: Locale = "de") {
+  return getBlogPosts(locale).find((post) => post.slug === slug);
+}
+
+export function getRelatedPosts(post: BlogPost, locale: Locale = "de", limit = 3) {
+  return getBlogPosts(locale)
     .filter((entry) => entry.slug !== post.slug)
     .sort((a, b) => {
       if (a.category === post.category && b.category !== post.category) {

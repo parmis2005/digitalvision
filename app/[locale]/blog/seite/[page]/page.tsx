@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getDictionary, localePath, pageAlternates, resolveLocale } from "../../../../../lib/i18n";
 import {
   getBlogPageCount,
   getBlogPageNumbers,
   getBlogPagePath,
   isValidBlogPage,
-} from "../../../blog-pagination";
+} from "../../../../blog-pagination";
 import { BlogPageContent } from "../../blog-page-content";
 
 type PageProps = {
   params: Promise<{
+    locale: string;
     page: string;
   }>;
 };
-
-const title = "Blog: Websites, Systeme & digitale Auftritte";
-const description =
-  "Digital Vision Blog mit praxisnahen Artikeln zu Websites, Online-Shops, Branchenauftritten, digitalen Abläufen und Systemen.";
 
 function parsePage(value: string) {
   const page = Number(value);
@@ -24,7 +22,7 @@ function parsePage(value: string) {
 }
 
 export function generateStaticParams() {
-  return getBlogPageNumbers()
+  return getBlogPageNumbers("de")
     .filter((page) => page > 1)
     .map((page) => ({
       page: String(page),
@@ -32,44 +30,45 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { page } = await params;
+  const { locale: rawLocale, page } = await params;
+  const locale = resolveLocale(rawLocale);
+  const t = getDictionary(locale).blog;
   const currentPage = parsePage(page);
 
-  if (!currentPage || currentPage < 2 || !isValidBlogPage(currentPage)) {
+  if (!currentPage || currentPage < 2 || !isValidBlogPage(currentPage, locale)) {
     return {};
   }
 
-  const pageTitle = `${title} - Seite ${currentPage}`;
-  const url = getBlogPagePath(currentPage);
+  const pageTitle = `${t.metaTitle} - ${t.pageSuffix} ${currentPage}`;
+  const path = getBlogPagePath(currentPage);
 
   return {
     title: pageTitle,
-    description,
-    alternates: {
-      canonical: url,
-    },
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, path),
     openGraph: {
       title: pageTitle,
-      description,
-      url,
+      description: t.metaDescription,
+      url: localePath(locale, path),
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
-      description,
+      description: t.metaDescription,
     },
   };
 }
 
 export default async function BlogPaginatedPage({ params }: PageProps) {
-  const { page } = await params;
+  const { locale: rawLocale, page } = await params;
+  const locale = resolveLocale(rawLocale);
   const currentPage = parsePage(page);
-  const pageCount = getBlogPageCount();
+  const pageCount = getBlogPageCount(locale);
 
   if (!currentPage || currentPage < 2 || currentPage > pageCount) {
     notFound();
   }
 
-  return <BlogPageContent currentPage={currentPage} />;
+  return <BlogPageContent locale={locale} currentPage={currentPage} />;
 }

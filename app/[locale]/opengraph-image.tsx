@@ -1,10 +1,18 @@
 import { ImageResponse } from "next/og";
+import { getDictionary, resolveLocale } from "../../lib/i18n";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Digital Vision – Webseiten, SEO und Verwaltungssysteme";
+export const alt = "Digital Vision";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = getDictionary(resolveLocale(locale)).meta;
+
   return new ImageResponse(
     (
       <div
@@ -98,7 +106,7 @@ export default function OpengraphImage() {
             fontWeight: 500,
           }}
         >
-          Webseiten · SEO · Verwaltungssysteme
+          {t.ogImageTagline}
         </div>
 
         <div

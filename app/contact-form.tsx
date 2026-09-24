@@ -1,222 +1,49 @@
 "use client";
 
-import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
   CalendarDays,
-  CircleHelp,
   Check,
   ChevronLeft,
   ChevronRight,
+  Instagram,
   LayoutDashboard,
+  Mail,
   MonitorSmartphone,
-  Plus,
+  Phone,
   Search,
 } from "lucide-react";
+import { intlLocale, type Locale } from "../lib/i18n/config";
+import type { Dictionary } from "../lib/i18n/de";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
-type FormStep = "topic" | "services" | "calculator" | "booking" | "confirmation";
+type FormStep = "topic" | "services" | "booking" | "confirmation";
 
-const projectTopics = [
-  {
-    key: "SEO",
-    title: "SEO",
-    text: "Bessere Rankings & mehr Traffic",
-    icon: Search,
-  },
-  {
-    key: "Webseite",
-    title: "Webseite",
-    text: "Neue Seite oder Relaunch",
-    icon: MonitorSmartphone,
-  },
-  {
-    key: "Verwaltungssystem",
-    title: "Verwaltungssystem",
-    text: "Individuelle Lösung",
-    icon: LayoutDashboard,
-  },
-] as const;
+type ContactFormProps = {
+  locale: Locale;
+  copy: Dictionary["contactForm"];
+  privacyHref: string;
+};
 
-const projectStepTwoConfigs = {
-  SEO: {
-    label: "Deine Hauptziele",
-    helper: "(Mehrfachauswahl möglich)",
-    options: [
-      {
-        key: "Mehr Traffic",
-        title: "Mehr Traffic",
-        text: "Mehr qualifizierte Besucher über Google",
-      },
-      {
-        key: "Bessere Rankings",
-        title: "Bessere Rankings",
-        text: "Wichtige Suchbegriffe weiter nach vorne bringen",
-      },
-      {
-        key: "Mehr Leads",
-        title: "Mehr Leads",
-        text: "Mehr Anfragen und Kontaktaufnahmen erzeugen",
-      },
-      {
-        key: "Lokale Sichtbarkeit",
-        title: "Lokale Sichtbarkeit",
-        text: "In deiner Region besser gefunden werden",
-      },
-    ],
-  },
-  Webseite: {
-    label: "Ich interessiere mich für:",
-    options: [
-      {
-        key: "Neue Webseite",
-        title: "Neue Webseite",
-        text: "Kompletter Neuaufbau für dein Unternehmen",
-      },
-      {
-        key: "Relaunch",
-        title: "Relaunch",
-        text: "Bestehende Webseite modernisieren",
-      },
-      {
-        key: "Landingpage",
-        title: "Landingpage",
-        text: "Fokussierte Seite für Kampagnen und Anfragen",
-      },
-      {
-        key: "Unternehmenswebseite",
-        title: "Unternehmenswebseite",
-        text: "Klare Struktur für Leistungen und Vertrauen",
-      },
-    ],
-  },
-  Verwaltungssystem: {
-    label: "Welche Art von Verwaltungssystem suchst du?",
-    helper: "(Mehrfachauswahl möglich, z. B. CRM, Lagerverwaltung oder Projektmanagement)",
-    options: [
-      {
-        key: "Kundenverwaltung / CRM",
-        title: "Kundenverwaltung / CRM",
-        text: "Kontakte, Unternehmen und Vorgänge zentral verwalten",
-      },
-      {
-        key: "Mitarbeiterverwaltung",
-        title: "Mitarbeiterverwaltung",
-        text: "Teams, Rollen und interne Abläufe strukturiert organisieren",
-      },
-      {
-        key: "Lagerverwaltung",
-        title: "Lagerverwaltung",
-        text: "Bestände, Wareneingänge und Lagerprozesse im Blick behalten",
-      },
-      {
-        key: "Terminverwaltung",
-        title: "Terminverwaltung",
-        text: "Buchungen, Verfügbarkeiten und Kalender zentral steuern",
-      },
-      {
-        key: "Projektmanagement",
-        title: "Projektmanagement",
-        text: "Aufgaben, Zuständigkeiten und Fortschritt zentral bündeln",
-      },
-      {
-        key: "Individuelle Softwarelösung",
-        title: "Individuelle Softwarelösung",
-        text: "Maßgeschneiderte Lösung für deinen konkreten Ablauf",
-      },
-    ],
-  },
-} as const;
+const topicIcons = [Search, MonitorSmartphone, LayoutDashboard];
 
-const projectStatusOptions = [
-  "Ich habe bereits eine Webseite",
-  "Ich plane einen Relaunch",
-  "Ich starte komplett neu",
-  "Ich nutze aktuell ein anderes System",
-] as const;
-
-const projectSatisfactionLabels = [
-  "Gar nicht",
-  "Eher unzufrieden",
-  "Neutral",
-  "Zufrieden",
-  "Sehr zufrieden",
-] as const;
-
-const websiteScopeLabels = [
-  "Klein (1-4 Seiten)",
-  "Mittel (5-10 Seiten)",
-  "Groß (11+ Seiten)",
-] as const;
-
-const seoCompetitionLabels = ["Niedrig", "Mittel", "Hoch"] as const;
-
-const startWindowLabels = ["Sofort", "In 1-3 Monaten", "Flexibel"] as const;
-
-const websitePriceRanges = [
-  { min: 1000, max: 1900 },
-  { min: 2000, max: 3400 },
-  { min: 3600, max: 5000 },
-] as const;
-
-const seoMonthlyPriceRanges = [
-  { min: 200, max: 320 },
-  { min: 260, max: 500 },
-  { min: 320, max: 620 },
-] as const;
-
-const seoCompetitionAdjustments = [
-  { min: 0, max: 0 },
-  { min: 150, max: 300 },
-  { min: 250, max: 500 },
-] as const;
-
-const startWindowAdjustments = [
-  { min: 150, max: 500 },
-  { min: 50, max: 200 },
-  { min: 0, max: 0 },
-] as const;
-
-const seoMonthlyCompetitionAdjustments = [
-  { min: 0, max: 0 },
-  { min: 20, max: 60 },
-  { min: 40, max: 120 },
-] as const;
-
-const seoMonthlyStartAdjustments = [
-  { min: 0, max: 0 },
-  { min: 40, max: 80 },
-  { min: 120, max: 260 },
-] as const;
-
+// Stored as-is in the database, so the internal value keeps the German "Uhr" suffix.
 const appointmentTimes = ["11:00 Uhr", "14:00 Uhr", "15:00 Uhr", "16:00 Uhr"] as const;
-const weekdayLabels = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"] as const;
-const appointmentAdvisors = [
-  { name: "Parmis", symbol: "\u2640" },
-  { name: "Sebastian", symbol: "\u2642" },
-] as const;
+const appointmentAdvisors = [{ name: "Parmis", symbol: "♀" }] as const;
 
-const formSteps: FormStep[] = ["topic", "services", "calculator", "booking", "confirmation"];
+const formSteps: FormStep[] = ["topic", "services", "booking"];
 
-export function ContactForm() {
+export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
   const [step, setStep] = useState<FormStep>("topic");
   const [selectedTopic, setSelectedTopic] = useState<string>("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [projectName, setProjectName] = useState("");
-  const [projectStatus, setProjectStatus] =
-    useState<(typeof projectStatusOptions)[number]>("Ich habe bereits eine Webseite");
   const [projectWebsite, setProjectWebsite] = useState("");
-  const [projectSatisfaction, setProjectSatisfaction] = useState(3);
-  const [systemUserCount, setSystemUserCount] = useState("6-15 Nutzer");
-  const [systemMobileUsage, setSystemMobileUsage] = useState("Responsive Website");
-  const [systemInterfaceEntries, setSystemInterfaceEntries] = useState([""]);
   const [systemDescription, setSystemDescription] = useState("");
-  const [websiteScope, setWebsiteScope] = useState(1);
-  const [seoCompetition, setSeoCompetition] = useState(1);
-  const [startWindow, setStartWindow] = useState(1);
   const [displayedMonth, setDisplayedMonth] = useState(startOfMonth(new Date()));
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState<string>("");
@@ -227,54 +54,28 @@ export function ContactForm() {
   const [contactEmail, setContactEmail] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
-  const isSeoCalculator = selectedTopic === "SEO";
-  const estimatedMinPrice = isSeoCalculator
-    ? seoMonthlyPriceRanges[websiteScope].min +
-      seoMonthlyCompetitionAdjustments[seoCompetition].min +
-      seoMonthlyStartAdjustments[startWindow].min
-    : websitePriceRanges[websiteScope].min +
-      seoCompetitionAdjustments[seoCompetition].min +
-      startWindowAdjustments[startWindow].min;
-  const estimatedMaxPrice = isSeoCalculator
-    ? seoMonthlyPriceRanges[websiteScope].max +
-      seoMonthlyCompetitionAdjustments[seoCompetition].max +
-      seoMonthlyStartAdjustments[startWindow].max
-    : websitePriceRanges[websiteScope].max +
-      seoCompetitionAdjustments[seoCompetition].max +
-      startWindowAdjustments[startWindow].max;
-
-  const formattedEstimate = `${formatPrice(estimatedMinPrice)} - ${formatPrice(estimatedMaxPrice)}`;
-  const selectedStartWindowLabel = isSeoCalculator
-    ? (["3 Monate", "6 Monate", "12 Monate"] as const)[startWindow]
-    : startWindowLabels[startWindow];
+  const displayLocale = intlLocale[locale];
   const currentMonth = startOfMonth(new Date());
   const canGoToPreviousMonth = displayedMonth.getTime() > currentMonth.getTime();
   const monthKey = formatDateKey(displayedMonth).slice(0, 7);
-  const selectedDateLabel = selectedDate
-    ? new Intl.DateTimeFormat("de-DE", {
-        weekday: "long",
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      }).format(new Date(`${selectedDate}T12:00:00`))
-    : "";
+  const selectedDateLabel = selectedDate ? formatLongDate(selectedDate, displayLocale) : "";
+  const internalDateLabel = selectedDate ? formatLongDate(selectedDate, "de-DE") : "";
   const visibleCalendarDays = useMemo(
     () => buildCalendarDays(displayedMonth, bookedAppointments),
     [bookedAppointments, displayedMonth],
   );
   const bookedTimesForSelectedDate = selectedDate ? bookedAppointments[selectedDate] || [] : [];
-  const currentStepIndex = formSteps.indexOf(step);
+  const currentStepIndex = step === "confirmation" ? formSteps.length : formSteps.indexOf(step);
   const selectedTopicConfig =
-    selectedTopic && selectedTopic in projectStepTwoConfigs
-      ? projectStepTwoConfigs[selectedTopic as keyof typeof projectStepTwoConfigs]
-      : null;
-  const showProjectDetails = selectedTopic === "Webseite" || selectedTopic === "Verwaltungssystem";
+    selectedTopic && selectedTopic in copy.stepTwo ? copy.stepTwo[selectedTopic] : null;
   const showSystemDetails = selectedTopic === "Verwaltungssystem";
-  const projectLocationLabel = showSystemDetails ? "Bestehende Lösung / Link" : "Webseite";
+  const projectLocationLabel = showSystemDetails
+    ? copy.steps.services.systemLocationLabel
+    : copy.steps.services.websiteLabel;
+  const internalProjectLocationLabel = showSystemDetails ? "Bestehende Lösung / Link" : "Webseite";
   const projectLocationPlaceholder = showSystemDetails
-    ? "https://deine-software.de"
-    : "https://deine-webseite.de";
-  const projectLocationHelper = showSystemDetails ? "(falls vorhanden)" : "(falls vorhanden)";
+    ? copy.steps.services.systemPlaceholder
+    : copy.steps.services.websitePlaceholder;
 
   useEffect(() => {
     let cancelled = false;
@@ -284,7 +85,7 @@ export function ContactForm() {
         const response = await fetch(
           `/api/appointments?month=${monthKey}&advisor=${encodeURIComponent(selectedAdvisor)}`,
           {
-          cache: "no-store",
+            cache: "no-store",
           },
         );
 
@@ -358,12 +159,11 @@ export function ContactForm() {
     formData.set("email", email);
     formData.set("projectType", selectedTopic);
     formData.set("services", selectedServices.join(", "));
-    formData.set("websiteScope", websiteScopeLabels[websiteScope]);
-    formData.set("seoCompetition", seoCompetitionLabels[seoCompetition]);
-    formData.set("startWindow", selectedStartWindowLabel);
-    formData.set("priceEstimate", formattedEstimate);
+    formData.set("projectName", projectName.trim());
+    formData.set("projectWebsite", projectWebsite.trim());
+    formData.set("projectDescription", systemDescription.trim());
     formData.set("appointmentAdvisor", selectedAdvisor);
-    formData.set("appointmentDate", selectedDateLabel);
+    formData.set("appointmentDate", internalDateLabel);
     formData.set("appointmentDateIso", appointmentDateIso);
     formData.set("appointmentTime", appointmentTime);
     formData.set(
@@ -371,32 +171,14 @@ export function ContactForm() {
       [
         "Kostenloses Beratungsgespräch gebucht",
         "",
+        `Sprache der Anfrage: ${locale === "en" ? "Englisch" : "Deutsch"}`,
         `Anliegen: ${selectedTopic}`,
         `Leistungen: ${selectedServices.join(", ")}`,
-        showProjectDetails && projectName.trim()
-          ? `Projektname: ${projectName.trim()}`
-          : "",
-        showProjectDetails ? `Aktueller Status: ${projectStatus}` : "",
-        showProjectDetails && projectWebsite.trim()
-          ? `${projectLocationLabel}: ${projectWebsite.trim()}`
-          : "",
-        showProjectDetails
-          ? `Zufriedenheit mit aktueller Lösung: ${projectSatisfactionLabels[projectSatisfaction]}`
-          : "",
-        showSystemDetails ? `Nutzerzahl: ${systemUserCount}` : "",
-        showSystemDetails ? `Mobile Nutzung: ${systemMobileUsage}` : "",
-        showSystemDetails && systemInterfaceEntries.some((entry) => entry.trim())
-          ? `Schnittstellen: ${systemInterfaceEntries.map((entry) => entry.trim()).filter(Boolean).join(", ")}`
-          : "",
-        showSystemDetails && systemDescription.trim()
-          ? `Systembeschreibung: ${systemDescription.trim()}`
-          : "",
-        `Webseiten Umfang: ${websiteScopeLabels[websiteScope]}`,
-        `SEO Wettbewerb: ${seoCompetitionLabels[seoCompetition]}`,
-        `${isSeoCalculator ? "Betreuungszeitraum" : "Gewünschter Start"}: ${selectedStartWindowLabel}`,
-        `${isSeoCalculator ? "Monatlicher Geschätzter Preisrahmen" : "Geschätzter Preisrahmen"}: ${formattedEstimate}`,
+        projectName.trim() ? `Projektname: ${projectName.trim()}` : "",
+        projectWebsite.trim() ? `${internalProjectLocationLabel}: ${projectWebsite.trim()}` : "",
+        systemDescription.trim() ? `Kurzbeschreibung: ${systemDescription.trim()}` : "",
         `Ansprechperson: ${selectedAdvisor}`,
-        `Termin: ${selectedDateLabel}`,
+        `Termin: ${internalDateLabel}`,
         `Uhrzeit: ${appointmentTime}`,
         `Name: ${name}`,
         `Kontakt-E-Mail: ${email}`,
@@ -423,16 +205,8 @@ export function ContactForm() {
       setSelectedTopic("");
       setSelectedServices([]);
       setProjectName("");
-      setProjectStatus("Ich habe bereits eine Webseite");
       setProjectWebsite("");
-      setProjectSatisfaction(3);
-      setSystemUserCount("6-15 Nutzer");
-      setSystemMobileUsage("Responsive Website");
-      setSystemInterfaceEntries([""]);
       setSystemDescription("");
-      setWebsiteScope(1);
-      setSeoCompetition(1);
-      setStartWindow(1);
       setDisplayedMonth(startOfMonth(new Date()));
       setSelectedDate("");
       setSelectedTime("");
@@ -448,14 +222,12 @@ export function ContactForm() {
     if (response.status === 409) {
       setSelectedTime("");
       setState("error");
-      setMessage("Diese Uhrzeit ist gerade schon vergeben. Bitte wähle eine andere.");
+      setMessage(copy.errors.slotTaken);
       return;
     }
 
     setState("error");
-    setMessage(
-      "Die Anfrage konnte noch nicht gesendet werden. Bitte versuche es später erneut.",
-    );
+    setMessage(copy.errors.generic);
   }
 
   function toggleService(topicKey: string) {
@@ -466,35 +238,18 @@ export function ContactForm() {
     );
   }
 
-  function formatPrice(value: number) {
-    return new Intl.NumberFormat("de-DE", {
-      style: "currency",
-      currency: "EUR",
-      maximumFractionDigits: 0,
-    }).format(value);
+  function formatTime(time: string) {
+    return `${time.slice(0, 5)}${copy.timeSuffix}`;
   }
 
-  function updateSystemInterfaceEntry(index: number, value: string) {
-    setSystemInterfaceEntries((current) =>
-      current.map((entry, entryIndex) => (entryIndex === index ? value : entry)),
-    );
-  }
-
-  function addSystemInterfaceEntry() {
-    setSystemInterfaceEntries((current) => [...current, ""]);
-  }
-
-  function rangeStyle(value: number) {
-    return { "--range-progress": `${(value / 2) * 100}%` } as CSSProperties;
-  }
-
-  const monthLabel = new Intl.DateTimeFormat("de-DE", {
+  const monthLabel = new Intl.DateTimeFormat(displayLocale, {
     month: "long",
     year: "numeric",
   }).format(displayedMonth);
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <div className="contact-form-layout">
+      <form className="contact-form" onSubmit={handleSubmit}>
       <div className="contact-form-steps" aria-hidden="true">
         {formSteps.map((formStep, index) => (
           <span
@@ -511,34 +266,37 @@ export function ContactForm() {
       {step === "topic" ? (
         <div className="contact-step-panel">
           <div className="contact-step-copy">
-            <h3>Hallo! Womit können wir dich unterstützen?</h3>
-            <p>Wähle eine Option, die am besten zu deinem Anliegen passt.</p>
+            <h3>{copy.steps.topic.title}</h3>
+            <p>{copy.steps.topic.text}</p>
           </div>
 
           <div className="contact-topic-list">
-            {projectTopics.map((topic) => (
-              <button
-                type="button"
-                className={
-                  selectedTopic === topic.key
-                    ? "contact-topic-card selected"
-                    : "contact-topic-card"
-                }
-                key={topic.key}
-                onClick={() => {
-                  setSelectedTopic(topic.key);
-                  setSelectedServices([]);
-                  setState("idle");
-                  setMessage("");
-                }}
-              >
-                <topic.icon size={26} aria-hidden="true" />
-                <span className="contact-topic-card-copy">
-                  <strong>{topic.title}</strong>
-                  <span>{topic.text}</span>
-                </span>
-              </button>
-            ))}
+            {copy.topics.map((topic, index) => {
+              const Icon = topicIcons[index] ?? Search;
+              return (
+                <button
+                  type="button"
+                  className={
+                    selectedTopic === topic.key
+                      ? "contact-topic-card selected"
+                      : "contact-topic-card"
+                  }
+                  key={topic.key}
+                  onClick={() => {
+                    setSelectedTopic(topic.key);
+                    setSelectedServices([]);
+                    setState("idle");
+                    setMessage("");
+                  }}
+                >
+                  <Icon size={26} aria-hidden="true" />
+                  <span className="contact-topic-card-copy">
+                    <strong>{topic.title}</strong>
+                    <span>{topic.text}</span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           <div className="contact-step-actions">
@@ -555,7 +313,7 @@ export function ContactForm() {
                 setMessage("");
               }}
             >
-              Weiter
+              {copy.steps.topic.next}
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </div>
@@ -564,16 +322,14 @@ export function ContactForm() {
         <div className="contact-step-panel">
           <div className="contact-service-shell">
             <div className="contact-step-copy contact-service-copy">
-              <h3>Erzähl uns mehr über dein Projekt</h3>
-              <p>Mehr Details helfen uns, dir ein besseres Angebot zu erstellen.</p>
+              <h3>{copy.steps.services.title}</h3>
+              <p>{copy.steps.services.text}</p>
             </div>
 
             <div className="contact-service-section">
               <strong className="contact-service-label">
-                {selectedTopicConfig?.label || "Ich interessiere mich für:"}
-                {selectedTopicConfig && "helper" in selectedTopicConfig ? (
-                  <span>{selectedTopicConfig.helper}</span>
-                ) : null}
+                {selectedTopicConfig?.label || copy.defaultServicesLabel}
+                {selectedTopicConfig?.helper ? <span>{selectedTopicConfig.helper}</span> : null}
               </strong>
               <div className="contact-service-option-list">
                 {(selectedTopicConfig?.options || []).map((service) => (
@@ -601,157 +357,38 @@ export function ContactForm() {
               </div>
             </div>
 
-            {selectedTopic === "Webseite" ? (
-              <div className="contact-project-info-grid">
-                <label className="contact-project-info-field">
-                  Projektname <span>(optional)</span>
-                  <input
-                    type="text"
-                    placeholder="Mein neues Projekt"
-                    value={projectName}
-                    onChange={(event) => setProjectName(event.currentTarget.value)}
-                  />
-                </label>
+            <div className="contact-project-info-grid contact-project-info-grid-compact">
+              <label className="contact-project-info-field">
+                {copy.steps.services.projectName} <span>{copy.steps.services.optional}</span>
+                <input
+                  type="text"
+                  placeholder={copy.steps.services.projectNamePlaceholder}
+                  value={projectName}
+                  onChange={(event) => setProjectName(event.currentTarget.value)}
+                />
+              </label>
 
-                <label className="contact-project-info-field">
-                  Aktueller Status
-                  <select
-                    value={projectStatus}
-                    onChange={(event) =>
-                      setProjectStatus(
-                        event.currentTarget.value as (typeof projectStatusOptions)[number],
-                      )
-                    }
-                  >
-                    {projectStatusOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+              <label className="contact-project-info-field">
+                {projectLocationLabel} <span>{copy.steps.services.ifAvailable}</span>
+                <input
+                  type="url"
+                  inputMode="url"
+                  placeholder={projectLocationPlaceholder}
+                  value={projectWebsite}
+                  onChange={(event) => setProjectWebsite(event.currentTarget.value)}
+                />
+              </label>
 
-                <label className="contact-project-info-field contact-project-info-field-full">
-                  {projectLocationLabel} <span>{projectLocationHelper}</span>
-                  <input
-                    type="url"
-                    inputMode="url"
-                    placeholder={projectLocationPlaceholder}
-                    value={projectWebsite}
-                    onChange={(event) => setProjectWebsite(event.currentTarget.value)}
-                  />
-                </label>
-
-                <div className="contact-calculator-field contact-project-info-field-full">
-                  <div className="contact-calculator-field-head">
-                    <span>Bist du mit deiner aktuellen Lösung zufrieden?</span>
-                    <span>{projectSatisfactionLabels[projectSatisfaction]}</span>
-                  </div>
-                  <div
-                    className="contact-range-shell"
-                    style={{ "--range-progress": `${(projectSatisfaction / 4) * 100}%` } as CSSProperties}
-                  >
-                    <input
-                      className="contact-range"
-                      type="range"
-                      min="0"
-                      max="4"
-                      step="1"
-                      value={projectSatisfaction}
-                      onChange={(event) =>
-                        setProjectSatisfaction(Number(event.currentTarget.value))
-                      }
-                    />
-                  </div>
-                  <div className="contact-range-endpoints" aria-hidden="true">
-                    <span>Gar nicht</span>
-                    <span>Sehr zufrieden</span>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-
-            {showSystemDetails ? (
-              <div className="contact-system-details">
-                <div className="contact-system-details-copy">
-                  <h4>Zusätzliche Angaben zum Verwaltungssystem</h4>
-                  <p>
-                    Diese Angaben helfen uns, den Umfang, die Nutzung und die technische Richtung
-                    besser einzuordnen.
-                  </p>
-                </div>
-
-                <div className="contact-project-info-grid">
-                  <label className="contact-project-info-field">
-                    Wie viele Nutzer sollen mit dem System arbeiten?
-                    <select
-                      value={systemUserCount}
-                      onChange={(event) => setSystemUserCount(event.currentTarget.value)}
-                    >
-                      <option value="1-5 Nutzer">1-5 Nutzer</option>
-                      <option value="6-15 Nutzer">6-15 Nutzer</option>
-                      <option value="16-50 Nutzer">16-50 Nutzer</option>
-                      <option value="51-100 Nutzer">51-100 Nutzer</option>
-                      <option value="100+ Nutzer">100+ Nutzer</option>
-                    </select>
-                  </label>
-
-                  <label className="contact-project-info-field">
-                    Wie soll das System genutzt werden?
-                    <select
-                      value={systemMobileUsage}
-                      onChange={(event) => setSystemMobileUsage(event.currentTarget.value)}
-                    >
-                      <option value="Nur Desktop">Nur Desktop</option>
-                      <option value="Responsive Website">Responsive Website</option>
-                      <option value="Eigene App für Android / iPhone">
-                        Eigene App für Android / iPhone
-                      </option>
-                    </select>
-                  </label>
-
-                  <div className="contact-project-info-field contact-project-info-field-full">
-                    Welche Schnittstellen werden benötigt?
-                    <span>
-                      Zum Beispiel Google Kalender, Outlook, Lexoffice, DATEV oder interne Tools
-                    </span>
-                    <div className="contact-system-interface-list">
-                      {systemInterfaceEntries.map((entry, index) => (
-                        <input
-                          key={`system-interface-${index}`}
-                          type="text"
-                          placeholder={`Schnittstelle ${index + 1}`}
-                          value={entry}
-                          onChange={(event) =>
-                            updateSystemInterfaceEntry(index, event.currentTarget.value)
-                          }
-                        />
-                      ))}
-                    </div>
-                    <div className="contact-system-interface-actions">
-                      <button
-                        type="button"
-                        className="contact-inline-add-button"
-                        onClick={addSystemInterfaceEntry}
-                      >
-                        <Plus size={15} aria-hidden="true" />
-                        Weitere Schnittstelle hinzufügen
-                      </button>
-                    </div>
-                  </div>
-
-                  <label className="contact-project-info-field contact-project-info-field-full">
-                    Beschreibung: Was soll das System tun?
-                    <textarea
-                      rows={4}
-                      placeholder="Zum Beispiel: Kunden verwalten, Termine koordinieren, Dokumente speichern und automatisch Erinnerungen versenden."
-                      value={systemDescription}
-                      onChange={(event) => setSystemDescription(event.currentTarget.value)}
-                    />
-                  </label>
-                </div>
-              </div>
-            ) : null}
+              <label className="contact-project-info-field contact-project-info-field-full">
+                {copy.steps.services.descriptionLabel}
+                <textarea
+                  rows={3}
+                  placeholder={copy.steps.services.descriptionPlaceholder}
+                  value={systemDescription}
+                  onChange={(event) => setSystemDescription(event.currentTarget.value)}
+                />
+              </label>
+            </div>
           </div>
 
           <div className="contact-step-actions details">
@@ -765,7 +402,7 @@ export function ContactForm() {
               }}
             >
               <ArrowLeft size={17} aria-hidden="true" />
-              Zurück
+              {copy.steps.services.back}
             </button>
             <button
               type="button"
@@ -775,118 +412,14 @@ export function ContactForm() {
                 if (selectedServices.length === 0) {
                   return;
                 }
-                setStep("calculator");
+                setStep("booking");
                 setState("idle");
                 setMessage("");
               }}
             >
-              Auswahl bestätigen
+              {copy.steps.services.confirm}
               <ArrowRight size={18} aria-hidden="true" />
             </button>
-          </div>
-        </div>
-      ) : step === "calculator" ? (
-        <div className="contact-step-panel">
-          <div className="contact-calculator-shell">
-            <div className="contact-step-copy contact-calculator-copy">
-              <h3>Projekt Kalkulator</h3>
-              <p>Erhalte eine grobe Einschätzung für dein Projekt</p>
-            </div>
-
-            <div className="contact-calculator">
-              <div className="contact-calculator-field">
-                <div className="contact-calculator-field-head">
-                  <span>Webseiten Umfang</span>
-                  <span>{websiteScopeLabels[websiteScope]}</span>
-                </div>
-                <div className="contact-range-shell" style={rangeStyle(websiteScope)}>
-                  <input
-                    className="contact-range"
-                    type="range"
-                    min="0"
-                    max="2"
-                    step="1"
-                    value={websiteScope}
-                    onChange={(event) => setWebsiteScope(Number(event.currentTarget.value))}
-                  />
-                </div>
-              </div>
-
-              <div className="contact-calculator-field">
-                <div className="contact-calculator-field-head">
-                  <span>SEO Wettbewerb</span>
-                  <span>{seoCompetitionLabels[seoCompetition]}</span>
-                </div>
-                <div className="contact-range-shell" style={rangeStyle(seoCompetition)}>
-                  <input
-                    className="contact-range"
-                    type="range"
-                    min="0"
-                    max="2"
-                    step="1"
-                    value={seoCompetition}
-                    onChange={(event) => setSeoCompetition(Number(event.currentTarget.value))}
-                  />
-                </div>
-              </div>
-
-              <div className="contact-calculator-field">
-                <div className="contact-calculator-field-head">
-                  <span>{isSeoCalculator ? "Betreuungszeitraum" : "Gewünschter Start"}</span>
-                  <span>
-                    {selectedStartWindowLabel}
-                  </span>
-                </div>
-                <div className="contact-range-shell" style={rangeStyle(startWindow)}>
-                  <input
-                    className="contact-range"
-                    type="range"
-                    min="0"
-                    max="2"
-                    step="1"
-                    value={startWindow}
-                    onChange={(event) => setStartWindow(Number(event.currentTarget.value))}
-                  />
-                </div>
-              </div>
-
-              <div className="contact-estimate-card">
-                <span>
-                  {isSeoCalculator
-                    ? "Monatlicher Geschätzter Preisrahmen"
-                    : "Geschätzter Preisrahmen"}
-                </span>
-                <strong>{formattedEstimate}</strong>
-                <p>Unverbindlich & individuell anpassbar</p>
-              </div>
-            </div>
-
-            <div className="contact-step-actions details contact-calculator-actions">
-              <button
-                type="button"
-                className="contact-back-button"
-                onClick={() => {
-                  setStep("services");
-                  setState("idle");
-                  setMessage("");
-                }}
-              >
-                <ArrowLeft size={17} aria-hidden="true" />
-                Zurück
-              </button>
-              <button
-                type="button"
-                className="contact-next-button contact-next-button-full"
-                onClick={() => {
-                  setStep("booking");
-                  setState("idle");
-                  setMessage("");
-                }}
-              >
-                Weiter zur Terminwahl
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </div>
           </div>
         </div>
       ) : step === "booking" ? (
@@ -894,23 +427,18 @@ export function ContactForm() {
           <div className="contact-booking-shell">
             <div className="contact-step-copy contact-booking-copy">
               <h3>
-                <span>Kostenloses</span> Beratungsgespräch
+                <span>{copy.steps.booking.titleHighlight}</span> {copy.steps.booking.title}
               </h3>
-              <p>Buche dir direkt einen passenden Termin.</p>
+              <p>{copy.steps.booking.text}</p>
             </div>
 
             <input name="projectType" type="hidden" value={selectedTopic} />
             <input name="services" type="hidden" value={selectedServices.join(", ")} />
-            <input name="websiteScope" type="hidden" value={websiteScopeLabels[websiteScope]} />
-            <input
-              name="seoCompetition"
-              type="hidden"
-              value={seoCompetitionLabels[seoCompetition]}
-            />
-            <input name="startWindow" type="hidden" value={selectedStartWindowLabel} />
-            <input name="priceEstimate" type="hidden" value={formattedEstimate} />
+            <input name="projectName" type="hidden" value={projectName.trim()} />
+            <input name="projectWebsite" type="hidden" value={projectWebsite.trim()} />
+            <input name="projectDescription" type="hidden" value={systemDescription.trim()} />
             <input name="appointmentAdvisor" type="hidden" value={selectedAdvisor} />
-            <input name="appointmentDate" type="hidden" value={selectedDateLabel} />
+            <input name="appointmentDate" type="hidden" value={internalDateLabel} />
             <input name="appointmentDateIso" type="hidden" value={selectedDate} />
             <input name="appointmentTime" type="hidden" value={selectedTime} />
 
@@ -941,7 +469,7 @@ export function ContactForm() {
                 </div>
 
                 <div className="contact-calendar-weekdays">
-                  {weekdayLabels.map((label) => (
+                  {copy.weekdayLabels.map((label) => (
                     <span key={label}>{label}</span>
                   ))}
                 </div>
@@ -970,7 +498,11 @@ export function ContactForm() {
               </div>
 
               <div className="contact-time-card">
-                <div className="contact-advisor-switch" role="tablist" aria-label="Ansprechperson">
+                <div
+                  className="contact-advisor-switch"
+                  role="tablist"
+                  aria-label={copy.steps.booking.advisorAria}
+                >
                   {appointmentAdvisors.map((advisor) => (
                     <button
                       key={advisor.name}
@@ -995,7 +527,7 @@ export function ContactForm() {
                     </button>
                   ))}
                 </div>
-                <strong>Verfügbare Zeiten</strong>
+                <strong>{copy.steps.booking.availableTimes}</strong>
                 <div className="contact-time-list">
                   {appointmentTimes.map((time) => (
                     <button
@@ -1011,7 +543,9 @@ export function ContactForm() {
                       key={time}
                       onClick={() => setSelectedTime(time)}
                     >
-                      {bookedTimesForSelectedDate.includes(time) ? `${time} · Ausgebucht` : time}
+                      {bookedTimesForSelectedDate.includes(time)
+                        ? `${formatTime(time)} · ${copy.steps.booking.bookedSuffix}`
+                        : formatTime(time)}
                     </button>
                   ))}
                 </div>
@@ -1020,11 +554,11 @@ export function ContactForm() {
             </div>
 
             <label className="contact-booking-field">
-              Dein Name
+              {copy.steps.booking.nameLabel}
               <input
                 name="name"
                 type="text"
-                placeholder="Max Mustermann"
+                placeholder={copy.steps.booking.namePlaceholder}
                 required
                 value={contactName}
                 onChange={(event) => setContactName(event.currentTarget.value)}
@@ -1032,11 +566,11 @@ export function ContactForm() {
             </label>
 
             <label className="contact-booking-field">
-              Deine E-Mail
+              {copy.steps.booking.emailLabel}
               <input
                 name="email"
                 type="email"
-                placeholder="du@firma.de"
+                placeholder={copy.steps.booking.emailPlaceholder}
                 required
                 value={contactEmail}
                 onChange={(event) => setContactEmail(event.currentTarget.value)}
@@ -1052,9 +586,14 @@ export function ContactForm() {
                 onChange={(event) => setPrivacyAccepted(event.currentTarget.checked)}
               />
               <span>
-                Ich akzeptiere die{" "}
-                <a href="/datenschutz" target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()}>
-                  Datenschutzerklärung
+                {copy.steps.booking.consentPrefix}{" "}
+                <a
+                  href={privacyHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {copy.steps.booking.consentLink}
                 </a>
               </span>
             </label>
@@ -1064,13 +603,13 @@ export function ContactForm() {
                 type="button"
                 className="contact-back-button"
                 onClick={() => {
-                  setStep("calculator");
+                  setStep("services");
                   setState("idle");
                   setMessage("");
                 }}
               >
                 <ArrowLeft size={17} aria-hidden="true" />
-                Zurück
+                {copy.steps.booking.back}
               </button>
               <button
                 type="submit"
@@ -1083,7 +622,7 @@ export function ContactForm() {
                   !privacyAccepted
                 }
               >
-                {state === "sending" ? "Termin wird gebucht..." : "Termin buchen"}
+                {state === "sending" ? copy.steps.booking.submitting : copy.steps.booking.submit}
                 <ArrowRight size={18} aria-hidden="true" />
               </button>
             </div>
@@ -1097,29 +636,20 @@ export function ContactForm() {
             </div>
 
             <div className="contact-confirmation-copy">
-              <h3>Danke!</h3>
-              <p>Deine Anfrage ist bei uns eingegangen.</p>
-              <p>
-                Wir haben alle Informationen erhalten und melden uns innerhalb von 24
-                Stunden bei dir zurück.
-              </p>
+              <h3>{copy.steps.confirmation.title}</h3>
+              <p>{copy.steps.confirmation.received}</p>
+              <p>{copy.steps.confirmation.text}</p>
             </div>
 
             <div className="contact-confirmation-next">
-              <strong>Was passiert als Nächstes?</strong>
+              <strong>{copy.steps.confirmation.nextTitle}</strong>
               <ul>
-                <li>
-                  <Check size={16} aria-hidden="true" />
-                  <span>Wir analysieren deine Anfrage</span>
-                </li>
-                <li>
-                  <Check size={16} aria-hidden="true" />
-                  <span>Erstellen ein individuelles Konzept</span>
-                </li>
-                <li>
-                  <Check size={16} aria-hidden="true" />
-                  <span>Alle Details erhältst du per E-Mail</span>
-                </li>
+                {copy.steps.confirmation.nextItems.map((item) => (
+                  <li key={item}>
+                    <Check size={16} aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -1135,7 +665,7 @@ export function ContactForm() {
                 }}
               >
                 <CalendarDays size={18} aria-hidden="true" />
-                Zurück zur Startseite
+                {copy.steps.confirmation.home}
               </button>
             </div>
           </div>
@@ -1147,8 +677,78 @@ export function ContactForm() {
           {message}
         </p>
       )}
-    </form>
+      </form>
+
+      <aside className="contact-info-panel" aria-label={locale === "en" ? "Contact details" : "Kontaktdaten"}>
+        <a className="contact-info-card" href="mailto:info@digitalvision.site">
+          <span className="contact-info-icon" aria-hidden="true">
+            <Mail size={22} />
+          </span>
+          <span>
+            <strong>{locale === "en" ? "E-mail" : "E-Mail"}</strong>
+            <span>info@digitalvision.site</span>
+          </span>
+        </a>
+
+        <a className="contact-info-card" href="tel:+491788324883">
+          <span className="contact-info-icon" aria-hidden="true">
+            <Phone size={22} />
+          </span>
+          <span>
+            <strong>{locale === "en" ? "Phone" : "Telefon"}</strong>
+            <span>+49 178 8324883</span>
+          </span>
+        </a>
+
+        <a
+          className="contact-info-card"
+          href="https://www.instagram.com/digitalvision.de/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="contact-info-icon" aria-hidden="true">
+            <Instagram size={22} />
+          </span>
+          <span>
+            <strong>Instagram</strong>
+            <span>@digitalvision.de</span>
+          </span>
+        </a>
+
+        <div className="contact-info-card">
+          <span className="contact-team-avatar" aria-hidden="true">
+            P
+          </span>
+          <span>
+            <strong>{locale === "en" ? "Your contact" : "Dein Kontakt"}</strong>
+            <span>
+              {locale === "en"
+                ? "Parmis answers personally."
+                : "Parmis antwortet dir persönlich."}
+            </span>
+          </span>
+        </div>
+
+        <div className="contact-response-card">
+          <strong>{locale === "en" ? "Response time" : "Antwortzeit"}</strong>
+          <p>
+            {locale === "en"
+              ? "We usually reply within 24 hours, often much faster."
+              : "Wir antworten in der Regel innerhalb von 24 Stunden, meist deutlich schneller."}
+          </p>
+        </div>
+      </aside>
+    </div>
   );
+}
+
+function formatLongDate(isoDate: string, formatLocale: string) {
+  return new Intl.DateTimeFormat(formatLocale, {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(`${isoDate}T12:00:00`));
 }
 
 function startOfMonth(date: Date) {

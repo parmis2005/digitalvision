@@ -1,37 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, PenLine } from "lucide-react";
-import { AmbientScene } from "../ambient-scene";
-import { blogSerif } from "../blog-font";
-import { SiteHeader } from "../site-header";
+import { getDictionary, localePath, type Locale } from "../../../lib/i18n";
+import { AmbientScene } from "../../ambient-scene";
+import { blogSerif } from "../../blog-font";
+import { SiteHeader } from "../../site-header";
 import {
   BLOG_POSTS_PER_PAGE,
   getBlogPageCount,
   getBlogPageNumbers,
   getBlogPagePath,
   getBlogPagePosts,
-} from "../blog-pagination";
+} from "../../blog-pagination";
 
 const baseUrl = "https://www.digitalvision.site";
 
 type BlogPageContentProps = {
+  locale: Locale;
   currentPage: number;
 };
 
-export function BlogPageContent({ currentPage }: BlogPageContentProps) {
-  const pagePosts = getBlogPagePosts(currentPage);
-  const pageCount = getBlogPageCount();
-  const pageNumbers = getBlogPageNumbers();
+export function BlogPageContent({ locale, currentPage }: BlogPageContentProps) {
+  const t = getDictionary(locale).blog;
+  const pagePosts = getBlogPagePosts(currentPage, locale);
+  const pageCount = getBlogPageCount(locale);
+  const pageNumbers = getBlogPageNumbers(locale);
   const itemOffset = (currentPage - 1) * BLOG_POSTS_PER_PAGE;
 
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Digital Vision Blog",
+    name: t.listName,
     itemListElement: pagePosts.map((post, index) => ({
       "@type": "ListItem",
       position: itemOffset + index + 1,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}${localePath(locale, `/blog/${post.slug}`)}`,
       name: post.title,
     })),
   };
@@ -43,23 +46,23 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SiteHeader />
+      <SiteHeader locale={locale} />
 
       <section className="blog-hero">
         <div className="blog-hero-copy">
-          <Link className="blog-home-link" href="/">
+          <Link className="blog-home-link" href={localePath(locale, "/")}>
             <ArrowLeft size={17} aria-hidden="true" />
-            Zurück zu Digital Vision
+            {t.backHome}
           </Link>
-          <h1>Impulse für digitale Projekte.</h1>
-          <p>Praxisnahe Artikel für klare Websites und digitale Abläufe.</p>
+          <h1>{t.heroTitle}</h1>
+          <p>{t.heroText}</p>
           <div className="blog-hero-actions">
-            <Link className="primary-button" href="/#kontakt">
-              Kostenlose Anfrage
+            <Link className="primary-button" href={localePath(locale, "/#kontakt")}>
+              {t.freeRequest}
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
-            <Link className="secondary-button" href="/#leistungen">
-              Leistungen ansehen
+            <Link className="secondary-button" href={localePath(locale, "/#leistungen")}>
+              {t.viewServices}
             </Link>
           </div>
         </div>
@@ -91,30 +94,17 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <span />
                 <span />
                 <span />
-                <strong>Digital Vision Magazin</strong>
+                <strong>{t.magazineTitle}</strong>
               </div>
               <div className="blog-magazine-viewport">
                 <div className="blog-magazine-track">
-                  <article className="blog-magazine-card">
-                    <span>01 Websites</span>
-                    <strong>Klare Struktur vor dem Design</strong>
-                    <em>Planung, Inhalte, Kontaktwege</em>
-                  </article>
-                  <article className="blog-magazine-card">
-                    <span>02 Prozesse</span>
-                    <strong>Anfragen sauber organisieren</strong>
-                    <em>Formulare, Status, Überblick</em>
-                  </article>
-                  <article className="blog-magazine-card">
-                    <span>03 Systeme</span>
-                    <strong>Digitale Abläufe sichtbar machen</strong>
-                    <em>Dashboards, Verwaltung, Routine</em>
-                  </article>
-                  <article className="blog-magazine-card">
-                    <span>01 Websites</span>
-                    <strong>Klare Struktur vor dem Design</strong>
-                    <em>Planung, Inhalte, Kontaktwege</em>
-                  </article>
+                  {[...t.magazineCards, t.magazineCards[0]].map((card, index) => (
+                    <article className="blog-magazine-card" key={`${card.tag}-${index}`}>
+                      <span>{card.tag}</span>
+                      <strong>{card.title}</strong>
+                      <em>{card.sub}</em>
+                    </article>
+                  ))}
                 </div>
               </div>
             </div>
@@ -123,21 +113,21 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
             </div>
           </div>
           <div className="blog-visual-note">
-            <strong>Fokus</strong>
-            <span>Idee / Aufbau / Ergebnis</span>
+            <strong>{t.visualNoteTitle}</strong>
+            <span>{t.visualNoteText}</span>
           </div>
         </div>
       </section>
 
       <section className="blog-section">
         <div className="section-heading">
-          <p className="eyebrow">Alle Artikel für bessere digitale Auftritte.</p>
+          <p className="eyebrow">{t.listEyebrow}</p>
         </div>
         <div className="blog-list">
           {pagePosts.map((post) => (
             <Link
               className="blog-list-card"
-              href={`/blog/${post.slug}`}
+              href={localePath(locale, `/blog/${post.slug}`)}
               key={post.slug}
             >
               <span className="blog-list-visual">
@@ -155,7 +145,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <span className="blog-card-meta">
                   <span>
                     <PenLine size={15} aria-hidden="true" />
-                    Digital Vision
+                    {t.author}
                   </span>
                   <span>
                     <Clock size={15} aria-hidden="true" />
@@ -166,7 +156,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <span className="blog-list-title">{post.title}</span>
                 <span className="blog-list-excerpt">{post.excerpt}</span>
                 <span className="blog-card-link">
-                  Artikel lesen
+                  {t.readArticle}
                   <ArrowRight size={17} aria-hidden="true" />
                 </span>
               </span>
@@ -175,14 +165,14 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
         </div>
 
         {pageCount > 1 ? (
-          <nav className="blog-pagination" aria-label="Blog Seiten">
+          <nav className="blog-pagination" aria-label={t.paginationAria}>
             {currentPage > 1 ? (
               <Link
                 className="blog-pagination-control"
-                href={getBlogPagePath(currentPage - 1)}
+                href={localePath(locale, getBlogPagePath(currentPage - 1))}
               >
                 <ArrowLeft size={15} aria-hidden="true" />
-                Zurück
+                {t.previous}
               </Link>
             ) : null}
             <span className="blog-pagination-pages">
@@ -190,7 +180,7 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
                 <Link
                   aria-current={page === currentPage ? "page" : undefined}
                   className={`blog-pagination-number${page === currentPage ? " is-active" : ""}`}
-                  href={getBlogPagePath(page)}
+                  href={localePath(locale, getBlogPagePath(page))}
                   key={page}
                 >
                   {page}
@@ -200,9 +190,9 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
             {currentPage < pageCount ? (
               <Link
                 className="blog-pagination-control"
-                href={getBlogPagePath(currentPage + 1)}
+                href={localePath(locale, getBlogPagePath(currentPage + 1))}
               >
-                Weiter
+                {t.next}
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             ) : null}
@@ -211,13 +201,11 @@ export function BlogPageContent({ currentPage }: BlogPageContentProps) {
       </section>
 
       <section className="blog-footer-cta">
-        <p className="eyebrow">Nächster Schritt</p>
-        <h2>Website klarer aufstellen?</h2>
-        <p>
-          Wir klären Struktur, Inhalte und Funktionen für dein Projekt.
-        </p>
-        <Link className="primary-button light-cta" href="/#kontakt">
-          Projekt anfragen
+        <p className="eyebrow">{t.footerEyebrow}</p>
+        <h2>{t.footerTitle}</h2>
+        <p>{t.footerText}</p>
+        <Link className="primary-button light-cta" href={localePath(locale, "/#kontakt")}>
+          {t.footerCta}
           <ArrowRight size={18} aria-hidden="true" />
         </Link>
       </section>

@@ -3,10 +3,18 @@
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { products, repeatedProducts } from "./products-data";
+import { localePath, type Locale } from "../lib/i18n/config";
+import type { Dictionary } from "../lib/i18n/de";
+import type { ProductItem } from "./products-data";
 import { ProductPreview } from "./product-preview";
 
-export function ProductShowcase() {
+type ProductShowcaseProps = {
+  locale: Locale;
+  products: ProductItem[];
+  copy: Dictionary["home"]["showcase"];
+};
+
+export function ProductShowcase({ locale, products, copy }: ProductShowcaseProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef(0);
   const pausedRef = useRef(false);
@@ -14,7 +22,7 @@ export function ProductShowcase() {
   const railAutoReadyRef = useRef(false);
   const autoStartTimerRef = useRef<number | null>(null);
   const resumeTimerRef = useRef<number | null>(null);
-  const showcaseProducts = repeatedProducts;
+  const showcaseProducts = [...products, ...products];
 
   useEffect(() => {
     const rail = railRef.current;
@@ -212,17 +220,17 @@ export function ProductShowcase() {
   };
 
   return (
-    <section id="webseiten" className="product-showcase" aria-label="Beispiele für digitale Produkte">
+    <section id="webseiten" className="product-showcase" aria-label={copy.sectionAria}>
       <div className="showcase-header">
         <div>
-          <p className="showcase-label">Beispiele</p>
-          <h2 className="showcase-title">Webseiten im passenden Look.</h2>
+          <p className="showcase-label">{copy.label}</p>
+          <h2 className="showcase-title">{copy.title}</h2>
         </div>
-        <div className="showcase-controls" aria-label="Produkte verschieben">
-          <button type="button" onClick={() => move("left")} aria-label="Nach links">
+        <div className="showcase-controls" aria-label={copy.controlsAria}>
+          <button type="button" onClick={() => move("left")} aria-label={copy.left}>
             <ChevronLeft size={18} aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => move("right")} aria-label="Nach rechts">
+          <button type="button" onClick={() => move("right")} aria-label={copy.right}>
             <ChevronRight size={18} aria-hidden="true" />
           </button>
         </div>
@@ -259,7 +267,7 @@ export function ProductShowcase() {
             ) : (
               <Link
                 className={`showcase-card ${product.variant}`}
-                href={`/produkte/${product.slug}`}
+                href={localePath(locale, `/produkte/${product.slug}`)}
                 id={index < products.length ? `webseite-${product.slug}` : undefined}
                 key={`${product.title}-${index}`}
               >
@@ -278,7 +286,7 @@ export function ProductShowcase() {
 
       <div className="showcase-request">
         <a className="showcase-request-button" href="#kontakt">
-          Kostenlose Anfrage
+          {copy.request}
           <ArrowRight size={16} aria-hidden="true" />
         </a>
       </div>

@@ -2,14 +2,16 @@
 
 import { useEffect } from "react";
 
-const AWAY_TITLE = "Deine Vision wartet...";
+type TabTitleNudgeProps = {
+  awayTitle: string;
+};
 
-export function TabTitleNudge() {
+export function TabTitleNudge({ awayTitle }: TabTitleNudgeProps) {
   useEffect(() => {
     const originalTitle = document.title;
 
     const handleVisibilityChange = () => {
-      document.title = document.hidden ? AWAY_TITLE : originalTitle;
+      document.title = document.hidden ? awayTitle : originalTitle;
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
@@ -18,7 +20,7 @@ export function TabTitleNudge() {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       document.title = originalTitle;
     };
-  }, []);
+  }, [awayTitle]);
 
   return null;
 }

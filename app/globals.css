@@ -893,6 +893,67 @@ textarea {
   outline-offset: 3px;
 }
 
+.floating-language-switch {
+  position: fixed;
+  left: clamp(14px, 2.2vw, 28px);
+  bottom: clamp(14px, 2.4vw, 28px);
+  z-index: 34;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 12px 0 8px;
+  border: 1px solid rgba(155, 228, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(6, 13, 31, 0.72);
+  color: #9be4ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    0 0 22px rgba(155, 228, 255, 0.14);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
+}
+
+.floating-language-switch:hover {
+  transform: translateY(-2px);
+  border-color: rgba(155, 228, 255, 0.4);
+  color: #c6f0ff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 14px 34px rgba(0, 0, 0, 0.34),
+    0 0 28px rgba(155, 228, 255, 0.22);
+}
+
+.floating-language-switch:focus-visible {
+  outline: 2px solid rgba(155, 228, 255, 0.8);
+  outline-offset: 3px;
+}
+
+.floating-language-flag {
+  display: inline-flex;
+  width: 28px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.floating-language-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .scroll-cue-text {
   font-size: 0.7rem;
   font-weight: 700;
@@ -2034,6 +2095,12 @@ h3 {
 }
 
 .legal-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.simpleskin-preview-card-view {
   display: grid;
   gap: 10px;
   height: 100%;
@@ -3946,7 +4013,7 @@ h3 {
   z-index: 1;
   display: grid;
   gap: 6px;
-  max-width: 58%;
+  max-width: 48%;
   color: #f8fafc;
   text-shadow: 0 10px 26px rgba(0, 0, 0, 0.48);
 }
@@ -3972,29 +4039,39 @@ h3 {
   line-height: 0.96;
 }
 
-.gs-auto-card-search {
+.gs-auto-card-accent {
   position: absolute;
-  left: 10px;
   right: 10px;
   bottom: 10px;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
+  align-content: center;
+  gap: 2px;
+  width: 96px;
+  height: 62px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(55, 65, 81, 0.54)),
+    url("/autohaus-preview/assets/cars/mercedes-c-class.png") center 58%/cover no-repeat;
+  box-shadow: 0 12px 26px rgba(8, 12, 19, 0.34);
+  color: #f8fafc;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.42);
 }
 
-.gs-auto-card-search span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 23px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(248, 250, 252, 0.92);
-  color: #111827;
-  font-size: 0.52rem;
+.gs-auto-card-accent span {
+  font-size: 1.14rem;
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+.gs-auto-card-accent small {
+  font-size: 0.46rem;
   font-weight: 850;
-  white-space: nowrap;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .beauty-preview-card-view {
@@ -4945,7 +5022,7 @@ h3 {
 
 .simpleskin-card-shell {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   min-height: 0;
 }
 
@@ -4972,12 +5049,11 @@ h3 {
 
 .simpleskin-card-stage {
   position: relative;
-  margin-top: 10px;
-  min-height: 118px;
+  min-height: 128px;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 22px;
   background:
-    linear-gradient(90deg, rgba(20, 38, 29, 0.86), rgba(20, 38, 29, 0.18)),
+    linear-gradient(90deg, rgba(20, 38, 29, 0.84), rgba(20, 38, 29, 0.22)),
     url("/simpleskin-preview/images/background-hero.jpg") center/cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(236, 242, 224, 0.16);
 }
@@ -4998,7 +5074,7 @@ h3 {
   z-index: 1;
   display: grid;
   gap: 6px;
-  max-width: 58%;
+  max-width: 62%;
   color: #f7f4e9;
   text-shadow: 0 8px 24px rgba(14, 28, 20, 0.45);
 }
@@ -5020,7 +5096,7 @@ h3 {
 
 .simpleskin-card-overlay strong {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 0.91rem;
+  font-size: 0.98rem;
   line-height: 0.95;
 }
 
@@ -5054,7 +5130,7 @@ h3 {
 }
 
 .simpleskin-card-copy {
-  display: grid;
+  display: none;
   gap: 4px;
 }
 
@@ -5955,8 +6031,6 @@ h3 {
 }
 
 .showcase-card.skincare .showcase-preview {
-  height: 204px;
-  margin-top: 6px;
   background:
     radial-gradient(circle at 82% 20%, rgba(226, 230, 198, 0.18), transparent 18%),
     radial-gradient(circle at 16% 82%, rgba(123, 152, 119, 0.16), transparent 20%),
@@ -6247,7 +6321,9 @@ h3 {
 }
 
 .product-live-page .floating-back-to-top,
-.product-live-page ~ .floating-back-to-top {
+.product-live-page ~ .floating-back-to-top,
+.product-live-page .floating-language-switch,
+.product-live-page ~ .floating-language-switch {
   display: none !important;
 }
 
@@ -8015,8 +8091,8 @@ h3 {
 
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(480px, 0.8fr);
-  gap: clamp(28px, 6vw, 86px);
+  grid-template-columns: minmax(260px, 0.56fr) minmax(720px, 1.34fr);
+  gap: clamp(24px, 4vw, 60px);
   align-items: start;
 }
 
@@ -8135,6 +8211,20 @@ h3 {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
+.contact-form-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.contact-form-layout .contact-form {
+  max-width: none;
+  justify-self: stretch;
+}
+
 .contact-form-frame > [aria-hidden="true"],
 .contact-form::before,
 .contact-form::after {
@@ -8143,7 +8233,7 @@ h3 {
 
 .contact-form-steps {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   gap: 10px;
   padding: 0 0 4px;
@@ -8393,13 +8483,13 @@ h3 {
     0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.contact-estimate-card span {
+.contact-estimate-card > span {
   color: rgba(150, 226, 255, 0.9);
   font-size: 0.98rem;
   font-weight: 800;
 }
 
-.contact-estimate-card strong {
+.contact-estimate-card > strong {
   color: #ffffff;
   font-size: clamp(2.35rem, 3.2vw, 3.15rem);
   line-height: 0.98;
@@ -8409,6 +8499,60 @@ h3 {
   margin: 0;
   color: rgba(221, 232, 249, 0.72);
   font-size: 0.92rem;
+}
+
+.contact-estimate-breakdown {
+  display: grid;
+  overflow: hidden;
+  margin-top: 6px;
+  border: 1px solid rgba(159, 178, 216, 0.14);
+  border-radius: 14px;
+  background: rgba(8, 13, 32, 0.34);
+}
+
+.contact-estimate-breakdown div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(159, 178, 216, 0.12);
+}
+
+.contact-estimate-breakdown div:last-child {
+  border-bottom: 0;
+}
+
+.contact-estimate-breakdown span {
+  color: rgba(221, 232, 249, 0.68);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.contact-estimate-breakdown strong {
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 900;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.contact-payment-plan {
+  display: grid;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 12px;
+  border: 1px solid rgba(126, 227, 255, 0.2);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(62, 87, 126, 0.45), rgba(27, 34, 62, 0.72));
+}
+
+.contact-payment-plan span {
+  color: #91e7ff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .contact-form .contact-topic-card {
@@ -8462,6 +8606,107 @@ h3 {
   gap: 3px;
   align-content: center;
   justify-items: start;
+}
+
+.contact-info-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-info-card {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 82px;
+  padding: 16px;
+  border: 1px solid rgba(169, 214, 255, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+    rgba(11, 18, 39, 0.74);
+  color: #fbfdff;
+  text-decoration: none;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.026);
+}
+
+.contact-info-card:hover {
+  border-color: rgba(126, 227, 255, 0.34);
+  background:
+    linear-gradient(180deg, rgba(155, 228, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(13, 21, 44, 0.82);
+}
+
+.contact-info-icon,
+.contact-team-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(155, 228, 255, 0.12);
+  color: #87dcff;
+}
+
+.contact-team-avatar {
+  background: linear-gradient(135deg, rgba(155, 228, 255, 0.9), rgba(198, 162, 255, 0.82));
+  color: #081023;
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.contact-info-card > span:last-child {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contact-info-card strong,
+.contact-response-card strong {
+  color: rgba(221, 232, 249, 0.72);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.contact-info-card > span:last-child > span {
+  overflow-wrap: anywhere;
+  color: #fbfdff;
+  font-size: clamp(0.95rem, 1.12vw, 1.1rem);
+  font-weight: 800;
+  line-height: 1.24;
+}
+
+.contact-response-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 22px;
+  border: 1px solid rgba(126, 227, 255, 0.18);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 92% 14%, rgba(155, 228, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(2, 17, 37, 0.98), rgba(4, 20, 42, 0.96));
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.026);
+}
+
+.contact-response-card strong {
+  color: #9be4ff;
+}
+
+.contact-response-card p {
+  margin: 0;
+  color: rgba(235, 242, 252, 0.82);
+  font-size: clamp(1rem, 1.32vw, 1.22rem);
+  font-weight: 650;
+  line-height: 1.55;
 }
 
 .contact-topic-card-copy strong {
@@ -11607,6 +11852,10 @@ h3 {
     padding: 20px;
   }
 
+  .contact-form-layout {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.56fr);
     gap: clamp(18px, 3vw, 34px);
@@ -12257,6 +12506,14 @@ h3 {
     border-radius: 10px;
   }
 
+  .floating-language-switch {
+    height: 40px;
+    left: 12px;
+    bottom: 12px;
+    padding: 0 10px 0 7px;
+    border-radius: 10px;
+  }
+
   .hero-visual-stage {
     width: 100%;
     height: 100%;
@@ -12382,6 +12639,467 @@ h3 {
   .showcase-card {
     width: min(292px, calc(100vw - 36px));
     min-width: min(292px, calc(100vw - 36px));
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .showcase-preview {
+    height: 194px;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .showcase-meta {
+    gap: 4px;
+    padding: 11px 4px 1px;
+  }
+
+  .showcase-meta strong {
+    font-size: 0.9rem;
+    line-height: 1.16;
+  }
+
+  .showcase-meta span {
+    font-size: 0.68rem;
+    line-height: 1.18;
+  }
+
+  .preview-bar,
+  .preview-footer {
+    gap: 5px;
+    min-width: 0;
+  }
+
+  .preview-bar span,
+  .preview-footer span {
+    height: 7px;
+  }
+
+  .preview-bar span:nth-child(3) {
+    width: 30px;
+    min-width: 30px;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-menu,
+    .nails-card-cta,
+    .auto-card-cta,
+    .premium-auto-card-cta,
+    .gs-auto-card-cta,
+    .coffee-card-cta,
+    .restaurant-card-cta,
+    .doener-card-cta,
+    .hotel-card-cta,
+    .wellness-card-cta,
+    .rose-card-cta,
+    .riding-card-cta,
+    .electrician-card-cta,
+    .medical-card-cta,
+    .thermal-card-cta,
+    .hospital-card-cta,
+    .hair-card-cta,
+    .legal-card-cta,
+    .simpleskin-card-cta,
+    .salt-card-cta,
+    .footcare-card-cta,
+    .sinja-nails-card-cta,
+    .cleaning-card-cta,
+    .craft-card-cta,
+    .insurance-card-cta
+  ) {
+    display: none;
+  }
+
+  .showcase-preview :is(
+    .beauty-preview-card-view,
+    .nails-preview-card-view,
+    .auto-preview-card-view,
+    .premium-auto-preview-card-view,
+    .gs-auto-preview-card-view,
+    .coffee-preview-card-view,
+    .restaurant-preview-card-view,
+    .doener-preview-card-view,
+    .hotel-preview-card-view,
+    .wellness-preview-card-view,
+    .rose-preview-card-view,
+    .riding-preview-card-view,
+    .electrician-preview-card-view,
+    .medical-preview-card-view,
+    .thermal-preview-card-view,
+    .hospital-preview-card-view,
+    .hair-preview-card-view,
+    .legal-preview-card-view,
+    .simpleskin-preview-card-view,
+    .salt-preview-card-view,
+    .footcare-preview-card-view,
+    .sinja-nails-preview-card-view,
+    .cleaning-preview-card-view,
+    .craft-preview-card-view,
+    .insurance-preview-card-view,
+    .fashion-preview-card-view
+  ) {
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-shell,
+    .nails-card-shell,
+    .auto-card-shell,
+    .premium-auto-card-shell,
+    .gs-auto-card-shell,
+    .coffee-card-shell,
+    .restaurant-card-shell,
+    .doener-card-shell,
+    .hotel-card-shell,
+    .wellness-card-shell,
+    .rose-card-shell,
+    .riding-card-shell,
+    .electrician-card-shell,
+    .medical-card-shell,
+    .thermal-card-shell,
+    .hospital-card-shell,
+    .hair-card-shell,
+    .legal-card-shell,
+    .simpleskin-card-shell,
+    .salt-card-shell,
+    .footcare-card-shell,
+    .sinja-nails-card-shell,
+    .cleaning-card-shell,
+    .craft-card-shell,
+    .insurance-card-shell,
+    .fashion-card-shell
+  ) {
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 8px;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-branding,
+    .nails-card-branding,
+    .premium-auto-card-branding,
+    .gs-auto-card-branding,
+    .coffee-card-branding,
+    .restaurant-card-branding,
+    .doener-card-branding,
+    .hotel-card-branding,
+    .wellness-card-branding,
+    .rose-card-branding,
+    .riding-card-branding,
+    .electrician-card-branding,
+    .medical-card-branding,
+    .thermal-card-branding,
+    .hospital-card-branding,
+    .hair-card-branding,
+    .legal-card-branding,
+    .simpleskin-card-branding,
+    .salt-card-branding,
+    .footcare-card-branding,
+    .sinja-nails-card-branding,
+    .cleaning-card-branding,
+    .craft-card-branding,
+    .insurance-card-branding,
+    .fashion-card-branding
+  ) {
+    min-width: 0;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-branding p,
+    .nails-card-branding p,
+    .premium-auto-card-branding p,
+    .gs-auto-card-branding p,
+    .coffee-card-branding p,
+    .restaurant-card-branding p,
+    .doener-card-branding p,
+    .hotel-card-branding p,
+    .wellness-card-branding p,
+    .rose-card-branding p,
+    .riding-card-branding p,
+    .electrician-card-branding p,
+    .medical-card-branding p,
+    .thermal-card-branding p,
+    .hospital-card-branding p,
+    .hair-card-branding p,
+    .legal-card-branding p,
+    .simpleskin-card-branding p,
+    .salt-card-branding p,
+    .footcare-card-branding p,
+    .sinja-nails-card-branding p,
+    .cleaning-card-branding p,
+    .craft-card-branding p,
+    .insurance-card-branding p,
+    .fashion-card-branding p
+  ) {
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-branding span,
+    .nails-card-branding span,
+    .premium-auto-card-branding span,
+    .gs-auto-card-branding span,
+    .coffee-card-branding span,
+    .restaurant-card-branding span,
+    .doener-card-branding span,
+    .hotel-card-branding span,
+    .wellness-card-branding span,
+    .rose-card-branding span,
+    .riding-card-branding span,
+    .electrician-card-branding span,
+    .medical-card-branding span,
+    .thermal-card-branding span,
+    .hospital-card-branding span,
+    .hair-card-branding span,
+    .legal-card-branding span,
+    .simpleskin-card-branding span,
+    .salt-card-branding span,
+    .footcare-card-branding span,
+    .sinja-nails-card-branding span,
+    .cleaning-card-branding span,
+    .craft-card-branding span,
+    .insurance-card-branding span,
+    .fashion-card-branding span
+  ) {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.48rem;
+    line-height: 1.2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-stage,
+    .nails-card-stage,
+    .auto-card-stage,
+    .premium-auto-card-stage,
+    .gs-auto-card-stage,
+    .coffee-card-stage,
+    .restaurant-card-stage,
+    .doener-card-stage,
+    .hotel-card-stage,
+    .wellness-card-stage,
+    .rose-card-stage,
+    .riding-card-stage,
+    .electrician-card-stage,
+    .medical-card-stage,
+    .thermal-card-stage,
+    .hospital-card-stage,
+    .hair-card-stage,
+    .legal-card-stage,
+    .simpleskin-card-stage,
+    .salt-card-stage,
+    .footcare-card-stage,
+    .sinja-nails-card-stage,
+    .cleaning-card-stage,
+    .craft-card-stage,
+    .insurance-card-stage,
+    .fashion-card-stage
+  ) {
+    min-height: 0;
+    height: 100%;
+    border-radius: 16px;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-overlay,
+    .nails-card-overlay,
+    .premium-auto-card-overlay,
+    .gs-auto-card-overlay,
+    .coffee-card-copy-overlay,
+    .restaurant-card-overlay,
+    .doener-card-overlay,
+    .hotel-card-overlay,
+    .wellness-card-overlay,
+    .rose-card-overlay,
+    .riding-card-overlay,
+    .electrician-card-overlay,
+    .medical-card-overlay,
+    .thermal-card-overlay,
+    .hospital-card-overlay,
+    .hair-card-overlay,
+    .legal-card-overlay,
+    .simpleskin-card-overlay,
+    .salt-card-overlay,
+    .footcare-card-overlay,
+    .sinja-nails-card-overlay,
+    .cleaning-card-overlay,
+    .craft-card-overlay,
+    .insurance-card-overlay,
+    .fashion-card-overlay
+  ) {
+    left: 10px;
+    top: 10px;
+    gap: 5px;
+    max-width: min(72%, 170px);
+  }
+
+  .showcase-preview :is(
+    .beauty-card-kicker,
+    .nails-card-kicker,
+    .premium-auto-card-kicker,
+    .gs-auto-card-kicker,
+    .coffee-card-tag,
+    .restaurant-card-kicker,
+    .doener-card-kicker,
+    .hotel-card-kicker,
+    .wellness-card-kicker,
+    .rose-card-kicker,
+    .riding-card-kicker,
+    .electrician-card-kicker,
+    .medical-card-kicker,
+    .thermal-card-kicker,
+    .hospital-card-kicker,
+    .hair-card-kicker,
+    .legal-card-kicker,
+    .simpleskin-card-kicker,
+    .salt-card-kicker,
+    .footcare-card-kicker,
+    .sinja-nails-card-kicker,
+    .cleaning-card-kicker,
+    .craft-card-kicker,
+    .insurance-card-kicker,
+    .fashion-card-kicker
+  ) {
+    min-height: 18px;
+    max-width: 100%;
+    padding: 0 7px;
+    overflow: hidden;
+    font-size: 0.4rem;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-overlay strong,
+    .nails-card-overlay strong,
+    .premium-auto-card-overlay strong,
+    .gs-auto-card-overlay strong,
+    .coffee-card-copy-overlay strong,
+    .restaurant-card-overlay strong,
+    .doener-card-overlay strong,
+    .hotel-card-overlay strong,
+    .wellness-card-overlay strong,
+    .rose-card-overlay strong,
+    .riding-card-overlay strong,
+    .electrician-card-overlay strong,
+    .medical-card-overlay strong,
+    .thermal-card-overlay strong,
+    .hospital-card-overlay strong,
+    .hair-card-overlay strong,
+    .legal-card-overlay strong,
+    .simpleskin-card-overlay strong,
+    .salt-card-overlay strong,
+    .footcare-card-overlay strong,
+    .sinja-nails-card-overlay strong,
+    .cleaning-card-overlay strong,
+    .craft-card-overlay strong,
+    .insurance-card-overlay strong,
+    .fashion-card-overlay strong
+  ) {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.84rem;
+    line-height: 1;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-copy,
+    .nails-card-copy,
+    .premium-auto-card-copy,
+    .coffee-card-copy,
+    .restaurant-card-copy,
+    .doener-card-copy,
+    .hotel-card-copy,
+    .wellness-card-copy,
+    .rose-card-copy,
+    .riding-card-copy,
+    .electrician-card-copy,
+    .medical-card-copy,
+    .thermal-card-copy,
+    .hospital-card-copy,
+    .hair-card-copy,
+    .legal-card-copy,
+    .simpleskin-card-copy,
+    .salt-card-copy,
+    .footcare-card-copy,
+    .sinja-nails-card-copy,
+    .cleaning-card-copy,
+    .craft-card-copy,
+    .insurance-card-copy
+  ) {
+    display: none;
+  }
+
+  .showcase-preview :is(
+    .beauty-card-photo-accent,
+    .nails-card-accent,
+    .premium-auto-card-spec,
+    .gs-auto-card-accent,
+    .restaurant-card-accent,
+    .doener-card-accent,
+    .hotel-card-accent,
+    .wellness-card-accent,
+    .rose-card-accent,
+    .riding-card-accent,
+    .electrician-card-accent,
+    .medical-card-accent,
+    .thermal-card-accent,
+    .hospital-card-accent,
+    .hair-card-accent,
+    .legal-card-accent,
+    .simpleskin-card-accent,
+    .salt-card-accent,
+    .footcare-card-accent,
+    .sinja-nails-card-accent,
+    .cleaning-card-accent,
+    .craft-card-accent,
+    .insurance-card-accent,
+    .fashion-card-accent
+  ) {
+    right: 8px;
+    bottom: 8px;
+    width: 82px;
+    height: 52px;
+    border-radius: 13px;
+  }
+
+  .showcase-preview .simpleskin-card-stage {
+    min-height: 128px;
+  }
+
+  .showcase-preview .gs-auto-card-accent {
+    bottom: 8px;
+    width: 76px;
+    height: 48px;
+  }
+
+  .showcase-preview .gs-auto-card-overlay {
+    max-width: min(48%, 122px);
+  }
+
+  .showcase-preview .gs-auto-card-overlay strong {
+    -webkit-line-clamp: 2;
+  }
+
+  .showcase-preview .gs-auto-card-accent span {
+    font-size: 0.92rem;
+  }
+
+  .showcase-preview .gs-auto-card-accent small {
+    font-size: 0.38rem;
   }
 
   .beauty-preview-body,
@@ -12529,6 +13247,17 @@ h3 {
   .contact-form {
     padding: 22px 18px;
     border-radius: 22px;
+  }
+
+  .contact-info-card {
+    min-height: 74px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .contact-response-card {
+    padding: 18px;
+    border-radius: 18px;
   }
 
   .contact-form-steps {

@@ -5,6 +5,7 @@ type DigitalVisionLogoProps = {
   size?: "sm" | "md" | "lg";
   showMark?: boolean;
   showTagline?: boolean;
+  tagline?: string;
 };
 
 export function DigitalVisionLogo({
@@ -12,6 +13,7 @@ export function DigitalVisionLogo({
   size = "md",
   showMark = true,
   showTagline = true,
+  tagline = "DIGITALE LÖSUNGEN",
 }: DigitalVisionLogoProps) {
   const reactId = useId().replace(/:/g, "");
   const rootClassName = [
@@ -85,7 +87,7 @@ export function DigitalVisionLogo({
         {showTagline ? (
           <span className="dv-logo-tagline">
             <span className="dv-logo-rule" />
-            <span>DIGITALE LÖSUNGEN</span>
+            <span>{tagline}</span>
             <span className="dv-logo-rule" />
           </span>
         ) : null}

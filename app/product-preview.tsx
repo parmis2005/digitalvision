@@ -232,10 +232,9 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <span className="gs-auto-card-kicker">Autohaus Krefeld</span>
                 <strong>Ihr Auto wartet auf Sie.</strong>
               </div>
-              <div className="gs-auto-card-search">
-                <span>BMW</span>
-                <span>SUV</span>
-                <span>Finanzierung</span>
+              <div className="gs-auto-card-accent">
+                <span>48</span>
+                <small>Fahrzeuge</small>
               </div>
             </div>
           </div>
@@ -765,6 +764,10 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
                 <strong>Deine Kosmetik und Gesundheit von Meisterhand.</strong>
               </div>
               <div className="simpleskin-card-accent" />
+            </div>
+            <div className="simpleskin-card-copy">
+              <h3>Liora Hautatelier</h3>
+              <span>Hautanalyse · Kosmetik · Beratung · Termine</span>
             </div>
           </div>
         </div>

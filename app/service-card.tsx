@@ -8,10 +8,18 @@ type ServiceCardProps = {
   title: string;
   text: string;
   infoHref: string;
+  infoLabel: string;
   delay?: number;
 };
 
-export function ServiceCard({ icon, title, text, infoHref, delay = 0 }: ServiceCardProps) {
+export function ServiceCard({
+  icon,
+  title,
+  text,
+  infoHref,
+  infoLabel,
+  delay = 0,
+}: ServiceCardProps) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -45,7 +53,7 @@ export function ServiceCard({ icon, title, text, infoHref, delay = 0 }: ServiceC
       <h3>{title}</h3>
       <p>{text}</p>
       <a className="service-info-button" href={infoHref}>
-        Info
+        {infoLabel}
       </a>
     </article>
   );

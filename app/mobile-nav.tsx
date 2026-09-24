@@ -4,16 +4,23 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const navLinks = [
-  { href: "/#leistungen", label: "Leistungen" },
-  { href: "/#prozess", label: "Prozess" },
-  { href: "/#preise", label: "Pakete" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/blog", label: "Blog" },
-  { href: "/#kontakt", label: "Kontakt" },
-];
+type MobileNavProps = {
+  links: Array<{ href: string; label: string }>;
+  ctaHref: string;
+  ctaLabel: string;
+  navAria: string;
+  openLabel: string;
+  closeLabel: string;
+};
 
-export function MobileNav() {
+export function MobileNav({
+  links,
+  ctaHref,
+  ctaLabel,
+  navAria,
+  openLabel,
+  closeLabel,
+}: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -37,15 +44,15 @@ export function MobileNav() {
         className={open ? "mobile-nav-panel open" : "mobile-nav-panel"}
         aria-hidden={!open}
       >
-        <nav aria-label="Hauptnavigation">
-          {navLinks.map((link) => (
+        <nav aria-label={navAria}>
+          {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               <span className="mobile-nav-label">{link.label}</span>
             </a>
           ))}
         </nav>
-        <a className="mobile-nav-cta" href="/#kontakt" onClick={() => setOpen(false)}>
-          Projekt starten
+        <a className="mobile-nav-cta" href={ctaHref} onClick={() => setOpen(false)}>
+          {ctaLabel}
           <ArrowRight size={17} aria-hidden="true" />
         </a>
       </div>
@@ -57,7 +64,7 @@ export function MobileNav() {
       <button
         type="button"
         className="mobile-nav-toggle"
-        aria-label={open ? "Menü schließen" : "Menü öffnen"}
+        aria-label={open ? closeLabel : openLabel}
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((value) => !value)}

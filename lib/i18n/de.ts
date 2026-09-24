@@ -280,7 +280,7 @@ export const de = {
     contact: {
       eyebrow: "Projekt anfragen",
       title: "Bereit für mehr Sichtbarkeit und bessere Systeme?",
-      text: "Schreib uns kurz, was du brauchst. Wir melden uns mit einer klaren Einschätzung und dem nächsten Schritt.",
+      text: "",
     },
     reactions: {
       eyebrow: "Kundenfeedback",
@@ -364,15 +364,13 @@ export const de = {
         ],
       },
       Verwaltungssystem: {
-        label: "Welche Art von Verwaltungssystem suchst du?",
-        helper: "(Mehrfachauswahl möglich, z. B. CRM, Lagerverwaltung oder Projektmanagement)",
+        label: "Was soll das System verwalten?",
+        helper: "(Mehrfachauswahl möglich)",
         options: [
-          { key: "Kundenverwaltung / CRM", title: "Kundenverwaltung / CRM", text: "Kontakte, Unternehmen und Vorgänge zentral verwalten" },
-          { key: "Mitarbeiterverwaltung", title: "Mitarbeiterverwaltung", text: "Teams, Rollen und interne Abläufe strukturiert organisieren" },
-          { key: "Lagerverwaltung", title: "Lagerverwaltung", text: "Bestände, Wareneingänge und Lagerprozesse im Blick behalten" },
-          { key: "Terminverwaltung", title: "Terminverwaltung", text: "Buchungen, Verfügbarkeiten und Kalender zentral steuern" },
-          { key: "Projektmanagement", title: "Projektmanagement", text: "Aufgaben, Zuständigkeiten und Fortschritt zentral bündeln" },
-          { key: "Individuelle Softwarelösung", title: "Individuelle Softwarelösung", text: "Maßgeschneiderte Lösung für deinen konkreten Ablauf" },
+          { key: "Kundenverwaltung / CRM", title: "Kunden / CRM", text: "Kontakte und Vorgänge zentral" },
+          { key: "Terminverwaltung", title: "Termine", text: "Buchungen und Kalender steuern" },
+          { key: "Lagerverwaltung", title: "Lager", text: "Bestände im Blick behalten" },
+          { key: "Individuelle Softwarelösung", title: "Individuelle Lösung", text: "Passend zu deinem Ablauf" },
         ],
       },
     } as Record<string, { label: string; helper: string; options: Array<{ key: string; title: string; text: string }> }>,
@@ -424,7 +422,7 @@ export const de = {
         interfacesHint: "Zum Beispiel Google Kalender, Outlook, Lexoffice, DATEV oder interne Tools",
         interfacePlaceholder: "Schnittstelle",
         addInterface: "Weitere Schnittstelle hinzufügen",
-        descriptionLabel: "Beschreibung: Was soll das System tun?",
+        descriptionLabel: "Beschreibung",
         descriptionPlaceholder:
           "Zum Beispiel: Kunden verwalten, Termine koordinieren, Dokumente speichern und automatisch Erinnerungen versenden.",
         back: "Zurück",
@@ -465,6 +463,7 @@ export const de = {
         text: "Buche dir direkt einen passenden Termin.",
         advisorAria: "Ansprechperson",
         availableTimes: "Verfügbare Zeiten",
+        saturdayNote: ["Mo–Fr 17–20 Uhr.", "Samstag nur nach Vereinbarung."],
         bookedSuffix: "Ausgebucht",
         nameLabel: "Dein Name",
         namePlaceholder: "Max Mustermann",

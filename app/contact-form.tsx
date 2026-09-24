@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -30,7 +30,15 @@ type ContactFormProps = {
 const topicIcons = [Search, MonitorSmartphone, LayoutDashboard];
 
 // Stored as-is in the database, so the internal value keeps the German "Uhr" suffix.
-const appointmentTimes = ["11:00 Uhr", "14:00 Uhr", "15:00 Uhr", "16:00 Uhr"] as const;
+const appointmentTimes = [
+  "17:00 Uhr",
+  "17:30 Uhr",
+  "18:00 Uhr",
+  "18:30 Uhr",
+  "19:00 Uhr",
+  "19:30 Uhr",
+  "20:00 Uhr",
+] as const;
 const appointmentAdvisors = [{ name: "Parmis", symbol: "♀" }] as const;
 
 const formSteps: FormStep[] = ["topic", "services", "booking"];
@@ -47,8 +55,7 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
   const [displayedMonth, setDisplayedMonth] = useState(startOfMonth(new Date()));
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState<string>("");
-  const [selectedAdvisor, setSelectedAdvisor] =
-    useState<(typeof appointmentAdvisors)[number]["name"]>("Parmis");
+  const selectedAdvisor: (typeof appointmentAdvisors)[number]["name"] = appointmentAdvisors[0].name;
   const [bookedAppointments, setBookedAppointments] = useState<Record<string, string[]>>({});
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
@@ -131,6 +138,24 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
     }
   }, [bookedTimesForSelectedDate, selectedTime]);
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const previousStepRef = useRef(step);
+
+  useEffect(() => {
+    if (previousStepRef.current === step) {
+      return;
+    }
+    previousStepRef.current = step;
+
+    const form = formRef.current;
+    if (!form) {
+      return;
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    form.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }, [step]);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (
@@ -210,7 +235,6 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
       setDisplayedMonth(startOfMonth(new Date()));
       setSelectedDate("");
       setSelectedTime("");
-      setSelectedAdvisor("Parmis");
       setContactName("");
       setContactEmail("");
       setPrivacyAccepted(false);
@@ -242,25 +266,33 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
     return `${time.slice(0, 5)}${copy.timeSuffix}`;
   }
 
+  const progressStep = Math.min(currentStepIndex + 1, formSteps.length);
+  const progressPercent = Math.round((progressStep / formSteps.length) * 100);
+
   const monthLabel = new Intl.DateTimeFormat(displayLocale, {
     month: "long",
     year: "numeric",
   }).format(displayedMonth);
 
   return (
-    <div className="contact-form-layout">
-      <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="contact-form-steps" aria-hidden="true">
-        {formSteps.map((formStep, index) => (
-          <span
-            className={
-              index === 0
-                ? `contact-step-node ${currentStepIndex === 0 ? "active" : "completed"}`
-                : `contact-step-node ${currentStepIndex === index ? "current" : currentStepIndex > index ? "completed" : ""}`
-            }
-            key={formStep}
-          />
-        ))}
+      <form className="contact-form" onSubmit={handleSubmit} ref={formRef}>
+      <div className="contact-progress">
+        <div className="contact-progress-head">
+          <span>
+            {locale === "en" ? "Step" : "Schritt"} {progressStep} / {formSteps.length}
+          </span>
+          <span>{progressPercent}%</span>
+        </div>
+        <div
+          className="contact-progress-track"
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={progressPercent}
+          aria-label={locale === "en" ? "Progress" : "Fortschritt"}
+        >
+          <span style={{ width: `${progressPercent}%` }} />
+        </div>
       </div>
 
       {step === "topic" ? (
@@ -329,7 +361,6 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
             <div className="contact-service-section">
               <strong className="contact-service-label">
                 {selectedTopicConfig?.label || copy.defaultServicesLabel}
-                {selectedTopicConfig?.helper ? <span>{selectedTopicConfig.helper}</span> : null}
               </strong>
               <div className="contact-service-option-list">
                 {(selectedTopicConfig?.options || []).map((service) => (
@@ -350,7 +381,6 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
                     </span>
                     <span className="contact-service-option-copy">
                       <strong>{service.title}</strong>
-                      {service.text ? <span>{service.text}</span> : null}
                     </span>
                   </button>
                 ))}
@@ -359,7 +389,7 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
 
             <div className="contact-project-info-grid contact-project-info-grid-compact">
               <label className="contact-project-info-field">
-                {copy.steps.services.projectName} <span>{copy.steps.services.optional}</span>
+                {copy.steps.services.projectName}
                 <input
                   type="text"
                   placeholder={copy.steps.services.projectNamePlaceholder}
@@ -369,7 +399,7 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
               </label>
 
               <label className="contact-project-info-field">
-                {projectLocationLabel} <span>{copy.steps.services.ifAvailable}</span>
+                {projectLocationLabel}
                 <input
                   type="url"
                   inputMode="url"
@@ -382,7 +412,7 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
               <label className="contact-project-info-field contact-project-info-field-full">
                 {copy.steps.services.descriptionLabel}
                 <textarea
-                  rows={3}
+                  rows={2}
                   placeholder={copy.steps.services.descriptionPlaceholder}
                   value={systemDescription}
                   onChange={(event) => setSystemDescription(event.currentTarget.value)}
@@ -498,35 +528,6 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
               </div>
 
               <div className="contact-time-card">
-                <div
-                  className="contact-advisor-switch"
-                  role="tablist"
-                  aria-label={copy.steps.booking.advisorAria}
-                >
-                  {appointmentAdvisors.map((advisor) => (
-                    <button
-                      key={advisor.name}
-                      type="button"
-                      className={[
-                        "contact-advisor-button",
-                        selectedAdvisor === advisor.name ? "selected" : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
-                      onClick={() => {
-                        setSelectedAdvisor(advisor.name);
-                        setSelectedTime("");
-                      }}
-                    >
-                      <span className="contact-advisor-button-label">
-                        {advisor.name}
-                        <span className="contact-advisor-symbol" aria-hidden="true">
-                          {advisor.symbol}
-                        </span>
-                      </span>
-                    </button>
-                  ))}
-                </div>
                 <strong>{copy.steps.booking.availableTimes}</strong>
                 <div className="contact-time-list">
                   {appointmentTimes.map((time) => (
@@ -549,33 +550,40 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
                     </button>
                   ))}
                 </div>
+                <p className="contact-time-note">
+                  {copy.steps.booking.saturdayNote.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </p>
               </div>
 
             </div>
 
-            <label className="contact-booking-field">
-              {copy.steps.booking.nameLabel}
-              <input
-                name="name"
-                type="text"
-                placeholder={copy.steps.booking.namePlaceholder}
-                required
-                value={contactName}
-                onChange={(event) => setContactName(event.currentTarget.value)}
-              />
-            </label>
+            <div className="contact-booking-fields">
+              <label className="contact-booking-field">
+                {copy.steps.booking.nameLabel}
+                <input
+                  name="name"
+                  type="text"
+                  placeholder={copy.steps.booking.namePlaceholder}
+                  required
+                  value={contactName}
+                  onChange={(event) => setContactName(event.currentTarget.value)}
+                />
+              </label>
 
-            <label className="contact-booking-field">
-              {copy.steps.booking.emailLabel}
-              <input
-                name="email"
-                type="email"
-                placeholder={copy.steps.booking.emailPlaceholder}
-                required
-                value={contactEmail}
-                onChange={(event) => setContactEmail(event.currentTarget.value)}
-              />
-            </label>
+              <label className="contact-booking-field">
+                {copy.steps.booking.emailLabel}
+                <input
+                  name="email"
+                  type="email"
+                  placeholder={copy.steps.booking.emailPlaceholder}
+                  required
+                  value={contactEmail}
+                  onChange={(event) => setContactEmail(event.currentTarget.value)}
+                />
+              </label>
+            </div>
 
             <label className="contact-consent-field">
               <input
@@ -661,7 +669,6 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
                   setStep("topic");
                   setState("idle");
                   setMessage("");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
                 <CalendarDays size={18} aria-hidden="true" />
@@ -678,8 +685,13 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
         </p>
       )}
       </form>
+  );
+}
 
+export function ContactInfoPanel({ locale }: { locale: string }) {
+  return (
       <aside className="contact-info-panel" aria-label={locale === "en" ? "Contact details" : "Kontaktdaten"}>
+        <div className="contact-info-list">
         <a className="contact-info-card" href="mailto:info@digitalvision.site">
           <span className="contact-info-icon" aria-hidden="true">
             <Mail size={22} />
@@ -728,17 +740,23 @@ export function ContactForm({ locale, copy, privacyHref }: ContactFormProps) {
             </span>
           </span>
         </div>
+        </div>
 
         <div className="contact-response-card">
           <strong>{locale === "en" ? "Response time" : "Antwortzeit"}</strong>
           <p>
-            {locale === "en"
-              ? "We usually reply within 24 hours, often much faster."
-              : "Wir antworten in der Regel innerhalb von 24 Stunden, meist deutlich schneller."}
+            {locale === "en" ? (
+              <>
+                Usually within <b>24 hours</b>.
+              </>
+            ) : (
+              <>
+                In der Regel innerhalb von <b>24 Stunden</b>.
+              </>
+            )}
           </p>
         </div>
       </aside>
-    </div>
   );
 }
 

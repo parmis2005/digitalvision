@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { getDictionary, localePath, resolveLocale } from "../../lib/i18n";
 import { AmbientScene } from "../ambient-scene";
-import { ContactForm } from "../contact-form";
+import { ContactForm, ContactInfoPanel } from "../contact-form";
 import { DigitalVisionLogo } from "../digitalvision-logo";
 import { HeroBackgroundVideo } from "../hero-background-video";
 import { ProductShowcase } from "../product-showcase";
@@ -343,25 +343,20 @@ export default async function Home({ params }: PageProps) {
       </section>
 
       <section id="kontakt" className="contact-section">
-        <div>
+        <div className="contact-heading">
           <p className="eyebrow">{home.contact.eyebrow}</p>
           <h2>{home.contact.title}</h2>
-          <p>{home.contact.text}</p>
+          {home.contact.text ? <p>{home.contact.text}</p> : null}
         </div>
-        <div className="contact-form-frame">
-          <div className="contact-frame-glow" aria-hidden="true" />
-          <div className="contact-frame-core-glow" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-1" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-2" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-3" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-4" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-5" aria-hidden="true" />
-          <span className="ambient-particle contact-frame-dot contact-frame-dot-6" aria-hidden="true" />
-          <ContactForm
-            locale={locale}
-            copy={t.contactForm}
-            privacyHref={localePath(locale, "/datenschutz")}
-          />
+        <div className="contact-body">
+          <ContactInfoPanel locale={locale} />
+          <div className="contact-form-frame">
+            <ContactForm
+              locale={locale}
+              copy={t.contactForm}
+              privacyHref={localePath(locale, "/datenschutz")}
+            />
+          </div>
         </div>
       </section>
 

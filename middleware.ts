@@ -12,6 +12,7 @@ const previewPrefixes = [
   "/gs-automotive-preview",
   "/happynails-preview",
   "/krankenhaus-preview",
+  "/lashes-more-preview",
   "/luxushotel-preview",
   "/nagelstudio-sinja-preview",
   "/reinigungsfirma-preview",

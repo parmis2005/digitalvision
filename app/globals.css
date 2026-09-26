@@ -2064,6 +2064,12 @@ h3 {
   height: 100%;
 }
 
+.lashes-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
 .electrician-preview-card-view {
   display: grid;
   gap: 10px;
@@ -2765,6 +2771,137 @@ h3 {
 
 .riding-card-copy span {
   color: rgba(251, 230, 174, 0.82);
+  font-size: 0.62rem;
+  line-height: 1.35;
+}
+
+.lashes-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lashes-card-cta {
+  color: rgba(255, 225, 235, 0.94);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lashes-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.lashes-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.lashes-card-branding p {
+  margin-bottom: 0;
+  color: #fff7fa;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 780;
+  line-height: 0.94;
+}
+
+.lashes-card-branding span {
+  color: rgba(255, 225, 235, 0.82);
+  font-size: 0.52rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.lashes-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(34, 16, 25, 0.78), rgba(124, 39, 64, 0.16)),
+    url("/lashes-more-preview/images/team-sharp.jpg") center 36%/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(245, 198, 211, 0.2);
+}
+
+.lashes-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(226, 143, 163, 0.26), transparent 18%),
+    linear-gradient(180deg, transparent 42%, rgba(34, 16, 25, 0.72));
+  content: "";
+}
+
+.lashes-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 64%;
+  color: #fff7fa;
+  text-shadow: 0 10px 26px rgba(34, 16, 25, 0.52);
+}
+
+.lashes-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 225, 235, 0.92);
+  color: #7c2740;
+  font-size: 0.44rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lashes-card-overlay strong {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 780;
+  line-height: 0.96;
+}
+
+.lashes-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  width: 102px;
+  height: 62px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 250, 0.54), rgba(124, 39, 64, 0.18)),
+    url("/lashes-more-preview/images/pinterest/lashes-brows.png") center/cover no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 247, 250, 0.34),
+    0 10px 24px rgba(34, 16, 25, 0.26);
+}
+
+.lashes-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.lashes-card-copy h3 {
+  margin-bottom: 0;
+  color: #fff7fa;
+  font-size: 1.04rem;
+  line-height: 0.98;
+}
+
+.lashes-card-copy span {
+  color: rgba(255, 225, 235, 0.82);
   font-size: 0.62rem;
   line-height: 1.35;
 }
@@ -5980,6 +6117,14 @@ h3 {
     radial-gradient(circle at 18% 84%, rgba(74, 124, 82, 0.18), transparent 20%),
     linear-gradient(160deg, #132118 0%, #385735 46%, #c99f57 100%);
   color: #fff7df;
+}
+
+.showcase-card.lashes .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 22%, rgba(245, 198, 211, 0.24), transparent 18%),
+    radial-gradient(circle at 18% 84%, rgba(182, 144, 90, 0.16), transparent 20%),
+    linear-gradient(160deg, #221019 0%, #7c2740 46%, #e28fa3 100%);
+  color: #fff7fa;
 }
 
 .showcase-card.electrician .showcase-preview {
@@ -12714,6 +12859,7 @@ a.contact-info-card:hover {
     .wellness-card-cta,
     .rose-card-cta,
     .riding-card-cta,
+    .lashes-card-cta,
     .electrician-card-cta,
     .medical-card-cta,
     .thermal-card-cta,
@@ -12744,6 +12890,7 @@ a.contact-info-card:hover {
     .wellness-preview-card-view,
     .rose-preview-card-view,
     .riding-preview-card-view,
+    .lashes-preview-card-view,
     .electrician-preview-card-view,
     .medical-preview-card-view,
     .thermal-preview-card-view,
@@ -12777,6 +12924,7 @@ a.contact-info-card:hover {
     .wellness-card-shell,
     .rose-card-shell,
     .riding-card-shell,
+    .lashes-card-shell,
     .electrician-card-shell,
     .medical-card-shell,
     .thermal-card-shell,
@@ -12810,6 +12958,7 @@ a.contact-info-card:hover {
     .wellness-card-branding,
     .rose-card-branding,
     .riding-card-branding,
+    .lashes-card-branding,
     .electrician-card-branding,
     .medical-card-branding,
     .thermal-card-branding,
@@ -12840,6 +12989,7 @@ a.contact-info-card:hover {
     .wellness-card-branding p,
     .rose-card-branding p,
     .riding-card-branding p,
+    .lashes-card-branding p,
     .electrician-card-branding p,
     .medical-card-branding p,
     .thermal-card-branding p,
@@ -12874,6 +13024,7 @@ a.contact-info-card:hover {
     .wellness-card-branding span,
     .rose-card-branding span,
     .riding-card-branding span,
+    .lashes-card-branding span,
     .electrician-card-branding span,
     .medical-card-branding span,
     .thermal-card-branding span,
@@ -12910,6 +13061,7 @@ a.contact-info-card:hover {
     .wellness-card-stage,
     .rose-card-stage,
     .riding-card-stage,
+    .lashes-card-stage,
     .electrician-card-stage,
     .medical-card-stage,
     .thermal-card-stage,
@@ -12942,6 +13094,7 @@ a.contact-info-card:hover {
     .wellness-card-overlay,
     .rose-card-overlay,
     .riding-card-overlay,
+    .lashes-card-overlay,
     .electrician-card-overlay,
     .medical-card-overlay,
     .thermal-card-overlay,
@@ -12975,6 +13128,7 @@ a.contact-info-card:hover {
     .wellness-card-kicker,
     .rose-card-kicker,
     .riding-card-kicker,
+    .lashes-card-kicker,
     .electrician-card-kicker,
     .medical-card-kicker,
     .thermal-card-kicker,
@@ -13012,6 +13166,7 @@ a.contact-info-card:hover {
     .wellness-card-overlay strong,
     .rose-card-overlay strong,
     .riding-card-overlay strong,
+    .lashes-card-overlay strong,
     .electrician-card-overlay strong,
     .medical-card-overlay strong,
     .thermal-card-overlay strong,
@@ -13046,6 +13201,7 @@ a.contact-info-card:hover {
     .wellness-card-copy,
     .rose-card-copy,
     .riding-card-copy,
+    .lashes-card-copy,
     .electrician-card-copy,
     .medical-card-copy,
     .thermal-card-copy,
@@ -13074,6 +13230,7 @@ a.contact-info-card:hover {
     .wellness-card-accent,
     .rose-card-accent,
     .riding-card-accent,
+    .lashes-card-accent,
     .electrician-card-accent,
     .medical-card-accent,
     .thermal-card-accent,

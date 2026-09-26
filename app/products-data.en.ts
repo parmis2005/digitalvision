@@ -126,6 +126,16 @@ export const productTranslationsEn: Record<string, ProductTranslation> = {
       "Suitable for riding schools, livery yards, riding clubs and rural experience providers",
     ],
   },
+  "belle-more-lashes": {
+    type: "Lashes & Beauty Website",
+    detail: "Elegant beauty website for lashes, brows, cosmetics and permanent make-up",
+    intro: "Beauty website with lashes, lash lifting, cosmetics, gallery and online booking.",
+    highlights: [
+      "Elegant hero section for lashes, cosmetics, aesthetics and direct online booking",
+      "Clear sections for services, gallery, team, reviews, prices and contact",
+      "Suitable for lash studios, cosmetic studios, brow bars and beauty ateliers",
+    ],
+  },
   "arztpraxis-weber": {
     type: "Medical Practice Website",
     detail: "Modern practice website for general medicine, services, team and contact",

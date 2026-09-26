@@ -24,6 +24,7 @@ export type ProductItem = {
     | "wellness"
     | "rose"
     | "riding"
+    | "lashes"
     | "electrician"
     | "thermal"
     | "medical"
@@ -225,6 +226,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Reitschulen, Pferdepensionen, Reitvereine und ländliche Erlebnisangebote",
     ],
     previewUrl: "/reitschule-preview/index.html",
+  },
+  {
+    slug: "belle-more-lashes",
+    type: "Lashes & Beauty Website",
+    title: "Belle & More",
+    detail: "Elegante Beauty-Website für Wimpern, Brows, Kosmetik und Permanent Make-up",
+    variant: "lashes",
+    category: "Webseiten",
+    intro: "Beauty-Website mit Wimpern, Lashlifting, Kosmetik, Galerie und Online-Buchung.",
+    highlights: [
+      "Edler Hero-Bereich für Wimpern, Kosmetik, Ästhetik und direkte Online-Buchung",
+      "Klare Bereiche für Leistungen, Galerie, Team, Bewertungen, Preise und Kontakt",
+      "Geeignet für Lash-Studios, Kosmetikstudios, Brow Bars und Beauty-Ateliers",
+    ],
+    previewUrl: "/lashes-more-preview/index.html",
   },
   {
     slug: "arztpraxis-weber",

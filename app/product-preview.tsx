@@ -18,6 +18,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isWellness = product.slug === "serenity-studio";
   const isRose = product.slug === "kosmetik-atelier-rosenblick";
   const isRiding = product.slug === "reitschule-sonnenhof";
+  const isLashes = product.slug === "belle-more-lashes";
   const isElectrician = product.slug === "voltara-elektrotechnik";
   const isMedical = product.slug === "arztpraxis-weber";
   const isThermal = product.slug === "vulkaneifeltherme";
@@ -518,6 +519,40 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="riding-card-copy">
               <h3>Reitschule Sonnenhof</h3>
               <span>Kurse · Pension · Trainer · Kontakt</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isLashes) {
+    if (size === "card") {
+      return (
+        <div className="lashes-preview-card-view">
+          <div className="lashes-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="lashes-card-cta">Termin buchen</span>
+          </div>
+          <div className="lashes-card-shell">
+            <div className="lashes-card-branding">
+              <p>Belle & More</p>
+              <span>Wimpern · Kosmetik · Permanent Make-up</span>
+            </div>
+            <div className="lashes-card-stage">
+              <div className="lashes-card-overlay">
+                <span className="lashes-card-kicker">Lash & Beauty Studio</span>
+                <strong>Wimpern, Brows und Glow mit edler Studio-Atmosphäre.</strong>
+              </div>
+              <div className="lashes-card-accent" />
+            </div>
+            <div className="lashes-card-copy">
+              <h3>Belle & More</h3>
+              <span>Lashes · Brows · Kosmetik · Termine</span>
             </div>
           </div>
         </div>

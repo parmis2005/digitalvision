@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Clock, PenLine } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, House, PenLine } from "lucide-react";
 import { getDictionary, localePath, type Locale } from "../../../lib/i18n";
 import { AmbientScene } from "../../ambient-scene";
 import { blogSerif } from "../../blog-font";
@@ -50,9 +50,12 @@ export function BlogPageContent({ locale, currentPage }: BlogPageContentProps) {
 
       <section className="blog-hero">
         <div className="blog-hero-copy">
-          <Link className="blog-home-link" href={localePath(locale, "/")}>
-            <ArrowLeft size={17} aria-hidden="true" />
-            {t.backHome}
+          <Link
+            className="digital-vision-info-back-link"
+            href={localePath(locale, "/")}
+            aria-label={t.backHome}
+          >
+            <House size={18} aria-hidden="true" />
           </Link>
           <h1>{t.heroTitle}</h1>
           <p>{t.heroText}</p>

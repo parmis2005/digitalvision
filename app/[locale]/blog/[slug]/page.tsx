@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
+import { ArrowRight, Check, Clock, House } from "lucide-react";
 import {
   getDictionary,
   intlLocale,
@@ -176,9 +176,12 @@ export default async function BlogPostPage({ params }: PageProps) {
       <SiteHeader locale={locale} />
 
       <article className="blog-article-shell">
-        <Link className="blog-back-link" href={localePath(locale, "/blog")}>
-          <ArrowLeft size={16} aria-hidden="true" />
-          {t.article.backToBlog}
+        <Link
+          className="digital-vision-info-back-link"
+          href={localePath(locale, "/blog")}
+          aria-label={t.article.backToBlog}
+        >
+          <House size={18} aria-hidden="true" />
         </Link>
 
         <header className="blog-article-hero">

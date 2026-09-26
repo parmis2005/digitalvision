@@ -10287,21 +10287,6 @@ a.contact-info-card:hover {
   max-width: 640px;
 }
 
-.blog-home-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-  color: rgba(155, 228, 255, 0.78);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.blog-home-link:hover {
-  color: white;
-}
-
 .blog-hero h1,
 .blog-article-hero h1 {
   max-width: 760px;
@@ -11255,19 +11240,6 @@ a.contact-info-card:hover {
 .blog-article-shell {
   max-width: 1100px;
   padding: clamp(36px, 5.5vw, 66px) 0 30px;
-}
-
-.blog-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: rgba(248, 251, 255, 0.72);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.blog-back-link:hover {
-  color: white;
 }
 
 .blog-article-hero {
@@ -12243,11 +12215,6 @@ a.contact-info-card:hover {
 
   .blog-visual-note span {
     font-size: 0.56rem;
-  }
-
-  .blog-home-link {
-    margin-bottom: 14px;
-    font-size: 0.82rem;
   }
 
   .blog-hero h1,

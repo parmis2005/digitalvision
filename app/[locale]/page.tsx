@@ -398,9 +398,6 @@ export default async function Home({ params }: PageProps) {
         <nav className="footer-legal-nav" aria-label={t.common.legalNavAria}>
           <a href={localePath(locale, "/impressum")}>{t.common.impressum}</a>
           <a href={localePath(locale, "/datenschutz")}>{t.common.datenschutz}</a>
-          <a className="footer-back-to-top" href="#top">
-            {t.common.backToTop}
-          </a>
         </nav>
       </footer>
     </main>

@@ -185,7 +185,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </Link>
 
         <header className="blog-article-hero">
-          <p className="eyebrow">{post.category}</p>
           <h1 className={titleClassName}>
             <span className="blog-article-title-main">{titleLines.firstLine}</span>
             <span className="blog-article-title-sub">{titleLines.secondLine}</span>

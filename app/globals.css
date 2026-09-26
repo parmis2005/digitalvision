@@ -10217,7 +10217,13 @@ a.contact-info-card:hover {
   gap: 18px 28px;
 }
 
-.footer-legal-nav a,
+.footer-legal-nav a {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
 .footer-back-to-top {
   display: inline-flex;
   align-items: center;

@@ -72,10 +72,11 @@ export function HeroBackgroundVideo() {
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       poster="/videos/pinload-2-hero-poster.jpg"
     >
-      <source src="/videos/PinLoad%202.mp4" type="video/mp4" />
+      <source src="/videos/hero-pinload.webm" type="video/webm" />
+      <source src="/videos/hero-pinload.mp4" type="video/mp4" />
     </video>
   );
 }

@@ -9,7 +9,6 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
-  const isGsAuto = product.slug === "gs-automotive-excellence";
   const isCoffee = product.slug === "bean-bark";
   const isRestaurant = product.slug === "maison-lumiere";
   const isDoener = product.slug === "ates-feuerdoener";
@@ -198,45 +197,6 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="premium-auto-card-copy">
               <h3>Autohaus Falkenstein</h3>
               <span>Fahrzeuge · Service · Finanzierung · Kontakt</span>
-            </div>
-          </div>
-        </div>
-      );
-    }
-  }
-
-  if (isGsAuto) {
-    if (size === "card") {
-      return (
-        <div className="gs-auto-preview-card-view">
-          <div className="gs-auto-card-top">
-            <div className="preview-bar">
-              <span />
-              <span />
-              <span />
-            </div>
-            <span className="gs-auto-card-cta">Fahrzeugsuche</span>
-          </div>
-          <div className="gs-auto-card-shell">
-            <div className="gs-auto-card-branding">
-              <p>GS Automobile Rheinland</p>
-              <span>Jahreswagen · Gebrauchtwagen</span>
-            </div>
-            <div className="gs-auto-card-stage">
-              <img
-                className="gs-auto-card-image"
-                src="/autohaus-preview/assets/cars/bmw-5-series-touring.png"
-                alt=""
-                aria-hidden="true"
-              />
-              <div className="gs-auto-card-overlay">
-                <span className="gs-auto-card-kicker">Autohaus Krefeld</span>
-                <strong>Ihr Auto wartet auf Sie.</strong>
-              </div>
-              <div className="gs-auto-card-accent">
-                <span>48</span>
-                <small>Fahrzeuge</small>
-              </div>
             </div>
           </div>
         </div>

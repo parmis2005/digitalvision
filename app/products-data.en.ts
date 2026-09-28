@@ -196,16 +196,6 @@ export const productTranslationsEn: Record<string, ProductTranslation> = {
       "Suitable for car dealerships, premium dealers, sports car providers and vehicle brokers",
     ],
   },
-  "gs-automotive-excellence": {
-    type: "Car Dealership Website",
-    detail: "Modern car dealership website for vehicle search, service, vehicle purchasing and contact",
-    intro: "Car dealership website with a large hero, vehicle search, service areas and a focus on contact.",
-    highlights: [
-      "Strong dealership hero with direct vehicle search and clear brand impact",
-      "Structure for vehicle inventory, financing, warranty, registration and vehicle purchasing",
-      "Suitable for car dealerships, used car dealers and automotive service providers",
-    ],
-  },
   "luna-nails": {
     type: "Nail Salon Website",
     detail: "Elegant nail salon website for manicure, pedicure, nailart and appointments",

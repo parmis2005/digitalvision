@@ -2016,11 +2016,6 @@ h3 {
   height: 100%;
 }
 
-.gs-auto-preview-card-view {
-  display: grid;
-  gap: 10px;
-  height: 100%;
-}
 
 .coffee-preview-card-view {
   display: grid;
@@ -4068,148 +4063,20 @@ h3 {
   line-height: 1.35;
 }
 
-.gs-auto-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
 
-.gs-auto-card-cta {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 0.62rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
-.gs-auto-card-shell {
-  display: grid;
-  gap: 10px;
-  min-height: 0;
-}
 
-.gs-auto-card-branding {
-  display: grid;
-  gap: 3px;
-}
 
-.gs-auto-card-branding p {
-  margin-bottom: 0;
-  color: #f8fbff;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 1.04rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
-}
 
-.gs-auto-card-branding span {
-  color: rgba(226, 232, 240, 0.82);
-  font-size: 0.54rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
 
-.gs-auto-card-stage {
-  position: relative;
-  min-height: 122px;
-  overflow: hidden;
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at 78% 32%, rgba(255, 255, 255, 0.16), transparent 24%),
-    linear-gradient(135deg, #111827 0%, #273141 48%, #6b7280 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
-}
 
-.gs-auto-card-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 62% 58%;
-  opacity: 0.82;
-  transform: scale(1.08);
-}
 
-.gs-auto-card-stage::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(8, 12, 19, 0.9) 0%, rgba(8, 12, 19, 0.62) 42%, rgba(8, 12, 19, 0.08) 100%),
-    linear-gradient(180deg, transparent 46%, rgba(9, 13, 20, 0.74));
-  content: "";
-}
 
-.gs-auto-card-overlay {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  z-index: 1;
-  display: grid;
-  gap: 6px;
-  max-width: 48%;
-  color: #f8fafc;
-  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.48);
-}
 
-.gs-auto-card-kicker {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  min-height: 22px;
-  padding: 0 9px;
-  border-radius: 999px;
-  background: rgba(239, 68, 68, 0.92);
-  color: #fff;
-  font-size: 0.46rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
-.gs-auto-card-overlay strong {
-  font-size: 1.02rem;
-  font-weight: 900;
-  line-height: 0.96;
-}
 
-.gs-auto-card-accent {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 1;
-  display: grid;
-  align-content: center;
-  gap: 2px;
-  width: 96px;
-  height: 62px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  border-radius: 16px;
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(55, 65, 81, 0.54)),
-    url("/autohaus-preview/assets/cars/mercedes-c-class.png") center 58%/cover no-repeat;
-  box-shadow: 0 12px 26px rgba(8, 12, 19, 0.34);
-  color: #f8fafc;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.42);
-}
 
-.gs-auto-card-accent span {
-  font-size: 1.14rem;
-  font-weight: 900;
-  line-height: 0.95;
-}
 
-.gs-auto-card-accent small {
-  font-size: 0.46rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-transform: uppercase;
-}
 
 .beauty-preview-card-view {
   display: grid;
@@ -6057,13 +5924,6 @@ h3 {
   color: #fff8e8;
 }
 
-.showcase-card.gs-auto .showcase-preview {
-  background:
-    radial-gradient(circle at 82% 18%, rgba(229, 57, 53, 0.2), transparent 18%),
-    radial-gradient(circle at 18% 82%, rgba(148, 163, 184, 0.18), transparent 20%),
-    linear-gradient(160deg, #0b111c 0%, #28313d 48%, #d7dde5 100%);
-  color: #f8fafc;
-}
 
 .showcase-card.coffee .showcase-preview {
   background:
@@ -12851,7 +12711,6 @@ a.contact-info-card:hover {
     .nails-card-cta,
     .auto-card-cta,
     .premium-auto-card-cta,
-    .gs-auto-card-cta,
     .coffee-card-cta,
     .restaurant-card-cta,
     .doener-card-cta,
@@ -12882,7 +12741,6 @@ a.contact-info-card:hover {
     .nails-preview-card-view,
     .auto-preview-card-view,
     .premium-auto-preview-card-view,
-    .gs-auto-preview-card-view,
     .coffee-preview-card-view,
     .restaurant-preview-card-view,
     .doener-preview-card-view,
@@ -12916,7 +12774,6 @@ a.contact-info-card:hover {
     .nails-card-shell,
     .auto-card-shell,
     .premium-auto-card-shell,
-    .gs-auto-card-shell,
     .coffee-card-shell,
     .restaurant-card-shell,
     .doener-card-shell,
@@ -12950,7 +12807,6 @@ a.contact-info-card:hover {
     .beauty-card-branding,
     .nails-card-branding,
     .premium-auto-card-branding,
-    .gs-auto-card-branding,
     .coffee-card-branding,
     .restaurant-card-branding,
     .doener-card-branding,
@@ -12981,7 +12837,6 @@ a.contact-info-card:hover {
     .beauty-card-branding p,
     .nails-card-branding p,
     .premium-auto-card-branding p,
-    .gs-auto-card-branding p,
     .coffee-card-branding p,
     .restaurant-card-branding p,
     .doener-card-branding p,
@@ -13016,7 +12871,6 @@ a.contact-info-card:hover {
     .beauty-card-branding span,
     .nails-card-branding span,
     .premium-auto-card-branding span,
-    .gs-auto-card-branding span,
     .coffee-card-branding span,
     .restaurant-card-branding span,
     .doener-card-branding span,
@@ -13053,7 +12907,6 @@ a.contact-info-card:hover {
     .nails-card-stage,
     .auto-card-stage,
     .premium-auto-card-stage,
-    .gs-auto-card-stage,
     .coffee-card-stage,
     .restaurant-card-stage,
     .doener-card-stage,
@@ -13086,7 +12939,6 @@ a.contact-info-card:hover {
     .beauty-card-overlay,
     .nails-card-overlay,
     .premium-auto-card-overlay,
-    .gs-auto-card-overlay,
     .coffee-card-copy-overlay,
     .restaurant-card-overlay,
     .doener-card-overlay,
@@ -13120,7 +12972,6 @@ a.contact-info-card:hover {
     .beauty-card-kicker,
     .nails-card-kicker,
     .premium-auto-card-kicker,
-    .gs-auto-card-kicker,
     .coffee-card-tag,
     .restaurant-card-kicker,
     .doener-card-kicker,
@@ -13158,7 +13009,6 @@ a.contact-info-card:hover {
     .beauty-card-overlay strong,
     .nails-card-overlay strong,
     .premium-auto-card-overlay strong,
-    .gs-auto-card-overlay strong,
     .coffee-card-copy-overlay strong,
     .restaurant-card-overlay strong,
     .doener-card-overlay strong,
@@ -13223,7 +13073,6 @@ a.contact-info-card:hover {
     .beauty-card-photo-accent,
     .nails-card-accent,
     .premium-auto-card-spec,
-    .gs-auto-card-accent,
     .restaurant-card-accent,
     .doener-card-accent,
     .hotel-card-accent,
@@ -13257,27 +13106,10 @@ a.contact-info-card:hover {
     min-height: 128px;
   }
 
-  .showcase-preview .gs-auto-card-accent {
-    bottom: 8px;
-    width: 76px;
-    height: 48px;
-  }
 
-  .showcase-preview .gs-auto-card-overlay {
-    max-width: min(48%, 122px);
-  }
 
-  .showcase-preview .gs-auto-card-overlay strong {
-    -webkit-line-clamp: 2;
-  }
 
-  .showcase-preview .gs-auto-card-accent span {
-    font-size: 0.92rem;
-  }
 
-  .showcase-preview .gs-auto-card-accent small {
-    font-size: 0.38rem;
-  }
 
   .beauty-preview-body,
   .product-preview-large .beauty-preview-page .beauty-preview-body {

@@ -19,6 +19,7 @@ const previewPrefixes = [
   "/restaurant-preview",
   "/salzgrotte-preview",
   "/simpleskin-preview",
+  "/vantora-auto-preview",
   "/velora-fashion-preview/site",
   "/versicherung-preview",
   "/vulkaneifeltherme-preview",

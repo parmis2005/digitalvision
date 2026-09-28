@@ -2016,6 +2016,11 @@ h3 {
   height: 100%;
 }
 
+.vantora-auto-preview-card-view {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
 
 .coffee-preview-card-view {
   display: grid;
@@ -3642,6 +3647,156 @@ h3 {
 .doener-card-copy span {
   color: rgba(255, 222, 184, 0.82);
   font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.vantora-auto-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vantora-auto-card-cta {
+  color: rgba(232, 199, 124, 0.92);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vantora-auto-card-shell {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.vantora-auto-card-branding {
+  display: grid;
+  gap: 2px;
+}
+
+.vantora-auto-card-branding p {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-size: 1.08rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 0.96;
+}
+
+.vantora-auto-card-branding span {
+  color: rgba(232, 199, 124, 0.82);
+  font-size: 0.52rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.vantora-auto-card-stage {
+  position: relative;
+  min-height: 128px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(5, 8, 14, 0.82), rgba(23, 35, 56, 0.18)),
+    url("/vantora-auto-preview/videos/hero-poster.jpg") center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(232, 199, 124, 0.18);
+}
+
+.vantora-auto-card-stage::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(232, 199, 124, 0.24), transparent 18%),
+    linear-gradient(180deg, transparent 42%, rgba(5, 8, 14, 0.72));
+  content: "";
+}
+
+.vantora-auto-card-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  max-width: 64%;
+  color: #f8fbff;
+  text-shadow: 0 10px 26px rgba(5, 8, 14, 0.56);
+}
+
+.vantora-auto-card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(232, 199, 124, 0.92);
+  color: #111827;
+  font-size: 0.44rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vantora-auto-card-overlay strong {
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 0.98;
+}
+
+.vantora-auto-card-accent {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 102px;
+  height: 62px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.78), rgba(183, 139, 62, 0.54)),
+    url("/vantora-auto-preview/images/showroom-dark-sportscar.jpg") center/cover no-repeat;
+  color: #f8fbff;
+  box-shadow:
+    inset 0 0 0 1px rgba(248, 251, 255, 0.2),
+    0 12px 26px rgba(5, 8, 14, 0.3);
+  text-shadow: 0 8px 18px rgba(5, 8, 14, 0.45);
+}
+
+.vantora-auto-card-accent span {
+  color: #f0cc7c;
+  font-size: 1.1rem;
+  font-weight: 950;
+  line-height: 0.9;
+}
+
+.vantora-auto-card-accent small {
+  color: rgba(248, 251, 255, 0.86);
+  font-size: 0.46rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vantora-auto-card-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.vantora-auto-card-copy h3 {
+  margin-bottom: 0;
+  color: #f8fbff;
+  font-size: 1.04rem;
+  line-height: 0.98;
+}
+
+.vantora-auto-card-copy span {
+  color: rgba(232, 199, 124, 0.82);
+  font-size: 0.62rem;
   line-height: 1.35;
 }
 
@@ -5924,6 +6079,13 @@ h3 {
   color: #fff8e8;
 }
 
+.showcase-card.vantora-auto .showcase-preview {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(232, 199, 124, 0.2), transparent 18%),
+    radial-gradient(circle at 18% 84%, rgba(42, 56, 78, 0.22), transparent 20%),
+    linear-gradient(160deg, #05080e 0%, #172338 46%, #b78b3e 100%);
+  color: #f8fbff;
+}
 
 .showcase-card.coffee .showcase-preview {
   background:
@@ -12711,6 +12873,7 @@ a.contact-info-card:hover {
     .nails-card-cta,
     .auto-card-cta,
     .premium-auto-card-cta,
+    .vantora-auto-card-cta,
     .coffee-card-cta,
     .restaurant-card-cta,
     .doener-card-cta,
@@ -12741,6 +12904,7 @@ a.contact-info-card:hover {
     .nails-preview-card-view,
     .auto-preview-card-view,
     .premium-auto-preview-card-view,
+    .vantora-auto-preview-card-view,
     .coffee-preview-card-view,
     .restaurant-preview-card-view,
     .doener-preview-card-view,
@@ -12774,6 +12938,7 @@ a.contact-info-card:hover {
     .nails-card-shell,
     .auto-card-shell,
     .premium-auto-card-shell,
+    .vantora-auto-card-shell,
     .coffee-card-shell,
     .restaurant-card-shell,
     .doener-card-shell,
@@ -12807,6 +12972,7 @@ a.contact-info-card:hover {
     .beauty-card-branding,
     .nails-card-branding,
     .premium-auto-card-branding,
+    .vantora-auto-card-branding,
     .coffee-card-branding,
     .restaurant-card-branding,
     .doener-card-branding,
@@ -12837,6 +13003,7 @@ a.contact-info-card:hover {
     .beauty-card-branding p,
     .nails-card-branding p,
     .premium-auto-card-branding p,
+    .vantora-auto-card-branding p,
     .coffee-card-branding p,
     .restaurant-card-branding p,
     .doener-card-branding p,
@@ -12871,6 +13038,7 @@ a.contact-info-card:hover {
     .beauty-card-branding span,
     .nails-card-branding span,
     .premium-auto-card-branding span,
+    .vantora-auto-card-branding span,
     .coffee-card-branding span,
     .restaurant-card-branding span,
     .doener-card-branding span,
@@ -12907,6 +13075,7 @@ a.contact-info-card:hover {
     .nails-card-stage,
     .auto-card-stage,
     .premium-auto-card-stage,
+    .vantora-auto-card-stage,
     .coffee-card-stage,
     .restaurant-card-stage,
     .doener-card-stage,
@@ -12939,6 +13108,7 @@ a.contact-info-card:hover {
     .beauty-card-overlay,
     .nails-card-overlay,
     .premium-auto-card-overlay,
+    .vantora-auto-card-overlay,
     .coffee-card-copy-overlay,
     .restaurant-card-overlay,
     .doener-card-overlay,
@@ -12972,6 +13142,7 @@ a.contact-info-card:hover {
     .beauty-card-kicker,
     .nails-card-kicker,
     .premium-auto-card-kicker,
+    .vantora-auto-card-kicker,
     .coffee-card-tag,
     .restaurant-card-kicker,
     .doener-card-kicker,
@@ -13009,6 +13180,7 @@ a.contact-info-card:hover {
     .beauty-card-overlay strong,
     .nails-card-overlay strong,
     .premium-auto-card-overlay strong,
+    .vantora-auto-card-overlay strong,
     .coffee-card-copy-overlay strong,
     .restaurant-card-overlay strong,
     .doener-card-overlay strong,
@@ -13044,6 +13216,7 @@ a.contact-info-card:hover {
     .beauty-card-copy,
     .nails-card-copy,
     .premium-auto-card-copy,
+    .vantora-auto-card-copy,
     .coffee-card-copy,
     .restaurant-card-copy,
     .doener-card-copy,
@@ -13073,6 +13246,7 @@ a.contact-info-card:hover {
     .beauty-card-photo-accent,
     .nails-card-accent,
     .premium-auto-card-spec,
+    .vantora-auto-card-accent,
     .restaurant-card-accent,
     .doener-card-accent,
     .hotel-card-accent,

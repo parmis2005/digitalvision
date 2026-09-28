@@ -16,6 +16,7 @@ export type ProductItem = {
     | "seo"
     | "auto"
     | "premium-auto"
+    | "vantora-auto"
     | "coffee"
     | "restaurant"
     | "doener"
@@ -90,6 +91,21 @@ const productItems: ProductItem[] = [
       "Geeignet für Dönerläden, Imbisse, Food-Brands und moderne Gastro-Konzepte",
     ],
     previewUrl: "/doener-preview/index.html",
+  },
+  {
+    slug: "vantora-automobile",
+    type: "Autohaus Website",
+    title: "VANTORA Automobile",
+    detail: "Premium-Autohaus-Website für geprüfte Gebrauchtwagen, Finanzierung und Ankauf",
+    variant: "vantora-auto",
+    category: "Webseiten",
+    intro: "Autohaus-Website mit Video-Hero, Fahrzeugbestand, Finanzierung, Ankauf und Kontaktfokus.",
+    highlights: [
+      "Starker Video-Hero für geprüfte Premium-Gebrauchtwagen und direkte Fahrzeugsuche",
+      "Klare Bereiche für Bestand, Service, Finanzierung, Ankauf, Bewertungen und Kontakt",
+      "Geeignet für Autohäuser, Gebrauchtwagenhändler, Premium-Händler und Fahrzeugvermittler",
+    ],
+    previewUrl: "/vantora-auto-preview/index.html",
   },
   {
     slug: "aurum-grand-hotel",
@@ -428,6 +444,7 @@ const preferredWebsiteOrder = [
   "maison-lumiere",
   "aurum-grand-hotel",
   "ates-feuerdoener",
+  "vantora-automobile",
   "vulkaneifeltherme",
   "nagelstudio-sinja",
   "alphaschutz-versicherung",

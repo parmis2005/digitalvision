@@ -9,6 +9,7 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
   const isBeauty = product.slug === "beauty-haus";
   const isAuto = product.slug === "autohaus-nordglanz";
   const isPremiumAuto = product.slug === "autohaus-falkenstein";
+  const isVantoraAuto = product.slug === "vantora-automobile";
   const isCoffee = product.slug === "bean-bark";
   const isRestaurant = product.slug === "maison-lumiere";
   const isDoener = product.slug === "ates-feuerdoener";
@@ -310,6 +311,43 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
             <div className="doener-card-copy">
               <h3>Ateş Feuerdöner</h3>
               <span>Speisekarte · Reels · Standorte · Bestellung</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  if (isVantoraAuto) {
+    if (size === "card") {
+      return (
+        <div className="vantora-auto-preview-card-view">
+          <div className="vantora-auto-card-top">
+            <div className="preview-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="vantora-auto-card-cta">Fahrzeuge</span>
+          </div>
+          <div className="vantora-auto-card-shell">
+            <div className="vantora-auto-card-branding">
+              <p>VANTORA Automobile</p>
+              <span>Premium-Gebrauchtwagen · Finanzierung</span>
+            </div>
+            <div className="vantora-auto-card-stage">
+              <div className="vantora-auto-card-overlay">
+                <span className="vantora-auto-card-kicker">Geprüft. Ehrlich. Direkt.</span>
+                <strong>Premium-Fahrzeuge im Herzen des Rheinlands.</strong>
+              </div>
+              <div className="vantora-auto-card-accent">
+                <span>120+</span>
+                <small>Fahrzeuge</small>
+              </div>
+            </div>
+            <div className="vantora-auto-card-copy">
+              <h3>VANTORA Automobile</h3>
+              <span>Bestand · Finanzierung · Ankauf · Kontakt</span>
             </div>
           </div>
         </div>

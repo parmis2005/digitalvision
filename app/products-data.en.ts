@@ -36,6 +36,16 @@ export const productTranslationsEn: Record<string, ProductTranslation> = {
       "Suitable for döner shops, takeaways, food brands and modern gastro concepts",
     ],
   },
+  "vantora-automobile": {
+    type: "Car Dealership Website",
+    detail: "Premium car dealership website for inspected used cars, financing and vehicle purchasing",
+    intro: "Car dealership website with video hero, vehicle inventory, financing, purchasing and contact focus.",
+    highlights: [
+      "Strong video hero for inspected premium used cars and direct vehicle search",
+      "Clear sections for inventory, service, financing, purchasing, reviews and contact",
+      "Suitable for car dealerships, used car dealers, premium dealers and vehicle brokers",
+    ],
+  },
   "aurum-grand-hotel": {
     type: "Luxury Hotel Website",
     detail: "Premium hotel website for suites, restaurant, spa and reservations",

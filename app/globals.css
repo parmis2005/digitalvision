@@ -3658,9 +3658,9 @@ h3 {
 }
 
 .vantora-auto-card-cta {
-  color: rgba(232, 199, 124, 0.92);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.62rem;
-  font-weight: 900;
+  font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -3669,47 +3669,59 @@ h3 {
   display: grid;
   gap: 10px;
   min-height: 0;
-  flex: 1;
 }
 
 .vantora-auto-card-branding {
   display: grid;
-  gap: 2px;
+  gap: 3px;
 }
 
 .vantora-auto-card-branding p {
   margin-bottom: 0;
   color: #f8fbff;
-  font-size: 1.08rem;
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  line-height: 0.96;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
 }
 
 .vantora-auto-card-branding span {
-  color: rgba(232, 199, 124, 0.82);
-  font-size: 0.52rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .vantora-auto-card-stage {
   position: relative;
-  min-height: 128px;
+  min-height: 122px;
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 20px;
   background:
-    linear-gradient(90deg, rgba(5, 8, 14, 0.82), rgba(23, 35, 56, 0.18)),
-    url("/vantora-auto-preview/videos/hero-poster.jpg") center/cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(232, 199, 124, 0.18);
+    radial-gradient(circle at 78% 32%, rgba(61, 123, 255, 0.22), transparent 26%),
+    linear-gradient(135deg, #05070a 0%, #131a26 48%, #45556c 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.vantora-auto-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 55%;
+  opacity: 0.86;
+  transform: scale(1.08);
 }
 
 .vantora-auto-card-stage::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 82% 24%, rgba(232, 199, 124, 0.24), transparent 18%),
-    linear-gradient(180deg, transparent 42%, rgba(5, 8, 14, 0.72));
+    linear-gradient(90deg, rgba(5, 7, 10, 0.9) 0%, rgba(5, 7, 10, 0.62) 42%, rgba(5, 7, 10, 0.08) 100%),
+    linear-gradient(180deg, transparent 46%, rgba(5, 7, 10, 0.74));
   content: "";
 }
 
@@ -3720,9 +3732,9 @@ h3 {
   z-index: 1;
   display: grid;
   gap: 6px;
-  max-width: 64%;
-  color: #f8fbff;
-  text-shadow: 0 10px 26px rgba(5, 8, 14, 0.56);
+  max-width: 48%;
+  color: #f8fafc;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.48);
 }
 
 .vantora-auto-card-kicker {
@@ -3732,18 +3744,18 @@ h3 {
   min-height: 22px;
   padding: 0 9px;
   border-radius: 999px;
-  background: rgba(232, 199, 124, 0.92);
-  color: #111827;
-  font-size: 0.44rem;
-  font-weight: 950;
+  background: rgba(61, 123, 255, 0.94);
+  color: #fff;
+  font-size: 0.46rem;
+  font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .vantora-auto-card-overlay strong {
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   font-weight: 900;
-  line-height: 0.98;
+  line-height: 0.96;
 }
 
 .vantora-auto-card-accent {
@@ -3753,51 +3765,32 @@ h3 {
   z-index: 1;
   display: grid;
   align-content: center;
-  justify-items: center;
-  width: 102px;
+  gap: 2px;
+  width: 96px;
   height: 62px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 16px;
   background:
-    linear-gradient(135deg, rgba(17, 24, 39, 0.78), rgba(183, 139, 62, 0.54)),
-    url("/vantora-auto-preview/images/showroom-dark-sportscar.jpg") center/cover no-repeat;
-  color: #f8fbff;
-  box-shadow:
-    inset 0 0 0 1px rgba(248, 251, 255, 0.2),
-    0 12px 26px rgba(5, 8, 14, 0.3);
-  text-shadow: 0 8px 18px rgba(5, 8, 14, 0.45);
+    linear-gradient(135deg, rgba(9, 12, 18, 0.74), rgba(43, 99, 224, 0.42)),
+    url("/vantora-auto-preview/images/bmw-3er-touring.jpg") center 60%/cover no-repeat;
+  box-shadow: 0 12px 26px rgba(5, 7, 10, 0.34);
+  color: #f8fafc;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.42);
 }
 
 .vantora-auto-card-accent span {
-  color: #f0cc7c;
-  font-size: 1.1rem;
-  font-weight: 950;
-  line-height: 0.9;
+  font-size: 1.14rem;
+  font-weight: 900;
+  line-height: 0.95;
 }
 
 .vantora-auto-card-accent small {
-  color: rgba(248, 251, 255, 0.86);
   font-size: 0.46rem;
   font-weight: 850;
   letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
-}
-
-.vantora-auto-card-copy {
-  display: grid;
-  gap: 4px;
-}
-
-.vantora-auto-card-copy h3 {
-  margin-bottom: 0;
-  color: #f8fbff;
-  font-size: 1.04rem;
-  line-height: 0.98;
-}
-
-.vantora-auto-card-copy span {
-  color: rgba(232, 199, 124, 0.82);
-  font-size: 0.62rem;
-  line-height: 1.35;
 }
 
 .hotel-card-top {
@@ -6081,9 +6074,9 @@ h3 {
 
 .showcase-card.vantora-auto .showcase-preview {
   background:
-    radial-gradient(circle at 82% 20%, rgba(232, 199, 124, 0.2), transparent 18%),
-    radial-gradient(circle at 18% 84%, rgba(42, 56, 78, 0.22), transparent 20%),
-    linear-gradient(160deg, #05080e 0%, #172338 46%, #b78b3e 100%);
+    radial-gradient(circle at 82% 18%, rgba(61, 123, 255, 0.24), transparent 18%),
+    radial-gradient(circle at 18% 82%, rgba(144, 161, 185, 0.18), transparent 20%),
+    linear-gradient(160deg, #05070a 0%, #131a26 48%, #45556c 100%);
   color: #f8fbff;
 }
 
@@ -13216,7 +13209,6 @@ a.contact-info-card:hover {
     .beauty-card-copy,
     .nails-card-copy,
     .premium-auto-card-copy,
-    .vantora-auto-card-copy,
     .coffee-card-copy,
     .restaurant-card-copy,
     .doener-card-copy,
@@ -13634,4 +13626,27 @@ a.contact-info-card:hover {
   gap: 8px;
   margin-top: 12px;
   color: rgba(248, 251, 255, 0.76);
+}
+
+@media (max-width: 760px) {
+  .showcase-preview .vantora-auto-card-accent {
+    bottom: 8px;
+    width: 76px;
+    height: 48px;
+  }
+  .showcase-preview .vantora-auto-card-overlay {
+    max-width: min(48%, 122px);
+  }
+  .showcase-preview .vantora-auto-card-overlay strong {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .showcase-preview .vantora-auto-card-accent span {
+    font-size: 0.92rem;
+  }
+  .showcase-preview .vantora-auto-card-accent small {
+    font-size: 0.38rem;
+  }
 }

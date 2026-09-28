@@ -328,26 +328,28 @@ export function ProductPreview({ product, size = "card" }: ProductPreviewProps) 
               <span />
               <span />
             </div>
-            <span className="vantora-auto-card-cta">Fahrzeuge</span>
+            <span className="vantora-auto-card-cta">Fahrzeugsuche</span>
           </div>
           <div className="vantora-auto-card-shell">
             <div className="vantora-auto-card-branding">
               <p>VANTORA Automobile</p>
-              <span>Premium-Gebrauchtwagen · Finanzierung</span>
+              <span>Jahreswagen · Gebrauchtwagen</span>
             </div>
             <div className="vantora-auto-card-stage">
+              <img
+                className="vantora-auto-card-image"
+                src="/vantora-auto-preview/videos/hero-poster.jpg"
+                alt=""
+                aria-hidden="true"
+              />
               <div className="vantora-auto-card-overlay">
-                <span className="vantora-auto-card-kicker">Geprüft. Ehrlich. Direkt.</span>
-                <strong>Premium-Fahrzeuge im Herzen des Rheinlands.</strong>
+                <span className="vantora-auto-card-kicker">Westerfeld am Rhein</span>
+                <strong>Ihr nächstes Auto wartet schon.</strong>
               </div>
               <div className="vantora-auto-card-accent">
-                <span>120+</span>
+                <span>120</span>
                 <small>Fahrzeuge</small>
               </div>
-            </div>
-            <div className="vantora-auto-card-copy">
-              <h3>VANTORA Automobile</h3>
-              <span>Bestand · Finanzierung · Ankauf · Kontakt</span>
             </div>
           </div>
         </div>

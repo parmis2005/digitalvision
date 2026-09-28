@@ -444,7 +444,6 @@ const preferredWebsiteOrder = [
   "maison-lumiere",
   "aurum-grand-hotel",
   "ates-feuerdoener",
-  "gs-automotive-excellence",
   "vulkaneifeltherme",
   "nagelstudio-sinja",
   "alphaschutz-versicherung",
@@ -457,13 +456,17 @@ const preferredWebsiteOrder = [
   "meisterhand-handwerksservice",
 ];
 
+const hiddenWebsiteSlugs = new Set(["gs-automotive-excellence"]);
+
 const orderedProducts = preferredWebsiteOrder
   .map((slug) => productItems.find((product) => product.slug === slug))
   .filter((product): product is ProductItem => Boolean(product));
 
 export const products: ProductItem[] = [
-  ...orderedProducts,
-  ...productItems.filter((product) => !preferredWebsiteOrder.includes(product.slug)),
+  ...orderedProducts.filter((product) => !hiddenWebsiteSlugs.has(product.slug)),
+  ...productItems.filter(
+    (product) => !preferredWebsiteOrder.includes(product.slug) && !hiddenWebsiteSlugs.has(product.slug),
+  ),
 ];
 
 export const repeatedProducts = [...products, ...products];

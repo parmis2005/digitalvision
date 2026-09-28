@@ -21,20 +21,6 @@
     }
   }
 
-  function isPreviewContactRequest(input) {
-    try {
-      var rawUrl = typeof input === 'string' ? input : input && input.url;
-      if (!rawUrl) {
-        return false;
-      }
-
-      var url = new URL(rawUrl, window.location.href);
-      return url.origin === window.location.origin && url.pathname === '/api/kontakt';
-    } catch (error) {
-      return false;
-    }
-  }
-
   function isBlockedLinkNode(node) {
     return node && node.tagName === 'LINK' && shouldBlockPreviewRequest(node.href || node.getAttribute('href'));
   }
@@ -42,14 +28,6 @@
   if (window.fetch) {
     var nativeFetch = window.fetch.bind(window);
     window.fetch = function (input, init) {
-      if (isPreviewContactRequest(input)) {
-        return Promise.resolve(new Response(JSON.stringify({ ok: true, preview: true }), {
-          status: 200,
-          statusText: 'Preview contact request accepted',
-          headers: { 'Content-Type': 'application/json' },
-        }));
-      }
-
       if (shouldBlockPreviewRequest(input)) {
         return Promise.resolve(new Response('', { status: 204, statusText: 'Preview request blocked' }));
       }
@@ -63,19 +41,11 @@
     var nativeSend = window.XMLHttpRequest.prototype.send;
 
     window.XMLHttpRequest.prototype.open = function (method, url) {
-      this.__previewContactUrl = isPreviewContactRequest(url);
       this.__previewBlockedUrl = shouldBlockPreviewRequest(url);
       return nativeOpen.apply(this, arguments);
     };
 
     window.XMLHttpRequest.prototype.send = function () {
-      if (this.__previewContactUrl) {
-        try {
-          this.respondWith && this.respondWith(new Response(JSON.stringify({ ok: true, preview: true })));
-        } catch (error) {}
-        return;
-      }
-
       if (this.__previewBlockedUrl) {
         try {
           this.abort();

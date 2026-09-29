@@ -115,6 +115,8 @@ export function ProductShowcase({ locale, products, copy }: ProductShowcaseProps
     }
 
     let frame = 0;
+    let pageScrolling = false;
+    let pageScrollTimer: number | null = null;
 
     const syncScrollPosition = () => {
       if (pausedRef.current) {
@@ -129,7 +131,12 @@ export function ProductShowcase({ locale, products, copy }: ProductShowcaseProps
     };
 
     const step = () => {
-      if (railVisibleRef.current && railAutoReadyRef.current && !pausedRef.current) {
+      if (
+        railVisibleRef.current &&
+        railAutoReadyRef.current &&
+        !pausedRef.current &&
+        !pageScrolling
+      ) {
         const loopPoint = rail.scrollWidth / 2;
 
         if (loopPoint > rail.clientWidth) {
@@ -141,13 +148,33 @@ export function ProductShowcase({ locale, products, copy }: ProductShowcaseProps
       frame = window.requestAnimationFrame(step);
     };
 
+    // While the page itself scrolls, stop nudging the rail: writing scrollLeft
+    // every frame forces a repaint of the whole rail and competes with the
+    // browser's own scroll work.
+    const onPageScroll = () => {
+      pageScrolling = true;
+      if (pageScrollTimer !== null) {
+        window.clearTimeout(pageScrollTimer);
+      }
+      pageScrollTimer = window.setTimeout(() => {
+        pageScrolling = false;
+        pageScrollTimer = null;
+        scrollPositionRef.current = rail.scrollLeft;
+      }, 200);
+    };
+
     rail.addEventListener("scroll", syncScrollPosition, { passive: true });
+    window.addEventListener("scroll", onPageScroll, { passive: true });
     window.addEventListener("hashchange", alignHashTarget);
     frame = window.requestAnimationFrame(step);
 
     return () => {
       rail.removeEventListener("scroll", syncScrollPosition);
+      window.removeEventListener("scroll", onPageScroll);
       window.removeEventListener("hashchange", alignHashTarget);
+      if (pageScrollTimer !== null) {
+        window.clearTimeout(pageScrollTimer);
+      }
       window.cancelAnimationFrame(alignFrame);
       window.clearTimeout(alignTimer);
       window.cancelAnimationFrame(frame);

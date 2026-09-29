@@ -19,6 +19,7 @@ export function HeroBackgroundVideo() {
     video.muted = true;
 
     let introSkipped = false;
+    let inView = true;
 
     const skipIntroOnce = () => {
       if (introSkipped) {
@@ -31,6 +32,9 @@ export function HeroBackgroundVideo() {
     };
 
     const attemptPlay = () => {
+      if (!inView) {
+        return;
+      }
       video.play().catch(() => {});
     };
 
@@ -57,7 +61,26 @@ export function HeroBackgroundVideo() {
       handleLoadedMetadata();
     }
 
+    // Decoding a full-width video that is scrolled out of view wastes GPU
+    // time on every frame, so pause it while the hero is off-screen.
+    let visibilityObserver: IntersectionObserver | null = null;
+    if ("IntersectionObserver" in window) {
+      visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          inView = entry.isIntersecting;
+          if (inView) {
+            attemptPlay();
+          } else {
+            video.pause();
+          }
+        },
+        { threshold: 0 },
+      );
+      visibilityObserver.observe(video);
+    }
+
     return () => {
+      visibilityObserver?.disconnect();
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("timeupdate", handleTimeUpdate);

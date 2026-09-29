@@ -18,14 +18,32 @@ export function AmbientScene({ density = "default" }: AmbientSceneProps) {
       return;
     }
 
+    // Only the vision/split sections consume these variables. Writing them on
+    // <html> would invalidate styles for the whole document on every scroll
+    // frame, which is what made scrolling stutter.
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>(".vision-section, .split-section"),
+    );
+    if (targets.length === 0) {
+      return;
+    }
+
     let frame = 0;
+    let lastShift = -1;
 
     const update = () => {
       frame = 0;
-      const root = document.documentElement;
       const scrollY = window.scrollY;
-      root.style.setProperty("--parallax-shift", `${Math.min(scrollY * 0.08, 120)}px`);
-      root.style.setProperty("--parallax-shift-soft", `${Math.min(scrollY * 0.04, 64)}px`);
+      const shift = Math.min(Math.round(scrollY * 0.08), 120);
+      if (shift === lastShift) {
+        return;
+      }
+      lastShift = shift;
+      const soft = Math.min(Math.round(scrollY * 0.04), 64);
+      for (const target of targets) {
+        target.style.setProperty("--parallax-shift", `${shift}px`);
+        target.style.setProperty("--parallax-shift-soft", `${soft}px`);
+      }
     };
 
     const onScroll = () => {

@@ -218,7 +218,7 @@ export const de = {
           detailLines: [
             { text: "Website, Hosting, Pflege & Support inklusive." },
             {
-              text: "Nach vollständiger Bezahlung: Laufende Betreuung ab 100 €/Monat.",
+              text: "Betreuung & Support ab 100 €/Monat – ab Projektstart inklusive.",
               emphasis: true,
             },
           ],
@@ -453,7 +453,7 @@ export const de = {
         paymentPlanSupport: "Monat {start}-{end}: {rate} pro Monat für Support & Betreuung.",
         paymentPlanNoSupport: "Keine zusätzlichen Support-Monate nach der Abzahlung.",
         paymentNote:
-          "Während der Abzahlung sind Hosting, Pflege und Support inklusive. Die kostenpflichtige Betreuung beginnt erst nach vollständiger Bezahlung.",
+          "Hosting, Pflege, Betreuung & Support sind ab Projektstart inklusive.",
         back: "Zurück",
         next: "Weiter zur Terminwahl",
       },

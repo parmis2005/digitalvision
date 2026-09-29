@@ -11,6 +11,7 @@ import {
   Instagram,
   LayoutDashboard,
   Mail,
+  MessageCircle,
   MonitorSmartphone,
   Phone,
   Search,
@@ -729,14 +730,14 @@ export function ContactInfoPanel({ locale }: { locale: string }) {
 
         <div className="contact-info-card">
           <span className="contact-team-avatar" aria-hidden="true">
-            P
+            <MessageCircle size={22} />
           </span>
           <span>
             <strong>{locale === "en" ? "Your contact" : "Dein Kontakt"}</strong>
             <span>
               {locale === "en"
-                ? "Parmis answers personally."
-                : "Parmis antwortet dir persönlich."}
+                ? "We answer you personally."
+                : "Wir antworten dir persönlich."}
             </span>
           </span>
         </div>

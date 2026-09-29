@@ -8804,17 +8804,10 @@ a.contact-info-card:hover {
   box-shadow: inset 0 0 0 1px rgba(155, 228, 255, 0.14);
 }
 
-.contact-info-icon svg {
+.contact-info-icon svg,
+.contact-team-avatar svg {
   width: 18px;
   height: 18px;
-}
-
-.contact-team-avatar {
-  background: linear-gradient(135deg, rgba(155, 228, 255, 0.9), rgba(198, 162, 255, 0.82));
-  color: #081023;
-  font-size: 0.95rem;
-  font-weight: 950;
-  box-shadow: 0 0 12px rgba(198, 124, 255, 0.2);
 }
 
 .contact-info-card > span:last-child {
